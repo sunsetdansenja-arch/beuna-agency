@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pabrik Cuan Digital | Studi Kasus Beuna Sosmed</title>
+    <title>Pabrik Cuan Digital | Portofolio & Otomasi Beuna</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20sosmed%202.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
         body { font-family: 'Space Grotesk', sans-serif; background-color: #fff1f2; overflow-x: hidden; }
         .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(15, 23, 42, 1); }
         .brutal-shadow:hover { box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1); transform: translate(4px, 4px); }
-    
+        
         /* Animasi Text Fade in per Paragraf */
         .fade-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards; }
         .delay-1 { animation-delay: 0.2s; }
@@ -20,10 +20,23 @@
         .delay-4 { animation-delay: 1.4s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* WhatsApp Bubble Styles */
-        .wa-bubble { padding: 12px 16px; border-radius: 12px; max-width: 80%; }
-        .wa-bubble-client { background-color: #f1f5f9; border: 2px solid #0f172a; align-self: flex-start; }
-        .wa-bubble-bot { background-color: #dcf8c6; border: 2px solid #0f172a; align-self: flex-end; color: #075e54; font-weight: bold;}
+        /* WA Chat Animation Styles */
+        .wa-bg { background-color: #efeae2; background-image: url('https://www.transparenttextures.com/patterns/always-grey.png'); }
+        .chat-msg { opacity: 0; max-width: 80%; padding: 10px 14px; border-radius: 8px; font-size: 14px; position: relative; font-family: Helvetica, Arial, sans-serif; box-shadow: 0 1px 1px rgba(0,0,0,0.1); animation: popIn 0.4s forwards; }
+        .msg-client { background-color: #ffffff; align-self: flex-start; border-radius: 0 8px 8px 8px; }
+        .msg-bot { background-color: #dcf8c6; align-self: flex-end; border-radius: 8px 0 8px 8px; }
+        
+        /* Typing indicator dots */
+        .typing-dots::after { content: '.'; animation: typing 1.5s infinite; }
+        
+        /* Animation Sequence */
+        @keyframes popIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes typing { 0% { content: '.'; } 33% { content: '..'; } 66% { content: '...'; } }
+        
+        .seq-1 { animation-delay: 1s; }
+        .seq-2 { animation-delay: 2.5s; }
+        .seq-3 { animation-delay: 4.5s; }
+        .seq-4 { animation-delay: 6s; }
     </style>
 </head>
 <body class="text-slate-900 min-h-screen flex flex-col">
@@ -40,132 +53,144 @@
             Telah Membantu sinkronisasi ratusan brand.
         </div>
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight fade-up">
-            Pabrik <span class="text-red-600 underline decoration-4 underline-offset-8">Cuan Digital</span>. Gak Cukup Cuma Cantik.
+            Pabrik <span class="text-red-600 underline decoration-4 underline-offset-8">Visual & Cuan</span>. Gak Cukup Cuma Cantik.
         </h1>
         <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium fade-up delay-1">
-            Visual adalah pintu masuk, otomasi adalah mesin kasirnya. Kita bedah gimana Beuna Sosmed bikin feed IG lo rapi dan leads masuk di-follow up otomatis 24 jam.
+            Visual yang estetik adalah pintu masuk, tapi alur yang rapi adalah mesin kasirnya. Intip portofolio visual kita, lalu temukan rahasia otomasinya di akhir halaman.
         </p>
     </header>
 
-    
-<main class="max-w-7xl mx-auto px-6 space-y-24 pb-20">
+    <main class="max-w-7xl mx-auto px-6 space-y-24 pb-20">
         
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-b-4 border-slate-900 pb-20 fade-up delay-2">
             <div class="bg-white p-6 rounded-3xl border-2 border-slate-900 brutal-shadow relative">
-                <div class="absolute -top-4 -left-4 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-xs transform -rotate-2">Case 01: F&B</div>
+                <div class="absolute -top-4 -left-4 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-xs transform -rotate-2">Visual Case 01: F&B</div>
                 <h4 class="text-2xl font-bold mb-6 text-red-600">Bara Kopi & Roastery (Fiktif)</h4>
                 <div class="grid grid-cols-3 gap-3 border-2 border-slate-200 p-2 rounded-xl bg-slate-50 shadow-inner">
-                    <img src="https://via.placeholder.com/300x300/1e3a8a/ffffff?text=Barista+Action" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/dc2626/ffffff?text=Promo+Buy+1+Get+1" class="aspect-square rounded-md border-4 border-red-600 shadow-[4px_4px_0px_0px_rgba(239,68,68,1)]">
-                    <img src="https://via.placeholder.com/300x300/1e3a8a/ffffff?text=Biji+Kopi+Premium" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/f1f5f9/0f172a?text=Caption+Rapi" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/1e3a8a/ffffff?text=Vibe+Cafe" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/f1f5f9/0f172a?text=Hashtag+Reset" class="aspect-square rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/1e3a8a/ffffff?text=Barista+Action" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/dc2626/ffffff?text=Promo+Buy+1+Get+1" class="aspect-square object-cover rounded-md border-4 border-red-600 shadow-[4px_4px_0px_0px_rgba(239,68,68,1)]">
+                    <img src="https://via.placeholder.com/300x300/1e3a8a/ffffff?text=Biji+Kopi+Premium" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/f1f5f9/0f172a?text=Caption+Rapi" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/1e3a8a/ffffff?text=Vibe+Cafe" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/f1f5f9/0f172a?text=Hashtag+Reset" class="aspect-square object-cover rounded-md border-2 border-slate-900">
                 </div>
             </div>
             
             <div class="space-y-6">
-                <div class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded-md text-sm border-2 border-red-800 transform rotate-1">Visual Cantik + Bot WA</div>
-                <h3 class="text-3xl font-bold">Ubah Story IG Jadi Database Cuan Detik Itu Juga.</h3>
+                <div class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded-md text-sm border-2 border-red-800 transform rotate-1">Brand Identity & Promo Strategy</div>
+                <h3 class="text-3xl font-bold">Bikin Kopi Lo Kelihatan Mahal, Tapi Tetap "Nongkrong-able".</h3>
                 <p class="text-slate-600 font-medium leading-relaxed">
-                    Dulu DM membludak, promoStory kelewat. Beuna Sosmed bikin Story promo Buy 1 Get 1 yang estetik parah (seperti di visual kiri), dan nangkep leads-nya instan pake bot.
+                    Masalah utama F&B adalah desain promo yang merusak *feed*. Untuk Bara Kopi, Beuna meracik identitas visual dengan *tone* warna maskulin dan *layout bold*. Promo *Buy 1 Get 1* didesain mencolok tapi tetap *seamless* dengan estetika keseluruhan.
                 </p>
-                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-900 shadow-inner flex flex-col gap-3 font-mono text-sm max-w-lg mx-auto md:mx-0">
-                    <div class="wa-bubble wa-bubble-client">"Mau Promo Kopi Kak!" (Reply Story)</div>
-                    <div class="wa-bubble wa-bubble-bot text-right">"Halo! Biar dapet voucher Bara Kopi, ketik 'BARABOX' ya! 🔥" (Bot Membalas Instan)</div>
-                    <div class="wa-bubble wa-bubble-client">BARABOX</div>
-                    <div class="wa-bubble wa-bubble-bot text-right">"MANTAP! Ini voucher Buy 1 Get 1 lo: [BARA-B1G1-XYZ]. Berlaku sampai besok. Selamat Ngopi! ☕"</div>
-                    <div class="text-[10px] text-green-700 font-bold flex gap-1 items-center"><span>✅</span> 1 Leads Baru Terdata di Sheets</div>
-                </div>
+                <ul class="list-disc list-inside text-slate-700 font-medium space-y-2">
+                    <li>Fotografi produk yang menonjolkan tekstur.</li>
+                    <li>Sistem *grid* yang disisipi konten edukasi kopi.</li>
+                    <li>Desain *Story* interaktif yang memancing *followers* untuk membalas.</li>
+                </ul>
             </div>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-b-4 border-slate-900 pb-20 fade-up delay-3">
             <div class="space-y-6 order-2 md:order-1">
-                <div class="inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm border-2 border-blue-800 transform -rotate-1">Booking Tanpa Admin & Pengingat Auto</div>
-                <h3 class="text-3xl font-bold">Admin Tidur, Sistem Booking Tetap Jalan. 0% Jadwal Bentrok.</h3>
+                <div class="inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm border-2 border-blue-800 transform -rotate-1">Trust Building & Aesthetic</div>
+                <h3 class="text-3xl font-bold">Membangun *Trust* Lewat Estetika Bersih & Edukatif.</h3>
                 <p class="text-slate-600 font-medium leading-relaxed">
-                    Owner capek bales booking manual di WA. Beuna Sosmed rapihin feed (visual kanan) dan bikin alur auto-booking. Customer dikasih link, bot WA yang urus slot jadwal kosong, tanpa perlu admin ngetik satu-satu.
+                    Di industri kecantikan, audiens butuh bukti dan rasa aman. *Feed* Kala Beauty dirancang dengan palet warna *pastel* yang menenangkan. Kami memisahkan konten jualan kasar dengan konten edukasi kulit yang elegan.
                 </p>
-                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-900 shadow-inner flex flex-col gap-3 font-mono text-sm max-w-lg mx-auto md:mx-0">
-                    <div class="wa-bubble wa-bubble-client">(Klik Link di Bio IG) Mau Booking Treatment dong!</div>
-                    <div class="wa-bubble wa-bubble-bot text-right">"Halo! Pilih treatment lo: (1. Facial, 2. Nail Art)"</div>
-                    <div class="wa-bubble wa-bubble-client">1</div>
-                    <div class="wa-bubble wa-bubble-bot text-right">"Mantap, tanggal berapa kak? (Ketik format Tgl-Bln-Thn)"</div>
-                    <div class="wa-bubble wa-bubble-client">15-05-2026</div>
-                    <div class="wa-bubble wa-bubble-bot text-right">"Slot kosong: (1. Jam 10:00, 2. Jam 14:00)"</div>
-                    <div class="text-[10px] text-blue-700 font-bold flex gap-1 items-center"><span>✅</span> 1 Slot Terblok Otomatis di Calendar</div>
-                </div>
+                <ul class="list-disc list-inside text-slate-700 font-medium space-y-2">
+                    <li>Format *Carousel* untuk tips mengatasi pori-pori.</li>
+                    <li>*Highlight* Instagram yang rapi untuk pricelist & testimoni.</li>
+                    <li>CTA (Call to Action) yang jelas di setiap *caption* untuk mengarahkan audiens klik *link* di Bio.</li>
+                </ul>
             </div>
 
             <div class="bg-white p-6 rounded-3xl border-2 border-slate-900 brutal-shadow relative order-1 md:order-2">
-                <div class="absolute -top-4 -right-4 bg-purple-300 text-slate-900 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-xs transform rotate-2">Case 02: Beauty</div>
+                <div class="absolute -top-4 -right-4 bg-purple-300 text-slate-900 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-xs transform rotate-2">Visual Case 02: Beauty</div>
                 <h4 class="text-2xl font-bold mb-6 text-purple-600">Kala Beauty Studio (Fiktif)</h4>
                 <div class="grid grid-cols-2 gap-4 border-2 border-slate-200 p-3 rounded-xl bg-slate-50 shadow-inner">
-                    <img src="https://via.placeholder.com/300x300/a78bfa/ffffff?text=Model+Facial" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/ffe4e6/0f172a?text=Edu Konten+Pores" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/a78bfa/ffffff?text=Nail+Art+Estetik" class="aspect-square rounded-md border-4 border-purple-600 shadow-[4px_4px_0px_0px_rgba(167,139,250,1)]">
-                    <img src="https://via.placeholder.com/300x300/f1f5f9/0f172a?text=Testimoni+Glow" class="aspect-square rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/a78bfa/ffffff?text=Model+Facial" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/ffe4e6/0f172a?text=Edu+Konten+Pores" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/a78bfa/ffffff?text=Nail+Art+Estetik" class="aspect-square object-cover rounded-md border-4 border-purple-600 shadow-[4px_4px_0px_0px_rgba(167,139,250,1)]">
+                    <img src="https://via.placeholder.com/300x300/f1f5f9/0f172a?text=Testimoni+Glow" class="aspect-square object-cover rounded-md border-2 border-slate-900">
                 </div>
             </div>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-b-4 border-slate-900 pb-20 fade-up delay-4">
             <div class="bg-white p-6 rounded-3xl border-2 border-slate-900 brutal-shadow relative">
-                <div class="absolute -top-4 -left-4 bg-green-300 text-slate-900 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-xs transform -rotate-2">Case 03: Fashion</div>
+                <div class="absolute -top-4 -left-4 bg-green-300 text-slate-900 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-xs transform -rotate-2">Visual Case 03: Fashion</div>
                 <h4 class="text-2xl font-bold mb-6 text-green-700">Skena Supply Co. (Fiktif)</h4>
                 <div class="grid grid-cols-3 gap-3 border-2 border-slate-200 p-2 rounded-xl bg-slate-50 shadow-inner">
-                    <img src="https://via.placeholder.com/300x300/166534/ffffff?text=Drops+Hoodie" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/ecfdf5/0f172a?text=Cara+styling" class="aspect-square rounded-md border-2 border-slate-900 border-dashed border-green-600">
-                    <img src="https://via.placeholder.com/300x300/166534/ffffff?text=Detail+Kain" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/ecfdf5/0f172a?text=Carousel+Style" class="aspect-square rounded-md border-4 border-green-600 shadow-[4px_4px_0px_0px_rgba(22,101,52,1)]">
-                    <img src="https://via.placeholder.com/300x300/166534/ffffff?text=Behind+The+Scene" class="aspect-square rounded-md border-2 border-slate-900">
-                    <img src="https://via.placeholder.com/300x300/ecfdf5/0f172a?text=Testi+Skena" class="aspect-square rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/166534/ffffff?text=Drops+Hoodie" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/ecfdf5/0f172a?text=Cara+styling" class="aspect-square object-cover rounded-md border-2 border-slate-900 border-dashed border-green-600">
+                    <img src="https://via.placeholder.com/300x300/166534/ffffff?text=Detail+Kain" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/ecfdf5/0f172a?text=Carousel+Style" class="aspect-square object-cover rounded-md border-4 border-green-600 shadow-[4px_4px_0px_0px_rgba(22,101,52,1)]">
+                    <img src="https://via.placeholder.com/300x300/166534/ffffff?text=Behind+The+Scene" class="aspect-square object-cover rounded-md border-2 border-slate-900">
+                    <img src="https://via.placeholder.com/300x300/ecfdf5/0f172a?text=Testi+Skena" class="aspect-square object-cover rounded-md border-2 border-slate-900">
                 </div>
             </div>
             
             <div class="space-y-6">
-                <div class="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded-md text-sm border-2 border-green-800 transform rotate-2">Carousel Jualan + Auto Follow-up</div>
-                <h3 class="text-3xl font-bold">Ubah "Nanya Harga Doang" Jadi "Transfer Hari Ini".</h3>
+                <div class="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded-md text-sm border-2 border-green-800 transform rotate-2">Lifestyle Approach & Cataloging</div>
+                <h3 class="text-3xl font-bold">Jual *Lifestyle*, Bukan Cuma Jual Kain.</h3>
                 <p class="text-slate-600 font-medium leading-relaxed">
-                    Customer sering cuma nanya harga terus ngilang (Abandoned Cart). Beuna Sosmed bikin Carousel styling yang seksi (visual kiri) dan sistem otomatis ngejar leads. Tunjukkin screenshot follow-up otomatis 24 jam kemudian buat nge-closing.
+                    Skena Supply Co. butuh visual yang *edgy* untuk menarik target pasar Gen-Z. Beuna mengubah *feed* yang tadinya sekadar katalog kaku menjadi *lookbook digital* yang memicu *Fear of Missing Out* (FOMO).
                 </p>
-                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-900 shadow-inner flex flex-col gap-3 font-mono text-sm max-w-lg mx-auto md:mx-0 relative">
-                     <div class="absolute -top-3 -right-3 bg-red-600 text-white font-bold px-2 py-0.5 rounded-full text-xs transform rotate-3 shadow">Follow-up H+1</div>
-                    <div class="wa-bubble wa-bubble-client">"(Klik Ads) Halo! Skena Supply Co. Hoodie-nya ready?"</div>
-                    <div class="wa-bubble wa-bubble-bot text-right">"Halo Bro! Ready, harga 350K. Mau kita bantu proses pembayarannya?"</div>
-                    <div class="wa-bubble wa-bubble-client">"Gak nanya harga doang, thanks." (Customer Ilang)</div>
-                    <div class="wa-bubble wa-bubble-bot text-right text-red-600 border-2 border-red-600">"Pagi Bro! Kaos Skena-nya masih di-keep nih, mau kita bantu proses pembayarannya hari ini? (Follow-up Auto)"</div>
-                    <div class="text-[10px] text-green-700 font-bold flex gap-1 items-center"><span>✅</span> Customer Balas & Konversi</div>
-                </div>
+                <ul class="list-disc list-inside text-slate-700 font-medium space-y-2">
+                    <li>Desain *moodboard streetwear* dengan elemen *grunge*.</li>
+                    <li>Konten *Behind The Scene* untuk validasi kualitas *brand*.</li>
+                    <li>*Copywriting hype* yang mengarahkan pembeli segera *checkout*.</li>
+                </ul>
             </div>
         </section>
 
-        <section class="border-t-4 border-slate-900 pt-16">
-            <div class="text-center mb-10">
-                <h3 class="text-3xl font-bold mb-2">Beuna Sosmed Tracker: Hasil Adalah Segalanya.</h3>
-                <p class="text-red-600 font-medium">Bukan tebak-tebakan, ini dashboard data fiktif real-time hasil otomasi Beuna.</p>
+        <section class="max-w-4xl mx-auto border-4 border-slate-900 rounded-3xl brutal-shadow bg-white overflow-hidden mt-10">
+            <div class="bg-slate-900 text-white p-6 text-center relative">
+                <div class="absolute -top-3 -right-3 bg-red-600 text-white font-bold px-3 py-1 rounded-full text-sm transform rotate-6 shadow border-2 border-white">The Secret Machine 🔥</div>
+                <h3 class="text-3xl font-bold mb-2">Gimana Visual Di Atas Berubah Jadi Duit?</h3>
+                <p class="text-slate-300 font-medium">Ini yang terjadi saat *followers* klik link di Bio atau balas Story IG klien kami. Otomasi Bot WA Beuna bekerja 24/7 tanpa admin rebahan.</p>
             </div>
-            <div class="bg-slate-900 text-white p-6 rounded-2xl border-4 border-slate-900 shadow-[6px_6px_0px_0px_rgba(239,68,68,1)] font-mono text-sm overflow-x-scroll">
-                <table class="w-full text-center border-collapse">
-                    <thead class="border-b border-slate-700">
-                        <tr> <th class="py-2">Tanggal</th> <th>Reach</th> <th>Engagement</th> <th>Leads Masuk WA</th> <th>Closing Bot</th> </tr>
-                    </thead>
-                    <tbody class="text-slate-400">
-                        <tr class="border-b border-slate-800"> <td class="py-2">10-04-26</td> <td>1,245</td> <td>189</td> <td>32</td> <td>8</td> </tr>
-                        <tr class="border-b border-slate-800"> <td class="py-2">11-04-26</td> <td>1,102</td> <td>165</td> <td>28</td> <td>6</td> </tr>
-                        <tr class="border-b border-slate-800 text-green-400"> <td class="py-2">12-04-26</td> <td>1,519</td> <td>245</td> <td>45</td> <td>12</td> </tr>
-                        <tr> <td class="py-2">13-04-26</td> <td>1,301</td> <td>198</td> <td>35</td> <td>9</td> </tr>
-                    </tbody>
-                </table>
-                <p class="text-[10px] text-slate-600 mt-4">*Data fiktif, disajikan untuk ngebuktiin alur logika otomasi Beuna.</p>
+            
+            <div class="wa-bg p-4 md:p-8 flex flex-col gap-4 min-h-[400px]">
+                <div class="bg-[#e1f3fb] text-[#122e3c] text-xs font-bold py-1 px-3 rounded-md mx-auto mb-4 shadow-sm">Hari ini</div>
+                
+                <div class="chat-msg msg-client seq-1">
+                    <span class="text-[#0ea5e9] font-bold text-xs block mb-1">~ Leads dari IG Story</span>
+                    Wah gila estetik banget! Promonya masih ada min?
+                    <span class="text-[10px] text-slate-400 float-right mt-2 ml-3">10:00</span>
+                </div>
+
+                <div class="chat-msg msg-bot seq-2">
+                    Halo kak! Wah makasih banyak 🔥 Promo Bara Kopi tentu masih ada dong.<br><br>Biar mesin kita catat, silakan ketik <b>BARABOX</b> buat klaim voucher Buy 1 Get 1 ya!
+                    <span class="text-[10px] text-slate-500 float-right mt-2 ml-3">10:00</span>
+                </div>
+
+                <div class="chat-msg msg-client seq-3">
+                    BARABOX
+                    <span class="text-[10px] text-slate-400 float-right mt-2 ml-3">10:01</span>
+                </div>
+
+                <div class="chat-msg msg-bot seq-4 border-2 border-green-500">
+                    <span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-0.5 rounded mb-1 inline-block">System: Auto-Generated Code</span><br>
+                    MANTAP! Ini voucher lo: <b>[BARA-B1G1-XYZ]</b>.<br><br>Tunjukin chat ini ke kasir. Berlaku sampai besok ya. Selamat Ngopi! ☕
+                    <span class="text-[10px] text-slate-500 float-right mt-2 ml-3">10:01</span>
+                </div>
+            </div>
+            
+            <div class="bg-slate-100 p-4 border-t-2 border-slate-200 flex items-center gap-3">
+                <div class="bg-white px-4 py-3 rounded-full border-2 border-slate-300 w-full text-slate-400 text-sm font-medium">
+                    Ketik pesan...
+                </div>
+                <div class="bg-[#00a884] w-12 h-12 rounded-full flex items-center justify-center text-white shadow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" /></svg>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-white py-12 text-center border-t-2 border-slate-900">
-        <p class="text-2xl font-bold mb-6 text-slate-900">Mau Bisnis Lo Punya Alur Cuan Otomatis Gini juga?</p>
+    <footer class="bg-white py-12 text-center border-t-2 border-slate-900 mt-10">
+        <p class="text-2xl font-bold mb-6 text-slate-900">Mau Bisnis Lo Punya Kombinasi Visual & Otomasi Gini juga?</p>
         <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20gue%20habis%20baca%20Pabrik%20Cuan%20Digital.%20DM%20Kata%20'CUAN'" class="inline-block bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg brutal-shadow hover:bg-red-600 hover:text-white transition-all">
             Mari Bedah Bisnis Lo → (DM 'CUAN')
         </a>
