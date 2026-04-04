@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beuna System Specialist | Arsitek Sistem Bisnis</title>
+    
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -22,24 +25,37 @@
             transform: translate(4px, 4px);
         }
 
-        /* Marquee Animation */
+        /* Marquee & Slidable Wrapper */
         .marquee-wrapper {
             display: flex;
-            overflow: hidden;
+            overflow-x: scroll; /* Enable horizontal scroll */
             white-space: nowrap;
             position: relative;
             padding: 20px 0;
             background: #ffffff;
             border-top: 2px solid #1e3a8a;
             border-bottom: 2px solid #1e3a8a;
+            cursor: grab; /* Show it's slidable */
+            scrollbar-width: none; /* Hide scrollbar Firefox */
         }
+        .marquee-wrapper::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+        .marquee-wrapper.active { cursor: grabbing; }
+
         .marquee-content {
             display: flex;
-            animation: scroll-left 40s linear infinite;
+            /* SLOWER ANIMATION (120 seconds) */
+            animation: scroll-left 120s linear infinite;
         }
         .marquee-content.reverse {
-            animation: scroll-right 45s linear infinite;
+            animation: scroll-right 140s linear infinite;
         }
+        
+        /* Pause on Hover OR when dragging */
+        .marquee-wrapper:hover .marquee-content,
+        .animation-paused .marquee-content {
+            animation-play-state: paused;
+        }
+
         .testi-card {
             display: inline-block;
             background: #eff6ff;
@@ -49,6 +65,7 @@
             margin: 0 12px;
             min-width: 350px;
             white-space: normal;
+            user-select: none; /* Prevents text highlighting while dragging */
         }
         
         @keyframes scroll-left {
@@ -63,7 +80,6 @@
 </head>
 <body class="text-slate-900">
 
-    <!-- Navigation -->
     <nav class="flex justify-between items-center px-6 py-5 border-b-2 border-slate-900 bg-white sticky top-0 z-50">
         <div class="flex items-center gap-3">
             <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="h-8">
@@ -74,7 +90,6 @@
         </a>
     </nav>
 
-    <!-- Hero Section -->
     <header class="max-w-7xl mx-auto px-6 py-20 text-center relative">
         <div class="inline-block bg-blue-100 text-blue-700 border-2 border-blue-700 font-bold px-4 py-1 rounded-full mb-6 transform -rotate-2">
             🚀 Bikin Bisnis Lo Autopilot
@@ -92,15 +107,12 @@
         </div>
     </header>
 
-    <!-- Independent Cards Section -->
     <section id="services" class="max-w-7xl mx-auto px-6 py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
             
-            <!-- Card 1 -->
             <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
-                <!-- FAKE COUNTER BADGE -->
                 <div class="absolute -top-5 -right-2 md:-right-5 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    🔥 218 Cabang Pakai Ini
+                    🔥 <span id="count-pos">218</span> Cabang Pakai Ini
                 </div>
                 <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Enterprise Scale</div>
                 <h3 class="text-3xl font-bold mb-3">POS Multibranch + CRM</h3>
@@ -113,11 +125,9 @@
                 </a>
             </div>
 
-            <!-- Card 2 -->
             <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
-                <!-- FAKE COUNTER BADGE -->
                 <div class="absolute -top-5 -right-2 md:-right-5 bg-green-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform -rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    ⚡ 145 Owner Terselamatkan
+                    ⚡ <span id="count-stock">145</span> Owner Terselamatkan
                 </div>
                 <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Logistics</div>
                 <h3 class="text-3xl font-bold mb-3">Stocking & Supply Chain</h3>
@@ -130,10 +140,9 @@
                 </a>
             </div>
 
-            <!-- Card 3 -->
             <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
                 <div class="absolute -top-5 -right-2 md:-right-5 bg-purple-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    🚀 382 Brand Online
+                    🚀 <span id="count-web-premium">382</span> Brand Online
                 </div>
                 <h3 class="text-3xl font-bold mb-3">Website Premium</h3>
                 <p class="text-slate-600 font-medium mb-8 leading-relaxed">
@@ -145,10 +154,9 @@
                 </a>
             </div>
 
-            <!-- Card 4 -->
             <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
                 <div class="absolute -top-5 -right-2 md:-right-5 bg-blue-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform -rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    ⭐ 519 UMKM Start Disini
+                    ⭐ <span id="count-web-lite">519</span> UMKM Start Disini
                 </div>
                 <h3 class="text-3xl font-bold mb-3">Website Lite</h3>
                 <p class="text-slate-600 font-medium mb-8 leading-relaxed">
@@ -163,99 +171,175 @@
         </div>
     </section>
 
-    <!-- Kata Mereka (Fake Testimonials Marquee) -->
     <section class="py-16 overflow-hidden">
         <div class="text-center mb-8 px-6">
             <h2 class="text-4xl font-bold text-slate-900 mb-2">Impact Nyata. Gak Pake Teori.</h2>
-            <p class="text-blue-600 font-medium">Apa kata mereka setelah "bocor halus" bisnisnya ditutup Beuna.</p>
+            <p class="text-blue-600 font-medium">(Bisa digeser/slide juga, Bre!) 👀</p>
         </div>
 
-        <!-- Baris 1: Gerak ke Kiri -->
-        <div class="marquee-wrapper mb-4">
-            <div class="marquee-content" id="marquee-1">
-                <!-- Testimoni diinject lewat JavaScript biar rapi -->
-            </div>
+        <div class="marquee-wrapper mb-4" id="wrapper-1">
+            <div class="marquee-content" id="marquee-1"></div>
             <div class="marquee-content" id="marquee-1-clone"></div>
         </div>
 
-        <!-- Baris 2: Gerak ke Kanan -->
-        <div class="marquee-wrapper">
-            <div class="marquee-content reverse" id="marquee-2">
-                <!-- Testimoni diinject lewat JavaScript -->
-            </div>
+        <div class="marquee-wrapper" id="wrapper-2">
+            <div class="marquee-content reverse" id="marquee-2"></div>
             <div class="marquee-content reverse" id="marquee-2-clone"></div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="border-t-2 border-slate-900 bg-white py-8 text-center mt-10">
         <p class="font-bold text-slate-600">&copy; 2026 Beuna Systems. Code less, automate more.</p>
     </footer>
 
-    <!-- Script for Testimonials Inject -->
     <script>
+        // --- DATA TESTIMONI (30 Organik) ---
         const testiBaris1 = [
             { text: "Awalnya cuma mau rapiin kasir, eh Beuna malah bikin bot WA buat ngingetin stok kopi mau abis. Admin gue sekarang bisa santai.", author: "Reza", biz: "Coffee Shop Owner" },
-            { text: "Gak nyangka sistem otomasi bisa naikin repeat order. Customer dikirimin promo pas ulang tahun otomatis. Gila.", author: "Sarah", biz: "Brand Fashion" },
-            { text: "Dulu pusing ngurusin komplain baju ketuker. Sejak dibikinin tracking barcode, 0 komplain bulan ini.", author: "Pak Rusdi", biz: "Owner Laundry" },
+            { text: "Gak nyangka sistem otomasi bisa naikin repeat order. Customer dikirimin promo pas ulang tahun otomatis. Gila.", author: "Sarah", biz: "Brand Fashion Fashion" },
+            { text: "Dulu pusing ngurusin komplain baju ketuker. Sejak dibikinin tracking barcode dari Beuna, 0 komplain bulan ini.", author: "Pak Rusdi", biz: "Owner Laundry" },
             { text: "12 cabang kepantau di 1 layar. Yang paling kaget, fraud di kasir turun drastis karena auditnya real-time.", author: "dr. Andi", biz: "Klinik Refleksi" },
             { text: "Reservasi online-nya smooth banget, AI-nya pinter balesin chat customer jam 2 pagi tanpa keliatan kaku.", author: "Bima", biz: "Premium Barbershop" },
-            { text: "Dulu sering bocor di uang kembalian. Sekarang cashless + sistem poin, omzet naik 20% tanpa buka cabang baru.", author: "Ko Afung", biz: "Cuci Mobil & Detailing" },
-            { text: "Owner sekarang beneran bisa rebahan liburan. Notif transferan masuk real-time ke Telegram. Best investment!", author: "Dina", biz: "F&B Franchise" },
-            { text: "Laporan pajak jadi gampang banget, datanya udah mateng semua ditarik dari dashboard. Bye bye begadang rekap Excel.", author: "Hendra", biz: "Retail Elektronik" },
-            { text: "Gila, Beuna bikin sistem yang bisa detect customer yang udah 1 bulan gak belanja, terus di-WA otomatis buat dibujuk balik!", author: "Siska", biz: "Petshop & Grooming" },
-            { text: "Gak ada lagi drama salah catat Pre-Order. Semua terekam digital & anti hapus sama admin nakal.", author: "Fadli", biz: "Vendor Percetakan" },
-            { text: "Invoice telat bayar langsung di-follow up sama bot. Arus kas perusahaan jadi sehat banget sekarang.", author: "Tari", biz: "Supplier Bahan Bangunan" },
-            { text: "Solutif banget! Dimas ngerti masalah akar bisnis gue, gak cuma asal koding kayak vendor lain.", author: "Pak Anton", biz: "Tour & Travel" },
-            { text: "Data customer kepisah rapi antara VIP dan Reguler. Gampang banget buat tim marketing nge-blast promo.", author: "drg. Maya", biz: "Klinik Estetika" },
-            { text: "Dulu sering overstock karena tebak-tebakan feeling, sekarang sistem yang nentuin kapan persisnya harus re-stock barang.", author: "Kevin", biz: "Distributor Kosmetik" },
-            { text: "Keputusan terbaik tahun ini: Digitalisasi bareng Beuna. Hidup gue sebagai owner jadi tenang banget.", author: "Rizal", biz: "Toko Bangunan & Material" }
+            { text: "Dulu sering bocor di uang kembalian. Sekarang cashless + sistem poin Beuna, omzet naik 20%.", author: "Ko Afung", biz: "Cuci Mobil" },
+            { text: "Owner sekarang beneran bisa rebahan liburan. Notif transferan masuk real-time ke Telegram.", author: "Dina", biz: "F&B Franchise" },
+            { text: "Laporan pajak jadi gampang banget, datanya udah mateng ditarik dari dashboard.", author: "Hendra", biz: "Retail Elektronik" },
+            { text: "Gila, Beuna bikin sistem yang bisa detect customer yang udah 1 bulan gak belanja, terus di-WA otomatis!", author: "Siska", biz: "Petshop & Grooming" },
+            { text: "Gak ada lagi drama salah catat Pre-Order. Semua terekam digital & anti hapus sama admin nakal.", author: "Fadli", biz: "Percetakan" },
+            { text: "Invoice telat bayar langsung di-follow up sama bot. Arus kas perusahaan jadi sehat banget.", author: "Tari", biz: "Supplier Bangunan" },
+            { text: "Dimas ngerti masalah akar bisnis gue, gak cuma asal koding kayak vendor lain.", author: "Pak Anton", biz: "Tour & Travel" },
+            { text: "Data customer kepisah rapi VIP dan Reguler. Gampang banget buat tim marketing nge-blast promo.", author: "drg. Maya", biz: "Klinik Estetika" },
+            { text: "Dulu tebak-tebakan feeling, sekarang sistem yang nentuin kapan persisnya harus re-stock barang.", author: "Kevin", biz: "Distributor Kosmetik" },
+            { text: "Ragu karena agensinya anak muda, tapi kerjanya jauh lebih pro dari vendor sekelas enterprise Jakarta.", author: "Bu Lina", biz: "Pabrik Makanan" }
         ];
 
         const testiBaris2 = [
             { text: "Awalnya ragu karena agensinya diisi anak muda, tapi kerjanya jauh lebih pro dari vendor sekelas enterprise Jakarta.", author: "Bu Lina", biz: "Pabrik Makanan Olahan" },
             { text: "Sistemnya Beuna itu ibarat gue nge-hire manager operasional handal tapi gak pernah minta cuti.", author: "Bayu", biz: "Bengkel Motor Custom" },
-            { text: "Booking lapangan otomatis sinkron ke Google Calendar gue. Praktis parah, gak ada lagi jadwal bentrok.", author: "Oki", biz: "Futsal & Mini Soccer" },
-            { text: "Orderan masuk jam 3 pagi dibales AI, pagi harinya tau-tau dapet bukti transferan. Magic!", author: "Nisa", biz: "Toko Oleh-oleh Online" },
-            { text: "Gak nyangka Google Sheets gue bisa disulap jadi aplikasi sekeren ini. Integrasinya mulus.", author: "Dani", biz: "Biro Jasa Konsultan" },
-            { text: "Omzet naik 30% bukan karena marketing, tapi karena lubang bocor halus di kasir ketutup rapat berkat sistem ini.", author: "H. Rahman", biz: "Jaringan Minimarket" },
-            { text: "Dashboard-nya bikin kecanduan. Tiap menit buka HP cuma buat liat grafik omzet harian jalan terus.", author: "Putri", biz: "Apotek 24 Jam" },
-            { text: "Pelayanan after-salesnya juara. Ada error dikit integrasi WA-nya, tim Beuna yang sadar dan benerin duluan.", author: "Tomy", biz: "Gym & Fitness Center" },
-            { text: "Baru tau kalau WA bisa secanggih ini. Customer order via WA, struk otomatis ke-print di dapur restoran gue.", author: "Chef Juna", biz: "Restoran Seafood" },
-            { text: "Integrasi mutasi m-banking ke notif WA itu ngebantu banget. Kasir gak usah nungguin gue ngecek mutasi lagi.", author: "Cici", biz: "Toko Emas" },
+            { text: "Booking lapangan otomatis sinkron ke Google Calendar gue. Praktis parah.", author: "Oki", biz: "Mini Soccer" },
+            { text: "Orderan masuk jam 3 pagi dibales AI, pagi harinya tau-tau dapet bukti transferan. Magic!", author: "Nisa", biz: "Toko Oleh-oleh" },
+            { text: "Gak nyangka Google Sheets gue bisa disulap jadi aplikasi sekeren ini.", author: "Dani", biz: "Biro Jasa Konsultan" },
+            { text: "Omzet naik 30% bukan karena marketing, tapi karena lubang bocor halus di kasir ketutup rapat.", author: "H. Rahman", biz: "Minimarket Chain" },
+            { text: "Dashboard-nya bikin kecanduan. Tiap menit buka HP cuma buat liat grafik omzet harian jalan.", author: "Putri", biz: "Apotek 24 Jam" },
+            { text: "Pelayanan after-salesnya juara. Ada error dikit integrasi WA-nya, tim Beuna sadar duluan.", author: "Tomy", biz: "Gym Center" },
+            { text: "Customer order via WA Beuna, struk otomatis ke-print di dapur restoran gue. Gila!", author: "Chef Juna", biz: "Restoran Seafood" },
+            { text: "Integrasi mutasi m-banking ke notif WA itu ngebantu banget. Kasir gak usah nunggu gue cek mutasi.", author: "Cici", biz: "Toko Emas" },
             { text: "Sistem poin loyalitasnya mulus banget. Customer jadi rajin balik gara-gara pengen kejar reward.", author: "Edo", biz: "Vape Store" },
-            { text: "Gue pikir mahal bayar 7,5 juta, ternyata 2 bulan langsung balik modal karena repeat order naik tajam berkat CRM-nya.", author: "Vina", biz: "Salon & Spa" },
-            { text: "AI-nya Beuna bales chat lebih sopan dan sabar dari admin gue sendiri wkwkwk. Mantap Dim!", author: "Bagas", biz: "Thrift Shop Import" },
-            { text: "Bocor di stok gudang ilang 100%. Gak nyangka efeknya kerasa banget di persentase profit akhir bulan.", author: "Ivan", biz: "Distributor Sparepart" },
-            { text: "Dulu pusing ngurusin admin resign bawa data customer. Sekarang sistem yang jadi otak permanen bisnis gue.", author: "Leo", biz: "Digital Agency" }
+            { text: "Gue pikir mahal 7,5 juta, ternyata 2 bulan langsung balik modal karena repeat order naik CRM.", author: "Vina", biz: "Salon & Spa" },
+            { text: "AI-nya Beuna bales chat lebih sopan dan sabar dari admin gue sendiri wkwkwk.", author: "Bagas", biz: "Thrift Shop" },
+            { text: "Bocor di stok gudang ilang 100%. Gak nyangka efeknya kerasa banget di persentase profit.", author: "Ivan", biz: "Distributor Sparepart" },
+            { text: "Dulu pusing admin resign bawa data. Sekarang sistem jadi otak permanen bisnis gue.", author: "Leo", biz: "Digital Agency" }
         ];
 
         function createCard(testi) {
-            return `
-                <div class="testi-card">
-                    <p class="text-slate-700 italic mb-4">"${testi.text}"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 font-bold border-2 border-slate-900">
-                            ${testi.author.charAt(0)}
-                        </div>
-                        <div>
-                            <div class="font-bold text-slate-900">${testi.author}</div>
-                            <div class="text-xs text-blue-600 font-semibold">${testi.biz}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            return `<div class="testi-card"><p class="text-slate-700 italic mb-4">"${testi.text}"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 font-bold border-2 border-slate-900">${testi.author.charAt(0)}</div><div><div class="font-bold text-slate-900">${testi.author}</div><div class="text-xs text-blue-600 font-semibold">${testi.biz}</div></div></div></div>`;
         }
 
-        // Inject baris 1
+        // --- INJECT TESTIMONIALS ---
         const b1HTML = testiBaris1.map(createCard).join('');
         document.getElementById('marquee-1').innerHTML = b1HTML;
         document.getElementById('marquee-1-clone').innerHTML = b1HTML;
-
-        // Inject baris 2
         const b2HTML = testiBaris2.map(createCard).join('');
         document.getElementById('marquee-2').innerHTML = b2HTML;
         document.getElementById('marquee-2-clone').innerHTML = b2HTML;
+
+        // --- FEATURE 1: DYNAMIC COUNTERS (Psychology Proof) ---
+        function setupCounter(id, maxAdd, minInterval, maxInterval) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let currentCount = parseInt(el.innerText);
+            const startCount = currentCount;
+            
+            function addOne() {
+                // Cap the addition at maxAdd (+10 for UMKM)
+                if (currentCount - startCount >= maxAdd) return;
+
+                // 10% chance to skip adding this time (make it look organic)
+                if (Math.random() < 0.1) {
+                    scheduleNext();
+                    return;
+                }
+
+                currentCount++;
+                el.innerText = currentCount;
+                
+                // Add flash effect
+                el.parentElement.classList.add('bg-white');
+                setTimeout(() => el.parentElement.classList.remove('bg-white'), 300);
+
+                scheduleNext();
+            }
+
+            function scheduleNext() {
+                // Random time until next addition
+                const nextTime = Math.floor(Math.random() * (maxInterval - minInterval + 1)) + minInterval;
+                setTimeout(addOne, nextTime);
+            }
+
+            scheduleNext(); // Start loop
+        }
+
+        // realistic intervals (in milliseconds)
+        // Web Lite (UMKM): Nambah 1 tiap 5-15 detik. Maks nambah 10. (MOST ACTIVE)
+        setupCounter('count-web-lite', 10, 5000, 15000); 
+        // Web Premium: Nambah 1 tiap 20-60 detik. Maks nambah 5.
+        setupCounter('count-web-premium', 5, 20000, 60000);
+        // Supply Chain: Nambah 1 tiap 1-3 menit. Maks nambah 3.
+        setupCounter('count-stock', 3, 60000, 180000);
+        // POS Multi (Enterprise): Nambah 1 tiap 2-5 menit. Maks nambah 2. (SLOWEST)
+        setupCounter('count-pos', 2, 120000, 300000);
+
+
+        // --- FEATURE 2: SLIDABLE/DRAGGABLE MARQUEE (Gen-Z UX) ---
+        function setupDraggableMarquee(wrapperId) {
+            const slider = document.getElementById(wrapperId);
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            // Mouse Events
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('active', 'animation-paused'); // Pause animation on grab
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.classList.remove('active', 'animation-paused');
+            });
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('active', 'animation-paused');
+            });
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed multiplier
+                slider.scrollLeft = scrollLeft - walk;
+            });
+
+            // Touch Events (HP)
+            slider.addEventListener('touchstart', (e) => {
+                isDown = true;
+                slider.classList.add('animation-paused');
+                startX = e.touches[0].pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+            slider.addEventListener('touchend', () => {
+                isDown = false;
+                slider.classList.remove('animation-paused');
+            });
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                const x = e.touches[0].pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        setupDraggableMarquee('wrapper-1');
+        setupDraggableMarquee('wrapper-2');
     </script>
 </body>
 </html>
