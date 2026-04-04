@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beuna Social Media Specialist | Visual & Otomasi</title>
+    
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20sosmed%202.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #fff1f2; /* Rose/Red tint background */
+            overflow-x: hidden;
+        }
+        
+        /* Neo-Brutalism Shadows - Red Theme */
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px rgba(15, 23, 42, 1); /* Black shadow for stark contrast */
+        }
+        .brutal-shadow:hover {
+            box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1);
+            transform: translate(4px, 4px);
+        }
+
+        /* Marquee & Slidable Wrapper */
+        .marquee-wrapper {
+            display: flex;
+            overflow-x: scroll;
+            white-space: nowrap;
+            position: relative;
+            padding: 20px 0;
+            background: #ffffff;
+            border-top: 2px solid #0f172a;
+            border-bottom: 2px solid #0f172a;
+            cursor: grab;
+            scrollbar-width: none;
+        }
+        .marquee-wrapper::-webkit-scrollbar { display: none; }
+        .marquee-wrapper.active { cursor: grabbing; }
+
+        .marquee-content { display: flex; animation: scroll-left 120s linear infinite; }
+        .marquee-content.reverse { animation: scroll-right 140s linear infinite; }
+        
+        .marquee-wrapper:hover .marquee-content,
+        .animation-paused .marquee-content { animation-play-state: paused; }
+
+        .testi-card {
+            display: inline-block;
+            background: #ffe4e6; /* Light red */
+            border: 2px solid #0f172a;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin: 0 12px;
+            min-width: 350px;
+            white-space: normal;
+            user-select: none;
+        }
+        
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center px-4 md:px-6 py-4 border-b-2 border-slate-900 bg-white sticky top-0 z-50">
+        <div class="flex flex-col justify-center">
+            <div class="flex items-center gap-2 md:gap-3">
+                <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20sosmed%202.png" alt="Beuna Sosmed Logo" class="h-7 md:h-8">
+                <span class="font-bold text-xl md:text-2xl tracking-tighter text-red-600">BEUNA<span class="text-slate-900">.SOSMED</span></span>
+            </div>
+            <a href="aboutbeuna.html" class="md:hidden mt-1 ml-9 inline-flex items-center text-[10px] font-bold bg-red-100 text-red-800 border border-red-800 px-2 py-0.5 rounded-full hover:bg-red-800 hover:text-white transition-all w-max shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] active:translate-y-1 active:shadow-none">
+                Sistem & Sosmed ➔
+            </a>
+        </div>
+        <div class="flex items-center gap-4 md:gap-6">
+            <a href="index.html" class="hidden md:block font-bold text-slate-600 hover:text-red-600 transition-all underline decoration-2 underline-offset-4 decoration-transparent hover:decoration-red-600">Beuna System</a>
+            <a href="https://wa.me/6285359033973" class="bg-red-600 text-white border-2 border-slate-900 px-4 py-1.5 md:px-6 md:py-2 rounded-full font-bold text-sm md:text-base brutal-shadow transition-all">Konsultasi</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-6 py-20 text-center relative">
+        <div class="inline-block bg-red-100 text-red-700 border-2 border-red-700 font-bold px-4 py-1 rounded-full mb-6 transform -rotate-2 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]">
+            🎨 Estetika Bertemu Otomasi
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
+            Sosmed Cantik Aja <br class="hidden md:block"> Gak Cukup Buat <span class="text-red-600 underline decoration-4 underline-offset-8">Jualan.</span>
+        </h1>
+        <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium">
+            Kami gabungin visual identity yang punya nyawa dengan sistem automasi. Desain feed lo rapi, leads masuk di-follow up bot 24 jam.
+        </p>
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+            <a href="#sosmed-packages" class="bg-red-600 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow transition-all">Lihat Paket Sosmed</a>
+        </div>
+    </header>
+
+    <!-- Paket Sosial Media (Bulanan) -->
+    <section id="sosmed-packages" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-slate-900 mb-2">Paket Manajemen Sosial Media</h2>
+            <p class="text-red-600 font-medium">Investasi bulanan buat naikin brand awareness & engagement lo.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- BASIC (700K) -->
+            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative flex flex-col">
+                <div class="mb-4 inline-block bg-yellow-200 text-yellow-800 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-sm transform -rotate-2">UMKM Starter</div>
+                <h3 class="text-3xl font-bold mb-1">BASIC</h3>
+                <p class="text-slate-500 text-sm mb-6 font-semibold">15 Feed & 15 Story / Bulan</p>
+                
+                <ul class="text-slate-600 font-medium mb-8 space-y-3 flex-grow text-sm">
+                    <li class="flex items-start gap-2"><span>✅</span> Strategi Branding & Konten</li>
+                    <li class="flex items-start gap-2"><span>✅</span> 15 Desain Feed</li>
+                    <li class="flex items-start gap-2"><span>✅</span> 15 Desain Story</li>
+                    <li class="flex items-start gap-2"><span>✅</span> Sosmed Handling (upload, caption, hashtag)</li>
+                    <li class="flex items-start gap-2"><span>✅</span> Laporan insight & evaluasi bulanan</li>
+                    <li class="flex items-start gap-2"><span>✅</span> 2x Revisi desain</li>
+                </ul>
+
+                <div class="mb-6"><span class="text-4xl font-bold text-red-600">700K</span> <span class="text-slate-500 font-bold">/ Bulan</span></div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Sosmed,%20mau%20order%20Paket%20BASIC%20700K" class="block text-center bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all">Ambil Paket Basic</a>
+            </div>
+
+            <!-- PREMIUM (1000K) -->
+            <div class="bg-red-50 border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative flex flex-col transform md:-translate-y-4">
+                <div class="absolute -top-5 -right-2 md:-right-5 bg-red-600 text-white border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-3 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)]">
+                    🔥 Most Popular
+                </div>
+                <div class="mb-4 inline-block bg-red-200 text-red-800 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-sm transform rotate-1">Consistent Growth</div>
+                <h3 class="text-3xl font-bold mb-1">PREMIUM</h3>
+                <p class="text-slate-500 text-sm mb-6 font-semibold">30 Feed & 30 Story / Bulan</p>
+                
+                <ul class="text-slate-600 font-medium mb-8 space-y-3 flex-grow text-sm">
+                    <li class="flex items-start gap-2"><span>✅</span> Strategi Branding & Konten</li>
+                    <li class="flex items-start gap-2"><span>✅</span> <span class="font-bold text-slate-900">30 Desain Feed (Setiap Hari)</span></li>
+                    <li class="flex items-start gap-2"><span>✅</span> <span class="font-bold text-slate-900">30 Desain Story</span></li>
+                    <li class="flex items-start gap-2"><span>✅</span> Sosmed Handling (upload, caption, hashtag)</li>
+                    <li class="flex items-start gap-2"><span>✅</span> Laporan insight & evaluasi bulanan</li>
+                    <li class="flex items-start gap-2"><span>✅</span> 2x Revisi desain</li>
+                </ul>
+
+                <div class="mb-6"><span class="text-4xl font-bold text-red-600">1000K</span> <span class="text-slate-500 font-bold">/ Bulan</span></div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Sosmed,%20mau%20order%20Paket%20PREMIUM%201000K" class="block text-center bg-red-600 text-white border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 transition-all">Ambil Paket Premium</a>
+            </div>
+
+            <!-- BOOST (1500K) -->
+            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative flex flex-col">
+                <div class="mb-4 inline-block bg-blue-200 text-blue-800 border-2 border-slate-900 font-bold px-3 py-1 rounded-md text-sm transform -rotate-1">Aggressive Scale</div>
+                <h3 class="text-3xl font-bold mb-1">BOOST</h3>
+                <p class="text-slate-500 text-sm mb-6 font-semibold">30 Feed, 30 Story & ADS</p>
+                
+                <ul class="text-slate-600 font-medium mb-8 space-y-3 flex-grow text-sm">
+                    <li class="flex items-start gap-2"><span>✅</span> Strategi Branding & Konten</li>
+                    <li class="flex items-start gap-2"><span>✅</span> 30 Desain Feed</li>
+                    <li class="flex items-start gap-2"><span>✅</span> 30 Desain Story</li>
+                    <li class="flex items-start gap-2"><span>✅</span> Sosmed Handling (upload, caption, hashtag)</li>
+                    <li class="flex items-start gap-2"><span>✅</span> Laporan insight & evaluasi bulanan</li>
+                    <li class="flex items-start gap-2"><span>🚀</span> <span class="font-bold text-red-600">Pembuatan Konten Ads</span></li>
+                    <li class="flex items-start gap-2"><span>✅</span> 2x Revisi desain</li>
+                </ul>
+
+                <div class="mb-6"><span class="text-4xl font-bold text-red-600">1500K</span> <span class="text-slate-500 font-bold">/ Bulan</span></div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Sosmed,%20mau%20order%20Paket%20BOOST%201500K" class="block text-center bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all">Ambil Paket Boost</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Paket Sistem & Automasi (Sekali Bayar) -->
+    <section class="max-w-7xl mx-auto px-6 py-16 bg-slate-900 text-white rounded-3xl mb-16 brutal-shadow border-4 border-slate-900 mx-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-2">Sistem & Automasi (Non Add-On)</h2>
+            <p class="text-slate-400 font-medium">Sosmed lo udah rame? Saatnya dikonversi otomatis pakai sistem Beuna. (Sekali Bayar)</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- WA BOT -->
+            <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 flex flex-col hover:border-red-500 transition-all">
+                <div class="text-3xl mb-4">🤖</div>
+                <h3 class="text-xl font-bold mb-2">Setup WA Bot & Status Auto</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">Gak ada lagi customer kabur karena admin lambat bales. Bot pintar siap handle order 24/7 + update status WA otomatis.</p>
+                <div class="text-2xl font-bold text-red-400 mb-4">Rp 850K <span class="text-sm text-slate-500 font-normal">/ setup</span></div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20saya%20butuh%20setup%20WA%20Bot%20Otomatis%20850K" class="border border-slate-500 text-center py-3 rounded-xl font-bold hover:bg-white hover:text-slate-900 transition-all">Pasang Bot</a>
+            </div>
+
+            <!-- WEB LITE -->
+            <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 flex flex-col hover:border-red-500 transition-all relative">
+                <div class="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full transform rotate-3">
+                    <span id="count-web-lite">519</span> UMKM Pakai
+                </div>
+                <div class="text-3xl mb-4">🌐</div>
+                <h3 class="text-xl font-bold mb-2">Website Lite (Subdomain)</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">Landing page estetik dengan loading ngebut. Pakai subdomain beuna, cocok buat validasi ide atau bisnis pemula.</p>
+                <div class="text-2xl font-bold text-red-400 mb-4">Rp 700K <span class="text-sm text-slate-500 font-normal">/ setup</span></div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20saya%20mau%20Website%20Lite%20700K" class="border border-slate-500 text-center py-3 rounded-xl font-bold hover:bg-white hover:text-slate-900 transition-all">Bikin Web Lite</a>
+            </div>
+
+            <!-- WEB PRO -->
+            <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 flex flex-col hover:border-red-500 transition-all relative">
+                <div class="absolute -top-3 -right-3 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full transform -rotate-3">
+                    <span id="count-web-premium">382</span> Brand Pakai
+                </div>
+                <div class="text-3xl mb-4">🚀</div>
+                <h3 class="text-xl font-bold mb-2">Website Pro (Custom Domain)</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">Identitas penuh dengan domain sendiri (.com/.id). Fitur SEO komplit, siap nampung ribuan traffic dari sosmed lo.</p>
+                <div class="text-2xl font-bold text-red-400 mb-4">Rp 1,5 Juta <span class="text-sm text-slate-500 font-normal">/ setup</span></div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20saya%20mau%20Website%20Pro%201,5JT" class="bg-white text-slate-900 text-center py-3 rounded-xl font-bold hover:bg-red-600 hover:text-white transition-all border-2 border-transparent hover:border-white">Bikin Web Pro</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimoni Marquee (Tema Sosmed & Otomasi) -->
+    <section class="py-16 overflow-hidden">
+        <div class="text-center mb-8 px-6">
+            <h2 class="text-4xl font-bold text-slate-900 mb-2">Visual Naik, Closing Ngikut.</h2>
+            <p class="text-red-600 font-medium">Kata klien setelah feed dirapihin & leads di-handle bot Beuna.</p>
+        </div>
+
+        <div class="marquee-wrapper mb-4" id="wrapper-1"><div class="marquee-content" id="marquee-1"></div><div class="marquee-content" id="marquee-1-clone"></div></div>
+        <div class="marquee-wrapper" id="wrapper-2"><div class="marquee-content reverse" id="marquee-2"></div><div class="marquee-content reverse" id="marquee-2-clone"></div></div>
+    </section>
+
+    <footer class="border-t-2 border-slate-900 bg-white py-8 text-center mt-10">
+        <p class="font-bold text-slate-600">&copy; 2026 Beuna Social Media Specialist.</p>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        const testiBaris1 = [
+            { text: "Feed gue dulunya kayak brosur pasar, sejak dipegang Beuna langsung keliatan kayak brand mall. Engagement naik 300%.", author: "Sarah", biz: "Brand Fashion" },
+            { text: "Kombinasi maut: Desain Beuna narik leads dari IG, Bot WA-nya Dimas yang nge-closing di chat. The best agency!", author: "Kevin", biz: "Distributor Kosmetik" },
+            { text: "Dulu bayar desainer freelance sering ngilang. Di Beuna, tiap hari story update on time. Admin gue jadi gabut.", author: "Reza", biz: "Coffee Shop" },
+            { text: "Paket Boost beneran kerasa impact Ads-nya. ROI positif di bulan kedua, desainnya juga eye-catching banget.", author: "Bima", biz: "Premium Barbershop" },
+            { text: "Setup WA Bot 850k itu investasi paling murah buat gue. Chat masuk jam 2 pagi tetep dilayanin sopan.", author: "Nisa", biz: "Toko Oleh-oleh" },
+            { text: "Gak perlu mikir caption lagi. Tim Beuna udah ngeriset hashtag & copy yang beneran ngundang komen.", author: "Dina", biz: "F&B Franchise" },
+            { text: "Dari feed yang estetik, traffic diarahin ke Website Pro buatan Beuna. Konversi jualan gue jadi terpusat dan rapi.", author: "Tari", biz: "Klinik Kecantikan" }
+        ];
+        
+        const testiBaris2 = [
+            { text: "Bot status WA otomatisnya gila. Database ratusan customer gue selalu di-update promo tanpa gue harus ngetik manual.", author: "Edo", biz: "Vape Store" },
+            { text: "Desain feed-nya punya nyawa. Gak cuma template Canva murahan, bener-bener dipikirin identitas brand gue.", author: "Leo", biz: "Digital Service" },
+            { text: "Ambil paket Premium 1Juta, dapet 30 konten sebulan itu steal deal banget. Otak gue plong gak mikirin ide ngonten.", author: "Putri", biz: "Apotek & Skincare" },
+            { text: "Pernah nyoba agensi lain malah boncos. Beuna ngasih insight bulanan yang jelas, tau konten mana yang works.", author: "Hendra", biz: "Retail Elektronik" },
+            { text: "Web Lite 700k loadingnya gila cepetnya. Pas disambungin sama link bio IG, bounce rate turun drastis.", author: "Vina", biz: "Salon & Spa" },
+            { text: "Agensi paket komplit. Partnernya ngurusin estetika, Dimas ngurusin automasi. Otak kanan & otak kiri bisnis gue tercover.", author: "dr. Andi", biz: "Klinik Refleksi" },
+            { text: "Revisinya cepet tanggap, adminnya komunikatif. Gak nyesel langganan bulanan di sini.", author: "Ko Afung", biz: "Cuci Mobil Auto" }
+        ];
+
+        function createCard(t) { return `<div class="testi-card"><p class="text-slate-800 italic mb-4">"${t.text}"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-red-200 rounded-full flex items-center justify-center text-red-700 font-bold border-2 border-slate-900">${t.author.charAt(0)}</div><div><div class="font-bold text-slate-900">${t.author}</div><div class="text-xs text-red-600 font-semibold">${t.biz}</div></div></div></div>`; }
+        
+        document.getElementById('marquee-1').innerHTML = testiBaris1.map(createCard).join('');
+        document.getElementById('marquee-1-clone').innerHTML = testiBaris1.map(createCard).join('');
+        document.getElementById('marquee-2').innerHTML = testiBaris2.map(createCard).join('');
+        document.getElementById('marquee-2-clone').innerHTML = testiBaris2.map(createCard).join('');
+
+        // Dynamic Counters
+        function setupCounter(id, max, minInt, maxInt) {
+            const el = document.getElementById(id); if(!el)return;
+            let c = parseInt(el.innerText); const s = c;
+            function add() {
+                if(c - s >= max) return;
+                if(Math.random() < 0.1) { setTimeout(add, Math.random()*(maxInt-minInt)+minInt); return; }
+                el.innerText = ++c; el.parentElement.classList.add('bg-white');
+                setTimeout(()=>el.parentElement.classList.remove('bg-white'), 300);
+                setTimeout(add, Math.random()*(maxInt-minInt)+minInt);
+            }
+            setTimeout(add, Math.random()*(maxInt-minInt)+minInt);
+        }
+        setupCounter('count-web-lite', 10, 5000, 15000); 
+        setupCounter('count-web-premium', 5, 20000, 60000);
+
+        // Drag to slide logic
+        function setupDrag(id) {
+            const s = document.getElementById(id); let d=false, sx, sl;
+            const start = e => { d=true; s.classList.add('active','animation-paused'); sx = (e.pageX || e.touches[0].pageX) - s.offsetLeft; sl = s.scrollLeft; };
+            const stop = () => { d=false; s.classList.remove('active','animation-paused'); };
+            const move = e => { if(!d)return; e.preventDefault(); s.scrollLeft = sl - (((e.pageX || e.touches[0].pageX) - s.offsetLeft) - sx)*2; };
+            s.addEventListener('mousedown', start); s.addEventListener('touchstart', start);
+            s.addEventListener('mouseleave', stop); s.addEventListener('mouseup', stop); s.addEventListener('touchend', stop);
+            s.addEventListener('mousemove', move); s.addEventListener('touchmove', move);
+        }
+        setupDrag('wrapper-1'); setupDrag('wrapper-2');
+    </script>
+</body>
+</html>
