@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami | Beuna Systems</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #f8fafc; }
+        .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(30, 58, 138, 1); }
+        .brutal-shadow:hover { box-shadow: 2px 2px 0px 0px rgba(30, 58, 138, 1); transform: translate(4px, 4px); }
+        
+        /* Animasi Text Fade in yang Elegan */
+        .fade-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 1s; }
+        .delay-4 { animation-delay: 1.4s; }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center px-6 py-5 border-b-2 border-slate-900 bg-white sticky top-0 z-50">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <span class="text-2xl group-hover:-translate-x-1 transition-transform">←</span>
+            <span class="font-bold text-xl tracking-tighter">Kembali ke Beuna.</span>
+        </a>
+    </nav>
+
+    <!-- Content (No scroll needed for desktop, auto-scroll for mobile) -->
+    <main class="flex-grow flex flex-col justify-center items-center px-6 py-12 md:py-20 max-w-4xl mx-auto">
+        
+        <div class="w-full">
+            <div class="inline-block bg-blue-100 text-blue-700 font-bold px-4 py-1 border-2 border-blue-700 rounded-md mb-8 fade-up text-sm uppercase tracking-widest">
+                Based in Aceh. Standard Global.
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-10 fade-up delay-1 tracking-tight">
+                Niat awal buka bisnis buat <span class="text-blue-600 underline decoration-4 underline-offset-4">merdeka</span>, ujung-ujungnya lo malah jadi <span class="bg-yellow-200 px-2 border-2 border-slate-900">tahanan operasional.</span>
+            </h1>
+
+            <div class="text-lg md:text-xl text-slate-700 space-y-6 font-medium leading-relaxed">
+                <p class="fade-up delay-2">
+                    Kami di Beuna melihat pola yang sama terus berulang. Omzet puluhan juta, tapi tiap malam owner masih harus rekap kertas. Mau liburan sebentar, WA meledak ditanya admin soal stok. 
+                </p>
+                <p class="fade-up delay-2">
+                    Banyak yang mengira digitalisasi itu cuma soal beli aplikasi kasir atau bikin website. Padahal, digitalisasi sejati adalah soal <strong>Mentalitas</strong>.
+                </p>
+                <p class="fade-up delay-3">
+                    Kami membangun Beuna di ujung barat Indonesia (Aceh) dengan satu visi agresif: <strong>Memaksa UMKM naik level.</strong> Sistem yang kami bangun bukan sekadar kode komputer. Ini adalah "karyawan digital" yang memaksa Anda untuk berhenti mengurus hal remeh-temeh.
+                </p>
+                <p class="fade-up delay-3">
+                    Karena kami percaya, bisnis yang hebat bukan yang owner-nya sibuk 24 jam. Tapi bisnis yang sistemnya bekerja 24 jam, sementara owner-nya memikirkan inovasi berikutnya—atau sekadar santai minum kopi bersama keluarga.
+                </p>
+            </div>
+
+            <div class="mt-16 fade-up delay-4 border-l-4 border-blue-600 pl-6">
+                <p class="text-2xl font-bold text-slate-900 mb-6">
+                    Waktu lo terlalu mahal buat ngitung stok. <br>Biar mesin yang kerja, lo yang mikir strategi.
+                </p>
+                <a href="https://wa.me/6285359033973?text=Halo%20Dimas,%20gue%20habis%20baca%20halaman%20About%20Beuna.%20Gue%20butuh%20sistem%20biar%20bisnis%20gue%20jalan%20sendiri." class="inline-block bg-slate-900 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow transition-all hover:bg-blue-600 hover:text-white">
+                    Mari Bedah Bisnis Lo →
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-8 text-center border-t-2 border-slate-200">
+        <p class="font-bold text-slate-500 text-sm">&copy; 2026 Beuna Systems. Architecting Freedom.</p>
+    </footer>
+
+</body>
+</html>
