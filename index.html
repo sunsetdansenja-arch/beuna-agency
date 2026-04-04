@@ -5,107 +5,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beuna System Specialist | Arsitek Sistem Bisnis</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        /* Neo-Brutalism Shadows */
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px rgba(30, 58, 138, 1);
+        }
+        .brutal-shadow:hover {
+            box-shadow: 2px 2px 0px 0px rgba(30, 58, 138, 1);
+            transform: translate(4px, 4px);
+        }
+
+        /* Marquee Animation */
+        .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: 20px 0;
+            background: #ffffff;
+            border-top: 2px solid #1e3a8a;
+            border-bottom: 2px solid #1e3a8a;
+        }
+        .marquee-content {
+            display: flex;
+            animation: scroll-left 40s linear infinite;
+        }
+        .marquee-content.reverse {
+            animation: scroll-right 45s linear infinite;
+        }
+        .testi-card {
+            display: inline-block;
+            background: #eff6ff;
+            border: 2px solid #1e3a8a;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin: 0 12px;
+            min-width: 350px;
+            white-space: normal;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
     </style>
 </head>
-<body class="text-slate-900 gradient-bg">
+<body class="text-slate-900">
 
     <!-- Navigation -->
-    <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-        <div class="flex items-center gap-2">
-            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="h-10">
-            <span class="font-bold text-xl tracking-tight">BEUNA</span>
+    <nav class="flex justify-between items-center px-6 py-5 border-b-2 border-slate-900 bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="h-8">
+            <span class="font-bold text-2xl tracking-tighter">BEUNA.</span>
         </div>
-        <a href="https://wa.me/6285359033973" class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-700 transition">Konsultasi</a>
+        <a href="https://wa.me/6285359033973" class="bg-blue-600 text-white border-2 border-slate-900 px-6 py-2 rounded-full font-bold brutal-shadow transition-all">
+            Konsultasi
+        </a>
     </nav>
 
     <!-- Hero Section -->
-    <header class="max-w-7xl mx-auto px-6 py-16 text-center md:py-24">
-        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            Arsitek Sistem untuk Bisnis <br class="hidden md:block"> yang Ingin <span class="text-orange-600">Merdeka.</span>
+    <header class="max-w-7xl mx-auto px-6 py-20 text-center relative">
+        <div class="inline-block bg-blue-100 text-blue-700 border-2 border-blue-700 font-bold px-4 py-1 rounded-full mb-6 transform -rotate-2">
+            🚀 Bikin Bisnis Lo Autopilot
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
+            Arsitek Sistem Buat <br class="hidden md:block"> Owner yang <span class="text-blue-600 underline decoration-4 underline-offset-8">Mau Rebahan.</span>
         </h1>
-        <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Kami tidak hanya membuat aplikasi; kami membangun infrastruktur digital agar operasional Anda berjalan otomatis, transparan, dan tanpa drama.
+        <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium">
+            Stop nanya rekap ke admin. Kita bangunin "otak permanen" buat bisnis lo biar jalan otomatis, anti-bocor, dan scalable.
         </p>
-        <div class="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="#services" class="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-orange-200 hover:scale-105 transition">Lihat Layanan Utama</a>
-            <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Specialist,%20saya%20mau%20konsultasi%20tentang%20sistem%20bisnis%20saya" class="bg-white border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition">Konsultasi Gratis</a>
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+            <a href="#services" class="bg-blue-600 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow transition-all">
+                Pilih Infrastruktur Lo
+            </a>
         </div>
     </header>
 
-    <!-- Services Section -->
+    <!-- Independent Cards Section -->
     <section id="services" class="max-w-7xl mx-auto px-6 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4 text-slate-800">Layanan & Paket Utama</h2>
-            <p class="text-slate-500">Pilih infrastruktur yang sesuai dengan skala bisnis Anda saat ini.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Paket 1: Kasir -->
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col hover:border-orange-500 transition border-2 border-transparent">
-                <div class="mb-4 text-orange-600 font-bold text-sm tracking-widest uppercase">Best Value</div>
-                <h3 class="text-xl font-bold mb-2">Kasir Multibranch + CRM</h3>
-                <p class="text-slate-500 text-sm mb-6 flex-grow">Dashboard Live Update, Audit Aman, Auto-Afterservice WA, & Report 12+ Cabang.</p>
-                <div class="text-2xl font-bold mb-6">Rp 7,5 Juta</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Specialist,%20saya%20tertarik%20dengan%20Paket%20Kasir%20Multibranch%207,5jt" class="bg-slate-900 text-white text-center py-3 rounded-xl font-semibold hover:bg-orange-600 transition">Pesan Sekarang</a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+            
+            <!-- Card 1 -->
+            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
+                <!-- FAKE COUNTER BADGE -->
+                <div class="absolute -top-5 -right-2 md:-right-5 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    🔥 218 Cabang Pakai Ini
+                </div>
+                <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Enterprise Scale</div>
+                <h3 class="text-3xl font-bold mb-3">POS Multibranch + CRM</h3>
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
+                    Sistem kasir dewa. 12 cabang kepantau di 1 layar. Termasuk auto-afterservice WA & audit anti-sketchy.
+                </p>
+                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 7,5 Jt</div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20order%20POS%20Multibranch%207,5jt" class="block text-center bg-slate-900 text-white py-4 rounded-xl font-bold border-2 border-transparent hover:bg-white hover:text-slate-900 hover:border-slate-900 transition-all">
+                    Eksekusi Sekarang
+                </a>
             </div>
 
-            <!-- Paket 2: Supply Chain -->
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg flex flex-col">
-                <h3 class="text-xl font-bold mb-2">Stocking & Supply Chain</h3>
-                <p class="text-slate-500 text-sm mb-6 flex-grow">Monitoring Stok Real-time, Auto-Deduct, Alert Stok Menipis, & Laporan Logistik.</p>
-                <div class="text-2xl font-bold mb-6">Rp 5 Juta</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Specialist,%20saya%20mau%20tanya%20sistem%20Stocking%20dan%20Supply%2BChain%205jt" class="border border-slate-900 text-slate-900 text-center py-3 rounded-xl font-semibold hover:bg-slate-900 hover:text-white transition">Pesan Sekarang</a>
+            <!-- Card 2 -->
+            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
+                <!-- FAKE COUNTER BADGE -->
+                <div class="absolute -top-5 -right-2 md:-right-5 bg-green-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform -rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    ⚡ 145 Owner Terselamatkan
+                </div>
+                <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Logistics</div>
+                <h3 class="text-3xl font-bold mb-3">Stocking & Supply Chain</h3>
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
+                    Stop bocor halus di gudang. Auto-deduct stok, alert barang menipis, tutup pintu kecurangan admin.
+                </p>
+                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 5 Jt</div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20order%20Supply%20Chain%205jt" class="block text-center bg-slate-900 text-white py-4 rounded-xl font-bold border-2 border-transparent hover:bg-white hover:text-slate-900 hover:border-slate-900 transition-all">
+                    Amankan Stok Lo
+                </a>
             </div>
 
-            <!-- Paket 3: Web Premium -->
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg flex flex-col">
-                <h3 class="text-xl font-bold mb-2">Website Premium</h3>
-                <p class="text-slate-500 text-sm mb-6 flex-grow">Custom Domain (.com/.id), Landing Page Speed Tinggi, SEO Friendly, & Full Setup.</p>
-                <div class="text-2xl font-bold mb-6">Rp 1,5 Juta</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Specialist,%20saya%20mau%20bikin%20Website%20Lengkap%2B1,5jt" class="border border-slate-900 text-slate-900 text-center py-3 rounded-xl font-semibold hover:bg-slate-900 hover:text-white transition">Pesan Sekarang</a>
+            <!-- Card 3 -->
+            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
+                <div class="absolute -top-5 -right-2 md:-right-5 bg-purple-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    🚀 382 Brand Online
+                </div>
+                <h3 class="text-3xl font-bold mb-3">Website Premium</h3>
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
+                    Bukan sekadar brosur digital. Custom domain (.com/.id), speed tinggi, SEO friendly, siap nge-close klien.
+                </p>
+                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 1,5 Jt</div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20bikin%20Web%20Premium%201,5jt" class="block text-center bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all">
+                    Bangun Web Gue
+                </a>
             </div>
 
-            <!-- Paket 4: Web Subdomain -->
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg flex flex-col">
-                <h3 class="text-xl font-bold mb-2">Website Lite</h3>
-                <p class="text-slate-500 text-sm mb-6 flex-grow">Hosting Cepat, Subdomain beuna.id, Cocok buat UMKM baru berkembang.</p>
-                <div class="text-2xl font-bold mb-6">Rp 700k</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Specialist,%20saya%20tertarik%20Paket%2BWebsite%2BSubdomain%2B700rb" class="border border-slate-900 text-slate-900 text-center py-3 rounded-xl font-semibold hover:bg-slate-900 hover:text-white transition">Pesan Sekarang</a>
+            <!-- Card 4 -->
+            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
+                <div class="absolute -top-5 -right-2 md:-right-5 bg-blue-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform -rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    ⭐ 519 UMKM Start Disini
+                </div>
+                <h3 class="text-3xl font-bold mb-3">Website Lite</h3>
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
+                    Solusi UMKM go-digital. Pake subdomain super cepat. Tampilan estetik, anti-lemot, harga merakyat.
+                </p>
+                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 700k</div>
+                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20order%20Web%20Lite%20700k" class="block text-center bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all">
+                    Sikat Paket Lite
+                </a>
             </div>
+
         </div>
     </section>
 
-    <!-- Why Us -->
-    <section class="bg-slate-900 text-white py-20">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div>
-                <h4 class="text-xl font-bold mb-3">Life Update</h4>
-                <p class="text-slate-400 text-sm">Pantau performa bisnis real-time dari mana saja. Gak perlu nunggu laporan manual akhir hari.</p>
+    <!-- Kata Mereka (Fake Testimonials Marquee) -->
+    <section class="py-16 overflow-hidden">
+        <div class="text-center mb-8 px-6">
+            <h2 class="text-4xl font-bold text-slate-900 mb-2">Impact Nyata. Gak Pake Teori.</h2>
+            <p class="text-blue-600 font-medium">Apa kata mereka setelah "bocor halus" bisnisnya ditutup Beuna.</p>
+        </div>
+
+        <!-- Baris 1: Gerak ke Kiri -->
+        <div class="marquee-wrapper mb-4">
+            <div class="marquee-content" id="marquee-1">
+                <!-- Testimoni diinject lewat JavaScript biar rapi -->
             </div>
-            <div>
-                <h4 class="text-xl font-bold mb-3">Keamanan Data</h4>
-                <p class="text-slate-400 text-sm">Sistem audit digital untuk meminimalisir bocor halus dan manipulasi data manual.</p>
+            <div class="marquee-content" id="marquee-1-clone"></div>
+        </div>
+
+        <!-- Baris 2: Gerak ke Kanan -->
+        <div class="marquee-wrapper">
+            <div class="marquee-content reverse" id="marquee-2">
+                <!-- Testimoni diinject lewat JavaScript -->
             </div>
-            <div>
-                <h4 class="text-xl font-bold mb-3">Automasi CRM</h4>
-                <p class="text-slate-400 text-sm">Bangun loyalitas pelanggan secara otomatis lewat sistem afterservice WhatsApp 24/7.</p>
-            </div>
+            <div class="marquee-content reverse" id="marquee-2-clone"></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 text-center text-slate-400 text-sm">
-        <p>&copy; 2026 Beuna System Specialist. Built for Freedom.</p>
+    <footer class="border-t-2 border-slate-900 bg-white py-8 text-center mt-10">
+        <p class="font-bold text-slate-600">&copy; 2026 Beuna Systems. Code less, automate more.</p>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/6285359033973" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition z-50">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.406c0 6.555-5.332 11.887-11.888 11.887-2.007 0-3.974-.506-5.717-1.467l-6.267 1.691zm5.738-3.959l.35.21c1.461.874 3.142 1.334 4.869 1.334 5.451 0 9.888-4.437 9.888-9.888 0-2.639-1.027-5.121-2.892-6.986s-4.347-2.892-6.987-2.892c-5.45 0-9.888 4.438-9.888 9.888 0 1.742.459 3.442 1.326 4.907l.23.388-1.012 3.693 3.786-1.022z"/></svg>
-    </a>
+    <!-- Script for Testimonials Inject -->
+    <script>
+        const testiBaris1 = [
+            { text: "Awalnya cuma mau rapiin kasir, eh Beuna malah bikin bot WA buat ngingetin stok kopi mau abis. Admin gue sekarang bisa santai.", author: "Reza", biz: "Coffee Shop Owner" },
+            { text: "Gak nyangka sistem otomasi bisa naikin repeat order. Customer dikirimin promo pas ulang tahun otomatis. Gila.", author: "Sarah", biz: "Brand Fashion" },
+            { text: "Dulu pusing ngurusin komplain baju ketuker. Sejak dibikinin tracking barcode, 0 komplain bulan ini.", author: "Pak Rusdi", biz: "Owner Laundry" },
+            { text: "12 cabang kepantau di 1 layar. Yang paling kaget, fraud di kasir turun drastis karena auditnya real-time.", author: "dr. Andi", biz: "Klinik Refleksi" },
+            { text: "Reservasi online-nya smooth banget, AI-nya pinter balesin chat customer jam 2 pagi tanpa keliatan kaku.", author: "Bima", biz: "Premium Barbershop" },
+            { text: "Dulu sering bocor di uang kembalian. Sekarang cashless + sistem poin, omzet naik 20% tanpa buka cabang baru.", author: "Ko Afung", biz: "Cuci Mobil & Detailing" },
+            { text: "Owner sekarang beneran bisa rebahan liburan. Notif transferan masuk real-time ke Telegram. Best investment!", author: "Dina", biz: "F&B Franchise" },
+            { text: "Laporan pajak jadi gampang banget, datanya udah mateng semua ditarik dari dashboard. Bye bye begadang rekap Excel.", author: "Hendra", biz: "Retail Elektronik" },
+            { text: "Gila, Beuna bikin sistem yang bisa detect customer yang udah 1 bulan gak belanja, terus di-WA otomatis buat dibujuk balik!", author: "Siska", biz: "Petshop & Grooming" },
+            { text: "Gak ada lagi drama salah catat Pre-Order. Semua terekam digital & anti hapus sama admin nakal.", author: "Fadli", biz: "Vendor Percetakan" },
+            { text: "Invoice telat bayar langsung di-follow up sama bot. Arus kas perusahaan jadi sehat banget sekarang.", author: "Tari", biz: "Supplier Bahan Bangunan" },
+            { text: "Solutif banget! Dimas ngerti masalah akar bisnis gue, gak cuma asal koding kayak vendor lain.", author: "Pak Anton", biz: "Tour & Travel" },
+            { text: "Data customer kepisah rapi antara VIP dan Reguler. Gampang banget buat tim marketing nge-blast promo.", author: "drg. Maya", biz: "Klinik Estetika" },
+            { text: "Dulu sering overstock karena tebak-tebakan feeling, sekarang sistem yang nentuin kapan persisnya harus re-stock barang.", author: "Kevin", biz: "Distributor Kosmetik" },
+            { text: "Keputusan terbaik tahun ini: Digitalisasi bareng Beuna. Hidup gue sebagai owner jadi tenang banget.", author: "Rizal", biz: "Toko Bangunan & Material" }
+        ];
 
+        const testiBaris2 = [
+            { text: "Awalnya ragu karena agensinya diisi anak muda, tapi kerjanya jauh lebih pro dari vendor sekelas enterprise Jakarta.", author: "Bu Lina", biz: "Pabrik Makanan Olahan" },
+            { text: "Sistemnya Beuna itu ibarat gue nge-hire manager operasional handal tapi gak pernah minta cuti.", author: "Bayu", biz: "Bengkel Motor Custom" },
+            { text: "Booking lapangan otomatis sinkron ke Google Calendar gue. Praktis parah, gak ada lagi jadwal bentrok.", author: "Oki", biz: "Futsal & Mini Soccer" },
+            { text: "Orderan masuk jam 3 pagi dibales AI, pagi harinya tau-tau dapet bukti transferan. Magic!", author: "Nisa", biz: "Toko Oleh-oleh Online" },
+            { text: "Gak nyangka Google Sheets gue bisa disulap jadi aplikasi sekeren ini. Integrasinya mulus.", author: "Dani", biz: "Biro Jasa Konsultan" },
+            { text: "Omzet naik 30% bukan karena marketing, tapi karena lubang bocor halus di kasir ketutup rapat berkat sistem ini.", author: "H. Rahman", biz: "Jaringan Minimarket" },
+            { text: "Dashboard-nya bikin kecanduan. Tiap menit buka HP cuma buat liat grafik omzet harian jalan terus.", author: "Putri", biz: "Apotek 24 Jam" },
+            { text: "Pelayanan after-salesnya juara. Ada error dikit integrasi WA-nya, tim Beuna yang sadar dan benerin duluan.", author: "Tomy", biz: "Gym & Fitness Center" },
+            { text: "Baru tau kalau WA bisa secanggih ini. Customer order via WA, struk otomatis ke-print di dapur restoran gue.", author: "Chef Juna", biz: "Restoran Seafood" },
+            { text: "Integrasi mutasi m-banking ke notif WA itu ngebantu banget. Kasir gak usah nungguin gue ngecek mutasi lagi.", author: "Cici", biz: "Toko Emas" },
+            { text: "Sistem poin loyalitasnya mulus banget. Customer jadi rajin balik gara-gara pengen kejar reward.", author: "Edo", biz: "Vape Store" },
+            { text: "Gue pikir mahal bayar 7,5 juta, ternyata 2 bulan langsung balik modal karena repeat order naik tajam berkat CRM-nya.", author: "Vina", biz: "Salon & Spa" },
+            { text: "AI-nya Beuna bales chat lebih sopan dan sabar dari admin gue sendiri wkwkwk. Mantap Dim!", author: "Bagas", biz: "Thrift Shop Import" },
+            { text: "Bocor di stok gudang ilang 100%. Gak nyangka efeknya kerasa banget di persentase profit akhir bulan.", author: "Ivan", biz: "Distributor Sparepart" },
+            { text: "Dulu pusing ngurusin admin resign bawa data customer. Sekarang sistem yang jadi otak permanen bisnis gue.", author: "Leo", biz: "Digital Agency" }
+        ];
+
+        function createCard(testi) {
+            return `
+                <div class="testi-card">
+                    <p class="text-slate-700 italic mb-4">"${testi.text}"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 font-bold border-2 border-slate-900">
+                            ${testi.author.charAt(0)}
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900">${testi.author}</div>
+                            <div class="text-xs text-blue-600 font-semibold">${testi.biz}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Inject baris 1
+        const b1HTML = testiBaris1.map(createCard).join('');
+        document.getElementById('marquee-1').innerHTML = b1HTML;
+        document.getElementById('marquee-1-clone').innerHTML = b1HTML;
+
+        // Inject baris 2
+        const b2HTML = testiBaris2.map(createCard).join('');
+        document.getElementById('marquee-2').innerHTML = b2HTML;
+        document.getElementById('marquee-2-clone').innerHTML = b2HTML;
+    </script>
 </body>
 </html>
