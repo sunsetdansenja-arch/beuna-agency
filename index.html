@@ -3,187 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beuna System Specialist | Arsitek Sistem Bisnis</title>
+    <title>Beuna OS - Workspace & Docs Hub</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
-        .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(30, 58, 138, 1); }
-        .brutal-shadow:hover { box-shadow: 2px 2px 0px 0px rgba(30, 58, 138, 1); transform: translate(4px, 4px); }
-        .marquee-wrapper { display: flex; overflow-x: scroll; white-space: nowrap; position: relative; padding: 20px 0; background: #ffffff; border-top: 2px solid #1e3a8a; border-bottom: 2px solid #1e3a8a; cursor: grab; scrollbar-width: none; }
-        .marquee-wrapper::-webkit-scrollbar { display: none; }
-        .marquee-wrapper.active { cursor: grabbing; }
-        .marquee-content { display: flex; animation: scroll-left 120s linear infinite; }
-        .marquee-content.reverse { animation: scroll-right 140s linear infinite; }
-        .marquee-wrapper:hover .marquee-content, .animation-paused .marquee-content { animation-play-state: paused; }
-        .testi-card { display: inline-block; background: #eff6ff; border: 2px solid #1e3a8a; border-radius: 12px; padding: 16px 24px; margin: 0 12px; min-width: 350px; white-space: normal; user-select: none; }
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        /* --- APPLE OS LIGHT THEME AESTHETICS --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1d1d1f;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Folders Style */
+        .folder-tab {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.5rem; background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.8); border-bottom: none;
+            border-radius: 0.75rem 0.75rem 0 0; font-size: 0.7rem;
+            font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em;
+            color: #4b5563; min-width: max-content;
+        }
+        .folder-content {
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 0 1.5rem 1.5rem 1.5rem;
+            box-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.1);
+            min-width: 280px; /* Minimal width untuk kolom kanban */
+        }
+        .folder-content-grid { border-radius: 0 1rem 1rem 1rem; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 255, 255, 1);
+            transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .glass-card:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0,0,0,0.08); }
+
+        .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 10px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+        /* Status Select UI (Pendekatan B) */
+        .status-select {
+            appearance: none; background: transparent; border: none; font-size: 0.65rem;
+            font-weight: bold; text-transform: uppercase; color: #6b7280; cursor: pointer;
+            padding: 2px 4px; outline: none;
+        }
+        .status-select:hover { color: #111827; }
+
+        /* --- PDF A4 SETTINGS --- */
+        .a4-paper {
+            width: 210mm; min-height: 297mm; background: white; color: #111827; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin: 0 auto; padding: 20mm; position: relative;
+        }
+        @page { size: A4; margin: 0; }
+        @media print {
+            body { background: white; }
+            .no-print { display: none !important; }
+            .a4-paper { box-shadow: none; margin: 0; padding: 15mm; width: 100%; min-height: auto; }
+            .print-exact { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
     </style>
 </head>
-<body class="text-slate-900">
+<body class="antialiased flex h-screen overflow-hidden">
 
-    <nav class="flex justify-between items-center px-4 md:px-6 py-4 border-b-2 border-slate-900 bg-white sticky top-0 z-50">
-        <div class="flex flex-col justify-center">
-            <div class="flex items-center gap-2 md:gap-3">
-                <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="h-7 md:h-8">
-                <span class="font-bold text-xl md:text-2xl tracking-tighter">BEUNA.</span>
-            </div>
-            <a href="aboutbeuna.html" class="md:hidden mt-1 ml-9 inline-flex items-center text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-800 px-2 py-0.5 rounded-full hover:bg-blue-800 hover:text-white transition-all w-max shadow-[2px_2px_0px_0px_rgba(30,58,138,1)] active:translate-y-1 active:shadow-none">
-                Tentang Kami ➔
-            </a>
-        </div>
-
-        <div class="flex items-center gap-4 md:gap-6">
-            <a href="aboutbeuna.html" class="hidden md:block font-bold text-slate-600 hover:text-blue-600 transition-all underline decoration-2 underline-offset-4 decoration-transparent hover:decoration-blue-600">Tentang Kami</a>
-            <a href="https://wa.me/6285359033973" class="bg-blue-600 text-white border-2 border-slate-900 px-4 py-1.5 md:px-6 md:py-2 rounded-full font-bold text-sm md:text-base brutal-shadow transition-all">Konsultasi</a>
-        </div>
-    </nav>
-
-    <header class="max-w-7xl mx-auto px-6 py-20 text-center relative">
-        <div class="inline-block bg-blue-100 text-blue-700 border-2 border-blue-700 font-bold px-4 py-1 rounded-full mb-6 transform -rotate-2">
-            🚀 Bikin Bisnis Lo Autopilot
-        </div>
-        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
-            Arsitek Sistem Buat <br class="hidden md:block"> Owner yang <span class="text-blue-600 underline decoration-4 underline-offset-8">Mau Rebahan.</span>
-        </h1>
-        <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium">
-            Stop nanya rekap ke admin. Kita bangunin "otak permanen" buat bisnis lo biar jalan otomatis, anti-bocor, dan scalable.
-        </p>
-        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <a href="#services" class="bg-blue-600 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow transition-all">Pilih Infrastruktur Lo</a>
-        </div>
-    </header>
-
-    <section id="services" class="max-w-7xl mx-auto px-6 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+    <div id="loginView" class="fixed inset-0 flex items-center justify-center z-50 bg-[#f5f7fa] bg-opacity-90 backdrop-blur-sm transition-all duration-500">
+        <div class="glass-panel p-10 w-full max-w-sm flex flex-col items-center rounded-3xl relative">
+            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="w-16 h-16 mb-4">
+            <h1 class="text-2xl font-extrabold mb-1 tracking-tight text-gray-900">Beuna OS</h1>
+            <p class="text-xs text-gray-500 mb-8 text-center uppercase tracking-widest">Unified Command Center</p>
             
-            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
-                <div class="absolute -top-5 -right-2 md:-right-5 bg-blue-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform -rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    ⭐ <span id="count-web-lite">519</span> UMKM Start Disini
-                </div>
-                <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Entry Level</div>
-                <h3 class="text-3xl font-bold mb-3">Website Lite</h3>
-                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
-                    Solusi UMKM go-digital. Pake subdomain super cepat. Tampilan estetik, anti-lemot, harga merakyat buat mulai.
-                </p>
-                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 700k</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20order%20Web%20Lite%20700k" class="block text-center bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all">Sikat Paket Lite</a>
+            <div class="w-full bg-blue-50 border border-blue-100 text-blue-800 rounded-lg p-3 mb-6 text-[10px] text-center font-mono">
+                Admin: <b>admin / 123</b> <br> Dev: <b>dev / 123</b>
             </div>
 
-            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
-                <div class="absolute -top-5 -right-2 md:-right-5 bg-purple-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    🚀 <span id="count-web-premium">382</span> Brand Online
-                </div>
-                <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Brand Identity</div>
-                <h3 class="text-3xl font-bold mb-3">Website Premium</h3>
-                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
-                    Bukan sekadar brosur digital. Custom domain (.com/.id), speed tinggi, SEO friendly, mesin konversi klien lo.
-                </p>
-                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 1,5 Jt</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20bikin%20Web%20Premium%201,5jt" class="block text-center bg-white text-slate-900 border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all">Bangun Web Gue</a>
-            </div>
-
-            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
-                <div class="absolute -top-5 -right-2 md:-right-5 bg-green-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform -rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    ⚡ <span id="count-stock">145</span> Owner Terselamatkan
-                </div>
-                <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Logistics</div>
-                <h3 class="text-3xl font-bold mb-3">Stocking & Supply Chain</h3>
-                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
-                    Stop bocor halus di gudang. Auto-deduct stok, alert barang menipis, tutup pintu kecurangan admin secara permanen.
-                </p>
-                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 5 Jt</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20order%20Supply%20Chain%205jt" class="block text-center bg-slate-900 text-white py-4 rounded-xl font-bold border-2 border-transparent hover:bg-white hover:text-slate-900 hover:border-slate-900 transition-all">Amankan Stok Lo</a>
-            </div>
-
-            <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow transition-all relative">
-                <div class="absolute -top-5 -right-2 md:-right-5 bg-yellow-300 text-slate-900 border-2 border-slate-900 font-bold px-4 py-2 rounded-full transform rotate-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    🔥 <span id="count-pos">218</span> Cabang Pakai Ini
-                </div>
-                <div class="mb-4 inline-block bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-md text-sm">Enterprise Scale</div>
-                <h3 class="text-3xl font-bold mb-3">POS Multibranch + CRM</h3>
-                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
-                    Sistem kasir dewa. 12+ cabang kepantau di 1 layar. Termasuk auto-afterservice WA & audit anti-sketchy.
-                </p>
-                <div class="text-3xl font-bold text-blue-600 mb-6">Rp 7,5 Jt</div>
-                <a href="https://wa.me/6285359033973?text=Halo%20Beuna,%20mau%20order%20POS%20Multibranch%207,5jt" class="block text-center bg-blue-600 border-2 border-slate-900 text-white py-4 rounded-xl font-bold hover:bg-white hover:text-slate-900 transition-all">Eksekusi Sekarang</a>
-            </div>
-
+            <form id="loginForm" class="w-full space-y-4" onsubmit="handleLogin(event)">
+                <input type="text" id="username" placeholder="Username" class="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-red-800 focus:ring-1 focus:ring-red-800 transition-all" required>
+                <input type="password" id="password" placeholder="Password" class="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-red-800 focus:ring-1 focus:ring-red-800 transition-all" required>
+                <button type="submit" class="w-full bg-gray-900 text-white font-bold rounded-xl py-4 text-sm hover:bg-black transition-all shadow-lg active:scale-95">Sign In</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <section class="py-16 overflow-hidden">
-        <div class="text-center mb-8 px-6">
-            <h2 class="text-4xl font-bold text-slate-900 mb-2">Impact Nyata. Gak Pake Teori.</h2>
-            <p class="text-blue-600 font-medium">(Bisa digeser/slide juga, Bre!) 👀</p>
-        </div>
-        <div class="marquee-wrapper mb-4" id="wrapper-1"><div class="marquee-content" id="marquee-1"></div><div class="marquee-content" id="marquee-1-clone"></div></div>
-        <div class="marquee-wrapper" id="wrapper-2"><div class="marquee-content reverse" id="marquee-2"></div><div class="marquee-content reverse" id="marquee-2-clone"></div></div>
-    </section>
+    <div id="devView" class="hidden w-full h-full overflow-y-auto p-6 md:p-10 no-print">
+        <h2 class="text-2xl font-bold">Menu Developer disembunyikan di mockup ini untuk fokus ke CRM. Log out dan masuk sebagai Admin.</h2>
+        <button onclick="logout()" class="mt-4 bg-red-600 text-white px-4 py-2 rounded">Logout</button>
+    </div>
 
-    <footer class="border-t-2 border-slate-900 bg-white py-8 text-center mt-10">
-        <p class="font-bold text-slate-600">&copy; 2026 Beuna Systems. Code less, automate more.</p>
-    </footer>
+    <div id="managerialView" class="hidden w-full h-full flex overflow-hidden">
+        
+        <aside class="w-20 md:w-64 glass-panel border-r border-white/50 flex flex-col no-print z-20 shadow-xl rounded-r-3xl">
+            <div class="p-6 flex items-center gap-3 border-b border-gray-200/50">
+                <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Logo" class="w-8 h-8">
+                <span class="font-extrabold tracking-widest hidden md:block text-lg text-gray-900">BEUNA</span>
+            </div>
+            <nav class="flex-1 p-4 space-y-2 mt-4">
+                <button onclick="switchManagerialView('crm')" id="nav-crm" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-white shadow-sm border border-gray-100 text-gray-900 transition-all">
+                    <i class="ph-fill ph-funnel text-xl text-indigo-600"></i> <span class="hidden md:block">CRM Pipeline</span>
+                </button>
+                <button onclick="switchManagerialView('docHub')" id="nav-docs" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-gray-500 hover:bg-white/50 hover:text-gray-900 transition-all">
+                    <i class="ph-fill ph-files text-xl"></i> <span class="hidden md:block">Docs Generator</span>
+                </button>
+            </nav>
+            <div class="p-4 border-t border-gray-200/50">
+                <button onclick="logout()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 transition-all">
+                    <i class="ph-bold ph-power text-lg"></i> <span class="hidden md:block">Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto relative custom-scroll pb-20">
+            
+            <div id="view-crm" class="p-6 md:p-10 space-y-8 max-w-[1600px] mx-auto no-print">
+                <section>
+                    <div class="folder-tab text-gray-800"><i class="ph-bold ph-chart-pie-slice"></i> Progress & Pipeline</div>
+                    <div class="folder-content p-6 flex flex-wrap justify-between items-center gap-6">
+                        <div class="flex items-end gap-3">
+                            <span id="stat-conversion" class="text-4xl md:text-5xl font-black tracking-tighter text-gray-900">0%</span>
+                            <span class="text-green-600 font-bold mb-1 flex items-center gap-1 text-[10px] uppercase tracking-widest"><i class="ph-bold ph-trend-up"></i> Closing Rate</span>
+                        </div>
+                        <div class="flex gap-6 border-t md:border-t-0 border-gray-200 pt-4 md:pt-0 overflow-x-auto">
+                            <div class="min-w-[80px]"><p class="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Total Leads</p><p id="stat-total" class="text-lg font-bold text-gray-900">0</p></div>
+                            <div class="min-w-[80px]"><p class="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Active Nego</p><p id="stat-nego" class="text-lg font-bold text-yellow-600">0</p></div>
+                            <div class="min-w-[80px]"><p class="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Closed Won</p><p id="stat-won" class="text-lg font-bold text-green-600">0</p></div>
+                            <div class="min-w-[80px]"><p class="text-gray-400 text-[9px] uppercase font-bold tracking-widest">Lost</p><p id="stat-lost" class="text-lg font-bold text-red-600">0</p></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flex gap-2 items-center mb-2 px-2">
+                        <i class="ph-fill ph-activity text-green-500"></i>
+                        <h3 class="text-sm font-bold text-gray-700 uppercase tracking-widest">Active Zones</h3>
+                    </div>
+                    <div class="flex gap-6 overflow-x-auto custom-scroll pb-4">
+                        
+                        <div class="flex-1 min-w-[280px]">
+                            <div class="folder-tab text-indigo-700 bg-indigo-50 border-indigo-100"><i class="ph-fill ph-sparkle"></i> Fresh</div>
+                            <div class="folder-content folder-content-grid p-4 border-indigo-100 bg-indigo-50/50 min-h-[400px] flex flex-col gap-3" id="col-new"></div>
+                        </div>
+                        
+                        <div class="flex-1 min-w-[280px]">
+                            <div class="folder-tab text-blue-700 bg-blue-50 border-blue-100"><i class="ph-fill ph-paper-plane-right"></i> Reached Out</div>
+                            <div class="folder-content folder-content-grid p-4 border-blue-100 bg-blue-50/50 min-h-[400px] flex flex-col gap-3" id="col-reached"></div>
+                        </div>
+
+                        <div class="flex-1 min-w-[280px]">
+                            <div class="folder-tab text-purple-700 bg-purple-50 border-purple-100"><i class="ph-fill ph-users"></i> Meeting</div>
+                            <div class="folder-content folder-content-grid p-4 border-purple-100 bg-purple-50/50 min-h-[400px] flex flex-col gap-3" id="col-meeting"></div>
+                        </div>
+
+                        <div class="flex-1 min-w-[280px]">
+                            <div class="folder-tab text-yellow-700 bg-yellow-50 border-yellow-100"><i class="ph-fill ph-handshake"></i> Nego & Offer</div>
+                            <div class="folder-content folder-content-grid p-4 border-yellow-100 bg-yellow-50/50 min-h-[400px] flex flex-col gap-3" id="col-nego"></div>
+                        </div>
+
+                        <div class="flex-1 min-w-[280px]">
+                            <div class="folder-tab text-green-700 bg-green-50 border-green-100"><i class="ph-fill ph-check-circle"></i> Closed Won</div>
+                            <div class="folder-content folder-content-grid p-4 border-green-100 bg-green-50/50 min-h-[400px] flex flex-col gap-3" id="col-won"></div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="mt-12 pt-8 border-t border-gray-200">
+                    <button onclick="toggleBasement()" class="flex items-center justify-center gap-2 w-full text-gray-400 hover:text-gray-800 transition-colors text-[10px] font-bold tracking-widest uppercase mb-6">
+                        <i id="basement-icon" class="ph-bold ph-caret-down text-lg"></i> Buka Zona Pasif (Nurture & Lost)
+                    </button>
+                    
+                    <div id="basementContent" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 opacity-80">
+                        <div class="lg:col-span-2">
+                            <div class="folder-tab text-orange-700 bg-orange-50 border-orange-100"><i class="ph-fill ph-clock-snooze"></i> Nurture (KIV)</div>
+                            <div class="folder-content folder-content-grid p-4 border-orange-100 bg-orange-50/50 min-h-[200px] flex gap-3 flex-wrap" id="col-nurture"></div>
+                        </div>
+
+                        <div class="lg:col-span-2">
+                            <div class="folder-tab text-red-700 bg-red-50 border-red-100"><i class="ph-fill ph-x-circle"></i> Closed Lost</div>
+                            <div class="folder-content folder-content-grid p-4 border-red-100 bg-red-50/50 min-h-[200px] flex gap-3 flex-wrap" id="col-lost"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="view-docHub" class="hidden p-6 md:p-10 max-w-[1200px] mx-auto no-print">
+                <header class="mb-8"><h2 class="text-3xl font-extrabold text-gray-900">Document Center</h2></header>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div onclick="openGenerator('OFF')" class="glass-panel p-6 rounded-3xl cursor-pointer hover:-translate-y-1 transition-all border-t-4 border-t-gray-400"><h4 class="font-bold text-gray-900">Offer Letter</h4></div>
+                    <div onclick="openGenerator('INV')" class="glass-panel p-6 rounded-3xl cursor-pointer hover:-translate-y-1 transition-all border-t-4 border-t-red-700"><h4 class="font-bold text-gray-900">Invoice Tagihan</h4></div>
+                    <div onclick="openGenerator('BAP')" class="glass-panel p-6 rounded-3xl cursor-pointer hover:-translate-y-1 transition-all border-t-4 border-t-blue-600"><h4 class="font-bold text-gray-900">BAP (Maintenance)</h4></div>
+                    <div onclick="openGenerator('BAST')" class="glass-panel p-6 rounded-3xl cursor-pointer hover:-translate-y-1 transition-all border-t-4 border-t-green-600"><h4 class="font-bold text-gray-900">BAST Selesai</h4></div>
+                </div>
+            </div>
+
+            <div id="view-docGen" class="hidden h-full flex flex-col md:flex-row">
+                <div class="w-80 glass-panel p-6 flex flex-col border-r border-white/50 z-10 shadow-xl">
+                    <button onclick="switchManagerialView('docHub')" class="text-xs font-bold mb-6">&larr; Kembali</button>
+                    <h3 class="text-xl font-bold mb-6" id="genTitle">Generate DOC</h3>
+                    <select id="genProject" class="w-full bg-white rounded-xl px-3 py-2 text-sm border focus:border-red-800 mb-4"></select>
+                    <button class="mt-auto w-full bg-red-800 text-white font-bold py-3 rounded-xl">Cetak PDF A4</button>
+                </div>
+                <div class="flex-1 bg-gray-200/50 p-8 flex justify-center"><div class="a4-paper flex items-center justify-center text-gray-400">[Area Preview PDF A4]</div></div>
+            </div>
+
+        </main>
+    </div>
 
     <script>
-        const testiBaris1 = [
-            { text: "Awalnya cuma mau rapiin kasir, eh Beuna malah bikin bot WA buat ngingetin stok kopi mau abis. Admin gue sekarang bisa santai.", author: "Reza", biz: "Coffee Shop Owner" },
-            { text: "Gak nyangka sistem otomasi bisa naikin repeat order. Customer dikirimin promo pas ulang tahun otomatis. Gila.", author: "Sarah", biz: "Brand Fashion" },
-            { text: "Dulu pusing ngurusin komplain baju ketuker. Sejak dibikinin tracking barcode dari Beuna, 0 komplain.", author: "Pak Rusdi", biz: "Owner Laundry" },
-            { text: "12 cabang kepantau di 1 layar. Yang paling kaget, fraud di kasir turun drastis karena auditnya real-time.", author: "dr. Andi", biz: "Klinik Refleksi" },
-            { text: "Reservasi online-nya smooth banget, AI-nya pinter balesin chat customer jam 2 pagi.", author: "Bima", biz: "Premium Barbershop" },
-            { text: "Sekarang cashless + sistem poin Beuna, omzet naik 20%.", author: "Ko Afung", biz: "Cuci Mobil" },
-            { text: "Owner sekarang beneran bisa rebahan liburan. Notif transferan masuk real-time ke Telegram.", author: "Dina", biz: "F&B Franchise" },
-            { text: "Laporan pajak jadi gampang banget, datanya udah mateng ditarik dari dashboard.", author: "Hendra", biz: "Retail Elektronik" }
+        // --- MOCK DATA DENGAN STATUS BARU ---
+        let leads = [
+            { id: "L1", name: "PT Sejahtera (Supply Chain)", status: "new", lastContact: "Today", reason: "" },
+            { id: "L2", name: "Klinik ABC (WA Bot)", status: "reached", lastContact: "Yesterday", reason: "" },
+            { id: "L3", name: "Resto Toti (Dashboard)", status: "meeting", lastContact: "2 Days Ago", reason: "" },
+            { id: "L4", name: "Reflexology Sutarman", status: "nego", lastContact: "Today", reason: "" },
+            { id: "L5", name: "Laundry Fortuna", status: "won", lastContact: "Ongoing", reason: "" },
+            { id: "L6", name: "Coffee Shop Indie", status: "nurture", lastContact: "Last Month", followupDate: "15 May 2026", reason: "" },
+            { id: "L7", name: "Toko Baju Muslim", status: "lost", lastContact: "2 Months Ago", reason: "Out of Budget" }
         ];
-        const testiBaris2 = [
-            { text: "Sistemnya Beuna itu ibarat gue nge-hire manager operasional handal tapi gak pernah minta cuti.", author: "Bayu", biz: "Bengkel Motor Custom" },
-            { text: "Booking lapangan otomatis sinkron ke Google Calendar gue. Praktis parah.", author: "Oki", biz: "Mini Soccer" },
-            { text: "Orderan masuk jam 3 pagi dibales AI, pagi harinya tau-tau dapet bukti transferan.", author: "Nisa", biz: "Toko Oleh-oleh" },
-            { text: "Gak nyangka Google Sheets gue bisa disulap jadi aplikasi sekeren ini.", author: "Dani", biz: "Biro Jasa Konsultan" },
-            { text: "Omzet naik 30% bukan karena marketing, tapi karena lubang bocor halus di kasir ketutup rapat.", author: "H. Rahman", biz: "Minimarket Chain" },
-            { text: "Dashboard-nya bikin kecanduan. Tiap menit liat grafik omzet harian jalan.", author: "Putri", biz: "Apotek 24 Jam" },
-            { text: "Customer order via WA, struk otomatis ke-print di dapur restoran gue. Gila!", author: "Chef Juna", biz: "Restoran Seafood" },
-            { text: "Dulu pusing admin resign bawa data. Sekarang sistem jadi otak permanen bisnis gue.", author: "Leo", biz: "Digital Agency" }
-        ];
-        function createCard(t) { return `<div class="testi-card"><p class="text-slate-700 italic mb-4">"${t.text}"</p><div class="flex items-center gap-3"><div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 font-bold border-2 border-slate-900">${t.author.charAt(0)}</div><div><div class="font-bold text-slate-900">${t.author}</div><div class="text-xs text-blue-600 font-semibold">${t.biz}</div></div></div></div>`; }
-        document.getElementById('marquee-1').innerHTML = testiBaris1.map(createCard).join('');
-        document.getElementById('marquee-1-clone').innerHTML = testiBaris1.map(createCard).join('');
-        document.getElementById('marquee-2').innerHTML = testiBaris2.map(createCard).join('');
-        document.getElementById('marquee-2-clone').innerHTML = testiBaris2.map(createCard).join('');
 
-        function setupCounter(id, max, minInt, maxInt) {
-            const el = document.getElementById(id); if(!el)return;
-            let c = parseInt(el.innerText); const s = c;
-            function add() {
-                if(c - s >= max) return;
-                if(Math.random() < 0.1) { setTimeout(add, Math.random()*(maxInt-minInt)+minInt); return; }
-                el.innerText = ++c; el.parentElement.classList.add('bg-white');
-                setTimeout(()=>el.parentElement.classList.remove('bg-white'), 300);
-                setTimeout(add, Math.random()*(maxInt-minInt)+minInt);
+        // --- ROUTING LOGIC ---
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            if(u === 'admin') { showAppView('managerialView'); switchManagerialView('crm'); }
+            else if(u === 'dev') { alert("Untuk demo ini, silakan masuk sebagai Admin (admin/123)"); }
+        }
+        function logout() { showAppView('loginView'); }
+        function showAppView(viewId) {
+            ['loginView', 'devView', 'managerialView'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            document.getElementById(viewId).classList.remove('hidden');
+        }
+
+        // --- MANAGERIAL LOGIC (CRM PIPELINE) ---
+        function switchManagerialView(subView) {
+            ['view-crm', 'view-docHub', 'view-docGen'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            document.getElementById(`view-${subView}`).classList.remove('hidden');
+            
+            // Sidebar active state
+            document.getElementById('nav-crm').classList.toggle('bg-white', subView === 'crm');
+            document.getElementById('nav-crm').classList.toggle('shadow-sm', subView === 'crm');
+            
+            if(subView === 'crm') renderCRM();
+        }
+
+        function renderCRM() {
+            // Kosongkan semua kolom
+            const columns = { 'new': 'col-new', 'reached': 'col-reached', 'meeting': 'col-meeting', 'nego': 'col-nego', 'won': 'col-won', 'nurture': 'col-nurture', 'lost': 'col-lost' };
+            Object.values(columns).forEach(id => document.getElementById(id).innerHTML = '');
+            
+            let stats = { total: leads.length, nego: 0, won: 0, lost: 0, activeReach: 0 };
+
+            leads.forEach(l => {
+                if(l.status === 'nego') stats.nego++;
+                if(l.status === 'won') stats.won++;
+                if(l.status === 'lost') stats.lost++;
+                if(['reached', 'meeting', 'nego'].includes(l.status)) stats.activeReach++;
+
+                // Build Card with Approach B (Status Select Dropdown)
+                const isPassive = (l.status === 'nurture' || l.status === 'lost');
+                const cardWidth = isPassive ? 'min-w-[250px] w-full md:w-auto' : 'w-full';
+
+                let cardHtml = `
+                <div class="glass-card p-4 rounded-xl flex flex-col gap-2 ${cardWidth}">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-bold text-sm text-gray-900 truncate pr-2">${l.name}</h4>
+                        
+                        <div class="bg-gray-100 rounded border border-gray-200">
+                            <select onchange="updateLeadStatus('${l.id}', this.value)" class="status-select">
+                                <option value="new" ${l.status==='new'?'selected':''}>Fresh</option>
+                                <option value="reached" ${l.status==='reached'?'selected':''}>Reached</option>
+                                <option value="meeting" ${l.status==='meeting'?'selected':''}>Meeting</option>
+                                <option value="nego" ${l.status==='nego'?'selected':''}>Nego</option>
+                                <option value="won" ${l.status==='won'?'selected':''}>Won</option>
+                                <option disabled>──────────</option>
+                                <option value="nurture" ${l.status==='nurture'?'selected':''}>Nurture (KIV)</option>
+                                <option value="lost" ${l.status==='lost'?'selected':''}>Lost</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="text-[9px] text-gray-500 font-medium flex justify-between items-center">
+                        <span>Last: ${l.lastContact}</span>
+                        ${l.status === 'nurture' ? `<span class="bg-orange-100 text-orange-700 px-1 rounded border border-orange-200">Follow up: ${l.followupDate}</span>` : ''}
+                        ${l.status === 'lost' ? `<span class="bg-red-100 text-red-700 px-1 rounded border border-red-200">Rsn: ${l.reason}</span>` : ''}
+                    </div>
+                `;
+
+                // Quick Action Buttons based on status
+                if(l.status === 'new') {
+                    cardHtml += `<button onclick="updateLeadStatus('${l.id}', 'reached', true)" class="w-full mt-2 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 text-[10px] font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1"><i class="ph-fill ph-whatsapp-logo"></i> Send 1st Msg</button>`;
+                } else if(l.status === 'nego') {
+                    cardHtml += `<button onclick="jumpToDocs('OFF', '${l.id}')" class="w-full mt-2 bg-yellow-50 text-yellow-700 hover:bg-yellow-100 border border-yellow-200 text-[10px] font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1"><i class="ph-bold ph-file-text"></i> Buat Offer Letter</button>`;
+                } else if(l.status === 'won') {
+                    cardHtml += `<button onclick="jumpToDocs('INV', '${l.id}')" class="w-full mt-2 bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 text-[10px] font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1"><i class="ph-bold ph-receipt"></i> Generate Tagihan</button>`;
+                }
+
+                cardHtml += `</div>`;
+                
+                // Append to correct column
+                if(columns[l.status]) {
+                    document.getElementById(columns[l.status]).innerHTML += cardHtml;
+                }
+            });
+
+            // Update Dashboard Stats
+            document.getElementById('stat-total').innerText = stats.total;
+            document.getElementById('stat-nego').innerText = stats.nego;
+            document.getElementById('stat-won').innerText = stats.won;
+            document.getElementById('stat-lost').innerText = stats.lost;
+            
+            const totalPipeline = stats.won + stats.lost; // Simplified conversion logic
+            const convRate = totalPipeline > 0 ? Math.round((stats.won / totalPipeline) * 100) : 0;
+            document.getElementById('stat-conversion').innerText = convRate + '%';
+        }
+
+        // --- UPDATE STATUS LOGIC (Termasuk Alasan Gagal & Follow Up) ---
+        function updateLeadStatus(leadId, newStatus, isFirstMsg = false) {
+            const index = leads.findIndex(l => l.id === leadId);
+            if(index === -1) return;
+
+            if(isFirstMsg) {
+                alert("Membuka WhatsApp Web dan menyalin template pesan pembuka...");
+                newStatus = 'reached';
             }
-            setTimeout(add, Math.random()*(maxInt-minInt)+minInt);
-        }
-        setupCounter('count-web-lite', 10, 5000, 15000); 
-        setupCounter('count-web-premium', 5, 20000, 60000);
-        setupCounter('count-stock', 3, 60000, 180000);
-        setupCounter('count-pos', 2, 120000, 300000);
 
-        function setupDrag(id) {
-            const s = document.getElementById(id); let d=false, sx, sl;
-            const start = e => { d=true; s.classList.add('active','animation-paused'); sx = (e.pageX || e.touches[0].pageX) - s.offsetLeft; sl = s.scrollLeft; };
-            const stop = () => { d=false; s.classList.remove('active','animation-paused'); };
-            const move = e => { if(!d)return; e.preventDefault(); s.scrollLeft = sl - (((e.pageX || e.touches[0].pageX) - s.offsetLeft) - sx)*2; };
-            s.addEventListener('mousedown', start); s.addEventListener('touchstart', start);
-            s.addEventListener('mouseleave', stop); s.addEventListener('mouseup', stop); s.addEventListener('touchend', stop);
-            s.addEventListener('mousemove', move); s.addEventListener('touchmove', move);
+            // Jika status dirubah ke LOST, minta alasan
+            if(newStatus === 'lost') {
+                const reason = prompt("Wah, sayang sekali. Apa alasan klien batal/gagal? (Cth: Out of budget, Ghosting, Fitur kurang):");
+                if(reason) {
+                    leads[index].reason = reason;
+                } else {
+                    return; // Batalkan jika tidak diisi alasan
+                }
+            }
+
+            // Jika status dirubah ke NURTURE, minta estimasi bulan follow up
+            if(newStatus === 'nurture') {
+                const followMonth = prompt("Kapan kira-kira klien ini mau di-follow up lagi? (Cth: Juni 2026, Tahun Depan):");
+                leads[index].followupDate = followMonth || "Next Time";
+            }
+
+            leads[index].status = newStatus;
+            leads[index].lastContact = "Just Now"; // Update otomatis
+            
+            renderCRM();
         }
-        setupDrag('wrapper-1'); setupDrag('wrapper-2');
+
+        function toggleBasement() {
+            const content = document.getElementById('basementContent');
+            const icon = document.getElementById('basement-icon');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // --- BRIDGE TO DOCS ---
+        function openGenerator(type) { switchManagerialView('docGen'); }
+        function jumpToDocs(docType, leadId) {
+            openGenerator(docType);
+            // Di sistem asli, ini akan mengirim ID Lead ke fungsi pembuatan PDF
+            alert(`Jembatan sukses! Sistem membawa data klien "${leads.find(l=>l.id===leadId).name}" untuk dibuatkan dokumen ${docType}.`);
+        }
     </script>
 </body>
 </html>
