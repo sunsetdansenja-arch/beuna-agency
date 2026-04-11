@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beuna Web Architect | Mesin Cuan Digital</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
+
+    <style>
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            /* Background gradasi maroon gelap ke hitam elegan */
+            background: linear-gradient(135deg, #0f172a 0%, #450a0a 50%, #0f172a 100%);
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism Effect ala Apple OS */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+        
+        .glass-button {
+            background: rgba(220, 38, 38, 0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            transition: all 0.3s ease;
+        }
+        .glass-button:hover {
+            background: rgba(220, 38, 38, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.5);
+        }
+
+        /* Animasi */
+        .fade-in { animation: fadeIn 1s ease-in forwards; opacity: 0; transform: translateY(20px); }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto glass-card px-6 py-3 flex justify-between items-center rounded-full">
+            <div class="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" class="h-8 filter invert brightness-0" alt="Beuna Logo">
+                <span class="font-bold text-xl tracking-tighter text-white">BEUNA<span class="text-red-500">.WEB</span></span>
+            </div>
+            <div class="hidden md:flex gap-6 items-center">
+                <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Sistem</a>
+                <a href="indexsosmed.html" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Sosmed</a>
+                <a href="aboutbeuna.html" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors">Tentang Kami</a>
+            </div>
+            <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20gue%20habis%20liat%20web%20kalian.%20Boleh%20bantu%20bedah%20bisnis%20gue%20biar%20sistemnya%20se-estetik%20Beuna?" class="glass-button text-white px-5 py-2 rounded-full font-bold text-sm">Konsultasi</a>
+        </div>
+    </nav>
+
+    <header class="max-w-5xl mx-auto px-6 pt-40 pb-20 text-center relative z-10 flex-grow fade-in">
+        <div class="inline-flex items-center gap-2 bg-slate-900/50 border border-slate-700 font-bold px-4 py-1.5 rounded-full mb-8 text-sm text-slate-300">
+            <span class="text-red-500">🔥</span> <span id="count-hero">519</span> Brand Telah Meninggalkan Web Lama Mereka.
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight text-white">
+            Bukan Sekadar Brosur Digital.<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-300">Ini Mesin Kasir Lo.</span>
+        </h1>
+        
+        <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium">
+            Web lambat bikin leads kabur. Kami rancang arsitektur web berkecepatan tinggi yang terintegrasi langsung dengan database lo. Cantik di luar, otomatis di dalam.
+        </p>
+
+        <div class="flex flex-col items-center gap-3">
+            <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20gue%20habis%20liat%20web%20kalian.%20Boleh%20bantu%20bedah%20bisnis%20gue%20biar%20sistemnya%20se-estetik%20Beuna?" class="bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.6)] hover:-translate-y-1">
+                Bedah Web Gue Sekarang ➔
+            </a>
+            <span class="text-xs text-slate-400 font-medium">*Chat via WA. Tanpa komitmen untuk beli.</span>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 py-10 fade-in delay-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card p-6 flex flex-col justify-between">
+                <p class="text-slate-300 italic mb-4">"Dulu web gue muter doang pas di-klik dari IG Ads. Sejak di-rebuild Beuna pake infrastruktur modern, loading cuma 1 detik. Leads yang tadinya kabur langsung tembus ke WA."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-slate-800 rounded-full flex justify-center items-center font-bold text-red-500">R</div>
+                    <div><h4 class="font-bold text-white">Reza</h4><p class="text-xs text-red-400">Owner Retail & Fashion</p></div>
+                </div>
+            </div>
+            <div class="glass-card p-6 flex flex-col justify-between">
+                <p class="text-slate-300 italic mb-4">"Bukan sekadar web. Form ordernya langsung nembak ke Google Sheets dan di-follow up bot otomatis. Gue beneran tinggal rebahan nunggu notif transferan."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-slate-800 rounded-full flex justify-center items-center font-bold text-red-500">D</div>
+                    <div><h4 class="font-bold text-white">Dinda</h4><p class="text-xs text-red-400">F&B Franchise</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="max-w-7xl mx-auto px-6 py-20 fade-in delay-2">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Investasi Aset Digital.</h2>
+            <p class="text-slate-400">Pilih infrastruktur yang sesuai dengan skala tempur bisnis lo.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="glass-card p-8 relative flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2">Web Lite</h3>
+                <p class="text-sm text-slate-400 mb-6">Untuk UMKM mulai go-digital.</p>
+                <div class="text-3xl font-bold text-white mb-6">700k</div>
+                <ul class="text-sm text-slate-300 space-y-3 mb-8 flex-grow">
+                    <li>✅ 1 Halaman (Landing Page)</li>
+                    <li>✅ Subdomain Super Cepat</li>
+                    <li>✅ Desain Apple Aesthetic</li>
+                    <li>✅ Tombol Direct WA</li>
+                </ul>
+                <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20mau%20ambil%20Web%20Lite%20700k" class="glass-button w-full py-3 rounded-xl font-bold text-center text-white">Pilih Lite</a>
+            </div>
+
+            <div class="glass-card p-8 relative flex flex-col border border-red-500/50 shadow-[0_0_30px_rgba(220,38,38,0.15)] transform md:-translate-y-4">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold w-max">🔥 Paling Laris</div>
+                <h3 class="text-xl font-bold text-white mb-2 mt-2">Web Pro</h3>
+                <p class="text-sm text-slate-400 mb-6">Kelihatan mahal & terpercaya.</p>
+                <div class="text-3xl font-bold text-red-500 mb-6">1,5 Jt</div>
+                <ul class="text-sm text-slate-300 space-y-3 mb-8 flex-grow">
+                    <li>✅ Custom Domain (.com/.id)</li>
+                    <li>✅ 3-5 Halaman Website</li>
+                    <li>✅ SEO Basic Setup</li>
+                    <li>✅ Kecepatan Akses Tinggi</li>
+                </ul>
+                <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20mau%20bangun%20Web%20Pro%201,5Jt" class="bg-red-600 hover:bg-red-500 transition-colors w-full py-3 rounded-xl font-bold text-center text-white">Bangun Web Pro</a>
+            </div>
+
+            <div class="glass-card p-8 relative flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2">Integrated</h3>
+                <p class="text-sm text-slate-400 mb-6">Otomasi operasional & database.</p>
+                <div class="text-2xl font-bold text-white mb-6">3,5 Jt <span class="text-sm font-normal text-slate-400">- 5 Jt</span></div>
+                <ul class="text-sm text-slate-300 space-y-3 mb-8 flex-grow">
+                    <li>✅ Semua Fitur Web Pro</li>
+                    <li>⚙️ Integrasi n8n System</li>
+                    <li>📊 Form to Google Sheets</li>
+                    <li>🤖 Notifikasi WA Otomatis</li>
+                </ul>
+                <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20butuh%20Web%20Integrated%20dengan%20Sistem" class="glass-button w-full py-3 rounded-xl font-bold text-center text-white">Konsultasi Sistem</a>
+            </div>
+
+            <div class="glass-card p-8 relative flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2">Enterprise</h3>
+                <p class="text-sm text-slate-400 mb-6">Solusi custom skala besar.</p>
+                <div class="text-2xl font-bold text-white mb-6">7,5 Jt+</div>
+                <ul class="text-sm text-slate-300 space-y-3 mb-8 flex-grow">
+                    <li>✅ Full Custom Web App</li>
+                    <li>✅ POS Multibranch</li>
+                    <li>✅ Manajemen Stok Real-time</li>
+                    <li>✅ Dashboard Audit Khusus</li>
+                </ul>
+                <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20mau%20meeting%20untuk%20sistem%20Enterprise" class="glass-button w-full py-3 rounded-xl font-bold text-center text-white">Jadwalkan Meeting</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-800 mt-auto pt-10 pb-6 text-center">
+        <div class="flex flex-col items-center gap-4 mb-6">
+            <p class="text-slate-400 text-sm">Hubungi via Email: <a href="mailto:beunadigital@gmail.com" class="text-white hover:text-red-500 transition-colors">beunadigital@gmail.com</a></p>
+            <p class="text-slate-400 text-sm">Hotline / WA: <a href="https://wa.me/6288210464992" class="text-white hover:text-red-500 transition-colors">0882-1046-4992</a></p>
+        </div>
+        <p class="font-bold text-slate-600 text-xs tracking-widest uppercase">&copy; 2026 BEUNA DIGITAL AGENCY.</p>
+    </footer>
+
+    <script>
+        function runCounter() {
+            const el = document.getElementById('count-hero');
+            if(!el) return;
+            let current = parseInt(el.innerText);
+            const target = current + Math.floor(Math.random() * 5) + 1; // Nambah acak 1-5
+            
+            function update() {
+                if(current < target) {
+                    current++;
+                    el.innerText = current;
+                    setTimeout(update, Math.random() * 2000 + 1000); // Nambah tiap 1-3 detik
+                }
+            }
+            setTimeout(update, 3000);
+        }
+        // Jalanin pas web dibuka
+        window.addEventListener('DOMContentLoaded', runCounter);
+    </script>
+</body>
+</html>
