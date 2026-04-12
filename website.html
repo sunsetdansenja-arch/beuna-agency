@@ -8,168 +8,192 @@
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Gaya Dark Mode SaaS Modern */
+        /* Gaya Clean & Professional */
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #0a0a0a; /* Hitam pekat */
-            color: #e5e5e5; 
+            background-color: #F8FAFC; /* Slate 50 - Off white yang elegan */
+            color: #0F172A; /* Slate 900 - Nyaman dibaca */
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
         
-        /* Bento Grid Card */
-        .bento-card {
-            background: #121212;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            box-shadow: 0 4px 24px -8px rgba(0,0,0,0.5);
-            transition: border-color 0.3s ease;
+        /* Clean Card dengan Subtle Shadow */
+        .clean-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
         }
-        .bento-card:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .clean-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
 
-        /* Aksen Glow */
-        .glow-blue { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3); }
-        
         /* Animasi Angka Nambah */
-        .pop-number { animation: pop 0.3s ease-out; color: #60a5fa; }
-        @keyframes pop { 50% { transform: scale(1.2); } }
+        .pop-number { animation: pop 0.4s cubic-bezier(0.16, 1, 0.3, 1); color: #2563EB; }
+        @keyframes pop { 50% { transform: scale(1.15); } }
 
         /* Sticky Mobile Button Safe Area */
         .pb-safe { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+        
+        /* Highlight Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #2563EB 0%, #0284C7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body class="pb-safe selection:bg-blue-500 selection:text-white">
+<body class="pb-safe selection:bg-blue-100 selection:text-blue-900">
 
-    <nav class="flex justify-between items-center px-6 py-5 border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-md sticky top-0 z-50">
+    <nav class="flex justify-between items-center px-6 py-4 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
         <div class="flex items-center gap-2">
-            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" class="h-6 filter invert" alt="Logo">
-            <span class="font-bold text-lg tracking-tight text-white">BEUNA.</span>
+            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" class="h-6" alt="Logo Beuna">
+            <span class="font-extrabold text-lg tracking-tight text-slate-900">BEUNA.</span>
         </div>
-        <a href="https://wa.me/6288210464992?text=Bro,%20mau%20konsultasi%20upgrade%20web%20nih." class="text-xs font-bold bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition">
-            Chat Kita
+        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20ingin%20konsultasi%20pembuatan%20website." class="text-sm font-semibold bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-blue-600 transition-colors shadow-sm">
+            Konsultasi Gratis
         </a>
     </nav>
 
-    <header class="px-6 pt-16 pb-12 text-left">
-        <div class="inline-flex items-center gap-2 bg-blue-900/30 border border-blue-500/30 text-blue-400 font-semibold px-3 py-1 rounded-full text-[10px] uppercase tracking-wider mb-6">
-            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-            Infrastruktur Gen-Z
+    <header class="px-6 pt-16 pb-12 text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 font-bold px-3 py-1.5 rounded-full text-xs uppercase tracking-wide mb-6">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            Sistem Web & Otomasi
         </div>
         
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-white tracking-tight">
-            Web Lo Lemot, <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Leads Lo Dibajak Kompetitor.</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-slate-900 tracking-tight">
+            Stop Kehilangan Klien Gara-Gara <span class="text-gradient">Web Lemot & Sistem Manual.</span>
         </h1>
         
-        <p class="text-gray-400 text-base mb-8 leading-relaxed max-w-lg">
-            Stop pake template murahan. Kami bangun *Web App* berkecepatan tinggi yang narik data order langsung ke WA & Google Sheets. Otomatis, tanpa admin ngetik manual.
+        <p class="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
+            Klien potensial tidak punya waktu untuk menunggu. Kami merancang arsitektur website berkecepatan tinggi yang terintegrasi langsung dengan database dan WhatsApp bisnis Anda.
         </p>
 
-        <a href="#pricing" class="inline-block w-full text-center bg-blue-600 text-white px-6 py-4 rounded-xl font-bold text-sm glow-blue active:scale-95 transition-transform">
-            Lihat Solusi & Harga ↓
+        <a href="#pricing" class="inline-block w-full md:w-auto text-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-base transition-all shadow-lg shadow-blue-600/20">
+            Lihat Infrastruktur Kami ↓
         </a>
     </header>
 
-    <section class="px-6 py-8">
-        <div class="bento-card p-6 border-l-4 border-l-blue-500">
-            <h3 class="font-bold text-white text-lg mb-2">Fakta Pahit Operasional:</h3>
-            <p class="text-sm text-gray-400 leading-relaxed mb-4">"Customer umur 20-an males nunggu web loading lebih dari 3 detik. Kalau lemot, mereka *close tab* dan lari ke toko sebelah."</p>
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-xs font-bold">B</div>
-                <div><p class="text-xs font-bold text-white">Beuna Insight</p><p class="text-[10px] text-gray-500">Data Analytics 2026</p></div>
+    <section class="px-6 py-10 max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="clean-card p-6 border-l-4 border-l-red-500">
+                <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center mb-4 text-xl">⏳</div>
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Konversi Drop 60%</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Riset membuktikan klien akan menutup tab jika web loading lebih dari 3 detik. Template murahan membunuh penjualan Anda sebelum dimulai.</p>
+            </div>
+            <div class="clean-card p-6 border-l-4 border-l-orange-500">
+                <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center mb-4 text-xl">📝</div>
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Admin Kewalahan</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Masih merekap jadwal WO, orderan bakery, atau booking travel secara manual? Kesalahan input data (*human error*) merusak reputasi brand Anda.</p>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="px-6 py-12">
-        <h2 class="text-2xl font-bold text-white mb-6">Pilih Infrastruktur Lo.</h2>
-        
-        <div class="flex flex-col gap-5">
+    <section id="pricing" class="px-6 py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Investasi Aset Digital.</h2>
+                <p class="text-slate-600 max-w-xl mx-auto">Pilih spesifikasi yang paling sesuai dengan skala operasional bisnis Anda saat ini.</p>
+            </div>
             
-            <div class="bento-card p-6 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-gray-800 text-xs font-bold px-3 py-1 rounded-bl-lg border-b border-l border-white/10 text-gray-300">
-                    Dipakai <span id="cnt-lite" class="text-white">342</span> Bisnis
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="clean-card p-6 relative flex flex-col">
+                    <div class="absolute top-0 right-0 bg-slate-100 text-[10px] font-bold px-3 py-1.5 rounded-bl-lg rounded-tr-lg border-b border-l border-slate-200 text-slate-500">
+                        Dipilih <span id="cnt-lite" class="text-slate-900 font-extrabold">342</span> Klien
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mt-2">Web Lite</h3>
+                    <p class="text-xs text-slate-500 mt-1 mb-5">Validasi cepat untuk UMKM.</p>
+                    <div class="text-2xl font-extrabold text-blue-600 mb-6">Rp 700K</div>
+                    <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>1 Halaman Landing Page</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>Subdomain Vercel (Fast Load)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>Tombol Direct WhatsApp</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20tertarik%20dengan%20Web%20Lite." class="block text-center w-full border-2 border-slate-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white text-slate-700 py-3 rounded-xl font-bold text-sm transition-all">Pilih Web Lite</a>
                 </div>
-                <h3 class="text-xl font-bold text-white mt-4">Web Lite</h3>
-                <p class="text-xs text-gray-400 mt-1 mb-4">Buat validasi ide / UMKM pemula.</p>
-                <div class="text-2xl font-bold text-white mb-6">700 Ribu</div>
-                <ul class="text-sm text-gray-300 space-y-3 mb-6">
-                    <li class="flex items-start gap-2">✓ <span>1 Halaman Landing Page</span></li>
-                    <li class="flex items-start gap-2">✓ <span>Subdomain Vercel (Super Cepat)</span></li>
-                    <li class="flex items-start gap-2">✓ <span>Tombol Direct WA</span></li>
-                </ul>
-                <a href="https://wa.me/6288210464992?text=Bro,%20mau%20ambil%20Web%20Lite%20700k" class="block text-center w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-lg font-bold text-sm transition">Sikat Paket Lite</a>
-            </div>
 
-            <div class="bento-card p-6 relative border-blue-500/50 glow-blue">
-                <div class="absolute top-0 right-0 bg-blue-600 text-xs font-bold px-3 py-1 rounded-bl-lg text-white">
-                    Paling Laris • <span id="cnt-pro" class="text-white">186</span> Aktif
+                <div class="clean-card p-6 relative border-blue-500 shadow-md ring-1 ring-blue-500 flex flex-col transform md:-translate-y-2">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-4 py-1 rounded-full shadow-sm">
+                        REKOMENDASI KAMI
+                    </div>
+                    <div class="absolute top-0 right-0 bg-blue-50 text-[10px] font-bold px-3 py-1.5 rounded-bl-lg rounded-tr-lg border-b border-l border-blue-100 text-blue-700 mt-3">
+                        <span id="cnt-pro" class="text-blue-900 font-extrabold">186</span> Aktif
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mt-4">Web Pro</h3>
+                    <p class="text-xs text-slate-500 mt-1 mb-5">Identitas profesional & kredibel.</p>
+                    <div class="text-2xl font-extrabold text-slate-900 mb-6">Rp 1,5 Jt</div>
+                    <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-2 font-bold text-slate-900"><span class="text-blue-600">✓</span> <span>Custom Domain (.com/.id)</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>3-5 Halaman Website</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>SEO Basic & Analytics</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>Desain Premium UI/UX</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20membangun%20Web%20Pro." class="block text-center w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold text-sm transition-all shadow-md shadow-blue-600/20">Bangun Web Pro</a>
                 </div>
-                <h3 class="text-xl font-bold text-white mt-4">Web Pro</h3>
-                <p class="text-xs text-gray-400 mt-1 mb-4">Identitas brand profesional.</p>
-                <div class="text-2xl font-bold text-white mb-6">1,5 Juta</div>
-                <ul class="text-sm text-gray-300 space-y-3 mb-6">
-                    <li class="flex items-start gap-2 text-blue-400 font-bold">✓ <span>Custom Domain (.com/.id)</span></li>
-                    <li class="flex items-start gap-2">✓ <span>3-5 Halaman Website</span></li>
-                    <li class="flex items-start gap-2">✓ <span>SEO Basic & Analytics Tracker</span></li>
-                </ul>
-                <a href="https://wa.me/6288210464992?text=Bro,%20mau%20bangun%20Web%20Pro%201.5Jt" class="block text-center w-full bg-blue-600 text-white py-3 rounded-lg font-bold text-sm transition">Bangun Web Pro</a>
-            </div>
 
-            <div class="bento-card p-6 relative">
-                <div class="absolute top-0 right-0 bg-gray-800 text-xs font-bold px-3 py-1 rounded-bl-lg border-b border-l border-white/10 text-gray-300">
-                    Dipakai <span id="cnt-int" class="text-white">64</span> Bisnis
+                <div class="clean-card p-6 relative flex flex-col">
+                    <div class="absolute top-0 right-0 bg-slate-100 text-[10px] font-bold px-3 py-1.5 rounded-bl-lg rounded-tr-lg border-b border-l border-slate-200 text-slate-500">
+                        Digunakan <span id="cnt-int" class="text-slate-900 font-extrabold">64</span> Bisnis
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mt-2">Integrated</h3>
+                    <p class="text-xs text-slate-500 mt-1 mb-5">Otomasi database operasional.</p>
+                    <div class="text-2xl font-extrabold text-slate-900 mb-1">Rp 3,5 Jt <span class="text-sm font-normal text-slate-500">- 5 Jt</span></div>
+                    <div class="w-full h-px bg-slate-100 my-4"></div>
+                    <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>Semua fitur Web Pro</span></li>
+                        <li class="flex items-start gap-2 font-bold text-emerald-600"><span class="text-emerald-500">✓</span> <span>Integrasi API & n8n System</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>Form to Google Sheets</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">✓</span> <span>Notifikasi WA Otomatis</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20butuh%20web%20yang%20terintegrasi%20sistem." class="block text-center w-full border-2 border-slate-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white text-slate-700 py-3 rounded-xl font-bold text-sm transition-all">Konsultasi Integrasi</a>
                 </div>
-                <h3 class="text-xl font-bold text-white mt-4">Integrated</h3>
-                <p class="text-xs text-gray-400 mt-1 mb-4">Otomasi form & database operasional.</p>
-                <div class="text-2xl font-bold text-white mb-6">3,5 - 5 Juta</div>
-                <ul class="text-sm text-gray-300 space-y-3 mb-6">
-                    <li class="flex items-start gap-2">✓ <span>Semua fitur Web Pro</span></li>
-                    <li class="flex items-start gap-2 text-green-400 font-bold">✓ <span>Integrasi API & n8n System</span></li>
-                    <li class="flex items-start gap-2">✓ <span>Order masuk WA & Google Sheets</span></li>
-                </ul>
-                <a href="https://wa.me/6288210464992?text=Bro,%20gue%20butuh%20web%20yang%20terintegrasi%20sistem" class="block text-center w-full bg-white/10 text-white py-3 rounded-lg font-bold text-sm transition">Konsultasi Integrasi</a>
-            </div>
 
-            <div class="bento-card p-6 relative">
-                <div class="absolute top-0 right-0 bg-gray-800 text-xs font-bold px-3 py-1 rounded-bl-lg border-b border-l border-white/10 text-gray-300">
-                    <span id="cnt-ent" class="text-white">18</span> Korporat
+                <div class="clean-card p-6 relative flex flex-col bg-slate-900 text-white">
+                    <div class="absolute top-0 right-0 bg-slate-800 text-[10px] font-bold px-3 py-1.5 rounded-bl-lg rounded-tr-lg text-slate-300">
+                        <span id="cnt-ent" class="text-white font-extrabold">18</span> Mitra
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white mt-2">Enterprise</h3>
+                    <p class="text-xs text-slate-400 mt-1 mb-5">Solusi skala besar & custom.</p>
+                    <div class="text-2xl font-extrabold text-white mb-6">Mulai Rp 7,5 Jt</div>
+                    <ul class="text-sm text-slate-300 space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-2"><span class="text-blue-400">✓</span> <span>Full Custom Web App</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-400">✓</span> <span>POS Multibranch</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-400">✓</span> <span>Manajemen Stok Gudang</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-400">✓</span> <span>Dashboard Audit Khusus</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20jadwal%20meeting%20untuk%20sistem%20Enterprise." class="block text-center w-full bg-white text-slate-900 hover:bg-slate-200 py-3 rounded-xl font-bold text-sm transition-all">Jadwal Meeting</a>
                 </div>
-                <h3 class="text-xl font-bold text-white mt-4">Enterprise</h3>
-                <p class="text-xs text-gray-400 mt-1 mb-4">Full custom logic & dashboard.</p>
-                <div class="text-2xl font-bold text-white mb-6">7,5 Juta+</div>
-                <ul class="text-sm text-gray-300 space-y-3 mb-6">
-                    <li class="flex items-start gap-2">✓ <span>Custom Web App (React/Vue)</span></li>
-                    <li class="flex items-start gap-2">✓ <span>Sistem Kasir (POS) Multibranch</span></li>
-                    <li class="flex items-start gap-2">✓ <span>Manajemen Stok Real-time</span></li>
-                </ul>
-                <a href="https://wa.me/6288210464992?text=Bro,%20gue%20mau%20bikin%20sistem%20Enterprise" class="block text-center w-full border border-white/20 text-white py-3 rounded-lg font-bold text-sm transition">Jadwalkan Meeting</a>
-            </div>
 
+            </div>
         </div>
     </section>
 
-    <footer class="px-6 pt-8 pb-10 border-t border-white/10 text-center">
-        <p class="text-xs text-gray-500 mb-2">beunadigital@gmail.com | 0882-1046-4992</p>
-        <p class="text-[10px] font-bold text-gray-600 tracking-widest uppercase">© 2026 BEUNA SYSTEMS.</p>
+    <footer class="px-6 pt-10 pb-12 bg-white border-t border-slate-200 text-center">
+        <div class="flex flex-col items-center justify-center gap-1 mb-4">
+            <a href="mailto:beunadigital@gmail.com" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">beunadigital@gmail.com</a>
+            <a href="https://wa.me/6288210464992" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">WA: 0882-1046-4992</a>
+        </div>
+        <p class="text-[10px] font-bold text-slate-400 tracking-widest uppercase">&copy; 2026 BEUNA SYSTEMS ARCHITECT.</p>
     </footer>
 
-    <div class="fixed bottom-4 left-0 right-0 px-6 z-50 md:hidden">
-        <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20gue%20mau%20konsul%20website." class="flex justify-center items-center gap-2 w-full bg-white text-black py-4 rounded-2xl font-extrabold text-sm shadow-[0_10px_40px_rgba(255,255,255,0.2)] active:scale-95 transition-transform">
-            💬 Konsultasi Gratis di WA Sekarang
+    <div class="fixed bottom-4 left-0 right-0 px-4 z-50 md:hidden">
+        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20konsultasi%20website." class="flex justify-center items-center gap-2 w-full bg-slate-900 text-white py-3.5 rounded-2xl font-bold text-sm shadow-[0_8px_30px_rgba(15,23,42,0.3)] active:scale-95 transition-transform">
+            💬 Konsultasi Gratis di WhatsApp
         </a>
     </div>
 
     <script>
-        // Konfigurasi counter per paket. Angka dibuat logis.
         const counters = [
-            { id: 'cnt-lite', current: 342, chance: 0.7, maxAdd: 2, delay: 5000 },  // Paling murah, peluang nambah paling tinggi
-            { id: 'cnt-pro', current: 186, chance: 0.5, maxAdd: 1, delay: 8000 },   // Lumayan laris
-            { id: 'cnt-int', current: 64, chance: 0.2, maxAdd: 1, delay: 15000 },   // Mahal, jarang nambah pas lagi dilihat
-            { id: 'cnt-ent', current: 18, chance: 0.05, maxAdd: 1, delay: 25000 }   // Sangat mahal, sangat jarang nambah
+            { id: 'cnt-lite', current: 342, chance: 0.7, maxAdd: 2, delay: 5000 },
+            { id: 'cnt-pro', current: 186, chance: 0.5, maxAdd: 1, delay: 8000 },
+            { id: 'cnt-int', current: 64, chance: 0.2, maxAdd: 1, delay: 15000 },
+            { id: 'cnt-ent', current: 18, chance: 0.05, maxAdd: 1, delay: 25000 }
         ];
 
         counters.forEach(counter => {
@@ -177,23 +201,17 @@
             if(!el) return;
 
             function triggerCount() {
-                // Pakai probabilitas biar nambahnya natural, nggak kaku kaya mesin
                 if(Math.random() < counter.chance) {
                     counter.current += Math.floor(Math.random() * counter.maxAdd) + 1;
                     el.innerText = counter.current;
                     
-                    // Kasih animasi nge-pop biar mata user sadar angkanya berubah
                     el.classList.remove('pop-number');
-                    void el.offsetWidth; // Trigger DOM reflow
+                    void el.offsetWidth; 
                     el.classList.add('pop-number');
                 }
-                
-                // Set interval acak untuk eksekusi selanjutnya (biar gak ketebak)
                 const nextDelay = counter.delay + (Math.random() * 5000);
                 setTimeout(triggerCount, nextDelay);
             }
-
-            // Mulai hitung setelah delay awal
             setTimeout(triggerCount, counter.delay);
         });
     </script>
