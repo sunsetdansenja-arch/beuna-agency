@@ -52,7 +52,23 @@
         }
         .animate-promo { animation: pulse-promo 1.5s infinite; }
     </style>
-</head>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2437179683410017');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2437179683410017&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
 <body class="text-slate-900 pb-safe selection:bg-red-200 selection:text-slate-900">
 
     <nav class="flex justify-center md:justify-between items-center px-4 md:px-6 py-4 border-b-4 border-slate-900 bg-white sticky top-0 z-50">
