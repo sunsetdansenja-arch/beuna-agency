@@ -2,72 +2,335 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beuna System Specialist | Arsitek Sistem Bisnis</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Beuna Web Architect | Mesin Otomasi Bisnis</title>
+    
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #f8fafc; overflow-x: hidden; }
-        .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(30, 58, 138, 1); }
-        .brutal-shadow:hover { box-shadow: 2px 2px 0px 0px rgba(30, 58, 138, 1); transform: translate(4px, 4px); }
-        .marquee-wrapper { display: flex; overflow-x: scroll; white-space: nowrap; position: relative; padding: 20px 0; background: #ffffff; border-top: 2px solid #1e3a8a; border-bottom: 2px solid #1e3a8a; cursor: grab; scrollbar-width: none; }
-        .marquee-wrapper::-webkit-scrollbar { display: none; }
-        .marquee-content { display: flex; animation: scroll-left 120s linear infinite; }
-        .testi-card { display: inline-block; background: #eff6ff; border: 2px solid #1e3a8a; border-radius: 12px; padding: 16px 24px; margin: 0 12px; min-width: 350px; white-space: normal; }
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #ffffff; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+        
+        /* Dynamic Neo-Brutalism */
+        .brutal-shadow { 
+            box-shadow: 4px 4px 0px 0px rgba(15, 23, 42, 1); 
+            transition: all 0.2s ease; 
+        }
+        .brutal-shadow-sm { 
+            box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1); 
+        }
+        
+        @media (min-width: 768px) {
+            .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(15, 23, 42, 1); }
+            .brutal-shadow:hover { transform: translate(4px, 4px); box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1); }
+            .brutal-shadow-sm { box-shadow: 3px 3px 0px 0px rgba(15, 23, 42, 1); }
+        }
+        
+        /* Scrollbar Hidden tapi tetap bisa di-swipe */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* FAQ Accordion */
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        
+        /* Sticky Mobile Safe Area */
+        .pb-safe { padding-bottom: calc(85px + env(safe-area-inset-bottom)); }
+
+        /* Animasi Kedip buat Promo */
+        @keyframes pulse-promo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-promo { animation: pulse-promo 1.5s infinite; }
     </style>
-</head>
-<body class="text-slate-900">
-    <nav class="flex justify-between items-center px-4 md:px-6 py-4 border-b-2 border-slate-900 bg-white sticky top-0 z-50">
-        <div class="flex flex-col">
-            <div class="flex items-center gap-2 md:gap-3">
-                <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" class="h-7 md:h-8">
-                <span class="font-bold text-xl md:text-2xl tracking-tighter">BEUNA.</span>
-            </div>
-            <a href="aboutbeuna.html" class="md:hidden mt-1 ml-9 text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-800 px-2 py-0.5 rounded-full shadow-[2px_2px_0px_0px_rgba(30,58,138,1)]">Tentang Kami ➔</a>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2437179683410017');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2437179683410017&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
+<body class="text-slate-900 pb-safe selection:bg-red-200 selection:text-slate-900">
+
+    <nav class="flex justify-center md:justify-between items-center px-4 md:px-6 py-4 border-b-4 border-slate-900 bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="h-6 md:h-8">
+            <span class="font-bold text-xl md:text-2xl tracking-tighter text-red-700 underline decoration-2 underline-offset-4">BEUNA<span class="text-slate-900">.WEB</span></span>
         </div>
-        <div class="flex items-center gap-4">
-            <a href="aboutbeuna.html" class="hidden md:block font-bold text-slate-600 hover:text-blue-600 underline underline-offset-4 decoration-transparent hover:decoration-blue-600">Tentang Kami</a>
-            <a href="https://wa.me/6285359033973" class="bg-blue-600 text-white border-2 border-slate-900 px-4 py-1.5 rounded-full font-bold brutal-shadow">Konsultasi</a>
-        </div>
+        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20konsultasi%20bikin%20sistem%20untuk%20bisnis%20saya." onclick="fbq('track', 'Lead');" class="bg-red-700 text-white border-2 border-slate-900 px-6 py-2 rounded-full font-bold text-base brutal-shadow hidden md:block">Konsultasi Gratis</a>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-20 text-center">
-        <div class="inline-block bg-blue-100 text-blue-700 border-2 border-blue-700 font-bold px-4 py-1 rounded-full mb-6 transform -rotate-2">🚀 Bikin Bisnis Lo Autopilot</div>
-        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">Arsitek Sistem Buat <br class="hidden md:block"> Owner yang <span class="text-blue-600 underline decoration-4 underline-offset-8">Mau Rebahan.</span></h1>
-        <p class="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium">Stop nanya rekap ke admin. Kita bangunin "otak permanen" buat bisnis lo biar jalan otomatis.</p>
-        <a href="#services" class="bg-blue-600 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow">Pilih Infrastruktur Lo</a>
+    <header class="bg-white px-5 py-16 md:py-28 text-center border-b-4 border-slate-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="inline-block bg-red-100 text-red-900 border-2 border-slate-900 font-bold px-4 py-1.5 rounded-full mb-6 text-xs md:text-sm transform -rotate-2 brutal-shadow-sm tracking-wide">
+                🚀 Tinggalkan Cara Manual
+            </div>
+            <h1 class="text-[2.2rem] leading-[1.1] md:text-6xl font-extrabold mb-6 tracking-tight text-slate-900 px-2 md:px-0">
+                Website Tampil Mahal, <br class="hidden md:block"> Operasional Otomatis, <br class="md:hidden"><span class="text-red-700 underline decoration-4 underline-offset-[6px]">Lo Tinggal Terima Beres.</span>
+            </h1>
+            <p class="text-slate-600 text-base md:text-xl max-w-2xl mx-auto mb-10 font-medium leading-relaxed px-2">
+                Berhenti buang waktu ngeladenin klien yang cuma nanya harga. Kami rancang arsitektur web yang menaikkan nilai jual brand lo sekaligus merapikan data ke sistem.
+            </p>
+            <a href="#pricing" class="inline-block w-full md:w-auto bg-red-700 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow active:translate-y-1 active:shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] transition-transform">
+                Bedah Bisnis Gue ↓
+            </a>
+        </div>
     </header>
 
-    <section id="services" class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow relative">
-            <div class="absolute -top-5 -right-2 bg-blue-300 border-2 border-slate-900 font-bold px-4 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-xs">⭐ <span id="count-web-lite">519</span> UMKM</div>
-            <h3 class="text-3xl font-bold mb-3">Website Lite</h3>
-            <p class="text-slate-600 mb-8">Tampilan estetik, anti-lemot, harga merakyat.</p>
-            <div class="text-3xl font-bold text-blue-600 mb-6">Rp 700k</div>
-            <a href="https://wa.me/6285359033973" class="block text-center border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-slate-900 hover:text-white">Sikat Paket Lite</a>
-        </div>
-        <div class="bg-white border-2 border-slate-900 rounded-3xl p-8 brutal-shadow relative">
-            <div class="absolute -top-5 -right-2 bg-yellow-300 border-2 border-slate-900 font-bold px-4 py-2 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-xs">🔥 <span id="count-pos">218</span> Cabang</div>
-            <h3 class="text-3xl font-bold mb-3">POS Multibranch + CRM</h3>
-            <p class="text-slate-600 mb-8">Sistem kasir dewa. 12+ cabang kepantau di 1 layar.</p>
-            <div class="text-3xl font-bold text-blue-600 mb-6">Rp 7,5 Jt</div>
-            <a href="https://wa.me/6285359033973" class="block text-center bg-blue-600 text-white border-2 border-slate-900 py-4 rounded-xl font-bold hover:bg-white hover:text-slate-900">Eksekusi Sekarang</a>
+    <section class="bg-red-50 pt-16 pb-16 border-b-4 border-slate-900">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-8 px-5">
+                <h2 class="text-2xl font-bold text-red-900 mb-2">Masih Sering Ngalamin Ini?</h2>
+            </div>
+            <div class="flex md:grid md:grid-cols-2 gap-5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 px-5 md:px-6">
+                <div class="w-[82vw] md:w-auto shrink-0 snap-center bg-white border-2 border-slate-900 rounded-2xl p-6 brutal-shadow flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-red-100 border-2 border-slate-900 rounded-xl flex items-center justify-center mb-5 text-xl brutal-shadow-sm">💸</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-tight">Klien Sering Nawar Harga?</h3>
+                        <p class="text-sm text-slate-600 font-medium leading-relaxed">Itu karena "etalase" digital lo belum meyakinkan. Tampil profesional untuk menyaring klien berkualitas.</p>
+                    </div>
+                </div>
+                <div class="w-[82vw] md:w-auto shrink-0 snap-center bg-white border-2 border-slate-900 rounded-2xl p-6 brutal-shadow flex flex-col justify-between">
+                    <div class="w-12 h-12 bg-red-100 border-2 border-slate-900 rounded-xl flex items-center justify-center mb-5 text-xl brutal-shadow-sm">🤖</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-tight">Admin Capek Balas Chat?</h3>
+                        <p class="text-sm text-slate-600 font-medium leading-relaxed">Jadikan website "CS Digital" 24 jam. Biarkan sistem mencatat pesanan & atur jadwal otomatis.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="border-t-2 border-slate-900 bg-white py-8 text-center mt-10">
-        <p class="font-bold text-slate-600">&copy; 2026 Beuna Systems.</p>
+    <section id="pricing" class="bg-slate-50 px-5 py-20 md:py-28 border-b-4 border-slate-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-block border-2 border-slate-900 font-bold px-4 py-1.5 rounded-full mb-4 text-xs bg-white brutal-shadow-sm tracking-wide">
+                    INVESTASI ASET DIGITAL
+                </div>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">Pilih Kapasitas Mesin Lo.</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <div class="bg-white border-2 border-slate-900 rounded-3xl p-6 md:p-8 brutal-shadow relative flex flex-col border-t-8 border-t-red-600">
+                    <div class="absolute -top-4 -right-2 bg-slate-900 text-white border-2 border-slate-900 font-bold px-3 py-1.5 rounded-full text-[10px] md:text-xs brutal-shadow-sm">
+                        Dipakai <span class="text-emerald-400 font-extrabold text-sm">127</span> Bisnis
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold mb-1 uppercase italic text-slate-900 mt-2">Web Lite</h3>
+                    <p class="text-xs text-slate-500 font-bold tracking-wide">ETALASE CEPAT ONLINE</p>
+                    
+                    <div class="my-5 bg-red-50 p-3 rounded-xl border border-red-200">
+                        <div class="text-sm font-bold text-red-700 line-through mb-1">Rp 1.500.000</div>
+                        <div class="text-4xl md:text-5xl font-black text-red-700 tracking-tighter">700K</div>
+                        <div class="mt-2 text-xs font-bold text-red-900 flex items-center gap-1 animate-promo">
+                            ⏳ Promo berakhir dalam: <span id="countdown" class="bg-red-700 text-white px-2 py-0.5 rounded font-mono">--:--:--</span>
+                        </div>
+                    </div>
+
+                    <ul class="text-sm font-semibold text-slate-700 space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><span>✅</span> <span>1 Halaman Landing Page</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Mobile-Optimized (Super Ringan)</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>1 Tombol Langsung ke WA</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Domain disupport beuna</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20mau%20klaim%20promo%20Web%20Lite%20700K." onclick="fbq('track', 'Lead');" class="block w-full text-center border-2 border-slate-900 py-3 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all text-slate-900 active:bg-slate-800">Klaim Promo Lite</a>
+                </div>
+
+                <div class="bg-red-50 border-2 border-slate-900 rounded-3xl p-6 md:p-8 brutal-shadow relative flex flex-col transform md:-translate-y-6">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-700 text-white border-2 border-slate-900 text-[11px] md:text-xs font-bold px-6 py-2 rounded-full brutal-shadow-sm w-max tracking-widest">
+                        🔥 PALING IDEAL
+                    </div>
+                    <div class="absolute -top-4 -right-2 bg-slate-900 text-white border-2 border-slate-900 font-bold px-3 py-1.5 rounded-full text-[10px] md:text-xs brutal-shadow-sm">
+                        Dipakai <span class="text-emerald-400 font-extrabold text-sm">84</span> Bisnis
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold mb-1 uppercase italic text-slate-900 mt-4 md:mt-2">Web Pro</h3>
+                    <p class="text-xs text-slate-500 font-bold tracking-wide">COMPANY PROFILE + LEADS</p>
+                    
+                    <div class="text-4xl md:text-5xl font-black text-slate-900 my-5 tracking-tighter">2,3 Jt</div>
+                    
+                    <ul class="text-sm font-semibold text-slate-700 space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 font-bold text-red-800"><span>✅</span> <span>Domain Pribadi (.com / .id)</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>3-5 Halaman Website Lengkap</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Otomasi Formulir ke WA Admin</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Optimasi SEO Google Setup</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20membangun%20Web%20Pro%202,3Jt." onclick="fbq('track', 'Lead');" class="block w-full text-center bg-red-700 text-white border-2 border-slate-900 py-4 rounded-xl font-extrabold brutal-shadow-sm active:translate-y-1 active:shadow-none transition-all text-lg">Bangun Web Pro</a>
+                </div>
+
+                <div class="bg-slate-900 text-white border-2 border-slate-900 rounded-3xl p-6 md:p-8 brutal-shadow relative flex flex-col">
+                    <div class="absolute -top-4 -right-2 bg-white text-slate-900 border-2 border-slate-900 font-bold px-3 py-1.5 rounded-full text-[10px] md:text-xs brutal-shadow-sm">
+                        Dipakai <span class="text-red-700 font-extrabold text-sm">12</span> Bisnis Kakap
+                    </div>
+                    
+                    <h3 class="text-xl md:text-2xl font-bold mb-1 uppercase italic mt-2">Enterprise</h3>
+                    <p class="text-xs text-slate-400 font-bold tracking-wide">FULL CUSTOM SYSTEM</p>
+                    
+                    <div class="text-4xl md:text-5xl font-black text-white my-5 tracking-tighter"><span class="text-xl text-slate-400 font-medium tracking-normal">Mulai</span> 8 Jt</div>
+                    
+                    <ul class="text-sm font-semibold text-slate-300 space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Sistem Web App Custom / POS Dashboard</span></li>
+                        <li class="flex items-start gap-3 font-bold text-emerald-400"><span>⚙️</span> <span>Full Otomasi Notif WA & Integrasi DB</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Sistem Anti Double-Booking</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Free Maintenance & Priority Support</span></li>
+                    </ul>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20meeting%20untuk%20sistem%20skala%20Enterprise." onclick="fbq('track', 'Lead');" class="block w-full text-center bg-white text-slate-900 border-2 border-slate-900 py-3 rounded-xl font-bold active:bg-slate-200 transition-all hover:bg-slate-100">Jadwal Meeting</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-900 py-24 border-b-4 border-slate-900 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-12 px-5">
+                <span class="text-xs font-bold text-red-400 tracking-widest uppercase border-b-2 border-red-900 inline-block pb-2 mb-3">APA KATA MEREKA</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight">Bukan Janji, Ini Bukti.</h2>
+            </div>
+            
+            <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-10 px-5 md:px-12">
+                
+                <script>
+                    const testimonials = [
+                        { name: "Fajar", job: "Owner Rental", text: "Orderan jalan sendiri 24 jam. Investasi paket Pro balik modal sebulan doang!" },
+                        { name: "Sarah", job: "Klinik Estetika", text: "Leads dari IG ads langsung deres tembus ke WA tanpa bocor. Gengsi brand naik." },
+                        { name: "Doni", job: "F&B / Resto", text: "Sistem customnya gila, rekap omset 3 cabang otomatis masuk ke HP gue tiap malam." },
+                        { name: "Riska", job: "Skincare", text: "Web Lite cepet banget! Traffic lumayan rame gak pernah down, konversi naik drastis." },
+                        { name: "Hendra", job: "Tour & Travel", text: "Admin ngga capek balas chat nanya harga lagi, klien langsung baca dan book di web." },
+                        { name: "Dwi", job: "Jasa Laundry", text: "Notif WA otomatis ke pelanggan kalau cucian kelar. Customer puas, admin bebas ribet!" },
+                        { name: "Agil", job: "Barbershop", text: "Sistem bookingnya rapi, anti double-booking. Tukang cukur gue kerjanya jadi teratur." },
+                        { name: "Maya", job: "Wedding Organizer", text: "Tampilan elegan banget. Pas klien minta portofolio, gue cuma kasih link web." },
+                        { name: "Rico", job: "Property Agent", text: "Formulir ketertarikan langsung masuk ke WA gue detik itu juga. Cepat closing!" },
+                        { name: "Santi", job: "Catering", text: "Dulu pusing rekap manual. Sekarang data pesanan langsung rapi di Google Sheets otomatis." },
+                        { name: "Dimas", job: "Auto Detailing", text: "Tinggal terima beres, website jalan jadi mesin pencari duit. Owner bisa tidur tenang." },
+                        { name: "Tari", job: "Boutique", text: "Katalog bajunya gampang diakses di HP, loadnya kilat, customer jadi rajin borong." },
+                        { name: "Kemal", job: "Distributor", text: "Ambil paket Enterprise buat manajemen stok. Gak pernah ada selisih barang lagi di gudang." },
+                        { name: "Wulan", job: "Kursus Online", text: "Pendaftaran otomatis, admin tinggal crosscheck transferan doang. Sangat ngebantu." },
+                        { name: "Bayu", job: "Event Organizer", text: "Pake web Beuna buat ticketing event lokal. Ratusan klik barengan webnya tetep kebal." },
+                        { name: "Nisa", job: "Bakehouse", text: "Rekap Pre-Order kue gak perlu corat-coret di buku catatan lagi. Sistemnya rapi." },
+                        { name: "Gilang", job: "Fitness Center", text: "Member baru tinggal daftar via landing page. Flow-nya smooth banget buat user." },
+                        { name: "Caca", job: "Petshop", text: "Jadwal grooming hewan aman terkendali. Klien gampang banget pakenya." },
+                        { name: "Topan", job: "Jasa Renovasi", text: "Sejak ada web Pro, leads yang masuk lebih berduit dan serius, bukan cuma nanya-nanya." },
+                        { name: "Reza", job: "Konveksi Kaos", text: "Pake form order otomatis. Tracking pesanan gampang, customer ga cerewet nanya terus." }
+                    ];
+
+                    const container = document.currentScript.parentElement;
+                    testimonials.forEach(t => {
+                        const initial = t.name.charAt(0);
+                        const html = `
+                            <div class="w-[85vw] md:w-[350px] shrink-0 snap-center bg-slate-800 border-2 border-slate-700 p-6 rounded-2xl flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+                                <p class="text-sm md:text-base text-slate-300 font-medium italic mb-6 leading-relaxed">"${t.text}"</p>
+                                <div class="flex items-center gap-4 border-t border-slate-700 pt-4 mt-auto">
+                                    <div class="w-10 h-10 bg-slate-700 rounded-full flex justify-center items-center font-black text-white text-lg">${initial}</div>
+                                    <div>
+                                        <h4 class="font-extrabold text-white text-sm md:text-base">${t.name}</h4>
+                                        <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">${t.job}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        container.insertAdjacentHTML('beforeend', html);
+                    });
+                </script>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p class="text-slate-500 text-xs md:text-sm font-medium animate-pulse">Geser untuk melihat lebih banyak 👉</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white px-5 py-20 border-b-4 border-slate-900">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-2 border-b-4 border-slate-900 inline-block pb-2">Pertanyaan Umum.</h2>
+            </div>
+            <div class="space-y-5">
+                <div class="faq-item border-2 border-slate-900 rounded-xl overflow-hidden bg-white brutal-shadow-sm">
+                    <button class="w-full text-left px-5 py-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="text-sm md:text-lg pr-4">Saya gaptek, apakah sistem Beuna susah digunakan?</span>
+                        <span class="faq-icon text-slate-900 transition-transform duration-300 text-2xl font-bold shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer px-5 bg-slate-50 border-t-2 border-slate-900">
+                        <p class="py-5 text-sm md:text-base font-medium text-slate-700 leading-relaxed">Sistem ini didesain untuk *business owner*, bukan *programmer*. Anda cukup pantau notifikasi masuk di WhatsApp dan Google Sheets yang sudah familiar.</p>
+                    </div>
+                </div>
+                <div class="faq-item border-2 border-slate-900 rounded-xl overflow-hidden bg-white brutal-shadow-sm">
+                    <button class="w-full text-left px-5 py-5 font-bold text-slate-900 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="text-sm md:text-lg pr-4">Apakah ada biaya tersembunyi bulanan?</span>
+                        <span class="faq-icon text-slate-900 transition-transform duration-300 text-2xl font-bold shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer px-5 bg-slate-50 border-t-2 border-slate-900">
+                        <p class="py-5 text-sm md:text-base font-medium text-slate-700 leading-relaxed">Biaya setup dibayar di awal. Biaya rutin hanya perpanjangan tahunan nama domain (.com) dan server pihak ketiga setahun sekali. 100% transparan tanpa potongan omset.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white px-5 pt-12 pb-16 text-center">
+        <p class="text-sm font-bold text-slate-900 mb-2">beunadigital@gmail.com | WA: 0882-1046-4992</p>
+        <p class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">&copy; 2026 BEUNA SYSTEMS ARCHITECT.</p>
     </footer>
 
+    <div class="fixed bottom-4 left-0 right-0 px-4 z-50 md:hidden">
+        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20konsultasi%20website%20untuk%20bisnis%20saya." onclick="fbq('track', 'Lead');" class="flex justify-center items-center gap-2 w-full bg-slate-900 text-white border-2 border-slate-900 py-4 rounded-xl font-extrabold text-sm brutal-shadow active:translate-y-1 active:shadow-none transition-all no-underline backdrop-blur-md tracking-wide">
+            💬 Konsultasi Gratis via WA
+        </a>
+    </div>
+
     <script>
-        function setupCounter(id, max) {
-            const el = document.getElementById(id); let c = parseInt(el.innerText); const s = c;
-            function add() { if(c - s >= max) return; el.innerText = ++c; setTimeout(add, Math.random()*15000); }
-            setTimeout(add, 5000);
+        // Logika FAQ
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            document.querySelectorAll('.faq-item').forEach(el => {
+                if(el !== item) el.classList.remove('active');
+            });
+            item.classList.toggle('active');
         }
-        setupCounter('count-web-lite', 10); setupCounter('count-pos', 2);
+
+        // Logika Fake Countdown (Selalu mepet 48 Jam)
+        function startCountdown() {
+            let timer = 48 * 60 * 60; 
+            const display = document.querySelector('#countdown');
+            setInterval(function () {
+                let hours = parseInt(timer / 3600, 10);
+                let minutes = parseInt((timer % 3600) / 60, 10);
+                let seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + " Jam : " + minutes + " Men : " + seconds + " Det";
+                if (--timer < 0) { timer = 48 * 60 * 60; }
+            }, 1000);
+        }
+
+        // Jalankan saat web siap
+        window.onload = function () {
+            startCountdown();
+        };
     </script>
 </body>
 </html>
