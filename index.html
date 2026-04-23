@@ -19,13 +19,8 @@
         }
         
         /* Dynamic Neo-Brutalism */
-        .brutal-shadow { 
-            box-shadow: 4px 4px 0px 0px rgba(15, 23, 42, 1); 
-            transition: all 0.2s ease; 
-        }
-        .brutal-shadow-sm { 
-            box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1); 
-        }
+        .brutal-shadow { box-shadow: 4px 4px 0px 0px rgba(15, 23, 42, 1); transition: all 0.2s ease; }
+        .brutal-shadow-sm { box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1); }
         
         @media (min-width: 768px) {
             .brutal-shadow { box-shadow: 6px 6px 0px 0px rgba(15, 23, 42, 1); }
@@ -33,24 +28,20 @@
             .brutal-shadow-sm { box-shadow: 3px 3px 0px 0px rgba(15, 23, 42, 1); }
         }
         
-        /* Scrollbar Hidden tapi tetap bisa di-swipe */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* FAQ Accordion */
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .faq-item.active .faq-answer { max-height: 300px; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
         
-        /* Sticky Mobile Safe Area */
         .pb-safe { padding-bottom: calc(85px + env(safe-area-inset-bottom)); }
 
-        /* Animasi Kedip buat Promo */
-        @keyframes pulse-promo {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
+        @keyframes pulse-promo { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
         .animate-promo { animation: pulse-promo 1.5s infinite; }
+        
+        /* Glassmorphism Popup */
+        .glass-popup { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 
     <script>
@@ -69,14 +60,24 @@
     src="https://www.facebook.com/tr?id=2437179683410017&ev=PageView&noscript=1"
     /></noscript>
     </head>
-<body class="text-slate-900 pb-safe selection:bg-red-200 selection:text-slate-900">
+<body class="text-slate-900 pb-safe selection:bg-red-200 selection:text-slate-900 relative">
+
+    <div id="social-proof-popup" class="fixed bottom-24 md:bottom-6 left-4 md:left-6 z-[60] glass-popup border border-slate-200 shadow-2xl rounded-2xl p-4 flex items-center gap-4 transform translate-y-[150%] opacity-0 transition-all duration-500 ease-out max-w-[90vw] md:max-w-sm pointer-events-none">
+        <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+            <span class="text-emerald-600 text-xl">✅</span>
+        </div>
+        <div>
+            <p id="sp-name" class="text-sm font-bold text-slate-900 leading-tight">Sudirman Coffee</p>
+            <p id="sp-action" class="text-xs text-slate-600 font-medium mt-0.5">baru saja klaim Promo Lite 10 menit lalu.</p>
+        </div>
+    </div>
 
     <nav class="flex justify-center md:justify-between items-center px-4 md:px-6 py-4 border-b-4 border-slate-900 bg-white sticky top-0 z-50">
         <div class="flex items-center gap-2">
             <img src="https://raw.githubusercontent.com/sunsetdansenja-arch/beuna-agency/main/beuna%20logo%20v2.png" alt="Beuna Logo" class="h-6 md:h-8">
             <span class="font-bold text-xl md:text-2xl tracking-tighter text-red-700 underline decoration-2 underline-offset-4">BEUNA<span class="text-slate-900">.WEB</span></span>
         </div>
-        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20konsultasi%20bikin%20sistem%20untuk%20bisnis%20saya." onclick="fbq('track', 'Lead');" class="bg-red-700 text-white border-2 border-slate-900 px-6 py-2 rounded-full font-bold text-base brutal-shadow hidden md:block">Konsultasi Gratis</a>
+        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20cek%20ketersediaan%20slot%20bikin%20sistem." onclick="fbq('track', 'Lead');" class="bg-red-700 text-white border-2 border-slate-900 px-6 py-2 rounded-full font-bold text-base brutal-shadow hidden md:block">Amankan Slot Konsultasi</a>
     </nav>
 
     <header class="bg-white px-5 py-16 md:py-28 text-center border-b-4 border-slate-900 overflow-hidden">
@@ -91,7 +92,7 @@
                 Berhenti buang waktu ngeladenin klien yang cuma nanya harga. Kami rancang arsitektur web yang menaikkan nilai jual brand lo sekaligus merapikan data ke sistem.
             </p>
             <a href="#pricing" class="inline-block w-full md:w-auto bg-red-700 text-white border-2 border-slate-900 px-8 py-4 rounded-xl font-bold text-lg brutal-shadow active:translate-y-1 active:shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] transition-transform">
-                Bedah Bisnis Gue ↓
+                Cek Skema Harga ↓
             </a>
         </div>
     </header>
@@ -142,8 +143,8 @@
                     <div class="my-5 bg-red-50 p-3 rounded-xl border border-red-200">
                         <div class="text-sm font-bold text-red-700 line-through mb-1">Rp 1.500.000</div>
                         <div class="text-4xl md:text-5xl font-black text-red-700 tracking-tighter">700K</div>
-                        <div class="mt-2 text-xs font-bold text-red-900 flex items-center gap-1 animate-promo">
-                            ⏳ Promo berakhir dalam: <span id="countdown" class="bg-red-700 text-white px-2 py-0.5 rounded font-mono">--:--:--</span>
+                        <div class="mt-2 text-xs font-bold text-red-700 bg-red-100 inline-block px-2 py-1 rounded animate-promo">
+                            🔥 Tersisa 3 slot promo minggu ini
                         </div>
                     </div>
 
@@ -153,11 +154,11 @@
                         <li class="flex items-start gap-3"><span>✅</span> <span>1 Tombol Langsung ke WA</span></li>
                         <li class="flex items-start gap-3"><span>✅</span> <span>Domain disupport beuna</span></li>
                     </ul>
-                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20mau%20klaim%20promo%20Web%20Lite%20700K." onclick="fbq('track', 'Lead');" class="block w-full text-center border-2 border-slate-900 py-3 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all text-slate-900 active:bg-slate-800">Klaim Promo Lite</a>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20mau%20ambil%20sisa%20promo%20Web%20Lite%20700K." onclick="fbq('track', 'Lead');" class="block w-full text-center border-2 border-slate-900 py-3 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all text-slate-900 active:bg-slate-800">Klaim Promo Lite</a>
                 </div>
 
-                <div class="bg-red-50 border-2 border-slate-900 rounded-3xl p-6 md:p-8 brutal-shadow relative flex flex-col transform md:-translate-y-6">
-                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-700 text-white border-2 border-slate-900 text-[11px] md:text-xs font-bold px-6 py-2 rounded-full brutal-shadow-sm w-max tracking-widest">
+                <div class="bg-red-50 border-2 border-slate-900 rounded-3xl p-6 md:p-8 brutal-shadow relative flex flex-col transform md:-translate-y-6 ring-4 ring-red-600 ring-offset-4 ring-offset-slate-50 z-10">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-700 text-white border-2 border-slate-900 text-[11px] md:text-xs font-bold px-6 py-2 rounded-full brutal-shadow-sm w-max tracking-widest animate-pulse">
                         🔥 PALING IDEAL
                     </div>
                     <div class="absolute -top-4 -right-2 bg-slate-900 text-white border-2 border-slate-900 font-bold px-3 py-1.5 rounded-full text-[10px] md:text-xs brutal-shadow-sm">
@@ -175,7 +176,7 @@
                         <li class="flex items-start gap-3"><span>✅</span> <span>Otomasi Formulir ke WA Admin</span></li>
                         <li class="flex items-start gap-3"><span>✅</span> <span>Optimasi SEO Google Setup</span></li>
                     </ul>
-                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20membangun%20Web%20Pro%202,3Jt." onclick="fbq('track', 'Lead');" class="block w-full text-center bg-red-700 text-white border-2 border-slate-900 py-4 rounded-xl font-extrabold brutal-shadow-sm active:translate-y-1 active:shadow-none transition-all text-lg">Bangun Web Pro</a>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20membangun%20Web%20Pro%202,3Jt." onclick="fbq('track', 'Lead');" class="block w-full text-center bg-red-700 text-white border-2 border-slate-900 py-4 rounded-xl font-extrabold brutal-shadow-sm active:translate-y-1 active:shadow-none transition-all text-lg">Amankan Web Pro</a>
                 </div>
 
                 <div class="bg-slate-900 text-white border-2 border-slate-900 rounded-3xl p-6 md:p-8 brutal-shadow relative flex flex-col">
@@ -189,12 +190,12 @@
                     <div class="text-4xl md:text-5xl font-black text-white my-5 tracking-tighter"><span class="text-xl text-slate-400 font-medium tracking-normal">Mulai</span> 8 Jt</div>
                     
                     <ul class="text-sm font-semibold text-slate-300 space-y-4 mb-8 flex-grow">
-                        <li class="flex items-start gap-3"><span>✅</span> <span>Sistem Web App Custom / POS Dashboard</span></li>
-                        <li class="flex items-start gap-3 font-bold text-emerald-400"><span>⚙️</span> <span>Full Otomasi Notif WA & Integrasi DB</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Sistem Web App Custom / POS</span></li>
+                        <li class="flex items-start gap-3 font-bold text-emerald-400"><span>⚙️</span> <span>Full Otomasi Notif WA & Integrasi</span></li>
                         <li class="flex items-start gap-3"><span>✅</span> <span>Sistem Anti Double-Booking</span></li>
-                        <li class="flex items-start gap-3"><span>✅</span> <span>Free Maintenance & Priority Support</span></li>
+                        <li class="flex items-start gap-3"><span>✅</span> <span>Free Maintenance Support</span></li>
                     </ul>
-                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20meeting%20untuk%20sistem%20skala%20Enterprise." onclick="fbq('track', 'Lead');" class="block w-full text-center bg-white text-slate-900 border-2 border-slate-900 py-3 rounded-xl font-bold active:bg-slate-200 transition-all hover:bg-slate-100">Jadwal Meeting</a>
+                    <a href="https://wa.me/6288210464992?text=Halo%20Beuna,%20saya%20ingin%20jadwal%20meeting%20untuk%20sistem%20skala%20Enterprise." onclick="fbq('track', 'Lead');" class="block w-full text-center bg-white text-slate-900 border-2 border-slate-900 py-3 rounded-xl font-bold active:bg-slate-200 transition-all hover:bg-slate-100">Jadwal Meeting Setup</a>
                 </div>
 
             </div>
@@ -209,7 +210,6 @@
             </div>
             
             <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-10 px-5 md:px-12">
-                
                 <script>
                     const testimonials = [
                         { name: "Fajar", job: "Owner Rental", text: "Orderan jalan sendiri 24 jam. Investasi paket Pro balik modal sebulan doang!" },
@@ -222,16 +222,7 @@
                         { name: "Maya", job: "Wedding Organizer", text: "Tampilan elegan banget. Pas klien minta portofolio, gue cuma kasih link web." },
                         { name: "Rico", job: "Property Agent", text: "Formulir ketertarikan langsung masuk ke WA gue detik itu juga. Cepat closing!" },
                         { name: "Santi", job: "Catering", text: "Dulu pusing rekap manual. Sekarang data pesanan langsung rapi di Google Sheets otomatis." },
-                        { name: "Dimas", job: "Auto Detailing", text: "Tinggal terima beres, website jalan jadi mesin pencari duit. Owner bisa tidur tenang." },
-                        { name: "Tari", job: "Boutique", text: "Katalog bajunya gampang diakses di HP, loadnya kilat, customer jadi rajin borong." },
-                        { name: "Kemal", job: "Distributor", text: "Ambil paket Enterprise buat manajemen stok. Gak pernah ada selisih barang lagi di gudang." },
-                        { name: "Wulan", job: "Kursus Online", text: "Pendaftaran otomatis, admin tinggal crosscheck transferan doang. Sangat ngebantu." },
-                        { name: "Bayu", job: "Event Organizer", text: "Pake web Beuna buat ticketing event lokal. Ratusan klik barengan webnya tetep kebal." },
-                        { name: "Nisa", job: "Bakehouse", text: "Rekap Pre-Order kue gak perlu corat-coret di buku catatan lagi. Sistemnya rapi." },
-                        { name: "Gilang", job: "Fitness Center", text: "Member baru tinggal daftar via landing page. Flow-nya smooth banget buat user." },
-                        { name: "Caca", job: "Petshop", text: "Jadwal grooming hewan aman terkendali. Klien gampang banget pakenya." },
-                        { name: "Topan", job: "Jasa Renovasi", text: "Sejak ada web Pro, leads yang masuk lebih berduit dan serius, bukan cuma nanya-nanya." },
-                        { name: "Reza", job: "Konveksi Kaos", text: "Pake form order otomatis. Tracking pesanan gampang, customer ga cerewet nanya terus." }
+                        { name: "Dimas", job: "Auto Detailing", text: "Tinggal terima beres, website jalan jadi mesin pencari duit. Owner bisa tidur tenang." }
                     ];
 
                     const container = document.currentScript.parentElement;
@@ -288,14 +279,20 @@
         </div>
     </section>
 
-    <footer class="bg-white px-5 pt-12 pb-16 text-center">
+    <div class="bg-slate-800 text-center py-6 px-4 border-b-4 border-slate-900">
+        <p class="text-slate-300 text-sm md:text-base font-medium">
+            🛡️ <strong class="text-white">System Architect Guaranteed:</strong> Setup 100% rapi atau revisi sampai jalan.
+        </p>
+    </div>
+
+    <footer class="bg-white px-5 pt-10 pb-16 text-center">
         <p class="text-sm font-bold text-slate-900 mb-2">beunadigital@gmail.com | WA: 0882-1046-4992</p>
         <p class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">&copy; 2026 BEUNA SYSTEMS ARCHITECT.</p>
     </footer>
 
     <div class="fixed bottom-4 left-0 right-0 px-4 z-50 md:hidden">
-        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20konsultasi%20website%20untuk%20bisnis%20saya." onclick="fbq('track', 'Lead');" class="flex justify-center items-center gap-2 w-full bg-slate-900 text-white border-2 border-slate-900 py-4 rounded-xl font-extrabold text-sm brutal-shadow active:translate-y-1 active:shadow-none transition-all no-underline backdrop-blur-md tracking-wide">
-            💬 Konsultasi Gratis via WA
+        <a href="https://wa.me/6288210464992?text=Halo%20Tim%20Beuna,%20saya%20mau%20cek%20ketersediaan%20sistem%20untuk%20bisnis%20saya." onclick="fbq('track', 'Lead');" class="flex justify-center items-center gap-2 w-full bg-slate-900 text-white border-2 border-slate-900 py-4 rounded-xl font-extrabold text-sm brutal-shadow active:translate-y-1 active:shadow-none transition-all no-underline backdrop-blur-md tracking-wide">
+            💬 Cek Ketersediaan Sistem
         </a>
     </div>
 
@@ -309,27 +306,50 @@
             item.classList.toggle('active');
         }
 
-        // Logika Fake Countdown (Selalu mepet 48 Jam)
-        function startCountdown() {
-            let timer = 48 * 60 * 60; 
-            const display = document.querySelector('#countdown');
-            setInterval(function () {
-                let hours = parseInt(timer / 3600, 10);
-                let minutes = parseInt((timer % 3600) / 60, 10);
-                let seconds = parseInt(timer % 60, 10);
+        // SOCIAL PROOF POPUP LOGIC
+        const proofData = [
+            { name: "Sudirman Coffee", action: "klaim Promo Lite", time: "45 menit" },
+            { name: "Bintaro Laundry Express", action: "klaim Promo Lite", time: "2 jam" },
+            { name: "Kelapa Gading Petshop", action: "klaim Promo Lite", time: "5 jam" },
+            { name: "Tebet Thrift House", action: "klaim Promo Lite", time: "10 menit" },
+            { name: "Kemang Dental Care", action: "membangun Web Pro", time: "1 hari" },
+            { name: "Senopati Wellness Center", action: "membangun Web Pro", time: "3 jam" },
+            { name: "Gading Serpong Detailing", action: "membangun Web Pro", time: "2 hari" },
+            { name: "Pluit Seafood Resto", action: "membangun Web Pro", time: "Kemarin" },
+            { name: "PT Multi Logistik Jakarta", action: "migrasi Enterprise", time: "3 hari" },
+            { name: "SCBD Co-working Space", action: "migrasi Enterprise", time: "1 hari" }
+        ];
 
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+        function triggerSocialProof() {
+            const popup = document.getElementById('social-proof-popup');
+            const nameEl = document.getElementById('sp-name');
+            const actionEl = document.getElementById('sp-action');
 
-                display.textContent = hours + " Jam : " + minutes + " Men : " + seconds + " Det";
-                if (--timer < 0) { timer = 48 * 60 * 60; }
-            }, 1000);
+            // Pick random item
+            const random = proofData[Math.floor(Math.random() * proofData.length)];
+            
+            nameEl.innerText = random.name;
+            actionEl.innerText = `baru saja ${random.action} ${random.time} yang lalu.`;
+
+            // Animate In
+            popup.classList.remove('translate-y-[150%]', 'opacity-0');
+            popup.classList.add('translate-y-0', 'opacity-100');
+
+            // Animate Out after 4 seconds
+            setTimeout(() => {
+                popup.classList.remove('translate-y-0', 'opacity-100');
+                popup.classList.add('translate-y-[150%]', 'opacity-0');
+            }, 4000);
         }
 
         // Jalankan saat web siap
         window.onload = function () {
-            startCountdown();
+            // Tunggu 3 detik sebelum pop up pertama muncul
+            setTimeout(() => {
+                triggerSocialProof();
+                // Looping muncul setiap 12 detik
+                setInterval(triggerSocialProof, 12000);
+            }, 3000);
         };
     </script>
 </body>
