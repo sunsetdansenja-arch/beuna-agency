@@ -60,7 +60,7 @@
 
   .portfolio-image {
     z-index: 0;
-    background: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184970/back.jpg") center center / cover no-repeat;
+    background: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184969/front.jpg") center center / cover no-repeat;
   }
 
   .blur-layer {
@@ -517,12 +517,12 @@
     currentY += (targetY - currentY) * 0.14;
 
     const idleMs = now - lastMove;
-    const idleFade = Math.max(0, 1 - Math.max(0, idleMs - 90) / 1150);
-    reveal *= 0.90;
+    const idleFade = Math.max(0, 1 - Math.max(0, idleMs - 90) / 4025);
+    reveal *= 0.974;
     const strength = Math.max(reveal, idleFade * 0.12);
 
     const speed = Math.abs(targetX - currentX) + Math.abs(targetY - currentY);
-    const radius = Math.max(0, Math.min(155, (82 + speed * 1.7) * strength));
+    const radius = Math.max(0, Math.min(186, (98.4 + speed * 2.04) * strength));
 
     blurLayer.style.setProperty("--reveal-x", currentX + "px");
     blurLayer.style.setProperty("--reveal-y", currentY + "px");
