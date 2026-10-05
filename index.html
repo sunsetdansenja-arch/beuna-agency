@@ -60,7 +60,7 @@
 
   .portfolio-image {
     z-index: 0;
-    background: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791182926/expose.jpg") center center / cover no-repeat;
+    background: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791182926/blurred.jpg") center center / cover no-repeat;
   }
 
   .blur-layer {
@@ -69,7 +69,7 @@
     inset: 0;
     background:
       linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)),
-      url("https://res.cloudinary.com/naqr1mob/image/upload/v1791182926/blurred.jpg") center center / cover no-repeat;
+      url("https://res.cloudinary.com/naqr1mob/image/upload/v1791182926/expose.jpg") center center / cover no-repeat;
     /*
       --reveal-x / --reveal-y are updated by JS.
       --reveal is the current reveal strength and fades to 0 while idle.
@@ -80,14 +80,14 @@
     --reveal-alpha: 0;
     -webkit-mask-image: radial-gradient(
       circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
-      transparent 0%,
-      transparent 55%,
-      #000 100%
+      #000 0%,
+      #000 45%,
+      transparent 100%
     );
     mask-image: radial-gradient(
       circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
-      rgba(0,0,0,calc(1 - var(--reveal-alpha))) 0%,
-      rgba(0,0,0,calc(1 - var(--reveal-alpha))) 45%,
+      #000 0%,
+      #000 45%,
       transparent 100%
     );
     -webkit-mask-repeat: no-repeat;
@@ -462,7 +462,7 @@
     const [x, y] = positions[index];
 
     el.className = "portfolio-item";
-    el.href = "https://github.com/sunsetdansenja-arch/2NDDUMMY/blob/main/" + project.file;
+    el.href = "https://portfolio.beuna.xyz/" + project.file;
     el.target = "_blank";
     el.rel = "noopener noreferrer";
 
