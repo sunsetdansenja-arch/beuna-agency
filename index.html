@@ -2,13 +2,15 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Beuna Digital — Portfolio</title>
 <style>
   :root {
-    --bg: #f3f3f3;
+    --bg: #eee;
     --text: #111;
-    --muted: rgba(17,17,17,.55);
+    --burgundy: #7b1e2b;
+    --dock-bottom: clamp(32px, 6vh, 56px);
+    --ease: cubic-bezier(.16, 1, .3, 1);
   }
 
   * { box-sizing: border-box; }
@@ -16,109 +18,86 @@
   html, body {
     margin: 0;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     background: var(--bg);
     color: var(--text);
   }
 
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
     overflow: hidden;
   }
 
+  button { font: inherit; }
+  :focus-visible { outline: 2px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 4px rgba(123,30,43,.7); }
+
+  /* ---------- Background (full bleed, tanpa bezel) ---------- */
   .portfolio {
     position: relative;
     width: 100vw;
     height: 100vh;
     min-height: 720px;
     overflow: hidden;
-    background: #eee;
+    background: var(--bg);
     isolation: isolate;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 
-  .image-frame {
-    position: absolute;
-    inset: 14px;
-    overflow: hidden;
-    border-radius: 28px;
-    background: #fff;
-  }
+  .image-frame { position: absolute; inset: 0; overflow: hidden; }
 
   .portfolio-image,
-  .blur-layer {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
+  .blur-layer { position: absolute; inset: 0; width: 100%; height: 100%; }
 
   .portfolio-image {
     z-index: 0;
-    background: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184969/front.jpg") center center / cover no-repeat;
+    background: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184969/front.jpg") center / cover no-repeat;
   }
 
   .blur-layer {
     z-index: 1;
-    position: absolute;
-    inset: 0;
     background:
       linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)),
-      url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184970/back.jpg") center center / cover no-repeat;
+      url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184970/back.jpg") center / cover no-repeat;
     --reveal-x: 50%;
     --reveal-y: 50%;
     --reveal-size: 115px;
-    --reveal-alpha: 0;
-    -webkit-mask-image: radial-gradient(
-      circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
-      #000 0%,
-      #000 45%,
-      transparent 100%
-    );
-    mask-image: radial-gradient(
-      circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
-      #000 0%,
-      #000 45%,
-      transparent 100%
-    );
+    -webkit-mask-image: radial-gradient(circle var(--reveal-size) at var(--reveal-x) var(--reveal-y), #000 0%, #000 45%, transparent 100%);
+    mask-image: radial-gradient(circle var(--reveal-size) at var(--reveal-x) var(--reveal-y), #000 0%, #000 45%, transparent 100%);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
 
-  .portfolio-feed {
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-    pointer-events: none;
-  }
+  /* ---------- Portfolio icons ---------- */
+  .portfolio-feed { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 
   .portfolio-item {
     position: absolute;
+    left: 0;
+    top: 0;
     width: var(--size);
-    left: var(--x);
-    top: var(--y);
-    pointer-events: auto;
+    color: var(--text);
     text-decoration: none;
-    color: #111;
-    transform: translate(-50%, -50%) rotate(var(--rotation));
-    animation:
-      drift var(--duration) ease-in-out var(--delay) infinite alternate,
-      breathe 5.5s ease-in-out var(--delay) infinite;
+    pointer-events: auto;
+    touch-action: manipulation;
     will-change: transform;
   }
 
-  .portfolio-item:hover {
-    z-index: 50;
-    animation-play-state: paused;
-  }
+  .portfolio-item:hover,
+  .portfolio-item:focus-visible { z-index: 50; }
 
   .thumb {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     overflow: hidden;
-    background: rgba(255,255,255,.9);
-    border: 1px solid rgba(0,0,0,.13);
-    border-radius: 22px;
-    box-shadow: 0 10px 28px rgba(0,0,0,.13);
+    background: #fff;
+    border: 2px solid rgba(255,255,255,.9);
+    border-radius: 22%;
+    box-shadow: 0 10px 26px rgba(0,0,0,.16), 0 2px 6px rgba(0,0,0,.08);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease);
   }
 
   .thumb img {
@@ -126,193 +105,56 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: saturate(.9);
+    filter: saturate(.92);
+    transition: filter .3s ease;
   }
 
-  .portfolio-item:hover .thumb {
-    box-shadow: 0 18px 42px rgba(0,0,0,.23);
+  .portfolio-item:hover .thumb,
+  .portfolio-item:focus-visible .thumb {
+    transform: scale(1.14);
+    box-shadow: 0 22px 44px rgba(0,0,0,.28), 0 4px 10px rgba(0,0,0,.12);
   }
+
+  .portfolio-item:hover .thumb img { filter: saturate(1.1); }
 
   .label {
     display: block;
-    margin-top: 6px;
-    padding: 0 3px;
-    font-size: clamp(8px, .62vw, 10px);
-    line-height: 1.05;
+    width: max-content;
+    margin: 8px auto 0;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.72);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    font-size: clamp(9px, .66vw, 11px);
     font-weight: 700;
-    letter-spacing: .02em;
-    text-transform: none;
-    text-shadow: 0 1px 8px rgba(255,255,255,.85);
+    line-height: 1.2;
+    letter-spacing: .01em;
     white-space: nowrap;
+    text-align: center;
   }
 
   .category {
     display: none;
-    margin-top: 2px;
-    font-size: clamp(7px, .48vw, 9px);
-    line-height: 1;
-    color: rgba(0,0,0,.52);
-    text-shadow: 0 1px 8px rgba(255,255,255,.8);
-  }
-
-  .brand {
-    display: none;
-    position: absolute;
-    z-index: 20;
-    left: 32px;
-    top: 28px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,.72);
-    mix-blend-mode: multiply;
-    pointer-events: none;
-  }
-
-  .hint {
-    display: none;
-    position: absolute;
-    z-index: 20;
-    left: 32px;
-    bottom: 28px;
+    margin-top: 3px;
+    text-align: center;
     font-size: 10px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,.42);
-    pointer-events: none;
+    line-height: 1;
+    color: rgba(0,0,0,.6);
+    text-shadow: 0 1px 8px rgba(255,255,255,.9);
   }
 
-  @keyframes drift {
-    0% {
-      transform: translate(-50%, -50%) translate3d(-12px, 8px, 0) rotate(calc(var(--rotation) - 2deg));
-    }
-    25% {
-      transform: translate(-50%, -50%) translate3d(7px, -10px, 0) rotate(calc(var(--rotation) + 1deg));
-    }
-    50% {
-      transform: translate(-50%, -50%) translate3d(16px, 4px, 0) rotate(calc(var(--rotation) + 3deg));
-    }
-    75% {
-      transform: translate(-50%, -50%) translate3d(-5px, -14px, 0) rotate(calc(var(--rotation) - 1deg));
-    }
-    100% {
-      transform: translate(-50%, -50%) translate3d(-18px, 6px, 0) rotate(calc(var(--rotation) - 3deg));
-    }
+  @media (hover: hover) {
+    .portfolio-item:hover .category { display: block; }
   }
 
-  @keyframes breathe {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.04); }
-  }
+  .brand, .hint { display: none; }
 
-  .whatsapp-float {
-    position: fixed;
-    right: 28px;
-    bottom: 24px;
-    z-index: 80;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 13px 9px 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.86);
-    color: #111;
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .04em;
-    box-shadow: 0 10px 28px rgba(0,0,0,.12);
-    backdrop-filter: blur(12px);
-    animation: whatsapp-float 4.8s ease-in-out infinite;
-  }
-
-  .whatsapp-icon {
-    display: grid;
-    width: 25px;
-    height: 25px;
-    place-items: center;
-    border-radius: 50%;
-    background: #25d366;
-    color: #fff;
-    font-size: 15px;
-  }
-
-  @keyframes whatsapp-float {
-    0%, 100% { transform: translate3d(0,0,0) rotate(-1deg); }
-    50% { transform: translate3d(-5px,-8px,0) rotate(1deg); }
-  }
-
-  @media (max-width: 900px) {
-    body { overflow: hidden; }
-
-    .portfolio {
-      min-height: 100svh;
-      height: 100svh;
-    }
-
-    .portfolio-image {
-      background-image: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791186943/front_mobile.jpg");
-      background-position: center center;
-      background-size: cover;
-    }
-
-    .blur-layer {
-      background-image:
-        linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)),
-        url("https://res.cloudinary.com/naqr1mob/image/upload/v1791186943/back_mobile.jpg");
-      background-position: center center;
-      background-size: cover;
-    }
-
-    .portfolio-feed {
-      display: block;
-    }
-
-    .portfolio-item {
-      display: block;
-      width: var(--mobile-size);
-      left: var(--mobile-x);
-      top: var(--mobile-y);
-    }
-
-    .label {
-      color: #7b1e2b;
-      text-shadow: 0 1px 7px rgba(255,255,255,.95);
-    }
-
-    .thumb {
-      border-radius: 18px;
-      box-shadow: 0 7px 20px rgba(0,0,0,.14);
-    }
-
-    .brand {
-      left: 20px;
-      top: 20px;
-    }
-
-    .hint {
-      left: 20px;
-      bottom: 20px;
-    }
-
-    .whatsapp-float {
-      right: 16px;
-      bottom: 16px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .portfolio-item {
-      animation: none;
-    }
-  }
-
-  /* Burgundy macOS-style dock */
+  /* ---------- Dock (burgundy, macOS-style) ---------- */
   .app-dock {
     position: fixed;
     left: 50%;
-    bottom: 18px;
+    bottom: var(--dock-bottom);
     transform: translateX(-50%);
     z-index: 100;
     display: flex;
@@ -322,20 +164,18 @@
     padding: 10px 14px;
     border-radius: 28px;
     background: rgba(58,12,24,.58);
-    backdrop-filter: blur(32px) saturate(220%);
     -webkit-backdrop-filter: blur(32px) saturate(220%);
+    backdrop-filter: blur(32px) saturate(220%);
     border: 1px solid rgba(255,130,160,.25);
-    box-shadow: 0 30px 60px rgba(0,0,0,.5), 0 0 30px rgba(130,20,50,.35), inset 0 1px 1.5px rgba(255,255,255,.4);
+    box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 0 30px rgba(130,20,50,.3), inset 0 1px 1.5px rgba(255,255,255,.4);
   }
 
   .app-dock::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 4%;
-    right: 4%;
+    top: 0; left: 4%; right: 4%;
     height: 1px;
-    background: linear-gradient(90deg,transparent,rgba(255,210,230,.7),transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,210,230,.7), transparent);
     pointer-events: none;
   }
 
@@ -344,20 +184,31 @@
     flex: 0 0 52px;
     width: 52px;
     height: 52px;
+    padding: 0;
+    border: 0;
+    background: none;
     cursor: pointer;
-    transition: width .12s ease-out,height .12s ease-out,transform .12s ease-out;
+    transition: width .12s ease-out, height .12s ease-out, flex-basis .12s ease-out;
   }
 
   .dock-icon {
-    width: 100%;
-    height: 100%;
-    border-radius: 22.5%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    border-radius: 22.5%;
     box-shadow: 0 8px 16px rgba(0,0,0,.45), inset 0 1px 1px rgba(255,255,255,.45), inset 0 -2px 4px rgba(0,0,0,.35);
+  }
+
+  .dock-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 52%;
+    background: linear-gradient(180deg, rgba(255,255,255,.28), transparent);
+    pointer-events: none;
   }
 
   .dock-icon svg { width: 62%; height: 62%; }
@@ -369,68 +220,50 @@
     overflow: visible;
   }
 
-  .dock-icon.dock-logo-only svg {
-    width: 86%;
-    height: 86%;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,.18));
-  }
-
   .dock-icon.dock-logo-only::after { display: none; }
-
-  .dock-icon::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 52%;
-    background: linear-gradient(180deg,rgba(255,255,255,.28),transparent);
-    pointer-events: none;
-  }
+  .dock-icon.dock-logo-only svg { width: 86%; height: 86%; filter: drop-shadow(0 4px 8px rgba(0,0,0,.2)); }
 
   .dock-tooltip {
     position: absolute;
     left: 50%;
-    bottom: calc(100% + 10px);
-    transform: translateX(-50%) translateY(5px) scale(.95);
-    opacity: 0;
-    pointer-events: none;
-    white-space: nowrap;
+    bottom: calc(100% + 12px);
     padding: 5px 11px;
     border-radius: 8px;
-    color: #fff;
-    background: rgba(24,10,18,.86);
+    background: rgba(24,10,18,.88);
     border: 1px solid rgba(255,255,255,.18);
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
+    color: #fff;
     font-size: 11px;
     font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(5px) scale(.95);
     transition: .15s ease;
   }
 
-  .dock-app:hover .dock-tooltip {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
+  .dock-app:hover .dock-tooltip,
+  .dock-app:focus-visible .dock-tooltip { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 
   .dock-dot {
     position: absolute;
     left: 50%;
-    bottom: -7px;
+    bottom: -8px;
     width: 4px;
     height: 4px;
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 0 8px #fff;
+    opacity: 0;
     transform: translateX(-50%);
+    transition: opacity .2s ease;
   }
 
-  .dock-separator {
-    width: 1px;
-    height: 40px;
-    margin: 0 3px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.2);
-  }
+  .dock-separator { width: 1px; height: 40px; margin: 0 3px; border-radius: 999px; background: rgba(255,255,255,.2); }
 
   @keyframes dockBounce {
-    0%,100% { transform: translateY(0); }
+    0%, 100% { transform: translateY(0); }
     30% { transform: translateY(-25px) scaleY(1.06); }
     50% { transform: translateY(0) scaleY(.94); }
     75% { transform: translateY(-10px) scaleY(1.03); }
@@ -438,107 +271,125 @@
 
   .dock-app.bouncing { animation: dockBounce .65s cubic-bezier(.28,.84,.42,1); }
 
-  .dock-info {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    width: min(390px, calc(100vw - 32px));
-    padding: 24px;
-    z-index: 120;
-    border-radius: 18px;
-    transform: translate(-50%,-45%) scale(.9);
-    opacity: 0;
-    pointer-events: none;
-    color: #fff;
-    background: rgba(28,12,20,.88);
-    backdrop-filter: blur(36px) saturate(210%);
-    -webkit-backdrop-filter: blur(36px) saturate(210%);
-    border: 1px solid rgba(255,255,255,.2);
-    box-shadow: 0 40px 90px rgba(0,0,0,.7),0 0 50px rgba(140,20,60,.35);
-    transition: opacity .22s ease,transform .22s cubic-bezier(.16,1,.3,1);
+  /* ---------- WhatsApp di dock ---------- */
+  .dock-wa { text-decoration: none; }
+
+  .dock-wa .dock-icon {
+    --wa-base: 0 10px 24px rgba(37,211,102,.5), inset 0 1px 1px rgba(255,255,255,.65), inset 0 -3px 6px rgba(0,80,40,.35);
+    border: 1px solid rgba(255,255,255,.4);
+    box-shadow: var(--wa-base);
+    animation: waPulse 2.8s ease-out infinite;
   }
 
-  .dock-info.open {
-    opacity: 1;
-    transform: translate(-50%,-50%) scale(1);
-    pointer-events: auto;
+  .dock-wa .dock-icon svg { width: 60%; height: 60%; filter: drop-shadow(0 1px 2px rgba(0,60,30,.35)); }
+
+  @keyframes waPulse {
+    0%   { box-shadow: var(--wa-base), 0 0 0 0 rgba(37,211,102,.55); }
+    70%, 100% { box-shadow: var(--wa-base), 0 0 0 16px rgba(37,211,102,0); }
   }
 
+  /* ---------- Dock info modal ---------- */
   .dock-info-backdrop {
     position: fixed;
     inset: 0;
     z-index: 110;
-    background: rgba(0,0,0,.12);
+    background: rgba(20,4,10,.28);
     opacity: 0;
     pointer-events: none;
-    transition: opacity .2s ease;
+    transition: opacity .25s ease;
   }
 
   .dock-info-backdrop.open { opacity: 1; pointer-events: auto; }
 
-  .dock-info-head {
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:18px;
+  .dock-info {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 120;
+    width: min(390px, calc(100vw - 32px));
+    padding: 26px;
+    border-radius: 20px;
+    background: rgba(28,12,20,.9);
+    -webkit-backdrop-filter: blur(36px) saturate(210%);
+    backdrop-filter: blur(36px) saturate(210%);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 40px 90px rgba(0,0,0,.7), 0 0 50px rgba(140,20,60,.35);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%,-45%) scale(.92);
+    transition: opacity .25s ease, transform .3s var(--ease);
   }
+
+  .dock-info.open { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(1); }
+
+  .dock-info-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
 
   .dock-info-icon {
-    width:48px;
-    height:48px;
-    border-radius:14px;
-    display:grid;
-    place-items:center;
-    flex:0 0 48px;
+    display: grid;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 14px;
   }
 
-  .dock-info-icon svg { width:62%; height:62%; }
+  .dock-info-icon svg { width: 62%; height: 62%; }
+  .dock-info h3 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
 
-  .dock-info h3 { margin:0; font-size:17px; }
   .dock-info .how-label {
     margin: 0 0 6px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: rgba(255,180,200,.78);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,180,200,.85);
   }
 
-  .dock-info p {
-    margin:0;
-    color:rgba(255,255,255,.7);
-    font-size:12px;
-    line-height:1.6;
-  }
+  .dock-info p { margin: 0; color: rgba(255,255,255,.75); font-size: 13px; line-height: 1.65; }
 
   .dock-close {
-    position:absolute;
-    top:12px;
-    right:12px;
-    width:24px;
-    height:24px;
-    border:0;
-    border-radius:50%;
-    background:rgba(255,255,255,.12);
-    color:#fff;
-    cursor:pointer;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease;
   }
 
-  @media (max-width:900px) {
-    .app-dock {
-      bottom: 12px;
-      max-width: calc(100vw - 18px);
-      gap: 4px;
-      padding: 8px 9px;
-      border-radius: 22px;
-      transform: translateX(-50%) scale(.78);
-      transform-origin: bottom center;
+  .dock-close:hover { background: rgba(255,255,255,.24); }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 900px) {
+    :root { --dock-bottom: calc(34px + env(safe-area-inset-bottom, 0px)); }
+
+    .portfolio { height: 100svh; min-height: 100svh; }
+    .portfolio-image { background-image: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791186943/front_mobile.jpg"); }
+
+    .blur-layer {
+      background-image:
+        linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)),
+        url("https://res.cloudinary.com/naqr1mob/image/upload/v1791186943/back_mobile.jpg");
     }
 
-    .dock-app { flex-basis: 52px; width:52px; height:52px; }
-    .whatsapp-float { bottom: 88px; }
+    .portfolio-item { width: var(--mobile-size); }
+    .thumb { border-width: 1.5px; border-radius: 24%; box-shadow: 0 5px 14px rgba(0,0,0,.18); }
+    .label { margin-top: 4px; padding: 2px 6px; color: var(--burgundy); font-size: 8px; }
+
+    .app-dock { max-width: calc(100vw - 12px); gap: 3px; padding: 7px 8px; border-radius: 20px; }
+    .dock-icon { box-shadow: 0 5px 10px rgba(0,0,0,.4), inset 0 1px 1px rgba(255,255,255,.4); }
+    .dock-separator { height: 28px; margin: 0 2px; }
+    .dock-tooltip { display: none; }
+    .dock-dot { bottom: -6px; }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .dock-app.bouncing, .dock-wa .dock-icon { animation: none; }
+  }
 </style>
 </head>
 
@@ -554,220 +405,366 @@
 
     <section class="portfolio-feed" id="portfolioFeed" aria-label="Website portfolio"></section>
 
-    <a class="whatsapp-float" href="#" aria-label="Connect via WhatsApp">
-      <span class="whatsapp-icon" aria-hidden="true">●</span>
-      <span>Connect via WhatsApp</span>
-    </a>
   </main>
 
-
-    <div class="dock-info-backdrop" id="dockInfoBackdrop"></div>
-    <div class="dock-info" id="dockInfo" aria-hidden="true">
-      <button class="dock-close" id="dockClose" aria-label="Close">×</button>
-      <div class="dock-info-head">
-        <div class="dock-info-icon" id="dockInfoIcon"></div>
-        <h3 id="dockInfoTitle">Application</h3>
-      </div>
-      <p class="how-label">How I use it</p>
-      <p id="dockInfoText"></p>
+  <div class="dock-info-backdrop" id="dockInfoBackdrop"></div>
+  <div class="dock-info" id="dockInfo" role="dialog" aria-modal="true" aria-labelledby="dockInfoTitle" aria-hidden="true">
+    <button class="dock-close" id="dockClose" aria-label="Close">×</button>
+    <div class="dock-info-head">
+      <div class="dock-info-icon" id="dockInfoIcon"></div>
+      <h3 id="dockInfoTitle">Application</h3>
     </div>
+    <p class="how-label">How I use it</p>
+    <p id="dockInfoText"></p>
+  </div>
 
-    <nav class="app-dock" id="appDock" aria-label="Tools I use">
-      <button class="dock-app" data-name="n8n" data-how="I use n8n to automate repetitive workflows, connect APIs, and move data between the tools behind my websites.">
-        <span class="dock-tooltip">n8n</span>
-        <span class="dock-icon dock-logo-only">
-          <svg viewBox="0 0 400 400" aria-label="n8n logo">
-            <g fill="none" stroke="#ff6b5e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="72" cy="200" r="31" fill="#ff6b5e" stroke="none"/>
-              <circle cx="164" cy="200" r="31" fill="#ff6b5e" stroke="none"/>
-              <circle cx="328" cy="110" r="31" fill="#ff6b5e" stroke="none"/>
-              <circle cx="292" cy="290" r="31" fill="#ff6b5e" stroke="none"/>
-              <path d="M103 200h30M195 200h34c31 0 44-90 99-90M195 200h38c31 0 44 90 59 90"/>
-            </g>
-          </svg>
-        </span><i class="dock-dot"></i>
-      </button>
+  <nav class="app-dock" id="appDock" aria-label="Tools I use">
+    <button class="dock-app" data-name="n8n" data-how="I use n8n to automate repetitive workflows, connect APIs, and move data between the tools behind my websites.">
+      <span class="dock-tooltip">n8n</span>
+      <span class="dock-icon dock-logo-only">
+        <svg viewBox="0 0 400 400" aria-label="n8n logo">
+          <g fill="none" stroke="#ff6b5e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="72" cy="200" r="31" fill="#ff6b5e" stroke="none"/>
+            <circle cx="164" cy="200" r="31" fill="#ff6b5e" stroke="none"/>
+            <circle cx="328" cy="110" r="31" fill="#ff6b5e" stroke="none"/>
+            <circle cx="292" cy="290" r="31" fill="#ff6b5e" stroke="none"/>
+            <path d="M103 200h30M195 200h34c31 0 44-90 99-90M195 200h38c31 0 44 90 59 90"/>
+          </g>
+        </svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="Obsidian" data-how="I use Obsidian as a local knowledge base for notes, ideas, project context, and connected thinking.">
-        <span class="dock-tooltip">Obsidian</span>
-        <span class="dock-icon" style="background:#09090b;border:1px solid #27272a">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2z" stroke="#9d7afb" stroke-width="1.8"/><polygon points="12,5 17,9 15,16 12,18 9,16 7,9" fill="#7c3aed"/><circle cx="12" cy="12" r="2" fill="#fff"/></svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="Obsidian" data-how="I use Obsidian as a local knowledge base for notes, ideas, project context, and connected thinking.">
+      <span class="dock-tooltip">Obsidian</span>
+      <span class="dock-icon" style="background:#09090b;border:1px solid #27272a">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2z" stroke="#9d7afb" stroke-width="1.8"/><polygon points="12,5 17,9 15,16 12,18 9,16 7,9" fill="#7c3aed"/><circle cx="12" cy="12" r="2" fill="#fff"/></svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="Visual Studio Code" data-how="I use VS Code to build and debug the HTML, CSS, and JavaScript that power my web projects.">
-        <span class="dock-tooltip">VS Code</span>
-        <span class="dock-icon" style="background:#020617;border:1px solid #1e293b">
-          <svg viewBox="0 0 24 24"><path d="M17.5 2.5 22 5v14l-4.5 2.5L2 13.5v-3L17.5 2.5Z" fill="#0065A9"/><path d="m17.5 2.5-10 9.5 10 9.5v-19Z" fill="#007ACC"/><path d="M17.5 21.5 22 19V5l-4.5-2.5v19Z" fill="#1F9CF0"/><path d="m2 10.5 5.5 1.5L2 13.5v-3Z" fill="#0065A9"/></svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="Visual Studio Code" data-how="I use VS Code to build and debug the HTML, CSS, and JavaScript that power my web projects.">
+      <span class="dock-tooltip">VS Code</span>
+      <span class="dock-icon" style="background:#020617;border:1px solid #1e293b">
+        <svg viewBox="0 0 24 24"><path d="M17.5 2.5 22 5v14l-4.5 2.5L2 13.5v-3L17.5 2.5Z" fill="#0065A9"/><path d="m17.5 2.5-10 9.5 10 9.5v-19Z" fill="#007ACC"/><path d="M17.5 21.5 22 19V5l-4.5-2.5v19Z" fill="#1F9CF0"/><path d="m2 10.5 5.5 1.5L2 13.5v-3Z" fill="#0065A9"/></svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="Supabase" data-how="I use Supabase for databases, authentication, storage, and lightweight backend services for web projects.">
-        <span class="dock-tooltip">Supabase</span>
-        <span class="dock-icon" style="background:#171717;border:1px solid #262626">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M13.35 2.05a1 1 0 0 0-1.6.15L3.3 14.2a1 1 0 0 0 .8 1.5h6.65l-1.1 6.25a1 1 0 0 0 1.6-.15l8.45-12a1 1 0 0 0-.8-1.55h-6.65l1.1-6.2Z" fill="#3ECF8E"/></svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="Supabase" data-how="I use Supabase for databases, authentication, storage, and lightweight backend services for web projects.">
+      <span class="dock-tooltip">Supabase</span>
+      <span class="dock-icon" style="background:#171717;border:1px solid #262626">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13.35 2.05a1 1 0 0 0-1.6.15L3.3 14.2a1 1 0 0 0 .8 1.5h6.65l-1.1 6.25a1 1 0 0 0 1.6-.15l8.45-12a1 1 0 0 0-.8-1.55h-6.65l1.1-6.2Z" fill="#3ECF8E"/></svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="Claude" data-how="I use Claude for research, brainstorming, reasoning, content work, and as a second AI perspective when building projects.">
-        <span class="dock-tooltip">Claude</span>
-        <span class="dock-icon dock-logo-only">
-          <svg viewBox="0 0 100 100" aria-label="Claude logo">
-            <g fill="none" stroke="#d97757" stroke-width="7" stroke-linecap="round">
-              <path d="M50 50L50 8"/>
-              <path d="M50 50L71 14"/>
-              <path d="M50 50L89 29"/>
-              <path d="M50 50L94 50"/>
-              <path d="M50 50L89 71"/>
-              <path d="M50 50L71 86"/>
-              <path d="M50 50L50 94"/>
-              <path d="M50 50L29 86"/>
-              <path d="M50 50L11 71"/>
-              <path d="M50 50L6 50"/>
-              <path d="M50 50L11 29"/>
-              <path d="M50 50L29 14"/>
-            </g>
-          </svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="Claude" data-how="I use Claude for research, brainstorming, reasoning, content work, and as a second AI perspective when building projects.">
+      <span class="dock-tooltip">Claude</span>
+      <span class="dock-icon dock-logo-only">
+        <svg viewBox="0 0 100 100" aria-label="Claude logo">
+          <g fill="none" stroke="#d97757" stroke-width="7" stroke-linecap="round">
+            <path d="M50 50L50 8"/><path d="M50 50L71 14"/><path d="M50 50L89 29"/><path d="M50 50L94 50"/>
+            <path d="M50 50L89 71"/><path d="M50 50L71 86"/><path d="M50 50L50 94"/><path d="M50 50L29 86"/>
+            <path d="M50 50L11 71"/><path d="M50 50L6 50"/><path d="M50 50L11 29"/><path d="M50 50L29 14"/>
+          </g>
+        </svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="Arc Browser" data-how="I use Arc to research references, test websites, browse client projects, and keep web work separated by context.">
-        <span class="dock-tooltip">Arc</span>
-        <span class="dock-icon" style="background:linear-gradient(135deg,#171347,#4c1d95,#0f172a);border:1px solid rgba(162,119,255,.2)">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 18C4 10.27 10.27 4 18 4c1.1 0 2 .9 2 2s-.9 2-2 2c-5.52 0-10 4.48-10 10 0 1.1-.9 2-2 2s-2-.9-2-2Z" fill="url(#arcDockGrad)"/><defs><linearGradient id="arcDockGrad" x1="4" y1="4" x2="20" y2="20"><stop stop-color="#FF7AC6"/><stop offset=".5" stop-color="#A277FF"/><stop offset="1" stop-color="#627EEA"/></linearGradient></defs></svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="Arc Browser" data-how="I use Arc to research references, test websites, browse client projects, and keep web work separated by context.">
+      <span class="dock-tooltip">Arc</span>
+      <span class="dock-icon" style="background:linear-gradient(135deg,#171347,#4c1d95,#0f172a);border:1px solid rgba(162,119,255,.2)">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 18C4 10.27 10.27 4 18 4c1.1 0 2 .9 2 2s-.9 2-2 2c-5.52 0-10 4.48-10 10 0 1.1-.9 2-2 2s-2-.9-2-2Z" fill="url(#arcDockGrad)"/><defs><linearGradient id="arcDockGrad" x1="4" y1="4" x2="20" y2="20"><stop stop-color="#FF7AC6"/><stop offset=".5" stop-color="#A277FF"/><stop offset="1" stop-color="#627EEA"/></linearGradient></defs></svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="MainWP" data-how="I use MainWP to manage and monitor multiple WordPress websites from one central dashboard.">
-        <span class="dock-tooltip">MainWP</span>
-        <span class="dock-icon" style="background:linear-gradient(135deg,#3b82f6,#4f46e5)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10Z"/><path d="M8 16v-2M12 16v-4M16 16v-6"/></svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="MainWP" data-how="I use MainWP to manage and monitor multiple WordPress websites from one central dashboard.">
+      <span class="dock-tooltip">MainWP</span>
+      <span class="dock-icon" style="background:linear-gradient(135deg,#3b82f6,#4f46e5)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10Z"/><path d="M8 16v-2M12 16v-4M16 16v-6"/></svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <button class="dock-app" data-name="Pinterest" data-how="I use Pinterest to collect visual references, design direction, layout ideas, and creative inspiration.">
-        <span class="dock-tooltip">Pinterest</span>
-        <span class="dock-icon" style="background:linear-gradient(135deg,#ef4444,#b91c1c)">
-          <svg viewBox="0 0 24 24" fill="white"><path d="M12.02 0C5.4 0 .03 5.37.03 11.99c0 5.08 3.16 9.42 7.62 11.16-.1-.95-.2-2.4.04-3.44.22-.94 1.41-5.96 1.41-5.96s-.36-.72-.36-1.78c0-1.66.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.65 2.57-.99 3.99-.29 1.19.6 2.17 1.78 2.17 2.13 0 3.77-2.25 3.77-5.49 0-2.86-2.06-4.87-5.01-4.87-3.41 0-5.41 2.56-5.41 5.2 0 1.03.39 2.14.89 2.74.1.12.11.23.09.35l-.33 1.36c-.05.23-.17.27-.4.17-1.5-.69-2.43-2.88-2.43-4.65 0-3.78 2.75-7.25 7.92-7.25 4.16 0 7.39 2.97 7.39 6.92 0 4.14-2.61 7.46-6.23 7.46-1.21 0-2.35-.63-2.76-1.38l-.75 2.85c-.27 1.05-1 2.35-1.5 3.15 1.12.35 2.31.54 3.55.54 6.61 0 11.99-5.37 11.99-11.99C23.97 5.37 18.62 0 12.02 0Z"/></svg>
-        </span><i class="dock-dot"></i>
-      </button>
+    <button class="dock-app" data-name="Pinterest" data-how="I use Pinterest to collect visual references, design direction, layout ideas, and creative inspiration.">
+      <span class="dock-tooltip">Pinterest</span>
+      <span class="dock-icon" style="background:linear-gradient(135deg,#ef4444,#b91c1c)">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M12.02 0C5.4 0 .03 5.37.03 11.99c0 5.08 3.16 9.42 7.62 11.16-.1-.95-.2-2.4.04-3.44.22-.94 1.41-5.96 1.41-5.96s-.36-.72-.36-1.78c0-1.66.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.65 2.57-.99 3.99-.29 1.19.6 2.17 1.78 2.17 2.13 0 3.77-2.25 3.77-5.49 0-2.86-2.06-4.87-5.01-4.87-3.41 0-5.41 2.56-5.41 5.2 0 1.03.39 2.14.89 2.74.1.12.11.23.09.35l-.33 1.36c-.05.23-.17.27-.4.17-1.5-.69-2.43-2.88-2.43-4.65 0-3.78 2.75-7.25 7.92-7.25 4.16 0 7.39 2.97 7.39 6.92 0 4.14-2.61 7.46-6.23 7.46-1.21 0-2.35-.63-2.76-1.38l-.75 2.85c-.27 1.05-1 2.35-1.5 3.15 1.12.35 2.31.54 3.55.54 6.61 0 11.99-5.37 11.99-11.99C23.97 5.37 18.62 0 12.02 0Z"/></svg>
+      </span><i class="dock-dot"></i>
+    </button>
 
-      <span class="dock-separator"></span>
+    <span class="dock-separator" aria-hidden="true"></span>
 
-      <button class="dock-app" data-name="Trash" data-how="I use Trash to temporarily hold deleted files before permanently removing them.">
-        <span class="dock-tooltip">Trash</span>
-        <span class="dock-icon" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/></svg>
-        </span><i class="dock-dot"></i>
-      </button>
-    </nav>
+    <a class="dock-app dock-wa" data-wa="1" href="https://wa.me/62XXXXXXXXXX?text=Halo%20Beuna%20Digital%2C%20saya%20tertarik%20membuat%20website." target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
+      <span class="dock-tooltip">Chat via WhatsApp</span>
+      <span class="dock-icon" style="background:linear-gradient(145deg,#5af28f,#25d366 45%,#0e9f5a)">
+        <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </span>
+    </a>
+  </nav>
 
 <script>
-  const portfolio = document.getElementById("portfolio");
   const blurLayer = document.getElementById("blurLayer");
   const feed = document.getElementById("portfolioFeed");
 
+  const U = "https://images.unsplash.com/photo-";
+  const G = "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/";
+  const moto1 = U + "1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80";
+  const moto2 = U + "1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80";
+
   const projects = [
-    {name:"Bike",category:"Rental motor",file:"sewamotor.html",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"},
-    {name:"Dami",category:"Rental motor",file:"damirental.html",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"},
-    {name:"Amanah",category:"Sewa motor",file:"amanahrental.html",image:"https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80"},
-    {name:"Ray",category:"Rental motor",file:"raytransport.html",image:"https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80"},
-    {name:"Sukabumi",category:"Transport 24 jam",file:"sms.html",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"},
-    {name:"CLIO",category:"Auto care",file:"clio.html",image:"https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80"},
+    {name:"Bike",category:"Rental motor",file:"sewamotor.html",image:moto1},
+    {name:"Dami",category:"Rental motor",file:"damirental.html",image:moto1},
+    {name:"Amanah",category:"Sewa motor",file:"amanahrental.html",image:moto2},
+    {name:"Ray",category:"Rental motor",file:"raytransport.html",image:moto2},
+    {name:"Sukabumi",category:"Transport 24 jam",file:"sms.html",image:moto1},
+    {name:"CLIO",category:"Auto care",file:"clio.html",image:U+"1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80"},
     {name:"Dcoating",category:"Coating",file:"dcoating.html",image:"assets-car/car%201.png"},
-    {name:"Kaka",category:"Nano ceramic",file:"kaka.html",image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80"},
-    {name:"Scuto",category:"Nano ceramic",file:"scuto.html",image:"https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=80"},
-    {name:"Raff",category:"Barber",file:"raffv1.html",image:"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"},
-    {name:"RF",category:"Barbershop",file:"rf.html",image:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"},
-    {name:"YUJO",category:"Editorial salon",file:"yujo2nd.html",image:"https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=700&q=80"},
-    {name:"YUJO",category:"Salon Petaling Jaya",file:"yujosimple.html",image:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80"},
-    {name:"Cimaja",category:"Private surf trip",file:"cimajaescape.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/HERO%20PAGE.png"},
-    {name:"Lampuuk",category:"Surf academy",file:"surfschool.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/profil%20adun.png"},
-    {name:"Sinar",category:"Homestay",file:"sinarnusa.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sinar%20nusa/image_2026-07-23_221850435.png"},
-    {name:"Elud",category:"Bakery",file:"elud.html",image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=700"},
-    {name:"Aneuk",category:"Boxing camp",file:"aneuknanggroe.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/assets-random/ChatGPT%20Image%20Jul%2016%2C%202026%2C%2006_32_59%20PM.png"},
-    {name:"All-in",category:"Size guide",file:"sizingguide.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png"},
+    {name:"Kaka",category:"Nano ceramic",file:"kaka.html",image:U+"1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80"},
+    {name:"Scuto",category:"Nano ceramic",file:"scuto.html",image:U+"1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=80"},
+    {name:"Raff",category:"Barber",file:"raffv1.html",image:U+"1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"},
+    {name:"RF",category:"Barbershop",file:"rf.html",image:U+"1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"},
+    {name:"YUJO",category:"Editorial salon",file:"yujo2nd.html",image:U+"1560869713-7d0a29430803?auto=format&fit=crop&w=700&q=80"},
+    {name:"YUJO",category:"Salon Petaling Jaya",file:"yujosimple.html",image:U+"1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80"},
+    {name:"Cimaja",category:"Private surf trip",file:"cimajaescape.html",image:G+"cimajaassets/HERO%20PAGE.png"},
+    {name:"Lampuuk",category:"Surf academy",file:"surfschool.html",image:G+"adun%20assests/profil%20adun.png"},
+    {name:"Sinar",category:"Homestay",file:"sinarnusa.html",image:G+"sinar%20nusa/image_2026-07-23_221850435.png"},
+    {name:"Elud",category:"Bakery",file:"elud.html",image:U+"1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=700"},
+    {name:"Aneuk",category:"Boxing camp",file:"aneuknanggroe.html",image:G+"assets-random/ChatGPT%20Image%20Jul%2016%2C%202026%2C%2006_32_59%20PM.png"},
+    {name:"All-in",category:"Size guide",file:"sizingguide.html",image:G+"sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png"},
     {name:"iMessage",category:"Web tool",file:"chatses.html",image:"https://placehold.co/700x700/f0f0f0/111111?text=iMessage"},
-    {name:"Simasdev",category:"WebArchitect Pro",file:"simasdev.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/logo/icon%20webarchi.jpg"}
+    {name:"Simasdev",category:"WebArchitect Pro",file:"simasdev.html",image:G+"logo/icon%20webarchi.jpg"}
   ];
 
-  const positions = [
-    [10,17],[23,10],[37,13],[52,9],[67,12],[82,15],
-    [7,35],[18,29],[31,31],[46,27],[61,31],[76,29],[91,34],
-    [11,54],[25,48],[40,55],[57,50],[72,53],[87,51],
-    [20,73],[35,69],[51,76]
-  ];
+  const portfolio = document.getElementById("portfolio");
+  const mobileMQ = matchMedia("(max-width: 900px)");
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-  projects.forEach((project, index) => {
+  // pseudo-random berbenih: acak, tapi hasilnya selalu sama
+  function rng(seed) {
+    return () => {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  const items = projects.map((p, i) => {
     const el = document.createElement("a");
-    const [x, y] = positions[index];
-
     el.className = "portfolio-item";
-    el.href = "https://portfolio.beuna.xyz/" + project.file;
+    el.href = "https://portfolio.beuna.xyz/" + p.file;
     el.target = "_blank";
     el.rel = "noopener noreferrer";
-
-    const size = 58 + ((index * 17) % 45);
-    const rotation = -8 + ((index * 13) % 17);
-    const duration = 8 + ((index * 7) % 8);
-    const delay = -((index * 1.37) % 8);
-
-    el.style.setProperty("--x", x + "%");
-    el.style.setProperty("--y", y + "%");
-    el.style.setProperty("--size", size + "px");
-    el.style.setProperty("--rotation", rotation + "deg");
-    el.style.setProperty("--duration", duration + "s");
-    el.style.setProperty("--delay", delay + "s");
-
-    // Mobile: keep all portfolio icons in the upper ~30% of the screen.
-    const mobileCols = 7;
-    const mobileRow = Math.floor(index / mobileCols);
-    const mobileCol = index % mobileCols;
-    const mobileX = 7 + mobileCol * 14.3;
-    const mobileY = 8 + mobileRow * 9.5;
-    const mobileSize = 42 + ((index * 7) % 18);
-
-    el.style.setProperty("--mobile-x", mobileX + "%");
-    el.style.setProperty("--mobile-y", mobileY + "%");
-    el.style.setProperty("--mobile-size", mobileSize + "px");
-
+    el.setAttribute("aria-label", p.name + " — " + p.category);
+    el.style.setProperty("--size", (58 + ((i * 17) % 45)) + "px");
+    el.style.setProperty("--mobile-size", (32 + ((i * 7) % 15)) + "px");
     el.innerHTML =
-      '<div class="thumb">' +
-        '<img loading="lazy" src="' + project.image + '" alt="' + project.name + '">' +
-      '</div>' +
-      '<span class="label">' + project.name + '</span>' +
-      '<span class="category">' + project.category + '</span>';
-
+      '<div class="thumb"><img loading="lazy" src="' + p.image + '" alt="' + esc(p.name) + '"></div>' +
+      '<span class="label">' + esc(p.name) + '</span>' +
+      '<span class="category">' + esc(p.category) + '</span>';
     feed.appendChild(el);
+
+    const r = rng(i * 977 + 13);
+    const it = {
+      el, x: 0, y: 0, vx: 0, vy: 0, rot: 0, hw: 0, hover: false,
+      heading: r() * Math.PI * 2, spd: r(), tilt: -8 + ((i * 13) % 17),
+      p1: r() * 6.28, p2: r() * 6.28, p3: r() * 6.28, f1: .15 + r() * .15, f2: .3 + r() * .2
+    };
+    el.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") it.hover = true; });
+    el.addEventListener("pointerleave", () => { it.hover = false; });
+    el.addEventListener("focus", () => { it.hover = true; });
+    el.addEventListener("blur", () => { it.hover = false; });
+    return it;
   });
 
-  let targetX = window.innerWidth * .5;
-  let targetY = window.innerHeight * .5;
-  let currentX = targetX;
-  let currentY = targetY;
-  let reveal = 0;
-  let lastMove = performance.now();
+  // Area gerak. Mobile: 10% dari atas sampai 55% dari bawah (= 45% dari atas)
+  let zone = { l: 0, r: 0, t: 0, b: 0 }, mobile = mobileMQ.matches;
 
-  window.addEventListener("pointermove", (event) => {
-    if (event.pointerType !== "mouse") return;
+  function measure() {
+    const W = portfolio.clientWidth, H = portfolio.clientHeight;
+    mobile = mobileMQ.matches;
+    zone = mobile
+      ? { l: W * .05, r: W * .95, t: H * .10, b: H * .45 }
+      : { l: W * .04, r: W * .96, t: H * .07, b: H * .74 };
+    items.forEach(it => { it.hw = it.el.offsetWidth / 2; it.hh = it.el.offsetHeight / 2; });
+  }
 
-    targetX = event.clientX;
-    targetY = event.clientY;
+  const clampPos = it => {
+    it.x = Math.min(Math.max(it.x, zone.l + it.hw), zone.r - it.hw);
+    it.y = Math.min(Math.max(it.y, zone.t + it.hh), zone.b - it.hh);
+  };
+
+  const place = it => {
+    it.el.style.transform = "translate3d(" + it.x.toFixed(1) + "px," + it.y.toFixed(1) + "px,0) translate(-50%,-50%) rotate(" + it.rot.toFixed(2) + "deg)";
+  };
+
+  // Aturan tolak-menolak: bersentuhan TOUCH_FOR detik -> tolak aktif REPEL_FOR detik -> hilang
+  const N = items.length, TOUCH_FOR = 2, REPEL_FOR = 2, REACH = 3.5, PUSH = 1.4;
+  const touchT = new Float32Array(N * N), activeT = new Float32Array(N * N);
+
+  // Posisi awal: tiap ikon dipilih di titik paling jauh dari yang lain (best-candidate),
+  // lalu direlaksasi supaya jaraknya merata -> tidak ada ikon yang berdekatan saat load
+  function layout() {
+    const r = rng(2026);
+    const avg = items.reduce((sum, it) => sum + it.hw, 0) / N;
+    const cw = zone.r - zone.l - 2 * avg, ch = zone.b - zone.t - 2 * avg;
+    const d0 = .85 * Math.sqrt(Math.max(1, cw * ch) / N);
+
+    items.forEach((it, i) => {
+      let best = null, bestScore = -1;
+      for (let k = 0; k < 40; k++) {
+        const x = zone.l + it.hw + r() * (zone.r - zone.l - 2 * it.hw);
+        const y = zone.t + it.hh + r() * (zone.b - zone.t - 2 * it.hh);
+        let score = Infinity;
+        for (let j = 0; j < i; j++) score = Math.min(score, Math.hypot(x - items[j].x, y - items[j].y));
+        if (score > bestScore) { bestScore = score; best = { x, y }; }
+      }
+      it.x = best.x;
+      it.y = best.y;
+    });
+
+    for (let iter = 0; iter < 150; iter++) {
+      for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+        const a = items[i], b = items[j];
+        let ex = a.x - b.x, ey = a.y - b.y;
+        const d = Math.hypot(ex, ey) || .01;
+        if (d >= d0) continue;
+        const push = (d0 - d) * .25;
+        ex /= d; ey /= d;
+        a.x += ex * push; a.y += ey * push;
+        b.x -= ex * push; b.y -= ey * push;
+      }
+      items.forEach(clampPos);
+    }
+
+    items.forEach(it => { it.rot = it.tilt * .6; place(it); });
+    touchT.fill(0);
+    activeT.fill(0);
+  }
+
+  let last = performance.now();
+
+  function tick(now) {
+    const dt = Math.min(.05, (now - last) / 1000);
+    last = now;
+    const t = now / 1000;
+    const base = mobile ? 8 : 16, span = mobile ? 6 : 12, margin = mobile ? 26 : 70;
+
+    // Status tiap pasangan ikon: pasif sampai bersentuhan 2 detik, lalu aktif 2 detik, lalu hilang
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+      const a = items[i], b = items[j], k = i * N + j;
+      if (activeT[k] > 0) {
+        activeT[k] += dt;
+        if (activeT[k] >= REPEL_FOR) { activeT[k] = 0; touchT[k] = 0; }
+      } else if (Math.hypot(a.x - b.x, a.y - b.y) < a.hw + b.hw + 2) {
+        touchT[k] += dt;
+        if (touchT[k] >= TOUCH_FOR) { activeT[k] = 1e-6; touchT[k] = 0; }
+      } else {
+        touchT[k] = Math.max(0, touchT[k] - dt * 2);
+      }
+    }
+
+    for (let ia = 0; ia < N; ia++) {
+      const a = items[ia];
+      if (a.hover) {                       // berhenti saat disentuh kursor
+        a.vx *= .85; a.vy *= .85;
+      } else {
+        // 1) wander: arah berbelok halus, tiap ikon punya ritme sendiri
+        a.heading += (Math.sin(t * a.f1 + a.p1) * .9 + Math.sin(t * a.f2 + a.p2) * .6) * dt;
+        const sp = (base + a.spd * span) * (.85 + .15 * Math.sin(t * .5 + a.p3));
+        // 2) arus lembut yang sama untuk semua ikon -> gerak terasa kompak
+        let dx = Math.cos(a.heading) * sp + Math.cos(t * .11 + a.y / 220) * (mobile ? 2 : 5);
+        let dy = Math.sin(a.heading) * sp + Math.sin(t * .09 + a.x / 260) * (mobile ? 1.5 : 3);
+        // 3) dorongan halus menjauhi tepi area
+        const k = sp * 2.2;
+        if (a.x < zone.l + a.hw + margin) dx += (zone.l + a.hw + margin - a.x) / margin * k;
+        if (a.x > zone.r - a.hw - margin) dx -= (a.x - (zone.r - a.hw - margin)) / margin * k;
+        if (a.y < zone.t + a.hh + margin) dy += (zone.t + a.hh + margin - a.y) / margin * k;
+        if (a.y > zone.b - a.hh - margin) dy -= (a.y - (zone.b - a.hh - margin)) / margin * k;
+        // 4) tolak-menolak kuat (jangkauan ~3,5 ikon), hanya untuk pasangan yang sedang aktif
+        for (let ib = 0; ib < N; ib++) {
+          if (ib === ia || !activeT[ia < ib ? ia * N + ib : ib * N + ia]) continue;
+          const b = items[ib];
+          const ex = a.x - b.x, ey = a.y - b.y, d = Math.hypot(ex, ey) || .01;
+          const reach = (a.hw + b.hw) * REACH;
+          if (d >= reach) continue;
+          const f = (1 - d / reach) * reach * PUSH;
+          dx += ex / d * f;
+          dy += ey / d * f;
+        }
+        const ease = Math.min(1, dt * 1.6);
+        a.vx += (dx - a.vx) * ease;
+        a.vy += (dy - a.vy) * ease;
+        a.x += a.vx * dt;
+        a.y += a.vy * dt;
+        clampPos(a);
+        // arah wander ikut arah gerak sebenarnya (tidak "menempel" di tepi)
+        let diff = Math.atan2(a.vy, a.vx) - a.heading;
+        diff = Math.atan2(Math.sin(diff), Math.cos(diff));
+        a.heading += diff * dt * .8;
+      }
+      const target = a.hover ? 0 : a.tilt * .6 + Math.max(-8, Math.min(8, a.vx * .35)) + Math.sin(t * .5 + a.p3) * 2.5;
+      a.rot += (target - a.rot) * Math.min(1, dt * 2);
+      place(a);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  measure();
+  layout();
+  if (!reduceMotion) requestAnimationFrame(tick);
+
+  addEventListener("resize", () => {
+    const was = mobile;
+    measure();
+    if (mobile !== was) layout();
+    else items.forEach(it => { clampPos(it); place(it); });
+  });
+
+  /* ---------- Cursor reveal ---------- */
+  let targetX = innerWidth * .5, targetY = innerHeight * .5;
+  let currentX = targetX, currentY = targetY;
+  let reveal = 0, lastMove = performance.now();
+
+  let pressing = false, touchMode = false;
+
+  function aim(e) {
+    targetX = e.clientX;
+    targetY = e.clientY;
     reveal = 1;
     lastMove = performance.now();
+  }
+
+  // Mouse: mengikuti kursor. Sentuhan: mengikuti jari selama ditekan, lalu memudar saat dilepas
+  addEventListener("pointermove", e => {
+    const isMouse = e.pointerType === "mouse";
+    if (!isMouse && !pressing) return;
+    touchMode = !isMouse;
+    aim(e);
   }, { passive: true });
 
+  addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" || e.target.closest(".app-dock, .dock-info")) return;
+    pressing = true;
+    touchMode = true;
+    currentX = e.clientX;               // langsung muncul di bawah jari
+    currentY = e.clientY;
+    aim(e);
+  }, { passive: true });
+
+  const release = e => { if (e.pointerType !== "mouse") pressing = false; };
+  addEventListener("pointerup", release);
+  addEventListener("pointercancel", release);
+
   function animateReveal(now) {
-    currentX += (targetX - currentX) * 0.14;
-    currentY += (targetY - currentY) * 0.14;
+    if (pressing) { reveal = 1; lastMove = now; }
+    currentX += (targetX - currentX) * .14;
+    currentY += (targetY - currentY) * .14;
 
-    const idleMs = now - lastMove;
-    const idleFade = Math.max(0, 1 - Math.max(0, idleMs - 90) / 4025);
-    reveal *= 0.974;
-    const strength = Math.max(reveal, idleFade * 0.12);
-
+    const idleFade = Math.max(0, 1 - Math.max(0, now - lastMove - 90) / 4025);
+    reveal *= .974;
+    const strength = Math.max(reveal, idleFade * .12);
     const speed = Math.abs(targetX - currentX) + Math.abs(targetY - currentY);
-    const radius = Math.max(0, Math.min(186, (98.4 + speed * 2.04) * strength));
+    const boost = touchMode ? 1.3 : 1;     // jari menutupi area, jadi lingkaran dibuat lebih besar
+    const radius = Math.max(0, Math.min(186 * boost, (98.4 + speed * 2.04) * strength * boost));
 
     blurLayer.style.setProperty("--reveal-x", currentX + "px");
     blurLayer.style.setProperty("--reveal-y", currentY + "px");
@@ -775,10 +772,9 @@
 
     requestAnimationFrame(animateReveal);
   }
-
   requestAnimationFrame(animateReveal);
 
-
+  /* ---------- Dock ---------- */
   const appDock = document.getElementById("appDock");
   const dockApps = [...document.querySelectorAll(".dock-app")];
   const dockInfo = document.getElementById("dockInfo");
@@ -788,36 +784,45 @@
   const dockInfoText = document.getElementById("dockInfoText");
   const dockInfoIcon = document.getElementById("dockInfoIcon");
 
-  const BASE_DOCK_SIZE = 52;
-  const MAX_DOCK_SIZE = 92;
-  const DOCK_RANGE = 140;
+  const BASE = 52, MAX = 92, RANGE = 140;
+  let lastFocus = null;
+
+  // Mobile: dock mengecil otomatis agar semua ikon muat; ikon WhatsApp dibuat lebih besar
+  const baseSize = app => {
+    const wa = !!app.dataset.wa;
+    if (mobileMQ.matches) return Math.round(Math.min(36, (innerWidth - 62) / 9.3) * (wa ? 1.3 : 1));
+    return wa ? 62 : BASE;
+  };
+
+  function sizeDock(fn) {
+    dockApps.forEach(app => {
+      const s = Math.round(fn(app)) + "px";
+      app.style.width = s;
+      app.style.height = s;
+      app.style.flexBasis = s;
+    });
+  }
 
   function updateDock(mouseX) {
-    dockApps.forEach(app => {
-      const rect = app.getBoundingClientRect();
-      const center = rect.left + rect.width / 2;
-      const distance = Math.abs(mouseX - center);
-      const size = distance < DOCK_RANGE
-        ? BASE_DOCK_SIZE + (MAX_DOCK_SIZE - BASE_DOCK_SIZE) * Math.pow(Math.cos((distance / DOCK_RANGE) * Math.PI / 2), 2)
-        : BASE_DOCK_SIZE;
-      app.style.width = size + "px";
-      app.style.height = size + "px";
-      app.style.flexBasis = size + "px";
+    if (mobileMQ.matches) return;
+    sizeDock(app => {
+      const r = app.getBoundingClientRect();
+      const d = Math.abs(mouseX - (r.left + r.width / 2));
+      const b = baseSize(app);
+      return d < RANGE ? b * (1 + (MAX / BASE - 1) * Math.pow(Math.cos((d / RANGE) * Math.PI / 2), 2)) : b;
     });
   }
 
-  function resetDock() {
-    dockApps.forEach(app => {
-      app.style.width = BASE_DOCK_SIZE + "px";
-      app.style.height = BASE_DOCK_SIZE + "px";
-      app.style.flexBasis = BASE_DOCK_SIZE + "px";
-    });
-  }
+  const resetDock = () => sizeDock(baseSize);
+  resetDock();
+  addEventListener("resize", resetDock);
 
   appDock.addEventListener("mousemove", e => updateDock(e.clientX));
   appDock.addEventListener("mouseleave", resetDock);
+  appDock.addEventListener("touchmove", e => { if (e.touches[0]) updateDock(e.touches[0].clientX); }, { passive: true });
+  appDock.addEventListener("touchend", () => setTimeout(resetDock, 300));
 
-  dockApps.forEach(app => {
+  dockApps.filter(a => a.tagName === "BUTTON").forEach(app => {
     app.addEventListener("click", () => {
       app.classList.remove("bouncing");
       void app.offsetWidth;
@@ -826,36 +831,30 @@
       const dot = app.querySelector(".dock-dot");
       if (dot) dot.style.opacity = "1";
 
+      const icon = app.querySelector(".dock-icon");
       dockInfoTitle.textContent = app.dataset.name;
       dockInfoText.textContent = app.dataset.how;
-      dockInfoIcon.innerHTML = app.querySelector(".dock-icon").innerHTML;
-      dockInfoIcon.style.cssText = app.querySelector(".dock-icon").getAttribute("style") || "";
+      dockInfoIcon.innerHTML = icon.innerHTML;
+      dockInfoIcon.style.cssText = icon.getAttribute("style") || "";
 
+      lastFocus = app;
       dockInfo.classList.add("open");
       dockBackdrop.classList.add("open");
-      dockInfo.setAttribute("aria-hidden","false");
+      dockInfo.setAttribute("aria-hidden", "false");
+      dockClose.focus();
     });
   });
 
   function closeDockInfo() {
     dockInfo.classList.remove("open");
     dockBackdrop.classList.remove("open");
-    dockInfo.setAttribute("aria-hidden","true");
+    dockInfo.setAttribute("aria-hidden", "true");
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
 
   dockClose.addEventListener("click", closeDockInfo);
   dockBackdrop.addEventListener("click", closeDockInfo);
-
-  window.addEventListener("keydown", e => {
-    if (e.key === "Escape") closeDockInfo();
-  });
-
-  appDock.addEventListener("touchmove", e => {
-    if (e.touches[0]) updateDock(e.touches[0].clientX);
-  }, {passive:true});
-
-  appDock.addEventListener("touchend", () => setTimeout(resetDock, 300));
-
+  addEventListener("keydown", e => { if (e.key === "Escape" && dockInfo.classList.contains("open")) closeDockInfo(); });
 </script>
 </body>
 </html>
