@@ -81,8 +81,8 @@
     -webkit-mask-image: radial-gradient(
       circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
       transparent 0%,
-      transparent 52%,
-      rgba(0,0,0,var(--reveal-alpha)) 100%
+      transparent 55%,
+      #000 100%
     );
     mask-image: radial-gradient(
       circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
@@ -218,6 +218,43 @@
     50% { filter: brightness(1.04); }
   }
 
+  .whatsapp-float {
+    position: fixed;
+    right: 28px;
+    bottom: 24px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px 9px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.86);
+    color: #111;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    box-shadow: 0 10px 28px rgba(0,0,0,.12);
+    backdrop-filter: blur(12px);
+    animation: whatsapp-float 4.8s ease-in-out infinite;
+  }
+
+  .whatsapp-icon {
+    display: grid;
+    width: 25px;
+    height: 25px;
+    place-items: center;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  @keyframes whatsapp-float {
+    0%, 100% { transform: translate3d(0,0,0) rotate(-1deg); }
+    50% { transform: translate3d(-5px,-8px,0) rotate(1deg); }
+  }
+
   /*
     Desktop is the current scope.
     Keep the mobile layout intentionally simple until the mobile pass.
@@ -263,6 +300,11 @@
     <div class="hint">Move cursor to reveal</div>
 
     <section class="portfolio-feed" id="portfolioFeed" aria-label="Website portfolio"></section>
+
+    <a class="whatsapp-float" href="#" aria-label="Connect via WhatsApp">
+      <span class="whatsapp-icon" aria-hidden="true">●</span>
+      <span>Connect via WhatsApp</span>
+    </a>
   </main>
 
 <script>
@@ -478,12 +520,12 @@
     const strength = Math.max(reveal, idleFade * 0.12);
 
     const speed = Math.abs(targetX - currentX) + Math.abs(targetY - currentY);
-    const radius = Math.min(155, 82 + speed * 1.7);
+    const radius = Math.max(0, Math.min(155, (82 + speed * 1.7) * strength));
 
     blurLayer.style.setProperty("--reveal-x", currentX + "px");
     blurLayer.style.setProperty("--reveal-y", currentY + "px");
     blurLayer.style.setProperty("--reveal-size", radius + "px");
-    blurLayer.style.setProperty("--reveal-alpha", Math.min(0.98, strength).toFixed(3));
+
 
     requestAnimationFrame(animateReveal);
   }
