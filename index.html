@@ -42,8 +42,16 @@
     The sharp image lives underneath the blurred image.
     The top blurred layer becomes transparent around the cursor.
   */
+  .image-frame {
+    position: absolute;
+    inset: 14px;
+    overflow: hidden;
+    border-radius: 28px;
+    background: #fff;
+  }
+
   .portfolio-image,
-  .portfolio-image::after {
+  .blur-layer {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -68,13 +76,13 @@
     */
     --reveal-x: 50%;
     --reveal-y: 50%;
-    --reveal-size: 190px;
+    --reveal-size: 115px;
     --reveal-alpha: 0;
     -webkit-mask-image: radial-gradient(
       circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
-      rgba(0,0,0,calc(1 - var(--reveal-alpha))) 0%,
-      rgba(0,0,0,calc(1 - var(--reveal-alpha))) 45%,
-      transparent 100%
+      transparent 0%,
+      transparent 52%,
+      rgba(0,0,0,var(--reveal-alpha)) 100%
     );
     mask-image: radial-gradient(
       circle var(--reveal-size) at var(--reveal-x) var(--reveal-y),
@@ -139,7 +147,7 @@
   }
 
   .label {
-    display: block;
+    display: none;
     margin-top: 5px;
     padding-left: 1px;
     font-size: clamp(8px, .62vw, 11px);
@@ -151,7 +159,7 @@
   }
 
   .category {
-    display: block;
+    display: none;
     margin-top: 2px;
     font-size: clamp(7px, .48vw, 9px);
     line-height: 1;
@@ -160,6 +168,7 @@
   }
 
   .brand {
+    display: none;
     position: absolute;
     z-index: 20;
     left: 32px;
@@ -174,6 +183,7 @@
   }
 
   .hint {
+    display: none;
     position: absolute;
     z-index: 20;
     left: 32px;
@@ -244,8 +254,10 @@
 
 <body>
   <main class="portfolio" id="portfolio">
-    <div class="portfolio-image" aria-hidden="true"></div>
-    <div class="blur-layer" id="blurLayer" aria-hidden="true"></div>
+    <div class="image-frame">
+      <div class="portfolio-image" aria-hidden="true"></div>
+      <div class="blur-layer" id="blurLayer" aria-hidden="true"></div>
+    </div>
 
     <div class="brand">Beuna Digital — Portfolio</div>
     <div class="hint">Move cursor to reveal</div>
@@ -412,7 +424,7 @@
     el.target = "_blank";
     el.rel = "noopener noreferrer";
 
-    const size = 68 + ((index * 17) % 57);
+    const size = 58 + ((index * 17) % 45);
     const rotation = -8 + ((index * 13) % 17);
     const duration = 8 + ((index * 7) % 8);
     const delay = -((index * 1.37) % 8);
@@ -466,7 +478,7 @@
     const strength = Math.max(reveal, idleFade * 0.12);
 
     const speed = Math.abs(targetX - currentX) + Math.abs(targetY - currentY);
-    const radius = Math.min(285, 150 + speed * 3.2);
+    const radius = Math.min(155, 82 + speed * 1.7);
 
     blurLayer.style.setProperty("--reveal-x", currentX + "px");
     blurLayer.style.setProperty("--reveal-y", currentY + "px");
