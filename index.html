@@ -153,6 +153,10 @@
   /* ---------- Dock (burgundy, macOS-style) ---------- */
   .app-dock {
     position: fixed;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
     left: 50%;
     bottom: var(--dock-bottom);
     transform: translateX(-50%);
@@ -190,6 +194,8 @@
     cursor: pointer;
     transition: width .12s ease-out, height .12s ease-out, flex-basis .12s ease-out;
   }
+
+  .app-dock.no-anim .dock-app { transition: none; }
 
   .dock-icon {
     position: relative;
@@ -243,8 +249,13 @@
     transition: .15s ease;
   }
 
-  .dock-app:hover .dock-tooltip,
-  .dock-app:focus-visible .dock-tooltip { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  /* .hot = ikon yang sedang disentuh jari; --tt-shift menjaga tooltip tetap di dalam layar */
+  .dock-app:focus-visible .dock-tooltip,
+  .dock-app.hot .dock-tooltip { opacity: 1; transform: translateX(calc(-50% + var(--tt-shift, 0px))) translateY(0) scale(1); }
+
+  @media (hover: hover) {
+    .dock-app:hover .dock-tooltip { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  }
 
   .dock-dot {
     position: absolute;
@@ -383,7 +394,7 @@
     .app-dock { max-width: calc(100vw - 12px); gap: 3px; padding: 7px 8px; border-radius: 20px; }
     .dock-icon { box-shadow: 0 5px 10px rgba(0,0,0,.4), inset 0 1px 1px rgba(255,255,255,.4); }
     .dock-separator { height: 28px; margin: 0 2px; }
-    .dock-tooltip { display: none; }
+    .dock-tooltip { font-size: 12px; }
     .dock-dot { bottom: -6px; }
   }
 
@@ -803,8 +814,33 @@
     });
   }
 
+  let restCx = [];   // titik tengah tiap ikon saat dock diam
+
+  // Ukur posisi diam tanpa animasi (dipanggil saat load & resize)
+  function measureRest() {
+    appDock.classList.add("no-anim");
+    sizeDock(baseSize);
+    restCx = dockApps.map(a => { const r = a.getBoundingClientRect(); return r.left + r.width / 2; });
+    appDock.classList.remove("no-anim");
+  }
+
+  // Layar sempit: lebar dock dijaga tetap (efek fisheye) -> ikon di bawah jari membesar,
+  // ikon yang jauh mengecil sedikit, dock tidak pernah melebar keluar layar
+  function fisheye(x) {
+    const bases = dockApps.map(baseSize), W0 = bases.reduce((s, b) => s + b, 0);
+    const R = (W0 / dockApps.length) * 2.4, ratio = 1.9;
+    const f = dockApps.map((_, i) => {
+      const d = Math.abs(x - restCx[i]);
+      return d < R ? Math.pow(Math.cos(d / R * Math.PI / 2), 2) : 0;
+    });
+    const raw = bases.map((b, i) => b * (1 + (ratio - 1) * f[i]));
+    const excess = raw.reduce((s, v) => s + v, 0) - W0;
+    const w = bases.map((b, i) => (1 - f[i]) * b), sw = w.reduce((s, v) => s + v, 0) || 1;
+    sizeDock(app => { const i = dockApps.indexOf(app); return Math.max(raw[i] - excess * w[i] / sw, bases[i] * .55); });
+  }
+
   function updateDock(mouseX) {
-    if (mobileMQ.matches) return;
+    if (mobileMQ.matches) return fisheye(mouseX);
     sizeDock(app => {
       const r = app.getBoundingClientRect();
       const d = Math.abs(mouseX - (r.left + r.width / 2));
@@ -814,13 +850,71 @@
   }
 
   const resetDock = () => sizeDock(baseSize);
-  resetDock();
-  addEventListener("resize", resetDock);
+  measureRest();
+  addEventListener("resize", measureRest);
 
   appDock.addEventListener("mousemove", e => updateDock(e.clientX));
   appDock.addEventListener("mouseleave", resetDock);
-  appDock.addEventListener("touchmove", e => { if (e.touches[0]) updateDock(e.touches[0].clientX); }, { passive: true });
-  appDock.addEventListener("touchend", () => setTimeout(resetDock, 300));
+  /* ---------- Sentuhan: geser jari di dock untuk membesarkan ikon, lepas di atas ikon untuk membukanya ---------- */
+  let dockTouch = null, hotIdx = -1;
+
+  const nearestIdx = x => {
+    let best = 0, bd = Infinity;
+    restCx.forEach((c, i) => { const d = Math.abs(x - c); if (d < bd) { bd = d; best = i; } });
+    return best;
+  };
+
+  function setHot(i) {
+    if (i === hotIdx) return;
+    if (hotIdx >= 0) dockApps[hotIdx].classList.remove("hot");
+    hotIdx = i;
+    if (i < 0) return;
+    const app = dockApps[i], tt = app.querySelector(".dock-tooltip");
+    const half = tt.offsetWidth / 2, c = restCx[i];
+    const shift = Math.max(8 - (c - half), 0) - Math.max((c + half) - (innerWidth - 8), 0);
+    tt.style.setProperty("--tt-shift", shift + "px");
+    app.classList.add("hot");
+    if (navigator.vibrate) navigator.vibrate(6);
+  }
+
+  function touchAim(e) {
+    const r = appDock.getBoundingClientRect();
+    const inside = e.clientX > r.left - 24 && e.clientX < r.right + 24 && e.clientY > r.top - 110 && e.clientY < r.bottom + 50;
+    if (!inside) { setHot(-1); resetDock(); return; }   // jari keluar dari dock = batal
+    updateDock(e.clientX);
+    setHot(nearestIdx(e.clientX));
+  }
+
+  appDock.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse") return;
+    dockTouch = e.pointerId;
+    if (appDock.setPointerCapture) appDock.setPointerCapture(e.pointerId);
+    touchAim(e);
+  });
+
+  appDock.addEventListener("pointermove", e => {
+    if (e.pointerType !== "mouse" && e.pointerId === dockTouch) touchAim(e);
+  });
+
+  function finishTouch(e, cancel) {
+    if (e.pointerId !== dockTouch) return;
+    dockTouch = null;
+    const idx = hotIdx;
+    setHot(-1);
+    resetDock();
+    if (cancel || idx < 0) return;
+    const app = dockApps[idx];
+    app.classList.remove("bouncing");
+    void app.offsetWidth;
+    app.classList.add("bouncing");
+    app.click();                       // buka info tool, atau chat WhatsApp
+  }
+
+  appDock.addEventListener("pointerup", e => finishTouch(e, false));
+  appDock.addEventListener("pointercancel", e => finishTouch(e, true));
+
+  // Aksi sudah ditangani lewat pointerup; cegah klik bawaan agar tidak terpicu dua kali
+  appDock.addEventListener("touchend", e => { if (e.cancelable) e.preventDefault(); }, { passive: false });
 
   dockApps.filter(a => a.tagName === "BUTTON").forEach(app => {
     app.addEventListener("click", () => {
