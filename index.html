@@ -26,7 +26,6 @@
     overflow: hidden;
   }
 
-  /* Desktop portfolio canvas */
   .portfolio {
     position: relative;
     width: 100vw;
@@ -37,11 +36,6 @@
     isolation: isolate;
   }
 
-  /*
-    EXPOSE IMAGE
-    The sharp image lives underneath the blurred image.
-    The top blurred layer becomes transparent around the cursor.
-  */
   .image-frame {
     position: absolute;
     inset: 14px;
@@ -70,10 +64,6 @@
     background:
       linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)),
       url("https://res.cloudinary.com/naqr1mob/image/upload/v1791184970/back.jpg") center center / cover no-repeat;
-    /*
-      --reveal-x / --reveal-y are updated by JS.
-      --reveal is the current reveal strength and fades to 0 while idle.
-    */
     --reveal-x: 50%;
     --reveal-y: 50%;
     --reveal-size: 115px;
@@ -94,10 +84,6 @@
     mask-repeat: no-repeat;
   }
 
-  /*
-    Portfolio items sit above the photograph like the reference:
-    no grid, no cards, no sections.
-  */
   .portfolio-feed {
     position: absolute;
     inset: 0;
@@ -257,19 +243,47 @@
     50% { transform: translate3d(-5px,-8px,0) rotate(1deg); }
   }
 
-  /*
-    Desktop is the current scope.
-    Keep the mobile layout intentionally simple until the mobile pass.
-  */
   @media (max-width: 900px) {
-    body { overflow: auto; }
+    body { overflow: hidden; }
+
     .portfolio {
       min-height: 100svh;
       height: 100svh;
     }
 
+    .portfolio-image {
+      background-image: url("https://res.cloudinary.com/naqr1mob/image/upload/v1791186943/front_mobile.jpg");
+      background-position: center center;
+      background-size: cover;
+    }
+
+    .blur-layer {
+      background-image:
+        linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.08)),
+        url("https://res.cloudinary.com/naqr1mob/image/upload/v1791186943/back_mobile.jpg");
+      background-position: center center;
+      background-size: cover;
+    }
+
+    .portfolio-feed {
+      display: block;
+    }
+
     .portfolio-item {
-      display: none;
+      display: block;
+      width: var(--mobile-size);
+      left: var(--mobile-x);
+      top: var(--mobile-y);
+    }
+
+    .label {
+      color: #7b1e2b;
+      text-shadow: 0 1px 7px rgba(255,255,255,.95);
+    }
+
+    .thumb {
+      border-radius: 18px;
+      box-shadow: 0 7px 20px rgba(0,0,0,.14);
     }
 
     .brand {
@@ -280,6 +294,11 @@
     .hint {
       left: 20px;
       bottom: 20px;
+    }
+
+    .whatsapp-float {
+      right: 16px;
+      bottom: 16px;
     }
   }
 
@@ -314,144 +333,30 @@
   const blurLayer = document.getElementById("blurLayer");
   const feed = document.getElementById("portfolioFeed");
 
-  /*
-    Representative visuals taken from the existing 2NDDUMMY portfolio HTMLs.
-    The actual portfolio pages are not copied into this repo in this pass.
-  */
   const projects = [
-    {
-      name: "Bike",
-      category: "Rental motor",
-      file: "sewamotor.html",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Dami",
-      category: "Rental motor",
-      file: "damirental.html",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Amanah",
-      category: "Sewa motor",
-      file: "amanahrental.html",
-      image: "https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Ray",
-      category: "Rental motor",
-      file: "raytransport.html",
-      image: "https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Sukabumi",
-      category: "Transport 24 jam",
-      file: "sms.html",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "CLIO",
-      category: "Auto care",
-      file: "clio.html",
-      image: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Dcoating",
-      category: "Coating",
-      file: "dcoating.html",
-      image: "assets-car/car%201.png"
-    },
-    {
-      name: "Kaka",
-      category: "Nano ceramic",
-      file: "kaka.html",
-      image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Scuto",
-      category: "Nano ceramic",
-      file: "scuto.html",
-      image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Raff",
-      category: "Barber",
-      file: "raffv1.html",
-      image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "RF",
-      category: "Barbershop",
-      file: "rf.html",
-      image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "YUJO",
-      category: "Editorial salon",
-      file: "yujo2nd.html",
-      image: "https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "YUJO",
-      category: "Salon Petaling Jaya",
-      file: "yujosimple.html",
-      image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80"
-    },
-    {
-      name: "Cimaja",
-      category: "Private surf trip",
-      file: "cimajaescape.html",
-      image: "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/HERO%20PAGE.png"
-    },
-    {
-      name: "Lampuuk",
-      category: "Surf academy",
-      file: "surfschool.html",
-      image: "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/profil%20adun.png"
-    },
-    {
-      name: "Sinar",
-      category: "Homestay",
-      file: "sinarnusa.html",
-      image: "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sinar%20nusa/image_2026-07-23_221850435.png"
-    },
-    {
-      name: "Elud",
-      category: "Bakery",
-      file: "elud.html",
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=700"
-    },
-    {
-      name: "Aneuk",
-      category: "Boxing camp",
-      file: "aneuknanggroe.html",
-      image: "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/assets-random/ChatGPT%20Image%20Jul%2016%2C%202026%2C%2006_32_59%20PM.png"
-    },
-    {
-      name: "All-in",
-      category: "Size guide",
-      file: "sizingguide.html",
-      image: "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png"
-    },
-    {
-      name: "iMessage",
-      category: "Web tool",
-      file: "chatses.html",
-      image: "https://placehold.co/700x700/f0f0f0/111111?text=iMessage"
-    },
-    {
-      name: "Simasdev",
-      category: "WebArchitect Pro",
-      file: "simasdev.html",
-      image: "https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/logo/icon%20webarchi.jpg"
-    }
+    {name:"Bike",category:"Rental motor",file:"sewamotor.html",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"},
+    {name:"Dami",category:"Rental motor",file:"damirental.html",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"},
+    {name:"Amanah",category:"Sewa motor",file:"amanahrental.html",image:"https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80"},
+    {name:"Ray",category:"Rental motor",file:"raytransport.html",image:"https://images.unsplash.com/photo-1558005530-fa26e0bcfea5?auto=format&fit=crop&w=700&q=80"},
+    {name:"Sukabumi",category:"Transport 24 jam",file:"sms.html",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"},
+    {name:"CLIO",category:"Auto care",file:"clio.html",image:"https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=700&q=80"},
+    {name:"Dcoating",category:"Coating",file:"dcoating.html",image:"assets-car/car%201.png"},
+    {name:"Kaka",category:"Nano ceramic",file:"kaka.html",image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80"},
+    {name:"Scuto",category:"Nano ceramic",file:"scuto.html",image:"https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=80"},
+    {name:"Raff",category:"Barber",file:"raffv1.html",image:"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80"},
+    {name:"RF",category:"Barbershop",file:"rf.html",image:"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"},
+    {name:"YUJO",category:"Editorial salon",file:"yujo2nd.html",image:"https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=700&q=80"},
+    {name:"YUJO",category:"Salon Petaling Jaya",file:"yujosimple.html",image:"https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80"},
+    {name:"Cimaja",category:"Private surf trip",file:"cimajaescape.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/cimajaassets/HERO%20PAGE.png"},
+    {name:"Lampuuk",category:"Surf academy",file:"surfschool.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/adun%20assests/profil%20adun.png"},
+    {name:"Sinar",category:"Homestay",file:"sinarnusa.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sinar%20nusa/image_2026-07-23_221850435.png"},
+    {name:"Elud",category:"Bakery",file:"elud.html",image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=700"},
+    {name:"Aneuk",category:"Boxing camp",file:"aneuknanggroe.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/assets-random/ChatGPT%20Image%20Jul%2016%2C%202026%2C%2006_32_59%20PM.png"},
+    {name:"All-in",category:"Size guide",file:"sizingguide.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/sizingguideassets/ChatGPT%20Image%20Sep%203%2C%202026%2C%2004_28_58%20PM.png"},
+    {name:"iMessage",category:"Web tool",file:"chatses.html",image:"https://placehold.co/700x700/f0f0f0/111111?text=iMessage"},
+    {name:"Simasdev",category:"WebArchitect Pro",file:"simasdev.html",image:"https://raw.githubusercontent.com/sunsetdansenja-arch/2NDDUMMY/main/logo/icon%20webarchi.jpg"}
   ];
 
-  /*
-    Fixed seed keeps the composition stable between refreshes.
-    Items are deliberately spread across the canvas with a clear central
-    negative-space zone so the reference portrait remains readable.
-  */
   const positions = [
     [10,17],[23,10],[37,13],[52,9],[67,12],[82,15],
     [7,35],[18,29],[31,31],[46,27],[61,31],[76,29],[91,34],
@@ -480,6 +385,18 @@
     el.style.setProperty("--duration", duration + "s");
     el.style.setProperty("--delay", delay + "s");
 
+    // Mobile: keep all portfolio icons in the upper ~30% of the screen.
+    const mobileCols = 7;
+    const mobileRow = Math.floor(index / mobileCols);
+    const mobileCol = index % mobileCols;
+    const mobileX = 7 + mobileCol * 14.3;
+    const mobileY = 8 + mobileRow * 9.5;
+    const mobileSize = 42 + ((index * 7) % 18);
+
+    el.style.setProperty("--mobile-x", mobileX + "%");
+    el.style.setProperty("--mobile-y", mobileY + "%");
+    el.style.setProperty("--mobile-size", mobileSize + "px");
+
     el.innerHTML =
       '<div class="thumb">' +
         '<img loading="lazy" src="' + project.image + '" alt="' + project.name + '">' +
@@ -490,12 +407,6 @@
     feed.appendChild(el);
   });
 
-  /*
-    Cursor reveal:
-    - movement immediately increases the reveal
-    - the reveal radius follows the cursor
-    - when the cursor stops, strength decays smoothly
-  */
   let targetX = window.innerWidth * .5;
   let targetY = window.innerHeight * .5;
   let currentX = targetX;
@@ -527,7 +438,6 @@
     blurLayer.style.setProperty("--reveal-x", currentX + "px");
     blurLayer.style.setProperty("--reveal-y", currentY + "px");
     blurLayer.style.setProperty("--reveal-size", radius + "px");
-
 
     requestAnimationFrame(animateReveal);
   }
