@@ -307,6 +307,222 @@
       animation: none;
     }
   }
+
+  /* Burgundy macOS-style dock */
+  .app-dock {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 14px;
+    border-radius: 28px;
+    background: rgba(58,12,24,.58);
+    backdrop-filter: blur(32px) saturate(220%);
+    -webkit-backdrop-filter: blur(32px) saturate(220%);
+    border: 1px solid rgba(255,130,160,.25);
+    box-shadow: 0 30px 60px rgba(0,0,0,.5), 0 0 30px rgba(130,20,50,.35), inset 0 1px 1.5px rgba(255,255,255,.4);
+  }
+
+  .app-dock::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 4%;
+    right: 4%;
+    height: 1px;
+    background: linear-gradient(90deg,transparent,rgba(255,210,230,.7),transparent);
+    pointer-events: none;
+  }
+
+  .dock-app {
+    position: relative;
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+    transition: width .12s ease-out,height .12s ease-out,transform .12s ease-out;
+  }
+
+  .dock-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 22.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,.45), inset 0 1px 1px rgba(255,255,255,.45), inset 0 -2px 4px rgba(0,0,0,.35);
+  }
+
+  .dock-icon svg { width: 62%; height: 62%; }
+  .dock-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 52%;
+    background: linear-gradient(180deg,rgba(255,255,255,.28),transparent);
+    pointer-events: none;
+  }
+
+  .dock-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(5px) scale(.95);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    padding: 5px 11px;
+    border-radius: 8px;
+    color: #fff;
+    background: rgba(24,10,18,.86);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(18px);
+    font-size: 11px;
+    font-weight: 600;
+    transition: .15s ease;
+  }
+
+  .dock-app:hover .dock-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .dock-dot {
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 8px #fff;
+    transform: translateX(-50%);
+  }
+
+  .dock-separator {
+    width: 1px;
+    height: 40px;
+    margin: 0 3px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.2);
+  }
+
+  @keyframes dockBounce {
+    0%,100% { transform: translateY(0); }
+    30% { transform: translateY(-25px) scaleY(1.06); }
+    50% { transform: translateY(0) scaleY(.94); }
+    75% { transform: translateY(-10px) scaleY(1.03); }
+  }
+
+  .dock-app.bouncing { animation: dockBounce .65s cubic-bezier(.28,.84,.42,1); }
+
+  .dock-info {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: min(390px, calc(100vw - 32px));
+    padding: 24px;
+    z-index: 120;
+    border-radius: 18px;
+    transform: translate(-50%,-45%) scale(.9);
+    opacity: 0;
+    pointer-events: none;
+    color: #fff;
+    background: rgba(28,12,20,.88);
+    backdrop-filter: blur(36px) saturate(210%);
+    -webkit-backdrop-filter: blur(36px) saturate(210%);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 40px 90px rgba(0,0,0,.7),0 0 50px rgba(140,20,60,.35);
+    transition: opacity .22s ease,transform .22s cubic-bezier(.16,1,.3,1);
+  }
+
+  .dock-info.open {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+    pointer-events: auto;
+  }
+
+  .dock-info-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background: rgba(0,0,0,.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+
+  .dock-info-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .dock-info-head {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+
+  .dock-info-icon {
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    flex:0 0 48px;
+  }
+
+  .dock-info-icon svg { width:62%; height:62%; }
+
+  .dock-info h3 { margin:0; font-size:17px; }
+  .dock-info .how-label {
+    margin: 0 0 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,180,200,.78);
+  }
+
+  .dock-info p {
+    margin:0;
+    color:rgba(255,255,255,.7);
+    font-size:12px;
+    line-height:1.6;
+  }
+
+  .dock-close {
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:24px;
+    height:24px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    cursor:pointer;
+  }
+
+  @media (max-width:900px) {
+    .app-dock {
+      bottom: 12px;
+      max-width: calc(100vw - 18px);
+      gap: 4px;
+      padding: 8px 9px;
+      border-radius: 22px;
+      transform: translateX(-50%) scale(.78);
+      transform-origin: bottom center;
+    }
+
+    .dock-app { flex-basis: 52px; width:52px; height:52px; }
+    .whatsapp-float { bottom: 88px; }
+  }
+
 </style>
 </head>
 
@@ -327,6 +543,85 @@
       <span>Connect via WhatsApp</span>
     </a>
   </main>
+
+
+    <div class="dock-info-backdrop" id="dockInfoBackdrop"></div>
+    <div class="dock-info" id="dockInfo" aria-hidden="true">
+      <button class="dock-close" id="dockClose" aria-label="Close">×</button>
+      <div class="dock-info-head">
+        <div class="dock-info-icon" id="dockInfoIcon"></div>
+        <h3 id="dockInfoTitle">Application</h3>
+      </div>
+      <p class="how-label">How I use it</p>
+      <p id="dockInfoText"></p>
+    </div>
+
+    <nav class="app-dock" id="appDock" aria-label="Tools I use">
+      <button class="dock-app" data-name="n8n" data-how="I use n8n to automate repetitive workflows, connect APIs, and move data between the tools behind my websites.">
+        <span class="dock-tooltip">n8n</span>
+        <span class="dock-icon" style="background:linear-gradient(135deg,#f43f5e,#db2777,#dc2626)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M18 10a3 3 0 0 0-2.82 2H13.82a3 3 0 0 0-2.82-2A3 3 0 0 0 8 12H6a1 1 0 1 0 0 2h2a3 3 0 0 0 2.82 2A3 3 0 0 0 13.64 14H15a3 3 0 0 0 3 2 3 3 0 1 0 0-6z"/><circle cx="18" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="Obsidian" data-how="I use Obsidian as a local knowledge base for notes, ideas, project context, and connected thinking.">
+        <span class="dock-tooltip">Obsidian</span>
+        <span class="dock-icon" style="background:#09090b;border:1px solid #27272a">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2z" stroke="#9d7afb" stroke-width="1.8"/><polygon points="12,5 17,9 15,16 12,18 9,16 7,9" fill="#7c3aed"/><circle cx="12" cy="12" r="2" fill="#fff"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="Visual Studio Code" data-how="I use VS Code to build and debug the HTML, CSS, and JavaScript that power my web projects.">
+        <span class="dock-tooltip">VS Code</span>
+        <span class="dock-icon" style="background:#020617;border:1px solid #1e293b">
+          <svg viewBox="0 0 24 24"><path d="M17.5 2.5 22 5v14l-4.5 2.5L2 13.5v-3L17.5 2.5Z" fill="#0065A9"/><path d="m17.5 2.5-10 9.5 10 9.5v-19Z" fill="#007ACC"/><path d="M17.5 21.5 22 19V5l-4.5-2.5v19Z" fill="#1F9CF0"/><path d="m2 10.5 5.5 1.5L2 13.5v-3Z" fill="#0065A9"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="Supabase" data-how="I use Supabase for databases, authentication, storage, and lightweight backend services for web projects.">
+        <span class="dock-tooltip">Supabase</span>
+        <span class="dock-icon" style="background:#171717;border:1px solid #262626">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M13.35 2.05a1 1 0 0 0-1.6.15L3.3 14.2a1 1 0 0 0 .8 1.5h6.65l-1.1 6.25a1 1 0 0 0 1.6-.15l8.45-12a1 1 0 0 0-.8-1.55h-6.65l1.1-6.2Z" fill="#3ECF8E"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="Claude" data-how="I use Claude for research, brainstorming, reasoning, content work, and as a second AI perspective when building projects.">
+        <span class="dock-tooltip">Claude</span>
+        <span class="dock-icon" style="background:linear-gradient(135deg,#d97706,#ea580c,#b91c1c)">
+          <svg viewBox="0 0 24 24" fill="#fff7ed"><path d="m12 2 1.5 5.5L18 4l-3.5 5L20 10l-5.5 2L18 17.5l-5.5-3L11 20l-1-5.5L5 17.5l2.5-5.5L2 10l5.5-1L4 4l5.5 3.5L12 2Z"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="Arc Browser" data-how="I use Arc to research references, test websites, browse client projects, and keep web work separated by context.">
+        <span class="dock-tooltip">Arc</span>
+        <span class="dock-icon" style="background:linear-gradient(135deg,#171347,#4c1d95,#0f172a);border:1px solid rgba(162,119,255,.2)">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 18C4 10.27 10.27 4 18 4c1.1 0 2 .9 2 2s-.9 2-2 2c-5.52 0-10 4.48-10 10 0 1.1-.9 2-2 2s-2-.9-2-2Z" fill="url(#arcDockGrad)"/><defs><linearGradient id="arcDockGrad" x1="4" y1="4" x2="20" y2="20"><stop stop-color="#FF7AC6"/><stop offset=".5" stop-color="#A277FF"/><stop offset="1" stop-color="#627EEA"/></linearGradient></defs></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="MainWP" data-how="I use MainWP to manage and monitor multiple WordPress websites from one central dashboard.">
+        <span class="dock-tooltip">MainWP</span>
+        <span class="dock-icon" style="background:linear-gradient(135deg,#3b82f6,#4f46e5)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10Z"/><path d="M8 16v-2M12 16v-4M16 16v-6"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <button class="dock-app" data-name="Pinterest" data-how="I use Pinterest to collect visual references, design direction, layout ideas, and creative inspiration.">
+        <span class="dock-tooltip">Pinterest</span>
+        <span class="dock-icon" style="background:linear-gradient(135deg,#ef4444,#b91c1c)">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M12.02 0C5.4 0 .03 5.37.03 11.99c0 5.08 3.16 9.42 7.62 11.16-.1-.95-.2-2.4.04-3.44.22-.94 1.41-5.96 1.41-5.96s-.36-.72-.36-1.78c0-1.66.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.65 2.57-.99 3.99-.29 1.19.6 2.17 1.78 2.17 2.13 0 3.77-2.25 3.77-5.49 0-2.86-2.06-4.87-5.01-4.87-3.41 0-5.41 2.56-5.41 5.2 0 1.03.39 2.14.89 2.74.1.12.11.23.09.35l-.33 1.36c-.05.23-.17.27-.4.17-1.5-.69-2.43-2.88-2.43-4.65 0-3.78 2.75-7.25 7.92-7.25 4.16 0 7.39 2.97 7.39 6.92 0 4.14-2.61 7.46-6.23 7.46-1.21 0-2.35-.63-2.76-1.38l-.75 2.85c-.27 1.05-1 2.35-1.5 3.15 1.12.35 2.31.54 3.55.54 6.61 0 11.99-5.37 11.99-11.99C23.97 5.37 18.62 0 12.02 0Z"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+
+      <span class="dock-separator"></span>
+
+      <button class="dock-app" data-name="Trash" data-how="I use Trash to temporarily hold deleted files before permanently removing them.">
+        <span class="dock-tooltip">Trash</span>
+        <span class="dock-icon" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/></svg>
+        </span><i class="dock-dot"></i>
+      </button>
+    </nav>
 
 <script>
   const portfolio = document.getElementById("portfolio");
@@ -443,6 +738,85 @@
   }
 
   requestAnimationFrame(animateReveal);
+
+
+  const appDock = document.getElementById("appDock");
+  const dockApps = [...document.querySelectorAll(".dock-app")];
+  const dockInfo = document.getElementById("dockInfo");
+  const dockBackdrop = document.getElementById("dockInfoBackdrop");
+  const dockClose = document.getElementById("dockClose");
+  const dockInfoTitle = document.getElementById("dockInfoTitle");
+  const dockInfoText = document.getElementById("dockInfoText");
+  const dockInfoIcon = document.getElementById("dockInfoIcon");
+
+  const BASE_DOCK_SIZE = 52;
+  const MAX_DOCK_SIZE = 92;
+  const DOCK_RANGE = 140;
+
+  function updateDock(mouseX) {
+    dockApps.forEach(app => {
+      const rect = app.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      const distance = Math.abs(mouseX - center);
+      const size = distance < DOCK_RANGE
+        ? BASE_DOCK_SIZE + (MAX_DOCK_SIZE - BASE_DOCK_SIZE) * Math.pow(Math.cos((distance / DOCK_RANGE) * Math.PI / 2), 2)
+        : BASE_DOCK_SIZE;
+      app.style.width = size + "px";
+      app.style.height = size + "px";
+      app.style.flexBasis = size + "px";
+    });
+  }
+
+  function resetDock() {
+    dockApps.forEach(app => {
+      app.style.width = BASE_DOCK_SIZE + "px";
+      app.style.height = BASE_DOCK_SIZE + "px";
+      app.style.flexBasis = BASE_DOCK_SIZE + "px";
+    });
+  }
+
+  appDock.addEventListener("mousemove", e => updateDock(e.clientX));
+  appDock.addEventListener("mouseleave", resetDock);
+
+  dockApps.forEach(app => {
+    app.addEventListener("click", () => {
+      app.classList.remove("bouncing");
+      void app.offsetWidth;
+      app.classList.add("bouncing");
+
+      const dot = app.querySelector(".dock-dot");
+      if (dot) dot.style.opacity = "1";
+
+      dockInfoTitle.textContent = app.dataset.name;
+      dockInfoText.textContent = app.dataset.how;
+      dockInfoIcon.innerHTML = app.querySelector(".dock-icon").innerHTML;
+      dockInfoIcon.style.cssText = app.querySelector(".dock-icon").getAttribute("style") || "";
+
+      dockInfo.classList.add("open");
+      dockBackdrop.classList.add("open");
+      dockInfo.setAttribute("aria-hidden","false");
+    });
+  });
+
+  function closeDockInfo() {
+    dockInfo.classList.remove("open");
+    dockBackdrop.classList.remove("open");
+    dockInfo.setAttribute("aria-hidden","true");
+  }
+
+  dockClose.addEventListener("click", closeDockInfo);
+  dockBackdrop.addEventListener("click", closeDockInfo);
+
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeDockInfo();
+  });
+
+  appDock.addEventListener("touchmove", e => {
+    if (e.touches[0]) updateDock(e.touches[0].clientX);
+  }, {passive:true});
+
+  appDock.addEventListener("touchend", () => setTimeout(resetDock, 300));
+
 </script>
 </body>
 </html>
