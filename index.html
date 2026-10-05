@@ -361,6 +361,22 @@
   }
 
   .dock-icon svg { width: 62%; height: 62%; }
+
+  .dock-icon.dock-logo-only {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible;
+  }
+
+  .dock-icon.dock-logo-only svg {
+    width: 86%;
+    height: 86%;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.18));
+  }
+
+  .dock-icon.dock-logo-only::after { display: none; }
+
   .dock-icon::after {
     content: "";
     position: absolute;
@@ -559,8 +575,16 @@
     <nav class="app-dock" id="appDock" aria-label="Tools I use">
       <button class="dock-app" data-name="n8n" data-how="I use n8n to automate repetitive workflows, connect APIs, and move data between the tools behind my websites.">
         <span class="dock-tooltip">n8n</span>
-        <span class="dock-icon" style="background:linear-gradient(135deg,#f43f5e,#db2777,#dc2626)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M18 10a3 3 0 0 0-2.82 2H13.82a3 3 0 0 0-2.82-2A3 3 0 0 0 8 12H6a1 1 0 1 0 0 2h2a3 3 0 0 0 2.82 2A3 3 0 0 0 13.64 14H15a3 3 0 0 0 3 2 3 3 0 1 0 0-6z"/><circle cx="18" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/></svg>
+        <span class="dock-icon dock-logo-only">
+          <svg viewBox="0 0 400 400" aria-label="n8n logo">
+            <g fill="none" stroke="#ff6b5e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="72" cy="200" r="31" fill="#ff6b5e" stroke="none"/>
+              <circle cx="164" cy="200" r="31" fill="#ff6b5e" stroke="none"/>
+              <circle cx="328" cy="110" r="31" fill="#ff6b5e" stroke="none"/>
+              <circle cx="292" cy="290" r="31" fill="#ff6b5e" stroke="none"/>
+              <path d="M103 200h30M195 200h34c31 0 44-90 99-90M195 200h38c31 0 44 90 59 90"/>
+            </g>
+          </svg>
         </span><i class="dock-dot"></i>
       </button>
 
@@ -587,8 +611,23 @@
 
       <button class="dock-app" data-name="Claude" data-how="I use Claude for research, brainstorming, reasoning, content work, and as a second AI perspective when building projects.">
         <span class="dock-tooltip">Claude</span>
-        <span class="dock-icon" style="background:linear-gradient(135deg,#d97706,#ea580c,#b91c1c)">
-          <svg viewBox="0 0 24 24" fill="#fff7ed"><path d="m12 2 1.5 5.5L18 4l-3.5 5L20 10l-5.5 2L18 17.5l-5.5-3L11 20l-1-5.5L5 17.5l2.5-5.5L2 10l5.5-1L4 4l5.5 3.5L12 2Z"/></svg>
+        <span class="dock-icon dock-logo-only">
+          <svg viewBox="0 0 100 100" aria-label="Claude logo">
+            <g fill="none" stroke="#d97757" stroke-width="7" stroke-linecap="round">
+              <path d="M50 50L50 8"/>
+              <path d="M50 50L71 14"/>
+              <path d="M50 50L89 29"/>
+              <path d="M50 50L94 50"/>
+              <path d="M50 50L89 71"/>
+              <path d="M50 50L71 86"/>
+              <path d="M50 50L50 94"/>
+              <path d="M50 50L29 86"/>
+              <path d="M50 50L11 71"/>
+              <path d="M50 50L6 50"/>
+              <path d="M50 50L11 29"/>
+              <path d="M50 50L29 14"/>
+            </g>
+          </svg>
         </span><i class="dock-dot"></i>
       </button>
 
