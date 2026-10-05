@@ -32,6 +32,35 @@
   button { font: inherit; }
   :focus-visible { outline: 2px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 4px rgba(123,30,43,.7); }
 
+  /* ---------- Portfolio header ---------- */
+  .portfolio-header {
+    position: absolute;
+    top: clamp(22px, 4vh, 46px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    text-align: center;
+    color: #111;
+    pointer-events: none;
+    font-family: "Arial Black", "Montserrat", Impact, sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -.045em;
+    line-height: .82;
+    text-transform: uppercase;
+    text-shadow: 0 2px 12px rgba(255,255,255,.28);
+  }
+
+  .portfolio-header span { display: block; }
+  .portfolio-header .eyebrow { font-size: clamp(14px, 1.55vw, 25px); letter-spacing: .08em; }
+  .portfolio-header .title { margin-top: 5px; font-size: clamp(32px, 4.2vw, 68px); }
+
+  @media (max-width: 900px) {
+    .portfolio-header { top: 18px; }
+    .portfolio-header .eyebrow { font-size: 11px; }
+    .portfolio-header .title { margin-top: 4px; font-size: clamp(25px, 8.5vw, 42px); }
+  }
+
   /* ---------- Background (full bleed, tanpa bezel) ---------- */
   .portfolio {
     position: relative;
@@ -410,6 +439,11 @@
       <div class="portfolio-image" aria-hidden="true"></div>
       <div class="blur-layer" id="blurLayer" aria-hidden="true"></div>
     </div>
+
+    <header class="portfolio-header" aria-label="Website Portfolio">
+      <span class="eyebrow">Website</span>
+      <span class="title">Portfolio</span>
+    </header>
 
     <div class="brand">Beuna Digital — Portfolio</div>
     <div class="hint">Move cursor to reveal</div>
