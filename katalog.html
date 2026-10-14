@@ -105,6 +105,27 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .portfolio-close{position:absolute;right:-14px;top:-14px;z-index:2;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:#10251a;color:#fff;font-size:1.65rem;line-height:1;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35);transition:transform .2s,background .2s}
 .portfolio-close:hover{transform:scale(1.06);background:#1c3c2a}
 body.lightbox-open{overflow:hidden}
+
+/* Modal detail paket: layar penuh dengan latar blur, nyaman untuk mobile */
+.plan{cursor:pointer;transition:transform .22s,border-color .22s,box-shadow .22s}
+.plan:hover{transform:translateY(-3px);border-color:rgba(140,245,177,.42)}
+.plan .btn{position:relative;z-index:1}
+.plan-modal{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(2,10,6,.76);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;visibility:hidden;transition:opacity .24s ease,visibility .24s ease}
+.plan-modal.is-open{opacity:1;visibility:visible}
+.plan-modal-panel{position:relative;width:min(620px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid rgba(140,245,177,.3);border-radius:24px;padding:clamp(24px,5vw,38px);background:radial-gradient(ellipse at 100% 0%,rgba(79,190,112,.18),transparent 45%),#081b12;box-shadow:0 30px 100px rgba(0,0,0,.55);transform:translateY(10px) scale(.98);transition:transform .24s ease}
+.plan-modal.is-open .plan-modal-panel{transform:translateY(0) scale(1)}
+.plan-modal-panel h2{font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.05;letter-spacing:-.05em;margin:8px 42px 10px 0}
+.plan-modal-panel p{color:var(--muted)}
+.plan-modal-features{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;padding:0;list-style:none}
+.plan-modal-features li{display:flex;gap:9px;color:var(--soft);font-size:.9rem}
+.plan-modal-features li:before{content:"✓";color:var(--green);font-weight:900}
+.plan-modal-close{position:absolute;right:16px;top:16px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:#10251a;color:#fff;font-size:1.5rem;cursor:pointer}
+.plan-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.plan-modal-actions .btn{flex:1}
+body.plan-modal-open{overflow:hidden}
+@media(max-width:520px){.plan-modal{padding:10px}.plan-modal-panel{max-height:92vh;padding:24px 20px;border-radius:20px}.plan-modal-features{grid-template-columns:1fr}.plan-modal-actions{flex-direction:column}.plan-modal-actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.plan,.plan-modal,.plan-modal-panel{transition:none!important}}
+
 @media(max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.portfolio-grid{grid-template-columns:1fr}.portfolio-meta{padding:13px 14px}.portfolio-lightbox{padding:5vh 4vw}.portfolio-lightbox-inner{max-width:92vw;max-height:90vh}.portfolio-full-image{max-width:92vw;max-height:84vh}.portfolio-close{right:-8px;top:-12px;width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.portfolio-card,.portfolio-thumb img,.portfolio-lightbox,.portfolio-lightbox-inner,.portfolio-close{transition:none!important}}
@@ -116,7 +137,7 @@ body.lightbox-open{overflow:hidden}
 .section-head-centered h2{margin-left:auto;margin-right:auto;max-width:900px}
 .portfolio-track-viewport{width:100%;overflow:hidden;padding:4px 0 18px;mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
 .portfolio-grid{display:flex;flex-wrap:nowrap;gap:0;width:max-content;animation:portfolio-marquee 42s linear infinite}
-.portfolio-grid:hover,.portfolio-track-viewport:focus-within .portfolio-grid{animation-play-state:paused}
+/* Marquee tetap berjalan setelah card ditap; tidak memakai pause hover/focus agar touch tidak meninggalkan animasi dalam keadaan stuck. */
 .portfolio-card{flex:0 0 clamp(260px,30vw,360px);width:clamp(260px,30vw,360px);margin-right:16px}
 .portfolio-note{text-align:center;margin:10px 0 0}
 @keyframes portfolio-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -195,7 +216,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 <header class="wrap nav">
   <a class="logo" href="#" aria-label="Beuna Digital, ke atas">beuna<span>.</span>digital</a>
   <nav class="navlinks" aria-label="Navigasi utama">
-    <a href="#paket">Paket website</a><a href="#portfolio">Portfolio</a><a href="#fitur">Standar pengerjaan</a><a href="#faq">FAQ</a>
+    <a href="#paket">Paket website</a><a href="#portfolio">Portofolio</a><a href="#fitur">Standar pengerjaan</a><a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary" data-wa="Halo Beuna Digital, saya ingin konsultasi pembuatan website." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Konsultasi gratis ↗</a>
 </header>
@@ -214,7 +235,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 <section class="section" id="portfolio" aria-labelledby="t-portfolio">
 <div class="wrap">
   <div class="section-head section-head-centered">
-    <div><h2 id="t-portfolio">Portfolio</h2></div>
+    <div><h2 id="t-portfolio">Portofolio</h2></div>
   </div>
   <div class="portfolio-track-viewport">
   <div class="portfolio-grid">
@@ -385,6 +406,22 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 </footer>
 
 
+<div class="plan-modal" id="plan-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title">
+  <div class="plan-modal-panel">
+    <button class="plan-modal-close" type="button" aria-label="Tutup detail paket">×</button>
+    <span class="eyebrow" id="plan-modal-label">Detail paket</span>
+    <h2 id="plan-modal-title">Paket website</h2>
+    <div class="price" id="plan-modal-price"></div>
+    <p id="plan-modal-desc"></p>
+    <p class="feature-title" id="plan-modal-feature-title">Fitur paket</p>
+    <ul class="plan-modal-features" id="plan-modal-features"></ul>
+    <div class="plan-modal-actions">
+      <a class="btn btn-primary" id="plan-modal-cta" href="https://wa.me/6285359033973" target="_blank" rel="noopener">Konsultasi paket ↗</a>
+      <button class="btn btn-secondary" id="plan-modal-dismiss" type="button">Lihat paket lain</button>
+    </div>
+  </div>
+</div>
+
 <div class="portfolio-lightbox" id="portfolio-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Screenshot website penuh">
   <div class="portfolio-lightbox-inner">
     <button class="portfolio-close" type="button" aria-label="Tutup screenshot">×</button>
@@ -446,6 +483,69 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
     if(event.key==='Escape') closePortfolio();
   });
 })();
+
+  
+  // Detail paket: klik area card (kecuali tombol/link) untuk membuka modal; CTA tetap langsung bekerja.
+  (function(){
+    var modal=document.getElementById('plan-modal');
+    if(!modal) return;
+    var panel=modal.querySelector('.plan-modal-panel');
+    var closeBtn=modal.querySelector('.plan-modal-close');
+    var dismissBtn=document.getElementById('plan-modal-dismiss');
+    var title=document.getElementById('plan-modal-title');
+    var label=document.getElementById('plan-modal-label');
+    var price=document.getElementById('plan-modal-price');
+    var desc=document.getElementById('plan-modal-desc');
+    var featureTitle=document.getElementById('plan-modal-feature-title');
+    var features=document.getElementById('plan-modal-features');
+    var cta=document.getElementById('plan-modal-cta');
+    var lastTrigger=null;
+    function openPlan(card){
+      lastTrigger=card;
+      var name=card.querySelector('h3');
+      var planLabel=card.querySelector('.plan-label');
+      var planPrice=card.querySelector('.price');
+      var planDesc=card.querySelector('.plan-desc');
+      var planFeatures=Array.from(card.querySelectorAll('.features li')).map(function(li){return li.textContent.trim();});
+      var ft=card.querySelector('.feature-title');
+      title.textContent=name?name.textContent.trim():'Paket website';
+      label.textContent=planLabel?planLabel.textContent.trim():'Detail paket';
+      price.textContent=planPrice?planPrice.textContent.trim():'Hubungi kami';
+      desc.textContent=planDesc?planDesc.textContent.trim():'';
+      featureTitle.textContent=ft?ft.textContent.trim():'Fitur paket';
+      features.replaceChildren();
+      planFeatures.forEach(function(item){var li=document.createElement('li');li.textContent=item;features.appendChild(li);});
+      cta.href='https://wa.me/6285359033973?text='+encodeURIComponent('Halo Beuna Digital, saya ingin konsultasi paket '+title.textContent+'. Saya terhubung dari website.');
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('plan-modal-open');
+      closeBtn.focus();
+    }
+    function closePlan(){
+      if(!modal.classList.contains('is-open')) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('plan-modal-open');
+      if(lastTrigger) lastTrigger.focus();
+    }
+    document.querySelectorAll('.plan').forEach(function(card){
+      card.addEventListener('click',function(event){
+        if(event.target.closest('a,button')) return;
+        openPlan(card);
+      });
+      card.setAttribute('tabindex','0');
+      card.setAttribute('aria-haspopup','dialog');
+      card.addEventListener('keydown',function(event){
+        if((event.key==='Enter'||event.key===' ') && !event.target.closest('a,button')){
+          event.preventDefault();openPlan(card);
+        }
+      });
+    });
+    closeBtn.addEventListener('click',closePlan);
+    dismissBtn.addEventListener('click',closePlan);
+    modal.addEventListener('click',function(event){if(event.target===modal)closePlan();});
+    document.addEventListener('keydown',function(event){if(event.key==='Escape')closePlan();});
+  })();
 
 </script>
 </body>
