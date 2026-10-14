@@ -107,6 +107,21 @@ body.lightbox-open{overflow:hidden}
 @media(max-width:620px){.portfolio-grid{grid-template-columns:1fr}.portfolio-meta{padding:13px 14px}.portfolio-lightbox{padding:5vh 4vw}.portfolio-lightbox-inner{max-width:92vw;max-height:90vh}.portfolio-full-image{max-width:92vw;max-height:84vh}.portfolio-close{right:-8px;top:-12px;width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.portfolio-card,.portfolio-thumb img,.portfolio-lightbox,.portfolio-lightbox-inner,.portfolio-close{transition:none!important}}
 
+
+/* Revisi copywriting dan galeri bergerak */
+.section-head-centered{display:flex;justify-content:center;text-align:center;align-items:center}
+.section-head-centered>div{width:100%}
+.section-head-centered h2{margin-left:auto;margin-right:auto;max-width:900px}
+.portfolio-track-viewport{width:100%;overflow:hidden;padding:4px 0 18px;mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
+.portfolio-grid{display:flex;flex-wrap:nowrap;gap:16px;width:max-content;animation:portfolio-marquee 42s linear infinite}
+.portfolio-grid:hover,.portfolio-track-viewport:focus-within .portfolio-grid{animation-play-state:paused}
+.portfolio-card{flex:0 0 clamp(260px,30vw,360px);width:clamp(260px,30vw,360px)}
+.portfolio-note{text-align:center;margin:10px 0 0}
+@keyframes portfolio-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:900px){.portfolio-grid{display:flex;grid-template-columns:none}.portfolio-card{flex-basis:clamp(260px,42vw,340px);width:clamp(260px,42vw,340px)}}
+@media(max-width:620px){.portfolio-card{flex-basis:78vw;width:78vw}.portfolio-grid{gap:12px;animation-duration:34s}.section-head-centered h2{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.portfolio-grid{animation:none!important}}
+
 /* Tabel */
 .compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:rgba(5,20,13,.55)}
 table{border-collapse:collapse;width:100%;min-width:670px;font-size:.88rem}
@@ -185,7 +200,6 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 
 <main>
 <section class="wrap hero">
-  <span class="eyebrow">Website untuk bisnis yang ingin berkembang</span>
   <h1>Bisnis Anda layak punya <em>website yang serius.</em></h1>
   <p>Dari landing page sampai website perusahaan yang lebih kompleks. Beuna Digital membantu bisnis tampil lebih kredibel, menjelaskan layanan dengan jelas, dan memudahkan calon pelanggan menghubungi Anda.</p>
   <div class="hero-actions">
@@ -197,9 +211,8 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 
 <section class="section" id="paket" aria-labelledby="t-paket">
 <div class="wrap">
-  <div class="section-head">
+  <div class="section-head section-head-centered">
     <div><span class="eyebrow">Paket dan investasi</span><h2 id="t-paket">Pilih sesuai tahap bisnis Anda.</h2></div>
-    <p>Harga awal untuk membantu Anda menentukan arah. Biaya final mengikuti kebutuhan, materi, dan fitur yang disepakati.</p>
   </div>
 
   <div class="plans">
@@ -274,10 +287,10 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 
 <section class="section" id="portfolio" aria-labelledby="t-portfolio">
 <div class="wrap">
-  <div class="section-head">
-    <div><span class="eyebrow">Pilihan karya</span><h2 id="t-portfolio">Lihat website dalam konteks aslinya.</h2></div>
-    <p>Setiap preview memakai rasio 16:9 yang konsisten. Klik untuk melihat screenshot halaman lengkap.</p>
+  <div class="section-head section-head-centered">
+    <div><h2 id="t-portfolio">Lihat website dalam konteks aslinya.</h2></div>
   </div>
+  <div class="portfolio-track-viewport">
   <div class="portfolio-grid">
     <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" data-portfolio-title="Surf School" aria-label="Lihat screenshot lengkap Surf School">
       <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" alt="Preview hero website Surf School" loading="lazy"></span>
@@ -304,15 +317,15 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
       <span class="portfolio-meta"><strong>Cimaja Escape</strong><span>Lihat halaman ↗</span></span>
     </button>
   </div>
-  <p class="portfolio-note">Klik salah satu preview untuk membuka screenshot lengkap. Tekan Esc atau tombol × untuk kembali ke katalog.</p>
+  </div>
+  <p class="portfolio-note">Klik salah satu preview untuk membuka screenshot lengkap.</p>
 </div>
 </section>
 
 <section class="section" aria-labelledby="t-banding">
 <div class="wrap">
-  <div class="section-head">
-    <div><span class="eyebrow">Perbandingan singkat</span><h2 id="t-banding">Bedanya ada di lingkup.</h2></div>
-    <p>Gunakan tabel ini sebagai gambaran awal. Jumlah halaman dan detail akhir mengikuti kesepakatan proyek.</p>
+  <div class="section-head section-head-centered">
+    <div><h2 id="t-banding">Temukan paket yang paling pas untuk kebutuhan Anda.</h2></div>
   </div>
   <div class="compare-wrap" tabindex="0" role="region" aria-label="Tabel perbandingan paket, dapat digeser">
     <table>
@@ -383,6 +396,21 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelectorAll('[data-wa]').forEach(function(a){
   a.href=a.getAttribute('href')+'?text='+encodeURIComponent(a.dataset.wa+' Saya terhubung dari website.');
 });
+
+
+(function(){
+  var track=document.querySelector('.portfolio-grid');
+  if(!track || track.dataset.loopReady) return;
+  track.dataset.loopReady='true';
+  var originals=Array.from(track.children);
+  originals.forEach(function(card){
+    var clone=card.cloneNode(true);
+    clone.setAttribute('aria-hidden','true');
+    clone.querySelectorAll('button,a,[tabindex]').forEach(function(el){el.setAttribute('tabindex','-1');});
+    clone.querySelectorAll('img').forEach(function(img){img.setAttribute('loading','lazy');});
+    track.appendChild(clone);
+  });
+})();
 
 (function(){
   var modal=document.getElementById('portfolio-lightbox');
