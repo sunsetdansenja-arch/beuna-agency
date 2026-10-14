@@ -47,7 +47,9 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .proof li:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
 
 /* Section */
-.section{padding:62px 0}
+.section{position:relative;padding:72px 0}
+.section:before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(var(--max),calc(100% - 40px));height:1px;background:linear-gradient(90deg,transparent,rgba(140,245,177,.22) 18%,rgba(140,245,177,.22) 82%,transparent)}
+.section-head-centered h2{font-size:clamp(1.55rem,3.1vw,2.35rem);line-height:1.12;letter-spacing:-.045em;max-width:760px}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:28px}
 .section-head h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.08;letter-spacing:-.055em;margin:10px 0 0}
 .section-head p{color:var(--muted);max-width:390px;margin:0;font-size:.94rem}
@@ -168,7 +170,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 .navlinks{display:none}
 .hero{padding:50px 0 44px}
 .hero h1{font-size:clamp(2.6rem,13vw,4rem)}
-.section{padding:42px 0}
+.section{padding:48px 0}
 .plans{grid-template-columns:1fr}
 .plan.featured{grid-column:auto}
 .plan{padding:24px}
@@ -207,6 +209,43 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
     <a class="btn btn-secondary" data-wa="Halo Beuna Digital, saya ingin mendiskusikan kebutuhan website bisnis saya." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Diskusikan kebutuhan ↗</a>
   </div>
   <ul class="proof"><li>Desain responsif</li><li>Fokus pada tujuan bisnis</li><li>Penawaran transparan</li></ul>
+</section>
+
+<section class="section" id="portfolio" aria-labelledby="t-portfolio">
+<div class="wrap">
+  <div class="section-head section-head-centered">
+    <div><h2 id="t-portfolio">Portfolio</h2></div>
+  </div>
+  <div class="portfolio-track-viewport">
+  <div class="portfolio-grid">
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" data-portfolio-title="Surf School" aria-label="Lihat screenshot lengkap Surf School">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" alt="Preview hero website Surf School" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Surf School</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-PMPB-html-2026-10-14-15_46_06.png" data-portfolio-title="PMPB" aria-label="Lihat screenshot lengkap PMPB">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-PMPB-html-2026-10-14-15_46_06.png" alt="Preview hero website PMPB" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>PMPB</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-elud-html-2026-10-14-15_47_46.png" data-portfolio-title="ELUD" aria-label="Lihat screenshot lengkap ELUD">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-elud-html-2026-10-14-15_47_46.png" alt="Preview hero website ELUD" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>ELUD</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-amanahrental-html-2026-10-14-15_47_05.png" data-portfolio-title="Amanah Rental" aria-label="Lihat screenshot lengkap Amanah Rental">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-amanahrental-html-2026-10-14-15_47_05.png" alt="Preview hero website Amanah Rental" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Amanah Rental</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967828/screencapture-portfolio-beuna-xyz-yujo2nd-html-2026-10-14-15_48_59.png" data-portfolio-title="Yujo" aria-label="Lihat screenshot lengkap Yujo">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967828/screencapture-portfolio-beuna-xyz-yujo2nd-html-2026-10-14-15_48_59.png" alt="Preview hero website Yujo" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Yujo</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-cimajaescape-html-2026-10-14-15_46_43.png" data-portfolio-title="Cimaja Escape" aria-label="Lihat screenshot lengkap Cimaja Escape">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-cimajaescape-html-2026-10-14-15_46_43.png" alt="Preview hero website Cimaja Escape" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Cimaja Escape</strong><span>Lihat halaman ↗</span></span>
+    </button>
+  </div>
+  </div>
+  <p class="portfolio-note">Klik salah satu preview untuk membuka screenshot lengkap.</p>
+</div>
 </section>
 
 <section class="section" id="paket" aria-labelledby="t-paket">
@@ -285,42 +324,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 </section>
 
 
-<section class="section" id="portfolio" aria-labelledby="t-portfolio">
-<div class="wrap">
-  <div class="section-head section-head-centered">
-    <div><h2 id="t-portfolio">Portfolio</h2></div>
-  </div>
-  <div class="portfolio-track-viewport">
-  <div class="portfolio-grid">
-    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" data-portfolio-title="Surf School" aria-label="Lihat screenshot lengkap Surf School">
-      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" alt="Preview hero website Surf School" loading="lazy"></span>
-      <span class="portfolio-meta"><strong>Surf School</strong><span>Lihat halaman ↗</span></span>
-    </button>
-    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-PMPB-html-2026-10-14-15_46_06.png" data-portfolio-title="PMPB" aria-label="Lihat screenshot lengkap PMPB">
-      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-PMPB-html-2026-10-14-15_46_06.png" alt="Preview hero website PMPB" loading="lazy"></span>
-      <span class="portfolio-meta"><strong>PMPB</strong><span>Lihat halaman ↗</span></span>
-    </button>
-    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-elud-html-2026-10-14-15_47_46.png" data-portfolio-title="ELUD" aria-label="Lihat screenshot lengkap ELUD">
-      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-elud-html-2026-10-14-15_47_46.png" alt="Preview hero website ELUD" loading="lazy"></span>
-      <span class="portfolio-meta"><strong>ELUD</strong><span>Lihat halaman ↗</span></span>
-    </button>
-    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-amanahrental-html-2026-10-14-15_47_05.png" data-portfolio-title="Amanah Rental" aria-label="Lihat screenshot lengkap Amanah Rental">
-      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-amanahrental-html-2026-10-14-15_47_05.png" alt="Preview hero website Amanah Rental" loading="lazy"></span>
-      <span class="portfolio-meta"><strong>Amanah Rental</strong><span>Lihat halaman ↗</span></span>
-    </button>
-    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967828/screencapture-portfolio-beuna-xyz-yujo2nd-html-2026-10-14-15_48_59.png" data-portfolio-title="Yujo" aria-label="Lihat screenshot lengkap Yujo">
-      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967828/screencapture-portfolio-beuna-xyz-yujo2nd-html-2026-10-14-15_48_59.png" alt="Preview hero website Yujo" loading="lazy"></span>
-      <span class="portfolio-meta"><strong>Yujo</strong><span>Lihat halaman ↗</span></span>
-    </button>
-    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-cimajaescape-html-2026-10-14-15_46_43.png" data-portfolio-title="Cimaja Escape" aria-label="Lihat screenshot lengkap Cimaja Escape">
-      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-cimajaescape-html-2026-10-14-15_46_43.png" alt="Preview hero website Cimaja Escape" loading="lazy"></span>
-      <span class="portfolio-meta"><strong>Cimaja Escape</strong><span>Lihat halaman ↗</span></span>
-    </button>
-  </div>
-  </div>
-  <p class="portfolio-note">Klik salah satu preview untuk membuka screenshot lengkap.</p>
-</div>
-</section>
+
 
 <section class="section" aria-labelledby="t-banding">
 <div class="wrap">
