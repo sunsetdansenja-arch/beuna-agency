@@ -529,6 +529,10 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
     if(activePointer===null||(e&&e.pointerId!==activePointer)) return;
     if(dragging){
       suppressClick=true;
+      // Hanya tahan click sintetis yang muncul tepat setelah swipe; jangan sampai tap berikutnya ikut tertelan.
+      window.setTimeout(function(){suppressClick=false;},300);
+      // Pointer sudah dilepas: card harus bisa langsung ditap meskipun marquee masih meluncur.
+      viewport.classList.remove('is-dragging');
       if(!reduceMotion&&Math.abs(velocity)>.18){inertiaActive=true;}
       else{inertiaActive=false;velocity=0;resumeSoon();}
     }
