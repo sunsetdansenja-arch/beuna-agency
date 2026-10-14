@@ -61,11 +61,11 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .badge{position:absolute;right:18px;top:18px;border-radius:999px;background:var(--green);color:var(--ink);font-size:.72rem;font-weight:800;padding:5px 11px}
 .plan-label{font-size:.82rem;font-weight:700;color:var(--green)}
 .plan h3{font-size:1.6rem;letter-spacing:-.04em;margin:8px 0 6px}
-.plan-desc{color:var(--muted);font-size:.9rem;min-height:50px;margin:0}
-.price{margin:24px 0 2px;font-size:clamp(1.9rem,3vw,2.5rem);font-weight:850;letter-spacing:-.06em;white-space:nowrap}
-.price small{font-size:.78rem;font-weight:500;letter-spacing:0;color:var(--muted)}
-.price-note{font-size:.8rem;color:var(--muted)}
-.plan .btn{margin:22px 0 24px;width:100%}
+.plan-desc{color:var(--muted);font-size:.9rem;line-height:1.55;min-height:64px;margin:0}
+.price{margin:20px 0 5px;font-size:clamp(1.9rem,3vw,2.5rem);font-weight:850;line-height:1.12;letter-spacing:-.045em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.price small{font-size:.74rem;font-weight:500;letter-spacing:0;color:var(--muted)}
+.price-note{font-size:.8rem;line-height:1.45;color:var(--muted);min-height:2.3em}
+.plan .btn{margin:22px 0 24px;width:100%;margin-top:auto}
 .feature-title{font-size:.8rem;color:var(--muted);font-weight:700;margin:0 0 12px;padding-top:20px;border-top:1px solid var(--line)}
 .features{margin:0;padding:0;list-style:none;display:grid;gap:11px;font-size:.88rem;color:var(--soft)}
 .features li{display:flex;gap:10px}
@@ -308,6 +308,31 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 </div>
 </section>
 
+<section class="section" aria-labelledby="t-banding">
+<div class="wrap">
+  <div class="section-head section-head-centered">
+    <div><h2 id="t-banding">Temukan paket yang paling pas untuk kebutuhan Anda.</h2></div>
+  </div>
+  <div class="compare-wrap" tabindex="0" role="region" aria-label="Tabel perbandingan paket, dapat digeser">
+    <table>
+      <caption>Perbandingan paket Starter, Business, dan Professional</caption>
+      <thead><tr><th scope="col">Fitur</th><th scope="col">Starter</th><th scope="col">Business</th><th scope="col">Professional</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Jumlah halaman awal</th><td>1</td><td>Hingga 5</td><td>Hingga 10</td></tr>
+        <tr><th scope="row">Desain</th><td>Terarah</td><td>Semi-custom</td><td>Lebih custom</td></tr>
+        <tr><th scope="row">WhatsApp dan kontak</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><th scope="row">SEO dasar</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><th scope="row">Setup Analytics</th><td class="dash">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        <tr><th scope="row">CMS / kelola mandiri</th><td>Opsional</td><td>Sesuai lingkup</td><td>Sesuai lingkup</td></tr>
+        <tr><th scope="row">Revisi desain</th><td>2 kali</td><td>3 kali</td><td>4 kali</td></tr>
+        <tr><th scope="row">Timeline pengerjaan</th><td>Disepakati</td><td>Disepakati</td><td>Disepakati</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fineprint">Setup Analytics memerlukan akses akun yang relevan dan konfigurasi yang disepakati. Kecepatan, hasil SEO, dan jumlah leads tidak dapat dijamin hanya dari pembuatan website.</p>
+</div>
+</section>
+
 <section class="section" id="fitur" aria-labelledby="t-fitur">
 <div class="wrap">
   <div class="section-head">
@@ -323,34 +348,6 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 </div>
 </section>
 
-
-
-
-<section class="section" aria-labelledby="t-banding">
-<div class="wrap">
-  <div class="section-head section-head-centered">
-    <div><h2 id="t-banding">Temukan paket yang paling pas untuk kebutuhan Anda.</h2></div>
-  </div>
-  <div class="compare-wrap" tabindex="0" role="region" aria-label="Tabel perbandingan paket, dapat digeser">
-    <table>
-      <caption>Perbandingan paket Starter, Business, dan Professional</caption>
-      <thead><tr><th scope="col">Fitur</th><th scope="col">Starter</th><th scope="col">Business</th><th scope="col">Professional</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Jumlah halaman awal</th><td>1</td><td>Hingga 5</td><td>Hingga 10</td></tr>
-        <tr><th scope="row">Desain</th><td>Terarah</td><td>Semi-custom</td><td>Lebih custom</td></tr>
-        <tr><th scope="row">WhatsApp dan kontak</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><th scope="row">SEO dasar</th><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
-        <tr><th scope="row">Setup Analytics</th><td class="dash">—</td><td class="yes">✓*</td><td class="yes">✓*</td></tr>
-        <tr><th scope="row">CMS / kelola mandiri</th><td>Opsional</td><td>Sesuai lingkup</td><td>Sesuai lingkup</td></tr>
-        <tr><th scope="row">Revisi desain</th><td>2 kali</td><td>3 kali</td><td>4 kali</td></tr>
-        <tr><th scope="row">Timeline pengerjaan</th><td>Disepakati</td><td>Disepakati</td><td>Disepakati</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="fineprint">*Memerlukan akses akun yang relevan dan konfigurasi yang disepakati. Kecepatan, hasil SEO, dan jumlah leads tidak dapat dijamin hanya dari pembuatan website.</p>
-</div>
-</section>
-
 <section class="section" id="faq" aria-labelledby="t-faq">
 <div class="wrap faq">
   <div class="faq-intro">
@@ -359,8 +356,8 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
     <p>Kalau kebutuhan Anda belum pas dengan daftar paket, kita bisa bahas dulu sebelum menentukan biaya.</p>
   </div>
   <div>
-    <details><summary>Apakah harga sudah termasuk domain dan hosting?</summary><p>Belum otomatis. Kebutuhan domain, hosting, SSL, serta biaya tahun berikutnya dijelaskan dalam penawaran sesuai teknologi dan paket yang dipilih.</p></details>
-    <details><summary>Berapa lama website selesai?</summary><p>Timeline ditentukan oleh jumlah halaman, fitur, kesiapan materi, dan kecepatan feedback. Jadwal target disepakati sebelum pengerjaan dimulai.</p></details>
+    <details><summary>Apakah harga sudah termasuk domain dan hosting?</summary><p>Ya, paket sudah termasuk domain dan hosting. Biaya perpanjangan untuk tahun berikutnya, SSL atau layanan pihak ketiga, serta jasa pengelolaan dan maintenance dijelaskan dalam penawaran sesuai teknologi dan paket yang dipilih.</p></details>
+    <details><summary>Berapa lama website selesai?</summary><p>Pengerjaan paling cepat dapat selesai dalam 1 hari dan umumnya maksimal 5 hari, bergantung pada lingkup website, kelengkapan materi, dan kecepatan feedback. Estimasi final disepakati sebelum pengerjaan dimulai.</p></details>
     <details><summary>Apakah saya bisa meminta revisi?</summary><p>Bisa. Jumlah revisi desain mengikuti paket. Perubahan besar di luar brief awal atau penambahan fitur dapat memengaruhi biaya dan timeline.</p></details>
     <details><summary>Apakah website bisa saya kelola sendiri?</summary><p>Bisa, untuk kebutuhan yang cocok dengan CMS atau sistem pengelolaan tertentu. Kita tentukan saat konsultasi karena tidak semua jenis website memerlukan CMS.</p></details>
     <details><summary>Apakah bisa bayar bertahap?</summary><p>Skema pembayaran dibahas dan ditulis dalam penawaran sebelum proyek dimulai, termasuk termin dan lingkup pengerjaan.</p></details>
