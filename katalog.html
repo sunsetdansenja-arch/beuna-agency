@@ -82,6 +82,31 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .included h3{font-size:.98rem;margin:8px 0 5px}
 .included p{color:var(--muted);font-size:.85rem;margin:0}
 
+
+/* Portfolio screenshot */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.portfolio-card{display:block;width:100%;padding:0;text-align:left;color:inherit;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.035);cursor:zoom-in;transition:transform .25s,border-color .25s,box-shadow .25s}
+.portfolio-card:hover{transform:translateY(-4px);border-color:rgba(140,245,177,.55);box-shadow:0 16px 40px rgba(0,0,0,.22)}
+.portfolio-thumb{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:#0a2017}
+.portfolio-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}
+.portfolio-card:hover .portfolio-thumb img{transform:scale(1.035)}
+.portfolio-thumb:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(3,13,8,.28));pointer-events:none}
+.portfolio-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 16px}
+.portfolio-meta strong{font-size:.96rem}
+.portfolio-meta span{font-size:.78rem;color:var(--green);white-space:nowrap}
+.portfolio-note{color:var(--muted);font-size:.84rem;margin:18px 0 0}
+.portfolio-lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:5vh 5vw;background:rgba(2,10,6,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease}
+.portfolio-lightbox.is-open{opacity:1;visibility:visible}
+.portfolio-lightbox-inner{position:relative;display:flex;align-items:center;justify-content:center;max-width:90vw;max-height:90vh;transform:translateY(12px) scale(.97);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.portfolio-lightbox.is-open .portfolio-lightbox-inner{transform:translateY(0) scale(1)}
+.portfolio-full-image{display:block;width:auto;height:auto;max-width:90vw;max-height:84vh;object-fit:contain;border-radius:12px;box-shadow:0 28px 100px rgba(0,0,0,.5);background:#08150e}
+.portfolio-close{position:absolute;right:-14px;top:-14px;z-index:2;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:#10251a;color:#fff;font-size:1.65rem;line-height:1;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35);transition:transform .2s,background .2s}
+.portfolio-close:hover{transform:scale(1.06);background:#1c3c2a}
+body.lightbox-open{overflow:hidden}
+@media(max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.portfolio-grid{grid-template-columns:1fr}.portfolio-meta{padding:13px 14px}.portfolio-lightbox{padding:5vh 4vw}.portfolio-lightbox-inner{max-width:92vw;max-height:90vh}.portfolio-full-image{max-width:92vw;max-height:84vh}.portfolio-close{right:-8px;top:-12px;width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){.portfolio-card,.portfolio-thumb img,.portfolio-lightbox,.portfolio-lightbox-inner,.portfolio-close{transition:none!important}}
+
 /* Tabel */
 .compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:rgba(5,20,13,.55)}
 table{border-collapse:collapse;width:100%;min-width:670px;font-size:.88rem}
@@ -153,7 +178,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 <header class="wrap nav">
   <a class="logo" href="#" aria-label="Beuna Digital, ke atas">beuna<span>.</span>digital</a>
   <nav class="navlinks" aria-label="Navigasi utama">
-    <a href="#paket">Paket website</a><a href="#fitur">Standar pengerjaan</a><a href="#faq">FAQ</a>
+    <a href="#paket">Paket website</a><a href="#portfolio">Portfolio</a><a href="#fitur">Standar pengerjaan</a><a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary" data-wa="Halo Beuna Digital, saya ingin konsultasi pembuatan website." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Konsultasi gratis ↗</a>
 </header>
@@ -246,6 +271,43 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 </div>
 </section>
 
+
+<section class="section" id="portfolio" aria-labelledby="t-portfolio">
+<div class="wrap">
+  <div class="section-head">
+    <div><span class="eyebrow">Pilihan karya</span><h2 id="t-portfolio">Lihat website dalam konteks aslinya.</h2></div>
+    <p>Setiap preview memakai rasio 16:9 yang konsisten. Klik untuk melihat screenshot halaman lengkap.</p>
+  </div>
+  <div class="portfolio-grid">
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" data-portfolio-title="Surf School" aria-label="Lihat screenshot lengkap Surf School">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967842/screencapture-portfolio-beuna-xyz-surfschool-html-2026-10-14-15_48_08.png" alt="Preview hero website Surf School" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Surf School</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-PMPB-html-2026-10-14-15_46_06.png" data-portfolio-title="PMPB" aria-label="Lihat screenshot lengkap PMPB">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-PMPB-html-2026-10-14-15_46_06.png" alt="Preview hero website PMPB" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>PMPB</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-elud-html-2026-10-14-15_47_46.png" data-portfolio-title="ELUD" aria-label="Lihat screenshot lengkap ELUD">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-elud-html-2026-10-14-15_47_46.png" alt="Preview hero website ELUD" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>ELUD</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-amanahrental-html-2026-10-14-15_47_05.png" data-portfolio-title="Amanah Rental" aria-label="Lihat screenshot lengkap Amanah Rental">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967839/screencapture-portfolio-beuna-xyz-amanahrental-html-2026-10-14-15_47_05.png" alt="Preview hero website Amanah Rental" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Amanah Rental</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967828/screencapture-portfolio-beuna-xyz-yujo2nd-html-2026-10-14-15_48_59.png" data-portfolio-title="Yujo" aria-label="Lihat screenshot lengkap Yujo">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967828/screencapture-portfolio-beuna-xyz-yujo2nd-html-2026-10-14-15_48_59.png" alt="Preview hero website Yujo" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Yujo</strong><span>Lihat halaman ↗</span></span>
+    </button>
+    <button class="portfolio-card" type="button" data-portfolio-image="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-cimajaescape-html-2026-10-14-15_46_43.png" data-portfolio-title="Cimaja Escape" aria-label="Lihat screenshot lengkap Cimaja Escape">
+      <span class="portfolio-thumb"><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1791967841/screencapture-portfolio-beuna-xyz-cimajaescape-html-2026-10-14-15_46_43.png" alt="Preview hero website Cimaja Escape" loading="lazy"></span>
+      <span class="portfolio-meta"><strong>Cimaja Escape</strong><span>Lihat halaman ↗</span></span>
+    </button>
+  </div>
+  <p class="portfolio-note">Klik salah satu preview untuk membuka screenshot lengkap. Tekan Esc atau tombol × untuk kembali ke katalog.</p>
+</div>
+</section>
+
 <section class="section" aria-labelledby="t-banding">
 <div class="wrap">
   <div class="section-head">
@@ -308,11 +370,54 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
   <div>© <span id="year">2026</span> Beuna Digital</div>
 </footer>
 
+
+<div class="portfolio-lightbox" id="portfolio-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Screenshot website penuh">
+  <div class="portfolio-lightbox-inner">
+    <button class="portfolio-close" type="button" aria-label="Tutup screenshot">×</button>
+    <img class="portfolio-full-image" id="portfolio-full-image" alt="">
+  </div>
+</div>
+
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelectorAll('[data-wa]').forEach(function(a){
   a.href=a.getAttribute('href')+'?text='+encodeURIComponent(a.dataset.wa+' Saya terhubung dari website.');
 });
+
+(function(){
+  var modal=document.getElementById('portfolio-lightbox');
+  var fullImage=document.getElementById('portfolio-full-image');
+  var closeButton=modal.querySelector('.portfolio-close');
+  var lastTrigger=null;
+  function openPortfolio(card){
+    lastTrigger=card;
+    fullImage.src=card.getAttribute('data-portfolio-image');
+    fullImage.alt='Screenshot halaman penuh website '+card.getAttribute('data-portfolio-title');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('lightbox-open');
+    closeButton.focus();
+  }
+  function closePortfolio(){
+    if(!modal.classList.contains('is-open')) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lightbox-open');
+    fullImage.removeAttribute('src');
+    if(lastTrigger) lastTrigger.focus();
+  }
+  document.querySelectorAll('[data-portfolio-image]').forEach(function(card){
+    card.addEventListener('click',function(){openPortfolio(card);});
+  });
+  closeButton.addEventListener('click',closePortfolio);
+  modal.addEventListener('click',function(event){
+    if(event.target===modal) closePortfolio();
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape') closePortfolio();
+  });
+})();
+
 </script>
 </body>
 </html>
