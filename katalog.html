@@ -7,7 +7,7 @@
 <meta name="description" content="Paket jasa pembuatan website Beuna Digital untuk bisnis, brand, dan perusahaan. Website profesional, responsif, dan dirancang untuk membantu bisnis tumbuh.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Katalog Website — Beuna Digital">
-<meta property="og:description" content="Paket website mulai Rp1,9 juta. Responsif, jelas, dan fokus pada tujuan bisnis Anda.">
+<meta property="og:description" content="Paket website mulai Rp1,8 juta. Responsif, jelas, dan fokus pada tujuan bisnis Anda.">
 <title>Katalog Website — Beuna Digital</title>
 <style>
 :root{color-scheme:dark;--bg:#06140f;--line:rgba(185,255,213,.14);--text:#f4fff7;--muted:#a7bdb0;--soft:#d7e6dc;--green:#8cf5b1;--ink:#062013;--max:1160px;--r:22px}
@@ -136,6 +136,10 @@ body.plan-modal-open{overflow:hidden}
 .section-head-centered>div{width:100%}
 .section-head-centered h2{margin-left:auto;margin-right:auto;max-width:900px}
 .portfolio-track-viewport{width:100%;overflow:hidden;padding:4px 0 18px;mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
+.portfolio-track-viewport{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.portfolio-track-viewport.is-dragging{cursor:grabbing}
+.portfolio-track-viewport.is-dragging .portfolio-card{pointer-events:none}
+.portfolio-grid{animation:none!important;will-change:transform;transform:translate3d(0,0,0)}
 .portfolio-grid{display:flex;flex-wrap:nowrap;gap:0;width:max-content;animation:portfolio-marquee 42s linear infinite}
 /* Marquee tetap berjalan setelah card ditap; tidak memakai pause hover/focus agar touch tidak meninggalkan animasi dalam keadaan stuck. */
 .portfolio-card{flex:0 0 clamp(260px,30vw,360px);width:clamp(260px,30vw,360px);margin-right:16px}
@@ -280,7 +284,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
       <div class="plan-label">Untuk memulai</div>
       <h3>Starter</h3>
       <p class="plan-desc">Untuk bisnis baru yang butuh kehadiran online yang rapi dan meyakinkan.</p>
-      <div class="price">Rp1,9 jt <small>/ mulai dari</small></div>
+      <div class="price">Rp1,8 jt <small>/ mulai dari</small></div>
       <div class="price-note">Cocok untuk landing page sederhana</div>
       <a class="btn btn-secondary" data-wa="Halo Beuna Digital, saya tertarik paket Starter website." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Pilih Starter ↗</a>
       <p class="feature-title">Termasuk</p>
@@ -294,7 +298,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
       <div class="plan-label">Untuk berkembang</div>
       <h3>Business</h3>
       <p class="plan-desc">Untuk bisnis yang ingin menjelaskan layanan, membangun kepercayaan, dan mendapat inquiry.</p>
-      <div class="price">Rp4,9 jt <small>/ mulai dari</small></div>
+      <div class="price">Rp3 jt <small>/ mulai dari</small></div>
       <div class="price-note">Pilihan tepat untuk bisnis yang sudah aktif</div>
       <a class="btn btn-primary" data-wa="Halo Beuna Digital, saya tertarik paket Business website." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Pilih Business ↗</a>
       <p class="feature-title">Semua fitur Starter, ditambah</p>
@@ -307,7 +311,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
       <div class="plan-label">Untuk bertumbuh</div>
       <h3>Professional</h3>
       <p class="plan-desc">Untuk brand yang membutuhkan pengalaman lebih khusus dan struktur website yang lebih matang.</p>
-      <div class="price">Rp9,9 jt <small>/ mulai dari</small></div>
+      <div class="price">Rp7 jt <small>/ mulai dari</small></div>
       <div class="price-note">Lingkup dan fitur disesuaikan</div>
       <a class="btn btn-secondary" data-wa="Halo Beuna Digital, saya tertarik paket Professional website." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Pilih Professional ↗</a>
       <p class="feature-title">Semua fitur Business, ditambah</p>
@@ -320,7 +324,7 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
   <div class="custom">
     <div><h3>Butuh sesuatu yang lebih spesifik?</h3><p>Toko online, dashboard, sistem booking, sistem internal, atau kebutuhan khusus lainnya.</p></div>
     <div class="custom-side">
-      <span class="custom-price">Custom mulai Rp15 jt</span>
+      <span class="custom-price">Custom mulai Rp10 jt</span>
       <a class="btn btn-secondary" data-wa="Halo Beuna Digital, saya ingin membahas website custom." href="https://wa.me/6285359033973" target="_blank" rel="noopener">Bahas proyek custom ↗</a>
     </div>
   </div>
@@ -448,6 +452,73 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
     clone.querySelectorAll('img').forEach(function(img){img.setAttribute('loading','lazy');});
     track.appendChild(clone);
   });
+})();
+
+
+(function(){
+  var viewport=document.querySelector('.portfolio-track-viewport');
+  var track=document.querySelector('.portfolio-grid');
+  if(!viewport||!track) return;
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var offset=0, halfWidth=0, lastTime=0, raf=0, speed=0;
+  var activePointer=null, startX=0, startY=0, startOffset=0, dragging=false, moved=false, suppressClick=false;
+  var resumeTimer=null;
+  function measure(){
+    halfWidth=track.scrollWidth/2;
+    var seconds=window.matchMedia&&window.matchMedia('(max-width: 620px)').matches?34:42;
+    speed=halfWidth/seconds;
+    offset=halfWidth?((offset%halfWidth)+halfWidth)%halfWidth:0;
+    render();
+  }
+  function render(){track.style.transform='translate3d('+(-offset)+'px,0,0)';}
+  function tick(now){
+    raf=0;
+    if(!lastTime) lastTime=now;
+    var dt=Math.min((now-lastTime)/1000,.05);
+    lastTime=now;
+    if(!reduceMotion&&!dragging&&halfWidth>0){
+      offset=(offset+speed*dt)%halfWidth;
+      render();
+    }
+    raf=window.requestAnimationFrame(tick);
+  }
+  function startLoop(){if(!raf){lastTime=0;raf=window.requestAnimationFrame(tick);}}
+  function stopResumeTimer(){if(resumeTimer){window.clearTimeout(resumeTimer);resumeTimer=null;}}
+  function resumeSoon(){stopResumeTimer();resumeTimer=window.setTimeout(function(){dragging=false;viewport.classList.remove('is-dragging');lastTime=0;},650);}
+  viewport.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='mouse'&&e.button!==0) return;
+    activePointer=e.pointerId;startX=e.clientX;startY=e.clientY;startOffset=offset;
+    moved=false;dragging=false;stopResumeTimer();
+  });
+  viewport.addEventListener('pointermove',function(e){
+    if(activePointer===null||e.pointerId!==activePointer) return;
+    var dx=e.clientX-startX,dy=e.clientY-startY;
+    if(!dragging){
+      if(Math.abs(dx)<7&&Math.abs(dy)<7) return;
+      if(Math.abs(dx)<=Math.abs(dy)) return;
+      dragging=true;moved=true;viewport.classList.add('is-dragging');
+      if(viewport.setPointerCapture){try{viewport.setPointerCapture(e.pointerId);}catch(_){}}
+    }
+    if(dragging){
+      e.preventDefault();
+      if(halfWidth>0){offset=((startOffset-dx)%halfWidth+halfWidth)%halfWidth;render();}
+    }
+  });
+  function endPointer(e){
+    if(activePointer===null||(e&&e.pointerId!==activePointer)) return;
+    if(dragging){suppressClick=true;resumeSoon();}
+    activePointer=null;
+  }
+  viewport.addEventListener('pointerup',endPointer);
+  viewport.addEventListener('pointercancel',endPointer);
+  viewport.addEventListener('lostpointercapture',function(){if(activePointer!==null)endPointer({pointerId:activePointer});});
+  viewport.addEventListener('click',function(e){
+    if(suppressClick){e.preventDefault();e.stopPropagation();suppressClick=false;}
+  },true);
+  window.addEventListener('resize',measure);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measure);
+  measure();
+  startLoop();
 })();
 
 (function(){
