@@ -54,6 +54,11 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .section{position:relative;padding:72px 0}
 .section:before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(var(--max),calc(100% - 40px));height:1px;background:linear-gradient(90deg,transparent,rgba(140,245,177,.22) 18%,rgba(140,245,177,.22) 82%,transparent)}
 .section-head-centered h2{font-size:clamp(1.55rem,3.1vw,2.35rem);line-height:1.12;letter-spacing:-.045em;max-width:760px}
+
+.section-head-centered h2.package-rotating-headline{font-size:clamp(1.2rem,2.6vw,2rem);font-weight:750;line-height:1.2;letter-spacing:-.035em;max-width:900px;margin:12px auto 0;text-wrap:balance}
+.package-rotating-headline em{font-style:normal;color:var(--green)}
+.package-headline-rotator{width:100%}
+
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:28px}
 .section-head h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.08;letter-spacing:-.055em;margin:10px 0 0}
 .section-head p{color:var(--muted);max-width:390px;margin:0;font-size:.94rem}
@@ -295,7 +300,14 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 <section class="section" id="paket" aria-labelledby="t-paket">
 <div class="wrap">
   <div class="section-head section-head-centered">
-    <div><span class="eyebrow">Paket dan investasi</span><h2 id="t-paket">Pilih sesuai tahap bisnis Anda.</h2></div>
+    <div><span class="eyebrow">Paket dan investasi</span><h2 id="t-paket" class="package-rotating-headline" aria-label="Pertanyaan dan pesan untuk calon klien">
+      <span class="headline-rotator package-headline-rotator" data-package-headline-rotator>
+        <span class="headline-slide is-active" data-package-headline data-duration="8500" aria-hidden="false">Kalau sekarang ada 100 calon klien yang lagi nyari bisnis kamu di internet, <em>mereka udah bisa jumpa kamu belum?</em></span>
+        <span class="headline-slide" data-package-headline data-duration="6000" aria-hidden="true">Kepercayaan calon klien sekarang dibangun <em>sebelum mereka sempat chat atau telepon.</em></span>
+        <span class="headline-slide" data-package-headline data-duration="7000" aria-hidden="true">Sementara bisnismu masih terasa biasa, ada kompetitor yang <em>sudah terasa lebih siap ditemukan.</em></span>
+        <span class="headline-slide" data-package-headline data-duration="7500" aria-hidden="true">Kompetitor udah punya website, udah dichat ratusan calon pelanggan dari internet. <em>Kalau kamu?</em></span>
+      </span>
+    </h2></div>
   </div>
 
   <div class="plans">
@@ -714,22 +726,27 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
 
 <script>
 (function(){
-  var rotator=document.querySelector('[data-headline-rotator]');
-  if(!rotator)return;
-  var slides=Array.from(rotator.querySelectorAll('[data-headline]'));
-  if(slides.length<2)return;
-  var activeIndex=slides.findIndex(function(slide){return slide.classList.contains('is-active');});
+  var groups=[
+    Array.from((document.querySelector('[data-headline-rotator]')||{}).querySelectorAll ? document.querySelector('[data-headline-rotator]').querySelectorAll('[data-headline]') : []),
+    Array.from((document.querySelector('[data-package-headline-rotator]')||{}).querySelectorAll ? document.querySelector('[data-package-headline-rotator]').querySelectorAll('[data-package-headline]') : [])
+  ].filter(function(slides){return slides.length>1;});
+  if(!groups.length)return;
+  var activeIndex=groups[0].findIndex(function(slide){return slide.classList.contains('is-active');});
   if(activeIndex<0)activeIndex=0;
   function rotate(){
-    slides[activeIndex].classList.remove('is-active');
-    slides[activeIndex].setAttribute('aria-hidden','true');
-    activeIndex=(activeIndex+1)%slides.length;
-    slides[activeIndex].classList.add('is-active');
-    slides[activeIndex].setAttribute('aria-hidden','false');
+    groups.forEach(function(slides){
+      slides[activeIndex].classList.remove('is-active');
+      slides[activeIndex].setAttribute('aria-hidden','true');
+    });
+    activeIndex=(activeIndex+1)%groups[0].length;
+    groups.forEach(function(slides){
+      slides[activeIndex].classList.add('is-active');
+      slides[activeIndex].setAttribute('aria-hidden','false');
+    });
     scheduleNext();
   }
   function scheduleNext(){
-    var duration=Number(slides[activeIndex].dataset.duration)||7000;
+    var duration=Number(groups[0][activeIndex].dataset.duration)||7000;
     window.setTimeout(rotate,duration);
   }
   scheduleNext();
