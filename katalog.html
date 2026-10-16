@@ -39,8 +39,12 @@ a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 .hero{padding:76px 0 70px}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--green);font-size:.82rem;font-weight:700;letter-spacing:.02em}
 .eyebrow:before{content:"";width:22px;height:1px;background:currentColor}
-.hero h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.07em;max-width:860px;margin:22px 0}
+.hero h1{font-size:clamp(2.1rem,5.2vw,4.5rem);line-height:1.06;letter-spacing:-.065em;max-width:980px;margin:22px 0}
 .hero h1 em{font-style:normal;color:var(--green)}
+.headline-rotator{display:grid;align-items:start;width:100%}
+.headline-slide{grid-area:1 / 1;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .38s ease,transform .38s ease,visibility 0s linear .38s}
+.headline-slide.is-active{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .38s ease,transform .38s ease,visibility 0s}
+@media(prefers-reduced-motion:reduce){.headline-slide{transition:none!important;transform:none}}
 .hero p{max-width:640px;color:var(--muted);font-size:clamp(1rem,1.7vw,1.18rem);margin:0}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .proof{display:flex;gap:10px 24px;flex-wrap:wrap;margin:38px 0 0;padding:0;list-style:none;color:#c5d8cb;font-size:.86rem}
@@ -235,7 +239,14 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 
 <main>
 <section class="wrap hero">
-  <h1>Bisnis Anda layak punya <em>website yang serius.</em></h1>
+  <h1 class="rotating-headline" aria-label="Pesan Beuna Digital untuk calon klien">
+    <span class="headline-rotator" data-headline-rotator>
+      <span class="headline-slide is-active" data-headline aria-hidden="false">Kalau sekarang ada 100 calon klien yang lagi nyari bisnis kamu di internet, <em>mereka udah bisa jumpa kamu belum?</em></span>
+      <span class="headline-slide" data-headline aria-hidden="true">Kepercayaan calon klien sekarang dibangun <em>sebelum mereka sempat chat atau telepon.</em></span>
+      <span class="headline-slide" data-headline aria-hidden="true">Sementara bisnismu masih terasa biasa, ada kompetitor yang <em>sudah terasa lebih siap ditemukan.</em></span>
+      <span class="headline-slide" data-headline aria-hidden="true">Kompetitor udah punya website, udah dichat ratusan calon pelanggan dari internet. <em>Kalau kamu?</em></span>
+    </span>
+  </h1>
   <p>Dari landing page sampai website perusahaan yang lebih kompleks. Beuna Digital membantu bisnis tampil lebih kredibel, menjelaskan layanan dengan jelas, dan memudahkan calon pelanggan menghubungi Anda.</p>
   <div class="hero-actions">
     <a class="btn btn-primary" href="#paket">Lihat paket website ↓</a>
@@ -697,6 +708,25 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
   }else{
     counters.forEach(animateCounter);
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  var rotator=document.querySelector('[data-headline-rotator]');
+  if(!rotator)return;
+  var slides=Array.from(rotator.querySelectorAll('[data-headline]'));
+  if(slides.length<2)return;
+  var activeIndex=slides.findIndex(function(slide){return slide.classList.contains('is-active');});
+  if(activeIndex<0)activeIndex=0;
+  window.setInterval(function(){
+    slides[activeIndex].classList.remove('is-active');
+    slides[activeIndex].setAttribute('aria-hidden','true');
+    activeIndex=(activeIndex+1)%slides.length;
+    slides[activeIndex].classList.add('is-active');
+    slides[activeIndex].setAttribute('aria-hidden','false');
+  },3000);
 })();
 </script>
 
