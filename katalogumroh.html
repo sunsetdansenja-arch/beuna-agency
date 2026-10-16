@@ -30,6 +30,14 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
 @media(max-width:620px){.packages{padding:48px 15px}.umrah-lightbox{padding:5vh 4vw}.umrah-lightbox-inner{max-width:92vw;max-height:90vh}.umrah-full-image{max-width:92vw;max-height:84vh}.umrah-close{right:-8px;top:-12px;width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.umrah-lightbox,.umrah-lightbox-inner{transition:none!important}}
 
+
+/* Social proof paket */
+.package-proof{display:flex;align-items:center;gap:10px;margin:8px 0 12px;padding:10px 12px;border:1px solid rgba(16,56,45,.12);border-radius:5px;background:rgba(16,56,45,.035);opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+.package-proof.is-visible{opacity:1;transform:translateY(0)}
+.proof-number{font-size:1.55rem;line-height:1;font-weight:800;letter-spacing:-.045em;color:#8b7040;font-variant-numeric:tabular-nums;white-space:nowrap}
+.proof-label{font-size:10px;line-height:1.4;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.package-proof{opacity:1;transform:none;transition:none}}
+
 </style>
 </head>
 <body>
@@ -59,14 +67,14 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
     <div class="packages-heading"><span class="section-kicker">Paket website</span><h2>Mulai bangun kepercayaan calon jamaah.</h2><p>Pilih skala website sesuai kebutuhan biro. Harga berikut adalah harga normal katalog Beuna Digital; paket Starter sedang mendapat promo khusus.</p></div>
     <div class="package-grid">
       <article class="package-card starter">
-        <span class="promo-badge">PROMO KHUSUS</span><span class="package-label">Untuk mulai tampil online</span><h3>Starter</h3>
+        <span class="promo-badge">PROMO KHUSUS</span><span class="package-label">Untuk mulai tampil online</span><h3>Starter</h3><div class="package-proof"><span class="proof-number" data-count-up data-count="58" aria-label="58 lebih klien">0+</span><span class="proof-label">klien telah menggunakan paket Starter</span></div>
         <p>Landing page profesional untuk memperkenalkan biro, paket perjalanan, dan jalur konsultasi jamaah.</p>
         <div class="old-price">Harga normal <s>Rp1.800.000</s></div><div class="package-price">Rp1.080.000</div><div class="promo-copy">Cukup bayar 60% dari harga normal <strong>— hemat Rp720.000</strong></div>
         <ul><li>Landing page satu halaman</li><li>Desain responsif mobile dan desktop</li><li>Tombol WhatsApp dan form kontak sederhana</li><li>SEO teknis dasar</li><li>2 kali revisi desain</li></ul>
         <a class="package-cta" href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20mengambil%20promo%20Starter%20website%20biro%20umroh%20Rp1.080.000." target="_blank" rel="noopener noreferrer">Ambil promo Starter ↗</a>
       </article>
-      <article class="package-card"><span class="package-label">Untuk biro berkembang</span><h3>Business</h3><p>Website dengan ruang lebih luas untuk profil biro, layanan, paket umroh, dan informasi keberangkatan.</p><div class="package-price">Rp3.800.000 <small>mulai dari</small></div><ul><li>Semua fitur Starter</li><li>Hingga 5 halaman</li><li>Desain semi-custom sesuai identitas biro</li><li>SEO on-page dasar</li><li>Integrasi Google Maps dan kontak</li><li>3 kali revisi desain</li></ul><a class="package-cta secondary" href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20konsultasi%20paket%20Business%20untuk%20website%20biro%20umroh." target="_blank" rel="noopener noreferrer">Konsultasi Business ↗</a></article>
-      <article class="package-card"><span class="package-label">Untuk kebutuhan lebih matang</span><h3>Professional</h3><p>Presentasi brand dan layanan yang lebih mendalam dengan struktur website yang disesuaikan.</p><div class="package-price">Rp7.000.000 <small>mulai dari</small></div><ul><li>Semua fitur Business</li><li>Hingga 10 halaman awal</li><li>Arah visual lebih custom</li><li>Integrasi tambahan sesuai kebutuhan</li><li>CMS bila sesuai lingkup proyek</li><li>Panduan pengelolaan website</li><li>4 kali revisi desain</li></ul><a class="package-cta secondary" href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20konsultasi%20paket%20Professional%20untuk%20website%20biro%20umroh." target="_blank" rel="noopener noreferrer">Konsultasi Professional ↗</a></article>
+      <article class="package-card"><span class="package-label">Untuk biro berkembang</span><h3>Business</h3><div class="package-proof"><span class="proof-number" data-count-up data-count="33" aria-label="33 lebih klien">0+</span><span class="proof-label">klien telah menggunakan paket Business</span></div><p>Website dengan ruang lebih luas untuk profil biro, layanan, paket umroh, dan informasi keberangkatan.</p><div class="package-price">Rp3.800.000 <small>mulai dari</small></div><ul><li>Semua fitur Starter</li><li>Hingga 5 halaman</li><li>Desain semi-custom sesuai identitas biro</li><li>SEO on-page dasar</li><li>Integrasi Google Maps dan kontak</li><li>3 kali revisi desain</li></ul><a class="package-cta secondary" href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20konsultasi%20paket%20Business%20untuk%20website%20biro%20umroh." target="_blank" rel="noopener noreferrer">Konsultasi Business ↗</a></article>
+      <article class="package-card"><span class="package-label">Untuk kebutuhan lebih matang</span><h3>Professional</h3><div class="package-proof"><span class="proof-number" data-count-up data-count="7" aria-label="7 lebih klien">0+</span><span class="proof-label">klien telah menggunakan paket Professional</span></div><p>Presentasi brand dan layanan yang lebih mendalam dengan struktur website yang disesuaikan.</p><div class="package-price">Rp7.000.000 <small>mulai dari</small></div><ul><li>Semua fitur Business</li><li>Hingga 10 halaman awal</li><li>Arah visual lebih custom</li><li>Integrasi tambahan sesuai kebutuhan</li><li>CMS bila sesuai lingkup proyek</li><li>Panduan pengelolaan website</li><li>4 kali revisi desain</li></ul><a class="package-cta secondary" href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20konsultasi%20paket%20Professional%20untuk%20website%20biro%20umroh." target="_blank" rel="noopener noreferrer">Konsultasi Professional ↗</a></article>
     </div>
     <div class="custom-package"><div><strong>Perlu fitur khusus?</strong><p>Sistem booking, dashboard jamaah, atau integrasi alur pendaftaran khusus bisa dibahas sebagai proyek custom.</p></div><span>Custom mulai Rp10.000.000</span><a href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20membahas%20website%20custom%20untuk%20biro%20umroh." target="_blank" rel="noopener noreferrer">Bahas kebutuhan ↗</a></div>
     <p class="package-note">Harga merupakan harga awal. Detail konten, domain/hosting, fitur tambahan, serta ketentuan proyek dikonfirmasi sebelum pengerjaan. Promo Starter ditampilkan sebagai 60% dari harga normal katalog.</p>
@@ -160,5 +168,46 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
 })();
 </script>
 <footer class="footer">© Beuna Digital · Website untuk perjalanan yang penuh makna</footer>
+
+<script>
+(function(){
+  var counters=document.querySelectorAll('[data-count-up]');
+  if(!counters.length)return;
+  var reducedMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCounter(el){
+    if(el.dataset.counted==='true')return;
+    el.dataset.counted='true';
+    var target=Number(el.dataset.count);
+    if(!Number.isFinite(target)||target<0){el.textContent='0+';return;}
+    el.closest('.plan-proof, .package-proof')?.classList.add('is-visible');
+    if(reducedMotion){el.textContent=target.toLocaleString('id-ID')+'+';return;}
+    var startTime=null;
+    var duration=1350;
+    function frame(now){
+      if(startTime===null)startTime=now;
+      var progress=Math.min((now-startTime)/duration,1);
+      var eased=1-Math.pow(1-progress,3);
+      el.textContent=Math.round(target*eased).toLocaleString('id-ID')+'+';
+      if(progress<1)window.requestAnimationFrame(frame);
+      else el.textContent=target.toLocaleString('id-ID')+'+';
+    }
+    window.requestAnimationFrame(frame);
+  }
+  if('IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.35});
+    counters.forEach(function(counter){observer.observe(counter);});
+  }else{
+    counters.forEach(animateCounter);
+  }
+})();
+</script>
+
 </body>
 </html>
