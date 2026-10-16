@@ -726,10 +726,12 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
 
 <script>
 (function(){
-  var groups=[
-    Array.from((document.querySelector('[data-headline-rotator]')||{}).querySelectorAll ? document.querySelector('[data-headline-rotator]').querySelectorAll('[data-headline]') : []),
-    Array.from((document.querySelector('[data-package-headline-rotator]')||{}).querySelectorAll ? document.querySelector('[data-package-headline-rotator]').querySelectorAll('[data-package-headline]') : [])
-  ].filter(function(slides){return slides.length>1;});
+  var heroRotator=document.querySelector('[data-headline-rotator]');
+  var packageRotator=document.querySelector('[data-package-headline-rotator]');
+  var groups=[];
+  if(heroRotator)groups.push(Array.from(heroRotator.querySelectorAll('[data-headline]')));
+  if(packageRotator)groups.push(Array.from(packageRotator.querySelectorAll('[data-package-headline]')));
+  groups=groups.filter(function(slides){return slides.length>1;});
   if(!groups.length)return;
   var activeIndex=groups[0].findIndex(function(slide){return slide.classList.contains('is-active');});
   if(activeIndex<0)activeIndex=0;
