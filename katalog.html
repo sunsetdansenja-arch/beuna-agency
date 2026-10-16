@@ -241,10 +241,10 @@ details p{color:var(--muted);font-size:.93rem;margin:12px 0 0;max-width:62ch}
 <section class="wrap hero">
   <h1 class="rotating-headline" aria-label="Pesan Beuna Digital untuk calon klien">
     <span class="headline-rotator" data-headline-rotator>
-      <span class="headline-slide is-active" data-headline aria-hidden="false">Kalau sekarang ada 100 calon klien yang lagi nyari bisnis kamu di internet, <em>mereka udah bisa jumpa kamu belum?</em></span>
-      <span class="headline-slide" data-headline aria-hidden="true">Kepercayaan calon klien sekarang dibangun <em>sebelum mereka sempat chat atau telepon.</em></span>
-      <span class="headline-slide" data-headline aria-hidden="true">Sementara bisnismu masih terasa biasa, ada kompetitor yang <em>sudah terasa lebih siap ditemukan.</em></span>
-      <span class="headline-slide" data-headline aria-hidden="true">Kompetitor udah punya website, udah dichat ratusan calon pelanggan dari internet. <em>Kalau kamu?</em></span>
+      <span class="headline-slide is-active" data-headline data-duration="8500" aria-hidden="false">Kalau sekarang ada 100 calon klien yang lagi nyari bisnis kamu di internet, <em>mereka udah bisa jumpa kamu belum?</em></span>
+      <span class="headline-slide" data-headline data-duration="6000" aria-hidden="true">Kepercayaan calon klien sekarang dibangun <em>sebelum mereka sempat chat atau telepon.</em></span>
+      <span class="headline-slide" data-headline data-duration="7000" aria-hidden="true">Sementara bisnismu masih terasa biasa, ada kompetitor yang <em>sudah terasa lebih siap ditemukan.</em></span>
+      <span class="headline-slide" data-headline data-duration="7500" aria-hidden="true">Kompetitor udah punya website, udah dichat ratusan calon pelanggan dari internet. <em>Kalau kamu?</em></span>
     </span>
   </h1>
   <p>Dari landing page sampai website perusahaan yang lebih kompleks. Beuna Digital membantu bisnis tampil lebih kredibel, menjelaskan layanan dengan jelas, dan memudahkan calon pelanggan menghubungi Anda.</p>
@@ -720,13 +720,19 @@ document.querySelectorAll('[data-wa]').forEach(function(a){
   if(slides.length<2)return;
   var activeIndex=slides.findIndex(function(slide){return slide.classList.contains('is-active');});
   if(activeIndex<0)activeIndex=0;
-  window.setInterval(function(){
+  function rotate(){
     slides[activeIndex].classList.remove('is-active');
     slides[activeIndex].setAttribute('aria-hidden','true');
     activeIndex=(activeIndex+1)%slides.length;
     slides[activeIndex].classList.add('is-active');
     slides[activeIndex].setAttribute('aria-hidden','false');
-  },3000);
+    scheduleNext();
+  }
+  function scheduleNext(){
+    var duration=Number(slides[activeIndex].dataset.duration)||7000;
+    window.setTimeout(rotate,duration);
+  }
+  scheduleNext();
 })();
 </script>
 
