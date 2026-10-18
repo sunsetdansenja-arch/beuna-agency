@@ -7,7 +7,7 @@
 <title>Katalog Website Konstruksi & Alat Berat — Beuna Digital</title>
 <meta name="description" content="Inspirasi website konstruksi, kontraktor, supplier material, rental alat berat, dan perusahaan machinery dari Beuna Digital.">
 <link rel="preconnect" href="https://res.cloudinary.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{--green:#10382d;--green2:#174c3b;--gold:#c8a96a;--cream:#f7f4ec;--ink:#17251f;--muted:#6d776f;--line:rgba(16,56,45,.14)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;-webkit-font-smoothing:antialiased}
@@ -83,6 +83,39 @@ body{background:radial-gradient(ellipse at 82% 3%,rgba(47,158,89,.23),transparen
 @keyframes badgePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.14);transform:translateY(-1px)}}
 @media(max-width:800px){.package-grid{grid-template-columns:1fr}.package-card{padding:23px}.construction-grid{grid-template-columns:1fr}.promo-strip{align-items:flex-start;flex-direction:column}.promo-prices{width:100%}.promo-prices span{flex:1}.construction-grid .card-foot{align-items:flex-start;flex-direction:column}.card-links{justify-content:flex-start}.hero{padding-top:44px}.hero:after{right:-230px}}
 @media(prefers-reduced-motion:reduce){.reveal,.reveal-text{opacity:1;transform:none;transition:none}.promo-strip,.promo-slot-count,.promo-live i,.promo-badge{animation:none!important}}
+
+
+/* Apple-inspired typography: system-native, precise, calm, editorial */
+:root{--type-system:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-synthesis:none}
+body{font-family:var(--type-system)!important;font-feature-settings:"kern" 1,"liga" 1;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter-spacing:-.012em}
+h1,h2,h3,.hero h1,.intro h2,.packages-heading h2,.contact h2,.construction-grid .card h3,.package-card h3{font-family:var(--type-system)!important;font-synthesis:none}
+.hero h1{font-size:clamp(2.8rem,6.9vw,5.65rem);font-weight:650;line-height:.99;letter-spacing:-.065em;max-width:900px;margin:24px 0}
+.hero h1 em{font-style:normal;font-weight:650;letter-spacing:-.068em}
+.hero p{font-size:clamp(1rem,1.35vw,1.125rem);line-height:1.65;letter-spacing:-.018em;max-width:590px;color:rgba(245,255,248,.76)}
+.eyebrow,.section-kicker,.nav-tag{font-family:var(--type-system);font-size:.72rem;letter-spacing:.12em;font-weight:650}
+.intro h2,.packages-heading h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:650;line-height:1.04;letter-spacing:-.055em}
+.intro p,.packages-heading p{font-size:.95rem;line-height:1.7;letter-spacing:-.015em}
+.construction-grid .card h3{font-size:clamp(1.15rem,1.6vw,1.35rem);font-weight:650;line-height:1.2;letter-spacing:-.035em}
+.construction-grid .card p{font-size:.9rem;line-height:1.65;letter-spacing:-.012em}
+.package-card h3{font-size:1.8rem;font-weight:650;line-height:1.08;letter-spacing:-.05em}
+.package-card p,.package-card li{font-size:.88rem;line-height:1.6;letter-spacing:-.012em}
+.package-price{font-size:clamp(1.85rem,2.7vw,2.25rem);font-weight:700;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+.promo-copy-main strong{font-size:1.12rem;font-weight:650;letter-spacing:-.025em}
+.promo-prices b,.promo-slot-count,.proof-number{font-variant-numeric:tabular-nums}
+.cta,.package-cta,.view,.original-link{font-family:var(--type-system);font-size:.9rem;font-weight:650;letter-spacing:-.015em}
+.trust-item strong{font-size:.9rem;font-weight:650;letter-spacing:-.02em}
+.trust-item p,.contact p{font-size:.88rem;line-height:1.65;letter-spacing:-.012em}
+.footer{font-family:var(--type-system);font-size:.75rem;letter-spacing:-.005em}
+::selection{background:rgba(140,245,177,.28);color:#fff}
+@media(max-width:700px){
+ .hero h1{font-size:clamp(2.75rem,12vw,4rem);line-height:1.01;letter-spacing:-.06em}
+ .hero p{font-size:1rem;line-height:1.62}
+ .intro h2,.packages-heading h2{font-size:clamp(2rem,9vw,2.65rem);letter-spacing:-.05em}
+ .construction-grid .card h3{font-size:1.2rem}
+ .package-card h3{font-size:1.7rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 </style>
 </head>
