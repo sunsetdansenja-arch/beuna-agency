@@ -2,328 +2,188 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102f27">
-<title>Katalog Website Konstruksi & Alat Berat — Beuna Digital</title>
-<meta name="description" content="Inspirasi website konstruksi, kontraktor, supplier material, rental alat berat, dan perusahaan machinery dari Beuna Digital.">
-<link rel="preconnect" href="https://res.cloudinary.com">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Website Konstruksi & Alat Berat — Beuna Digital</title>
+<meta name="description" content="Jasa pembuatan website kontraktor, supplier material, rental alat berat, dan machinery. Promo terbatas dari Beuna Digital.">
 <style>
-:root{--green:#10382d;--green2:#174c3b;--gold:#c8a96a;--cream:#f7f4ec;--ink:#17251f;--muted:#6d776f;--line:rgba(16,56,45,.14)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 85% 15%,rgba(200,169,106,.19),transparent 35%),linear-gradient(135deg,#0b2922,#174637);color:#fff;padding:30px max(22px,calc((100vw - 1160px)/2)) 88px}
-.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid rgba(218,194,139,.18);transform:rotate(45deg);border-radius:36%}.hero:before{width:390px;height:390px;right:-90px;top:-190px;box-shadow:0 0 0 28px rgba(218,194,139,.025),0 0 0 58px rgba(218,194,139,.025)}.hero:after{width:180px;height:180px;right:90px;bottom:-125px}
-.nav{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1160px;margin:auto}.brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:700;letter-spacing:.08em}.brand-mark{width:37px;height:37px;border:1px solid rgba(221,194,134,.7);border-radius:50%;display:grid;place-items:center;color:#e3c98f;font-size:20px}.nav-tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#d7c69b}
-.hero-content{position:relative;z-index:1;max-width:1160px;margin:76px auto 0}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:#e1c88f;font-size:11px;letter-spacing:.19em;text-transform:uppercase;font-weight:700}.eyebrow:before{content:"";height:1px;width:28px;background:currentColor}.hero h1{font-family:"Playfair Display",serif;font-size:clamp(42px,6vw,76px);font-weight:500;line-height:1.05;letter-spacing:-.035em;max-width:780px;margin:20px 0}.hero h1 em{font-weight:500;color:#dfc58a}.hero p{max-width:610px;color:rgba(255,255,255,.75);font-size:16px;line-height:1.85;margin:0}.hero-bottom{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:34px}.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:4px;text-decoration:none;font-weight:700;font-size:13px;background:#d4b675;color:#17382d;transition:transform .2s,background .2s}.cta:hover{transform:translateY(-2px);background:#e2ca95}.hero-note{font-size:12px;color:rgba(255,255,255,.62)}
-main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-content:space-between;align-items:end;gap:25px;padding:66px 0 30px}.section-kicker{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:#8b7040;font-weight:700}.intro h2{font-family:"Playfair Display",serif;font-size:clamp(29px,4vw,43px);font-weight:500;letter-spacing:-.025em;margin:10px 0 0}.intro p{max-width:390px;color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 4px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-bottom:80px}.card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 10px 28px rgba(24,48,38,.045);transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-5px);box-shadow:0 20px 45px rgba(24,48,38,.12)}.preview{position:relative;background:#e7e8df;overflow:hidden;aspect-ratio:1.42/1}.preview img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}.card:hover .preview img{transform:scale(1.025)}.preview:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(16,56,45,.06)}.num{position:absolute;z-index:1;left:15px;top:15px;padding:7px 10px;border-radius:3px;background:rgba(16,56,45,.9);color:#f2dfb0;font-size:10px;letter-spacing:.1em}.card-body{padding:20px 22px 22px}.card-top{display:flex;align-items:start;justify-content:space-between;gap:12px}.card h3{font-family:"Playfair Display",serif;font-weight:600;font-size:23px;margin:0;letter-spacing:-.02em}.type{color:#8a7043;border:1px solid rgba(138,112,67,.3);padding:5px 8px;border-radius:99px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}.card p{font-size:12px;line-height:1.75;color:var(--muted);margin:10px 0 18px}.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:15px}.card-foot span{font-size:11px;color:#65736a}.view{font-size:12px;text-decoration:none;font-weight:700;color:var(--green);display:inline-flex;align-items:center;gap:8px}.view b{font-size:17px;transition:transform .2s}.view:hover b{transform:translateX(4px)}
-.trust{background:#eae8dc;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.trust-inner{max-width:1160px;margin:auto;padding:35px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.trust-item{display:flex;gap:13px;align-items:start}.trust-icon{width:34px;height:34px;flex:none;border:1px solid rgba(16,56,45,.22);border-radius:50%;display:grid;place-items:center;color:#927540;font-size:16px}.trust-item strong{display:block;font-size:12px;margin:2px 0 5px}.trust-item p{margin:0;font-size:11px;line-height:1.65;color:var(--muted)}
-.contact{position:relative;overflow:hidden;text-align:center;background:#10382d;color:#fff;padding:72px 22px 76px}.contact:before{content:"۞";position:absolute;font-size:260px;color:rgba(220,195,136,.045);left:50%;top:50%;transform:translate(-50%,-55%);pointer-events:none}.contact-inner{position:relative;max-width:680px;margin:auto}.contact .section-kicker{color:#ddc58f}.contact h2{font-family:"Playfair Display",serif;font-size:clamp(32px,4.5vw,49px);font-weight:500;line-height:1.15;margin:15px 0}.contact p{font-size:13px;line-height:1.8;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 25px}.footer{background:#0a2922;color:rgba(255,255,255,.55);padding:18px 22px;text-align:center;font-size:10px;letter-spacing:.04em}
-@media(max-width:700px){.hero{padding:22px 20px 65px}.nav-tag{font-size:9px;letter-spacing:.08em}.hero-content{margin-top:62px}.hero p{font-size:14px}.intro{display:block;padding:48px 0 25px}.intro p{margin-top:14px}.grid{grid-template-columns:1fr;gap:18px;padding-bottom:55px}.preview{aspect-ratio:1.28/1}.card-body{padding:17px}.card h3{font-size:21px}.trust-inner{grid-template-columns:1fr;gap:20px;padding:28px 22px}.contact{padding:58px 20px}.hero:before{right:-240px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
-
-/* Paket website */
-.packages{background:#f0eee4;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:68px 22px 72px}.packages-inner{max-width:1160px;margin:auto}.packages-heading{text-align:center;max-width:700px;margin:0 auto 30px}.packages-heading h2{font-family:"Playfair Display",serif;font-size:clamp(30px,4vw,44px);font-weight:500;line-height:1.12;margin:10px 0}.packages-heading p{font-size:13px;line-height:1.8;color:var(--muted)}.package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.package-card{position:relative;display:flex;flex-direction:column;background:#fbfaf5;border:1px solid rgba(16,56,45,.16);border-radius:8px;padding:25px 22px;box-shadow:0 12px 30px rgba(16,56,45,.04)}.package-card.starter{border:1px solid #b79a5d;box-shadow:0 12px 34px rgba(128,98,40,.12)}.promo-badge{position:absolute;right:13px;top:13px;background:#a33c2f;color:#fff;padding:6px 9px;border-radius:3px;font-size:9px;letter-spacing:.1em;font-weight:700}.package-label{display:block;color:#8b7040;font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;margin:0 0 7px}.package-card h3{font-family:"Playfair Display",serif;font-size:28px;font-weight:600;margin:0 0 8px}.package-card p{font-size:12px;line-height:1.75;color:var(--muted);margin:0 0 16px}.old-price{font-size:11px;color:var(--muted);margin-top:3px}.old-price s{margin-left:5px}.package-price{font-size:clamp(24px,2.4vw,31px);font-weight:700;letter-spacing:-.04em;color:var(--green);margin:3px 0 4px;white-space:nowrap}.package-price small{font-size:11px;font-weight:500;letter-spacing:0;color:var(--muted)}.promo-copy{font-size:11px;color:#8b3b2e;line-height:1.6;margin-bottom:14px}.package-card ul{list-style:none;margin:10px 0 24px;padding:16px 0 0;border-top:1px solid var(--line);display:grid;gap:10px}.package-card li{font-size:11px;line-height:1.6;color:#415349}.package-card li:before{content:"✓";color:#9a7b3e;font-weight:900;margin-right:8px}.package-cta{display:flex;justify-content:center;align-items:center;text-align:center;margin-top:auto;padding:12px 14px;background:var(--green);color:#fff;text-decoration:none;border-radius:4px;font-size:12px;font-weight:700;transition:background .2s}.package-cta:hover{background:#245743}.package-cta.secondary{background:transparent;color:var(--green);border:1px solid rgba(16,56,45,.3)}.package-cta.secondary:hover{background:rgba(16,56,45,.06)}.custom-package{margin-top:16px;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.45)}.custom-package strong{font-size:13px}.custom-package p{font-size:11px;color:var(--muted);margin:4px 0 0}.custom-package span{font-size:13px;font-weight:700;white-space:nowrap}.custom-package a{font-size:12px;font-weight:700;color:var(--green);white-space:nowrap}.package-note{font-size:10px;line-height:1.7;color:var(--muted);max-width:850px;margin:17px 0 0}
-.preview{cursor:zoom-in}.card{cursor:zoom-in}.card-foot .view{cursor:zoom-in}
-.umrah-lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:5vh 5vw;background:rgba(2,15,10,.76);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease}.umrah-lightbox.is-open{opacity:1;visibility:visible}.umrah-lightbox-inner{position:relative;display:flex;align-items:center;justify-content:center;max-width:90vw;max-height:90vh;transform:translateY(12px) scale(.97);transition:transform .28s cubic-bezier(.2,.8,.2,1)}.umrah-lightbox.is-open .umrah-lightbox-inner{transform:translateY(0) scale(1)}.umrah-full-image{display:block;width:auto;height:auto;max-width:90vw;max-height:84vh;object-fit:contain;border-radius:10px;box-shadow:0 28px 100px rgba(0,0,0,.5);background:#fff}.umrah-close{position:absolute;right:-14px;top:-14px;z-index:2;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:#10382d;color:#fff;font-size:1.65rem;line-height:1;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.35)}body.umrah-lightbox-open{overflow:hidden}
-@media(max-width:850px){.package-grid{grid-template-columns:1fr}.package-card{padding:23px}.package-price{font-size:30px}.custom-package{align-items:flex-start;flex-direction:column}.custom-package span{white-space:normal}}
-@media(max-width:620px){.packages{padding:48px 15px}.umrah-lightbox{padding:5vh 4vw}.umrah-lightbox-inner{max-width:92vw;max-height:90vh}.umrah-full-image{max-width:92vw;max-height:84vh}.umrah-close{right:-8px;top:-12px;width:38px;height:38px}}
-@media(prefers-reduced-motion:reduce){.umrah-lightbox,.umrah-lightbox-inner{transition:none!important}}
-
-
-/* Social proof paket */
-.package-proof{display:flex;align-items:center;gap:10px;margin:8px 0 12px;padding:10px 12px;border:1px solid rgba(16,56,45,.12);border-radius:5px;background:rgba(16,56,45,.035);opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
-.package-proof.is-visible{opacity:1;transform:translateY(0)}
-.proof-number{font-size:1.55rem;line-height:1;font-weight:800;letter-spacing:-.045em;color:#8b7040;font-variant-numeric:tabular-nums;white-space:nowrap}
-.proof-label{font-size:10px;line-height:1.4;color:var(--muted)}
-@media(prefers-reduced-motion:reduce){.package-proof{opacity:1;transform:none;transition:none}}
-
-
-/* Construction details */
-:root{--green:#8cf5b1;--green2:#37c879;--ink:#06140f}
-body{background:radial-gradient(ellipse at 82% 3%,rgba(47,158,89,.23),transparent 35%),radial-gradient(ellipse at 4% 35%,rgba(15,81,47,.18),transparent 35%),linear-gradient(145deg,#06140f,#081c13 48%,#04100b) fixed;color:#effff4}
-.hero{background:radial-gradient(ellipse at 82% 15%,rgba(83,235,137,.16),transparent 32%),linear-gradient(135deg,#061b12,#123b27 62%,#07160f);position:relative}
-.hero:before{content:"";position:absolute;inset:0;opacity:.12;pointer-events:none;background-image:linear-gradient(rgba(150,255,190,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(150,255,190,.18) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(90deg,transparent,#000 75%)}
-.hero:after{content:"";position:absolute;right:-60px;bottom:-130px;width:380px;height:380px;border:1px solid rgba(140,245,177,.18);border-radius:50%;box-shadow:0 0 0 30px rgba(140,245,177,.025),0 0 0 70px rgba(140,245,177,.02);pointer-events:none}
-.hero h1{max-width:900px}.hero h1 em{color:var(--green)}
-.packages{background:linear-gradient(180deg,#071a11,#091e14);border-color:rgba(140,245,177,.13)}
-.packages-heading h2{color:#f2fff6}.packages-heading p{color:#a7bdb0}
-.package-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.package-card{background:linear-gradient(150deg,rgba(17,48,31,.88),rgba(7,23,15,.96));border-color:rgba(140,245,177,.15);color:#f2fff6}
-.package-card.starter,.package-card.business-card{border-color:rgba(140,245,177,.55);box-shadow:0 18px 55px rgba(24,160,77,.12)}
-.package-label,.section-kicker{color:#8cf5b1}.package-card p,.package-note,.custom-package p{color:#a7bdb0}
-.package-card h3{color:#f4fff7}.package-card li{color:#d7e6dc}.package-card li:before{color:#8cf5b1}
-.package-price{color:#a4ffc2;font-size:clamp(25px,2.4vw,32px)}.old-price{color:#a7bdb0}.old-price s{color:#91a89a}
-.promo-badge{background:#f0b94f;color:#1b1608;animation:badgePulse 1.7s ease-in-out infinite}
-.promo-cta{background:linear-gradient(120deg,#b4ffcb,#54d88a)!important;color:#052012!important}
-.package-cta{background:#8cf5b1;color:#062013}.package-cta:hover{background:#b4ffcb}.package-cta.secondary{background:transparent;color:#dfffea;border-color:rgba(140,245,177,.35)}.package-cta.secondary:hover{background:rgba(140,245,177,.08)}
-.custom-package{background:rgba(255,255,255,.025);border-color:rgba(140,245,177,.15);color:#effff4}.custom-package a{color:#8cf5b1}
-.promo-strip{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:0 0 22px;padding:17px 20px;border:1px solid rgba(240,185,79,.5);border-radius:14px;background:linear-gradient(100deg,rgba(111,75,15,.2),rgba(140,245,177,.055));box-shadow:0 0 35px rgba(240,185,79,.07);animation:promoGlow 2.4s ease-in-out infinite}
-.promo-live{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:900;letter-spacing:.12em;color:#ffd36c}.promo-live i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ffcc59;box-shadow:0 0 0 0 rgba(255,204,89,.55);animation:livePulse 1.5s infinite}
-.promo-copy-main{display:grid;gap:2px}.promo-copy-main strong{font-size:1.1rem;color:#f4fff7}.promo-copy-main>span{font-size:.78rem;color:#a7bdb0}.promo-slot-count{display:inline-grid;place-items:center;min-width:31px;height:31px;margin-right:5px;padding:0 7px;border-radius:9px;background:#f0b94f;color:#201805;font-weight:950;animation:slotPulse 1.25s ease-in-out infinite}
-.promo-prices{display:flex;gap:8px;flex-wrap:wrap}.promo-prices span{display:grid;gap:2px;padding:8px 12px;border-radius:9px;background:rgba(0,0,0,.22);font-size:.72rem;color:#a7bdb0}.promo-prices b{font-size:.9rem;color:#b3ffc9}
-.construction-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding-bottom:76px}
-.construction-grid .card{background:linear-gradient(150deg,rgba(16,43,29,.8),rgba(7,20,13,.95));border-color:rgba(140,245,177,.14);box-shadow:0 12px 35px rgba(0,0,0,.12);cursor:default;transition:transform .35s,border-color .35s,box-shadow .35s}
-.construction-grid .card:hover{border-color:rgba(140,245,177,.5);box-shadow:0 18px 50px rgba(0,0,0,.24)}
-.construction-grid .preview{aspect-ratio:16/9;background:#102319;cursor:zoom-in}.construction-grid .preview img{object-fit:cover;object-position:top center}
-.construction-grid .card h3{font-family:"DM Sans",sans-serif;font-size:1.18rem;font-weight:800;letter-spacing:-.035em;color:#f3fff6}
-.construction-grid .card p{color:#a7bdb0}.construction-grid .type{color:#8cf5b1;border-color:rgba(140,245,177,.28);white-space:normal;text-align:center}
-.construction-grid .card-foot{border-color:rgba(140,245,177,.12);align-items:center}.construction-grid .card-foot>span{color:#91a89a;font-size:.74rem}
-.card-links{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}.construction-grid .view{color:#8cf5b1;font-size:.78rem;cursor:pointer}.construction-grid .original-link{color:#f4fff7;border-bottom:1px solid rgba(140,245,177,.35);padding-bottom:2px}.construction-grid .view b{font-size:1rem}
-.trust{background:#081b12;border-color:rgba(140,245,177,.12)}.trust-item strong{color:#f2fff6}.trust-item p{color:#a7bdb0}.trust-icon{color:#8cf5b1;border-color:rgba(140,245,177,.24)}
-.contact{background:radial-gradient(ellipse at 50% 0%,rgba(48,144,80,.22),transparent 55%),#06170f}.contact .section-kicker{color:#8cf5b1}.contact h2{font-family:"DM Sans",sans-serif;font-weight:800;letter-spacing:-.05em}.contact .cta{background:linear-gradient(120deg,#a4ffc2,#54d88a);color:#062013}.footer{color:#8fa99a}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1);transition-delay:var(--reveal-delay,0ms)}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-.reveal-text{opacity:0;transform:translateY(10px);transition:opacity .48s cubic-bezier(.16,1,.3,1),transform .48s cubic-bezier(.16,1,.3,1);transition-delay:var(--text-delay,0ms)}
-.reveal-text.is-visible{opacity:1;transform:translateY(0)}
-.construction-grid .card:nth-child(3n + 2){--reveal-delay:90ms}.construction-grid .card:nth-child(3n){--reveal-delay:160ms}
-@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(255,204,89,.5)}50%{box-shadow:0 0 0 7px rgba(255,204,89,0)}}
-@keyframes slotPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(240,185,79,.18)}50%{transform:scale(1.08);box-shadow:0 0 0 7px rgba(240,185,79,0)}}
-@keyframes promoGlow{0%,100%{border-color:rgba(240,185,79,.38);box-shadow:0 0 25px rgba(240,185,79,.04)}50%{border-color:rgba(240,185,79,.72);box-shadow:0 0 38px rgba(240,185,79,.11)}}
-@keyframes badgePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.14);transform:translateY(-1px)}}
-@media(max-width:800px){.package-grid{grid-template-columns:1fr}.package-card{padding:23px}.construction-grid{grid-template-columns:1fr}.promo-strip{align-items:flex-start;flex-direction:column}.promo-prices{width:100%}.promo-prices span{flex:1}.construction-grid .card-foot{align-items:flex-start;flex-direction:column}.card-links{justify-content:flex-start}.hero{padding-top:44px}.hero:after{right:-230px}}
-@media(prefers-reduced-motion:reduce){.reveal,.reveal-text{opacity:1;transform:none;transition:none}.promo-strip,.promo-slot-count,.promo-live i,.promo-badge{animation:none!important}}
-
-
-/* Apple-inspired typography: system-native, precise, calm, editorial */
-:root{--type-system:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-synthesis:none}
-body{font-family:var(--type-system)!important;font-feature-settings:"kern" 1,"liga" 1;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter-spacing:-.012em}
-h1,h2,h3,.hero h1,.intro h2,.packages-heading h2,.contact h2,.construction-grid .card h3,.package-card h3{font-family:var(--type-system)!important;font-synthesis:none}
-.hero h1{font-size:clamp(2.8rem,6.9vw,5.65rem);font-weight:650;line-height:.99;letter-spacing:-.065em;max-width:900px;margin:24px 0}
-.hero h1 em{font-style:normal;font-weight:650;letter-spacing:-.068em}
-.hero p{font-size:clamp(1rem,1.35vw,1.125rem);line-height:1.65;letter-spacing:-.018em;max-width:590px;color:rgba(245,255,248,.76)}
-.eyebrow,.section-kicker,.nav-tag{font-family:var(--type-system);font-size:.72rem;letter-spacing:.12em;font-weight:650}
-.intro h2,.packages-heading h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:650;line-height:1.04;letter-spacing:-.055em}
-.intro p,.packages-heading p{font-size:.95rem;line-height:1.7;letter-spacing:-.015em}
-.construction-grid .card h3{font-size:clamp(1.15rem,1.6vw,1.35rem);font-weight:650;line-height:1.2;letter-spacing:-.035em}
-.construction-grid .card p{font-size:.9rem;line-height:1.65;letter-spacing:-.012em}
-.package-card h3{font-size:1.8rem;font-weight:650;line-height:1.08;letter-spacing:-.05em}
-.package-card p,.package-card li{font-size:.88rem;line-height:1.6;letter-spacing:-.012em}
-.package-price{font-size:clamp(1.85rem,2.7vw,2.25rem);font-weight:700;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
-.promo-copy-main strong{font-size:1.12rem;font-weight:650;letter-spacing:-.025em}
-.promo-prices b,.promo-slot-count,.proof-number{font-variant-numeric:tabular-nums}
-.cta,.package-cta,.view,.original-link{font-family:var(--type-system);font-size:.9rem;font-weight:650;letter-spacing:-.015em}
-.trust-item strong{font-size:.9rem;font-weight:650;letter-spacing:-.02em}
-.trust-item p,.contact p{font-size:.88rem;line-height:1.65;letter-spacing:-.012em}
-.footer{font-family:var(--type-system);font-size:.75rem;letter-spacing:-.005em}
-::selection{background:rgba(140,245,177,.28);color:#fff}
-@media(max-width:700px){
- .hero h1{font-size:clamp(2.75rem,12vw,4rem);line-height:1.01;letter-spacing:-.06em}
- .hero p{font-size:1rem;line-height:1.62}
- .intro h2,.packages-heading h2{font-size:clamp(2rem,9vw,2.65rem);letter-spacing:-.05em}
- .construction-grid .card h3{font-size:1.2rem}
- .package-card h3{font-size:1.7rem}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
+:root{--bg:#fbfbfd;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:rgba(0,0,0,.1);--accent:#0a7d43;--accent-ink:#fff;--warn:#d9480f;--warn-bg:rgba(217,72,15,.08);--sys:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--surface:#161618;--ink:#f5f5f7;--muted:#a1a1a6;--line:rgba(255,255,255,.14);--accent:#30d37a;--accent-ink:#00190b;--warn:#ff9f6b;--warn-bg:rgba(255,159,107,.12)}}
+:root[data-theme="dark"]{--bg:#000;--surface:#161618;--ink:#f5f5f7;--muted:#a1a1a6;--line:rgba(255,255,255,.14);--accent:#30d37a;--accent-ink:#00190b;--warn:#ff9f6b;--warn-bg:rgba(255,159,107,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.47 var(--sys);letter-spacing:-.022em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-synthesis:none;padding-bottom:84px}
+a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.logo{height:26px;width:auto;display:block}.nav-cta{font-size:13px;font-weight:600;color:var(--accent-ink);background:var(--accent);padding:7px 14px;border-radius:980px}
+.hero{text-align:center;padding:84px 0 56px}
+.eyebrow{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:-.01em}
+h1{font-size:clamp(40px,8vw,72px);line-height:1.04;font-weight:700;letter-spacing:-.045em;margin:14px auto 18px;max-width:14em}
+.lead{font-size:clamp(18px,2.4vw,22px);line-height:1.4;color:var(--muted);max-width:30em;margin:0 auto;letter-spacing:-.02em}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:980px;font-size:16px;font-weight:600;letter-spacing:-.015em;background:var(--accent);color:var(--accent-ink);transition:transform .2s,opacity .2s}.btn:hover{transform:scale(1.03)}.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:56px}
+.stat{background:var(--surface);padding:22px 12px}.stat b{display:block;font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:-.045em;line-height:1.05;font-variant-numeric:tabular-nums}.stat span{font-size:13px;color:var(--muted)}
+section{padding:56px 0}h2{font-size:clamp(30px,5vw,48px);line-height:1.08;font-weight:700;letter-spacing:-.04em;margin:0 0 10px}.sub{color:var(--muted);margin:0;max-width:36em}
+.urgent{margin:30px 0 22px;border:1px solid var(--warn);background:var(--warn-bg);border-radius:18px;padding:20px 22px;display:grid;gap:14px}
+.urgent-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--warn)}.live i{width:8px;height:8px;border-radius:50%;background:var(--warn);animation:pulse 1.4s infinite}
+.urgent strong{font-size:clamp(20px,3.4vw,28px);letter-spacing:-.035em;line-height:1.15}.urgent strong em{font-style:normal;color:var(--warn)}
+.timer{display:flex;gap:8px}.timer div{min-width:58px;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 6px}.timer b{display:block;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.03em;line-height:1.1}.timer span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;width:60%;background:var(--warn);border-radius:99px}.bar-label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:-6px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px 24px}.plan.hot{border:2px solid var(--accent)}
+.badge{position:absolute;top:-12px;left:24px;background:var(--warn);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;padding:5px 11px;border-radius:99px}
+.plan h3{font-size:26px;font-weight:700;letter-spacing:-.04em;margin:6px 0 6px}.plan .d{font-size:14px;color:var(--muted);line-height:1.45;margin:0 0 18px;min-height:62px}
+.was{font-size:14px;color:var(--muted)}.was s{margin-left:4px}.price{font-size:clamp(34px,4vw,42px);font-weight:700;letter-spacing:-.05em;line-height:1.1;font-variant-numeric:tabular-nums}.save{display:inline-block;margin:8px 0 4px;font-size:13px;font-weight:600;color:var(--warn)}
+.proof{font-size:13px;color:var(--muted);margin:6px 0 0}.proof b{color:var(--ink)}
+.plan ul{list-style:none;padding:18px 0 0;margin:18px 0 24px;border-top:1px solid var(--line);display:grid;gap:9px;font-size:14px}.plan li:before{content:"✓";color:var(--accent);font-weight:700;margin-right:9px}
+.plan .btn{margin-top:auto;width:100%}.plan .btn.ghost{color:var(--ink)}
+.note{font-size:12px;color:var(--muted);margin:18px 0 0;max-width:60em}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.shot{display:block;width:100%;border:0;padding:0;background:var(--line);aspect-ratio:16/10;cursor:zoom-in;overflow:hidden}.shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}.card:hover .shot img{transform:scale(1.03)}
+.cb{padding:18px 22px 22px}.tag{font-size:12px;font-weight:600;color:var(--accent)}.card h3{font-size:21px;font-weight:700;letter-spacing:-.035em;margin:4px 0 6px}.card p{font-size:14px;color:var(--muted);line-height:1.5;margin:0 0 14px}
+.links{display:flex;gap:18px;font-size:14px;font-weight:600;color:var(--accent)}.links button{all:unset;cursor:pointer}
+.cta-end{text-align:center;padding:72px 0 64px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center;padding:20px 22px}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line)}
+.sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0}.sticky p{margin:0;font-size:13px;line-height:1.3;color:var(--muted)}.sticky p b{color:var(--warn);font-size:14px}.sticky .btn{padding:11px 20px;font-size:14px;white-space:nowrap}
+.lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:4vh 4vw;background:rgba(0,0,0,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}.lb.open{display:flex}.lb img{max-width:92vw;max-height:86vh;border-radius:12px;background:#fff}.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#000;font-size:24px;cursor:pointer}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}.js .rv.in{opacity:1;transform:none}.js .bar i{width:0;transition:width 1.6s cubic-bezier(.16,1,.3,1) .4s}.js .bar.in i{width:60%}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--warn) 55%,transparent)}50%{box-shadow:0 0 0 7px transparent}}
+@media(max-width:860px){.plans,.grid{grid-template-columns:1fr}.plan .d{min-height:0}.hero{padding-top:56px}}
+@media(max-width:520px){.sticky p span{display:none}.timer div{min-width:50px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+<script>document.documentElement.className+=" js"</script>
 </head>
 <body>
-<header class="hero">
-  <nav class="nav" aria-label="Navigasi utama">
-    <div class="brand"><span class="brand-mark" aria-hidden="true">۞</span><span>BEUNA DIGITAL</span></div>
-    <span class="nav-tag">Website · Construction &amp; Heavy Equipment</span>
-  </nav>
-  <div class="hero-content">
-    <span class="eyebrow">Construction digital showcase</span>
-    <h1>Proyek besar butuh citra digital yang <em>sebanding.</em></h1>
-    <p>Website yang tepat bikin proyek, armada, layanan, dan rekam jejak perusahaan terlihat profesional sebelum calon klien menghubungi tim Anda.</p>
-    <div class="hero-bottom">
-      <a class="cta" href="#koleksi">Lihat referensi <span aria-hidden="true">↓</span></a>
-      <span class="hero-note">9 referensi website industri</span>
-    </div>
+<nav><div class="wrap"><a href="#"><img class="logo" src="https://res.cloudinary.com/naqr1mob/image/upload/v1792307406/beuna_logo_png_1.png" alt="Beuna Digital"></a><a class="nav-cta" href="#paket">Klaim promo</a></div></nav>
+
+<header class="wrap hero">
+  <div class="eyebrow">Website untuk Konstruksi &amp; Alat Berat</div>
+  <h1>Proyek besar butuh tampilan digital yang sebanding.</h1>
+  <p class="lead">Website profesional untuk kontraktor, supplier material, rental alat berat, dan perusahaan machinery. Calon klien percaya sebelum menghubungi Anda.</p>
+  <div class="btns"><a class="btn" href="#paket">Lihat promo</a><a class="btn ghost" href="#referensi">Lihat referensi</a></div>
+  <div class="stats">
+    <div class="stat"><b data-count="14" data-suffix="+">0+</b><span>Website sudah kami rilis</span></div>
+    <div class="stat"><b data-count="9" data-suffix="+">0+</b><span>Referensi industri</span></div>
+    <div class="stat"><b data-count="24" data-suffix=" jam">0 jam</b><span>Respon langsung Mas Dimas</span></div>
   </div>
 </header>
-<main>
-  <section class="intro" id="koleksi">
-    <div><span class="section-kicker">Pilihan desain</span><h2>Temukan arah digital bisnis konstruksi Anda.</h2></div>
-    <p>Dari rental alat berat dan distributor machinery hingga kontraktor dan material bangunan. Lihat website asli dan preview screenshot untuk menentukan arah visual yang paling relevan.</p>
-  </section>
 
-<section class="packages" id="paket">
-  <div class="packages-inner">
-    <div class="packages-heading reveal"><span class="section-kicker">Penawaran khusus industri konstruksi</span><h2>Upgrade tampilan bisnis. Jangan biarkan kompetitor terlihat lebih siap.</h2><p>Harga promo khusus untuk lima klaimer tercepat. Pilih paket yang sesuai dengan target perusahaan Anda.</p></div>
-    <div class="promo-strip reveal" role="status" aria-live="polite">
-      <span class="promo-live"><i></i> PROMO TERBATAS</span>
-      <div class="promo-copy-main"><strong><span class="promo-slot-count" data-promo-slots>2</span> slot promo tersisa</strong><span>Harga spesial untuk 5 klaimer tercepat</span></div>
-      <div class="promo-prices"><span>Landing <b>Rp880 ribu</b></span><span>Bisnis <b>Rp1,6 juta</b></span></div>
+<section id="paket"><div class="wrap">
+  <div class="eyebrow">Promo terbatas</div>
+  <h2>Kompetitor Anda tidak menunggu.</h2>
+  <p class="sub">Harga promo hanya untuk 5 klaimer tercepat. Setelah slot habis atau waktu berakhir, harga kembali normal.</p>
+
+  <div class="urgent" role="status" aria-live="polite">
+    <div class="urgent-top">
+      <div><span class="live"><i></i> PROMO BERAKHIR DALAM</span><br><strong>Tinggal <em data-slots>2</em> dari 5 slot</strong></div>
+      <div class="timer" id="timer"><div><b data-d>00</b><span>Hari</span></div><div><b data-h>00</b><span>Jam</span></div><div><b data-m>00</b><span>Menit</span></div><div><b data-s>00</b><span>Detik</span></div></div>
     </div>
-    <div class="package-grid">
-      <article class="package-card starter reveal">
-        <span class="promo-badge">PROMO · SISA 2 SLOT</span><span class="package-label">Untuk tampil profesional dengan cepat</span><h3>Landing Page</h3>
-        <p>Halaman fokus untuk memperkenalkan perusahaan, layanan utama, spesialisasi, dan mengarahkan calon klien ke WhatsApp.</p>
-        <div class="old-price">Harga normal <s>Rp1.800.000</s></div><div class="package-price">Rp880.000</div><div class="promo-copy">Hemat Rp920.000 · untuk klaimer promo yang tersedia</div>
-        <ul><li>Landing page satu halaman</li><li>Desain responsif mobile, tablet, dan desktop</li><li>Profil singkat dan layanan utama</li><li>Portofolio atau highlight proyek</li><li>Tombol WhatsApp dan kontak</li><li>SEO teknis dasar</li></ul>
-        <a class="package-cta promo-cta" data-wa="Halo Beuna Digital, saya ingin klaim promo Landing Page konstruksi Rp880.000." href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer">Klaim promo Landing ↗</a>
-      </article>
-      <article class="package-card business-card reveal"><span class="promo-badge">BEST VALUE</span><span class="package-label">Untuk perusahaan yang ingin tampil lebih lengkap</span><h3>Website Bisnis</h3>
-        <p>Website multi-halaman untuk menampilkan profil perusahaan, lini bisnis, layanan, armada, proyek, dan informasi inquiry dengan lebih terstruktur.</p>
-        <div class="old-price">Harga normal <s>Rp3.800.000</s></div><div class="package-price">Rp1.600.000</div><div class="promo-copy">Hemat Rp2.200.000 · untuk klaimer promo yang tersedia</div>
-        <ul><li>Hingga 5 halaman awal</li><li>Profil perusahaan dan layanan</li><li>Halaman proyek atau portofolio</li><li>Katalog alat berat / produk / spesialisasi</li><li>Form inquiry atau CTA WhatsApp</li><li>SEO on-page dasar</li></ul>
-        <a class="package-cta" data-wa="Halo Beuna Digital, saya ingin klaim promo Website Bisnis konstruksi Rp1.600.000." href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer">Klaim promo Bisnis ↗</a>
-      </article>
-      <article class="package-card reveal"><span class="package-label">Untuk kebutuhan lebih kompleks</span><h3>Custom</h3><p>Untuk kebutuhan yang melibatkan katalog dinamis, dashboard, sistem inquiry khusus, atau integrasi internal.</p><div class="package-price">Mulai Rp10 juta</div><ul><li>Scope disusun sesuai kebutuhan</li><li>Alur pengguna dirancang khusus</li><li>Integrasi sesuai hasil diskusi</li><li>Estimasi biaya dan waktu sebelum mulai</li></ul><a class="package-cta secondary" data-wa="Halo Beuna Digital, saya ingin diskusi website custom untuk perusahaan konstruksi atau alat berat." href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer">Diskusikan kebutuhan ↗</a></article>
-    </div>
-    <div class="custom-package reveal"><div><strong>Belum yakin pilih paket?</strong><p>Kita petakan dulu target calon klien, layanan utama, dan konten yang perlu ditonjolkan.</p></div><a data-wa="Halo Beuna Digital, saya ingin konsultasi website untuk bisnis konstruksi atau alat berat." href="https://wa.me/6285359033973" target="_blank" rel="noopener noreferrer">Konsultasi gratis ↗</a></div>
-    <p class="package-note">Harga promo dibatasi untuk 5 klaimer tercepat; indikator 2 slot tersisa mengikuti kuota promo yang ditetapkan untuk katalog ini. Lingkup akhir, konten, domain/hosting, dan ketentuan pengerjaan dikonfirmasi sebelum proyek dimulai.</p>
+    <div class="bar"><i></i></div>
+    <div class="bar-label"><span>3 slot sudah diklaim</span><span>Hemat hingga Rp2,2 juta</span></div>
   </div>
-</section>
-  <section class="grid construction-grid" aria-label="Katalog referensi website konstruksi dan alat berat">
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 01</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304336/screencapture-tokban-2026-10-18-13_07_05.png" alt="Screenshot website Tokban" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Tokban</h3><span class="type">Material konstruksi & pengadaan</span></div><p>Marketplace material konstruksi dengan tampilan katalog, kategori, dan solusi pengadaan proyek.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://tokban.com" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 02</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304327/screencapture-dekoruma-interior-2026-10-18-13_13_00.png" alt="Screenshot website Dekoruma Interior" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Dekoruma Interior</h3><span class="type">Interior & fit-out</span></div><p>Referensi visual untuk layanan interior, hasil proyek, dan presentasi solusi ruang.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://www.dekoruma.com/interior" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 03</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304326/screencapture-awmachinery-my-2026-10-18-13_16_45.png" alt="Screenshot website AW Machinery" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>AW Machinery</h3><span class="type">Machinery & equipment</span></div><p>Gaya korporat untuk distributor machinery dengan fokus produk dan kebutuhan industri.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://www.awmachinery.com.my" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 04</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304315/screencapture-inkontraktor-2026-10-18-13_12_07.png" alt="Screenshot website Inkontraktor" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Inkontraktor</h3><span class="type">Kontraktor & proyek</span></div><p>Referensi untuk menampilkan layanan kontraktor, kredibilitas, dan alur konsultasi proyek.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://inkontraktor.com" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 05</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304311/screencapture-hasston-2026-10-18-13_09_25.png" alt="Screenshot website Hasston" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Hasston</h3><span class="type">Tools & hardware</span></div><p>Presentasi produk perkakas dengan struktur katalog dan kategori yang mudah dijelajahi.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://www.hasston.com" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 06</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304302/screencapture-arsitag-2026-10-18-13_13_42.png" alt="Screenshot website Arsitag" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Arsitag</h3><span class="type">Arsitektur & konstruksi</span></div><p>Inspirasi showcase proyek dan layanan profesional dengan pendekatan visual yang editorial.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://www.arsitag.com" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 07</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792304289/screencapture-sewalift-2026-10-18-13_09_56.png" alt="Screenshot website Sewa Lift" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Sewa Lift</h3><span class="type">Rental alat berat</span></div><p>Tampilan layanan sewa lift dan alat proyek dengan CTA inquiry yang jelas.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://sewalift.com" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 08</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792306525/screencapture-kumloongmachinery-2026-10-18-13_16_00_1.png" alt="Screenshot website Kum Loong Machinery" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Kum Loong Machinery</h3><span class="type">Heavy machinery</span></div><p>Referensi perusahaan mesin industri dengan karakter teknis dan produk berskala besar.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://kumloongmachinery.com" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-<article class="card reveal">
-  <div class="preview"><span class="num">REFERENSI 09</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792306673/screencapture-homify-co-id-2026-10-18-13_56_16.png" alt="Screenshot website Homify Indonesia" loading="lazy"></div>
-  <div class="card-body"><div class="card-top"><h3>Homify Indonesia</h3><span class="type">Inspirasi ruang & renovasi</span></div><p>Inspirasi visual untuk layanan renovasi, desain ruang, dan proyek hunian.</p><div class="card-foot"><span>Preview visual</span><div class="card-links"><button class="view preview-trigger" type="button">Lihat screenshot <b>↗</b></button><a class="view original-link" href="https://www.homify.co.id" target="_blank" rel="noopener noreferrer">Website asli <b>↗</b></a></div></div></div>
-</article>
-</section>
-</main>
-<section class="trust"><div class="trust-inner">
-<div class="trust-item reveal"><span class="trust-icon" aria-hidden="true">▦</span><div><strong>Portofolio yang bicara</strong><p>Tampilkan proyek, spesialisasi, dan pengalaman kerja supaya calon klien cepat memahami kapasitas perusahaan.</p></div></div>
-<div class="trust-item reveal"><span class="trust-icon" aria-hidden="true">⚙</span><div><strong>Informasi teknis lebih jelas</strong><p>Susun layanan, spesifikasi, katalog alat, area layanan, dan jalur permintaan penawaran dengan rapi.</p></div></div>
-<div class="trust-item reveal"><span class="trust-icon" aria-hidden="true">↗</span><div><strong>Siap untuk calon klien B2B</strong><p>Bangun kesan profesional sejak calon klien pertama kali mencari perusahaan Anda secara online.</p></div></div>
+
+  <div class="plans">
+    <article class="plan">
+      <span class="badge">PROMO · SISA 2 SLOT</span>
+      <h3>Landing Page</h3>
+      <p class="d">Satu halaman fokus: profil, layanan utama, dan arahan langsung ke WhatsApp.</p>
+      <div class="was">Normal <s>Rp1.800.000</s></div><div class="price" data-count="880000" data-prefix="Rp">Rp880.000</div><span class="save" data-count="920000" data-prefix="Hemat Rp" data-suffix=" hari ini">Hemat Rp920.000 hari ini</span>
+      <p class="proof" data-proof="landing"></p>
+      <ul><li>Satu halaman responsif</li><li>Profil &amp; layanan utama</li><li>Highlight proyek</li><li>Tombol WhatsApp</li><li>SEO teknis dasar</li></ul>
+      <a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo Landing Page konstruksi Rp880.000." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Klaim Landing via Mas Dimas</a>
+    </article>
+    <article class="plan hot">
+      <span class="badge">BEST VALUE · SISA 2 SLOT</span>
+      <h3>Website Bisnis</h3>
+      <p class="d">Multi-halaman untuk profil, lini bisnis, armada, proyek, dan inquiry yang terstruktur.</p>
+      <div class="was">Normal <s>Rp3.800.000</s></div><div class="price" data-count="1600000" data-prefix="Rp">Rp1.600.000</div><span class="save" data-count="2200000" data-prefix="Hemat Rp" data-suffix=" hari ini">Hemat Rp2.200.000 hari ini</span>
+      <p class="proof" data-proof="bisnis"></p>
+      <ul><li>Hingga 5 halaman</li><li>Katalog alat berat / produk</li><li>Halaman proyek &amp; portofolio</li><li>Form inquiry &amp; WhatsApp</li><li>SEO on-page dasar</li></ul>
+      <a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo Website Bisnis konstruksi Rp1.600.000." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Klaim Bisnis via Mas Dimas</a>
+    </article>
+    <article class="plan">
+      <h3>Custom</h3>
+      <p class="d">Katalog dinamis, dashboard, sistem inquiry khusus, atau integrasi internal.</p>
+      <div class="was">Mulai dari</div><div class="price" data-count="10" data-prefix="Rp" data-suffix=" juta">Rp10 juta</div><span class="save" style="color:var(--muted)">Estimasi sebelum mulai</span>
+      <ul><li>Scope sesuai kebutuhan</li><li>Alur pengguna khusus</li><li>Integrasi hasil diskusi</li></ul>
+      <a class="btn ghost" data-wa="Halo Mas Dimas, saya ingin diskusi website custom untuk perusahaan konstruksi atau alat berat." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Diskusi dengan Mas Dimas</a>
+    </article>
+  </div>
+  <p class="note">Harga promo untuk 5 klaimer tercepat selama periode promo. Lingkup akhir, konten, domain/hosting, dan ketentuan pengerjaan dikonfirmasi sebelum proyek dimulai.</p>
 </div></section>
-<section class="contact">
-  <div class="contact-inner"><span class="section-kicker">Bangun citra digital perusahaan Anda</span><h2>Siap bikin perusahaan Anda terlihat lebih siap dipercaya?</h2><p>Jadikan referensi ini titik awal. Kami sesuaikan tampilan, layanan, katalog armada, portofolio proyek, dan jalur inquiry dengan kebutuhan perusahaan Anda.</p><a class="cta" href="https://wa.me/6285359033973?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20konsultasi%20website%20biro%20umroh." target="_blank" rel="noopener noreferrer">Konsultasi via WhatsApp <span aria-hidden="true">↗</span></a></div>
-</section>
 
-<div class="umrah-lightbox" id="umrahLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Preview screenshot website">
-  <div class="umrah-lightbox-inner">
-    <button class="umrah-close" type="button" aria-label="Tutup preview">×</button>
-    <img class="umrah-full-image" id="umrahFullImage" alt="">
-  </div>
-</div>
-<script>
-(function(){
-  var modal=document.getElementById('umrahLightbox');
-  var fullImage=document.getElementById('umrahFullImage');
-  var closeButton=modal.querySelector('.umrah-close');
-  var lastTrigger=null;
-  function openPreview(card){
-    var image=card.querySelector('.preview img');
-    if(!image)return;
-    lastTrigger=card;
-    fullImage.src=image.currentSrc||image.src;
-    fullImage.alt='Screenshot penuh website '+(card.querySelector('h3')?.textContent.trim()||'umroh');
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden','false');
-    document.body.classList.add('umrah-lightbox-open');
-    closeButton.focus();
-  }
-  function closePreview(){
-    if(!modal.classList.contains('is-open'))return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden','true');
-    document.body.classList.remove('umrah-lightbox-open');
-    fullImage.removeAttribute('src');
-    if(lastTrigger)lastTrigger.focus({preventScroll:true});
-  }
-  document.querySelectorAll('.construction-grid .card').forEach(function(card){
-    var preview=card.querySelector('.preview');
-    var trigger=card.querySelector('.preview-trigger');
-    if(preview){preview.setAttribute('tabindex','0');preview.setAttribute('role','button');preview.setAttribute('aria-label','Lihat screenshot '+(card.querySelector('h3')?.textContent.trim()||'website'));}
-    if(trigger)trigger.addEventListener('click',function(event){event.preventDefault();event.stopPropagation();openPreview(card);});
-    if(preview)preview.addEventListener('click',function(){openPreview(card);});
-    if(preview)preview.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();openPreview(card);}});
-  });
-  closeButton.addEventListener('click',closePreview);
-  modal.addEventListener('click',function(event){if(event.target===modal)closePreview();});
-  document.addEventListener('keydown',function(event){if(event.key==='Escape')closePreview();});
-})();
-</script>
-<script>
-(function(){
-  document.querySelectorAll('[data-wa]').forEach(function(a){
-    if(a.dataset.waReady)return;
-    a.dataset.waReady='true';
-    a.href='https://wa.me/6285359033973?text='+encodeURIComponent(a.dataset.wa+' Saya terhubung dari katalog konstruksi Beuna Digital.');
-  });
-  document.querySelectorAll('.construction-grid .card h3, .construction-grid .card p, .construction-grid .card .card-foot, .trust-item strong, .trust-item p, .package-card h3, .package-card p, .package-card li').forEach(function(el,index){
-    el.classList.add('reveal-text');
-    el.style.setProperty('--text-delay',Math.min(index%8,7)*75+'ms');
-  });
-  var items=document.querySelectorAll('.reveal, .reveal-text');
-  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced||!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('is-visible')});return;}
-  var observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
-    });
-  },{threshold:.12,rootMargin:'0px 0px -35px 0px'});
-  items.forEach(function(el){observer.observe(el);});
-})();
-</script>
-<footer class="footer">© Beuna Digital · Website untuk proyek besar, citra digital yang kuat</footer>
+<section id="referensi"><div class="wrap">
+  <div class="eyebrow">Referensi</div>
+  <h2>Pilih arah visual bisnis Anda.</h2>
+  <p class="sub">Ketuk gambar untuk melihat screenshot penuh, atau buka website aslinya.</p>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="cta-end"><div class="wrap">
+  <h2>Siap tampil lebih dipercaya?</h2>
+  <p class="lead">Slot promo terbatas. Hubungi Mas Dimas dari Beuna Digital sekarang. Cukup satu pesan, kebutuhan website Anda langsung dipetakan.</p>
+  <div class="btns"><a class="btn" data-wa="Halo Mas Dimas, saya ingin konsultasi website untuk bisnis konstruksi atau alat berat." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Chat Mas Dimas via WhatsApp</a></div>
+</div></section>
+
+<footer>© Beuna Digital · Website untuk proyek besar</footer>
+
+<div class="sticky"><div class="wrap"><p><b><span data-slots-s>2</span> slot tersisa</b><br><span>Promo Landing Rp880 rb · Bisnis Rp1,6 jt</span></p><a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo website konstruksi." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Chat Mas Dimas</a></div></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Preview screenshot"><button type="button" aria-label="Tutup">×</button><img id="lbi" alt=""></div>
 
 <script>
 (function(){
-  var counters=document.querySelectorAll('[data-count-up]');
-  if(!counters.length)return;
-  var reducedMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function animateCounter(el){
-    if(el.dataset.counted==='true')return;
-    el.dataset.counted='true';
-    var target=Number(el.dataset.count);
-    if(!Number.isFinite(target)||target<0){el.textContent='0+';return;}
-    el.closest('.plan-proof, .package-proof')?.classList.add('is-visible');
-    if(reducedMotion){el.textContent=target.toLocaleString('id-ID')+'+';return;}
-    var startTime=null;
-    var duration=1350;
-    function frame(now){
-      if(startTime===null)startTime=now;
-      var progress=Math.min((now-startTime)/duration,1);
-      var eased=1-Math.pow(1-progress,3);
-      el.textContent=Math.round(target*eased).toLocaleString('id-ID')+'+';
-      if(progress<1)window.requestAnimationFrame(frame);
-      else el.textContent=target.toLocaleString('id-ID')+'+';
-    }
-    window.requestAnimationFrame(frame);
-  }
-  if('IntersectionObserver' in window){
-    var observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:.35});
-    counters.forEach(function(counter){observer.observe(counter);});
-  }else{
-    counters.forEach(animateCounter);
-  }
+var C="https://res.cloudinary.com/naqr1mob/image/upload/v1792";
+var REF=[
+["Tokban","Material konstruksi","Marketplace material dengan katalog, kategori, dan solusi pengadaan proyek.","304336/screencapture-tokban-2026-10-18-13_07_05.png","https://tokban.com"],
+["Dekoruma Interior","Interior & fit-out","Layanan interior, hasil proyek, dan presentasi solusi ruang.","304327/screencapture-dekoruma-interior-2026-10-18-13_13_00.png","https://www.dekoruma.com/interior"],
+["AW Machinery","Machinery & equipment","Gaya korporat distributor machinery dengan fokus produk industri.","304326/screencapture-awmachinery-my-2026-10-18-13_16_45.png","https://www.awmachinery.com.my"],
+["Inkontraktor","Kontraktor & proyek","Layanan kontraktor, kredibilitas, dan alur konsultasi proyek.","304315/screencapture-inkontraktor-2026-10-18-13_12_07.png","https://inkontraktor.com"],
+["Hasston","Tools & hardware","Katalog perkakas dengan kategori yang mudah dijelajahi.","304311/screencapture-hasston-2026-10-18-13_09_25.png","https://www.hasston.com"],
+["Arsitag","Arsitektur & konstruksi","Showcase proyek dan layanan profesional dengan visual editorial.","304302/screencapture-arsitag-2026-10-18-13_13_42.png","https://www.arsitag.com"],
+["Sewa Lift","Rental alat berat","Layanan sewa lift dan alat proyek dengan CTA inquiry yang jelas.","304289/screencapture-sewalift-2026-10-18-13_09_56.png","https://sewalift.com"],
+["Kum Loong Machinery","Heavy machinery","Perusahaan mesin industri dengan karakter teknis dan produk skala besar.","306525/screencapture-kumloongmachinery-2026-10-18-13_16_00_1.png","https://kumloongmachinery.com"],
+["Homify Indonesia","Renovasi & desain ruang","Inspirasi visual untuk renovasi, desain ruang, dan proyek hunian.","306673/screencapture-homify-co-id-2026-10-18-13_56_16.png","https://www.homify.co.id"]];
+var g=document.getElementById("grid");
+REF.forEach(function(r,i){var a=document.createElement("article");a.className="card";
+a.innerHTML='<button class="shot" type="button" aria-label="Lihat screenshot '+r[0]+'"><img loading="lazy" src="'+C+r[3].replace(/^(\d+)\//,"$1/").replace(/^/,"")+'" alt="Screenshot website '+r[0]+'"></button><div class="cb"><span class="tag">'+String(i+1).padStart(2,"0")+' · '+r[1]+'</span><h3>'+r[0]+'</h3><p>'+r[2]+'</p><div class="links"><button type="button" class="pv">Lihat screenshot</button><a href="'+r[4]+'" target="_blank" rel="noopener noreferrer">Website asli ↗</a></div></div>';
+g.appendChild(a);
+a.querySelectorAll(".shot,.pv").forEach(function(b){b.addEventListener("click",function(){open(a.querySelector("img").src,r[0])})})});
+var lb=document.getElementById("lb"),lbi=document.getElementById("lbi");
+function open(s,n){lbi.src=s;lbi.alt="Screenshot penuh "+n;lb.classList.add("open");document.body.style.overflow="hidden"}
+function close(){lb.classList.remove("open");lbi.removeAttribute("src");document.body.style.overflow=""}
+lb.addEventListener("click",function(e){if(e.target!==lbi)close()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+
+/* ---- Pengaturan promo (ubah di sini) ---- */
+var SLOTS=2, END="2026-10-31T23:59:59+07:00";
+var PROOF={landing:null,bisnis:null}; // isi angka jumlah klien per paket, mis. {landing:8,bisnis:6}
+document.querySelectorAll("[data-slots],[data-slots-s]").forEach(function(e){e.textContent=SLOTS});
+document.querySelectorAll("[data-proof]").forEach(function(e){var n=PROOF[e.dataset.proof];
+ if(n){e.innerHTML="<b data-count=\""+n+"\" data-suffix=\"+\">"+n+"+</b> bisnis sudah memakai paket ini"}else{e.innerHTML="Termasuk dalam <b data-count=\"14\" data-suffix=\"+\">14+</b> website yang sudah kami rilis"}});
+document.querySelectorAll("[data-wa]").forEach(function(a){a.href="https://wa.me/6288210464992?text="+encodeURIComponent(a.dataset.wa+" Saya dari katalog konstruksi Beuna Digital.")});
+
+var red0=matchMedia("(prefers-reduced-motion: reduce)").matches;
+var rs=document.querySelectorAll(".hero .eyebrow,.hero h1,.hero .lead,.hero .btns,.stat,section .eyebrow,section h2,section .sub,.urgent,.bar,.bar-label,.plan,.plan li,.note,.card,.cta-end .lead,.cta-end .btns");
+var cnt=new Map();rs.forEach(function(el){el.classList.add("rv");var p=el.parentElement,i=cnt.get(p)||0;cnt.set(p,i+1);if(p.id==="grid")i%=2;el.style.setProperty("--d",Math.min(i,4)*100+"ms")});
+if(red0||!("IntersectionObserver" in window)){rs.forEach(function(e){e.classList.add("in")})}else{var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target)}})},{threshold:.15,rootMargin:"0px 0px -40px 0px"});rs.forEach(function(e){ro.observe(e)})}
+var t=document.getElementById("timer"),end=new Date(END).getTime();
+function p(n){return String(n).padStart(2,"0")}
+function tick(){var d=Math.max(0,end-Date.now()),s=Math.floor(d/1000);
+ t.querySelector("[data-d]").textContent=p(Math.floor(s/86400));t.querySelector("[data-h]").textContent=p(Math.floor(s%86400/3600));
+ t.querySelector("[data-m]").textContent=p(Math.floor(s%3600/60));t.querySelector("[data-s]").textContent=p(s%60)}
+tick();setInterval(tick,1000);
+
+function runN(el){var n=+el.dataset.count,pf=el.dataset.prefix||"",sf=el.dataset.suffix||"",fm=function(v){return pf+Math.round(v).toLocaleString("id-ID")+sf};if(red){el.textContent=fm(n);return}var st=null;(function f(now){if(!st)st=now;var k=Math.min((now-st)/1500,1);el.textContent=fm(n*(1-Math.pow(1-k,4)));if(k<1)requestAnimationFrame(f)})(performance.now())}
+var cs=document.querySelectorAll("[data-count]"),red=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function run(el){var n=+el.dataset.count;if(red){el.textContent=n+"+";return}var st=null;
+ (function f(now){if(!st)st=now;var k=Math.min((now-st)/1200,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)))+"+";if(k<1)requestAnimationFrame(f)})(performance.now())}
+if("IntersectionObserver" in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runN(e.target);o.unobserve(e.target)}})},{threshold:.4});cs.forEach(function(c){o.observe(c)})}else cs.forEach(runN);
 })();
 </script>
-
 </body>
 </html>
