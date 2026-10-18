@@ -18,6 +18,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:5
 .hero{text-align:center;padding:84px 0 56px}
 .eyebrow{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:-.01em}
 h1{font-size:clamp(40px,8vw,72px);line-height:1.04;font-weight:700;letter-spacing:-.045em;margin:14px auto 18px;max-width:14em}
+.hooks-h1{display:grid;font-size:clamp(28px,5.6vw,56px);line-height:1.1;max-width:17em;letter-spacing:-.04em}.hk{grid-area:1/1;opacity:0;transform:translateY(14px);filter:blur(6px);transition:opacity .7s,transform .7s,filter .7s;pointer-events:none}.hk.on{opacity:1;transform:none;filter:none;pointer-events:auto}.hk-dots{display:flex;gap:8px;justify-content:center;margin:0 0 18px}.hk-dots button{all:unset;cursor:pointer;width:34px;height:20px;position:relative}.hk-dots button:before{content:"";position:absolute;left:0;right:0;top:9px;height:3px;border-radius:3px;background:var(--line)}.hk-dots i{position:absolute;left:0;top:9px;height:3px;width:0;border-radius:3px;background:var(--accent)}.hk-dots button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .lead{font-size:clamp(18px,2.4vw,22px);line-height:1.4;color:var(--muted);max-width:30em;margin:0 auto;letter-spacing:-.02em}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:980px;font-size:16px;font-weight:600;letter-spacing:-.015em;background:var(--accent);color:var(--accent-ink);transition:transform .2s,opacity .2s}.btn:hover{transform:scale(1.03)}.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
@@ -62,7 +63,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-a
 
 <header class="wrap hero">
   <div class="eyebrow">Website untuk Konstruksi &amp; Alat Berat</div>
-  <h1>Proyek besar butuh tampilan digital yang sebanding.</h1>
+  <h1 class="hooks-h1" id="hooks"><span class="hk on">Calon klien tidak memilih kompetitor karena mereka lebih bagus. Mereka hanya tidak menemukan bisnis Anda.</span><span class="hk" aria-hidden="true">Masih dapat klien tanpa website? Bagaimana dengan yang diam-diam pergi ke kompetitor?</span><span class="hk" aria-hidden="true">Satu klien yang hilang bisa berarti ratusan juta omzet yang tidak pernah masuk.</span><span class="hk" aria-hidden="true">Mereka buka Google, cari unit dan kontak. Kalau bukan Anda yang muncul, mereka pindah.</span><span class="hk" aria-hidden="true">Sudah berapa deal yang lewat selama bisnis Anda belum punya website?</span></h1><div class="hk-dots" id="hkDots" role="group" aria-label="Pilih judul"></div>
   <p class="lead">Website profesional untuk kontraktor, supplier material, rental alat berat, dan perusahaan machinery. Calon klien percaya sebelum menghubungi Anda.</p>
   <div class="btns"><a class="btn" href="#paket">Lihat promo</a><a class="btn ghost" href="#referensi">Lihat referensi</a></div>
   <div class="stats">
@@ -167,6 +168,11 @@ document.querySelectorAll("[data-proof]").forEach(function(e){var n=PROOF[e.data
  if(n){e.innerHTML="<b data-count=\""+n+"\" data-suffix=\"+\">"+n+"+</b> bisnis sudah memakai paket ini"}else{e.innerHTML="Termasuk dalam <b data-count=\"14\" data-suffix=\"+\">14+</b> website yang sudah kami rilis"}});
 document.querySelectorAll("[data-wa]").forEach(function(a){a.href="https://wa.me/6288210464992?text="+encodeURIComponent(a.dataset.wa+" Saya dari katalog konstruksi Beuna Digital.")});
 
+(function(){var h=document.getElementById("hooks"),ds=document.getElementById("hkDots");if(!h)return;var hs=[].slice.call(h.children),n=hs.length,tm,rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function dur(el){return Math.max(4500,el.textContent.trim().split(/\s+/).length*300+1800)}
+var bs=hs.map(function(_,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Judul "+(k+1));b.innerHTML="<i></i>";b.addEventListener("click",function(){go(k)});ds.appendChild(b);return b});
+function go(k){clearTimeout(tm);hs.forEach(function(e,j){e.classList.toggle("on",j===k);e.setAttribute("aria-hidden",j===k?"false":"true")});bs.forEach(function(b,j){var f=b.firstChild;f.style.transition="none";f.style.width=(j<k||(rm&&j===k))?"100%":"0%"});if(rm)return;var f=bs[k].firstChild,d=dur(hs[k]);void f.offsetWidth;f.style.transition="width "+d+"ms linear";f.style.width="100%";tm=setTimeout(function(){go((k+1)%n)},d)}
+go(0)})();
 var red0=matchMedia("(prefers-reduced-motion: reduce)").matches;
 var rs=document.querySelectorAll(".hero .eyebrow,.hero h1,.hero .lead,.hero .btns,.stat,section .eyebrow,section h2,section .sub,.urgent,.bar,.bar-label,.plan,.plan li,.note,.card,.cta-end .lead,.cta-end .btns");
 var cnt=new Map();rs.forEach(function(el){el.classList.add("rv");var p=el.parentElement,i=cnt.get(p)||0;cnt.set(p,i+1);if(p.id==="grid")i%=2;el.style.setProperty("--d",Math.min(i,4)*100+"ms")});
