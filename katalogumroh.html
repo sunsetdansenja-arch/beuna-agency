@@ -61,6 +61,32 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
 @media(max-width:850px){.ads-grid{grid-template-columns:1fr}.ads-card{padding:23px}.ads-price{font-size:28px}}
 @media(max-width:620px){.ads-handling{padding:48px 15px}}
 
+
+/* Testimoni demo: konten simulasi, ganti dengan ulasan asli sebelum dipublikasikan */
+.testimonials{padding:68px 22px 72px;background:#eae8dc;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.testimonials-inner{max-width:920px;margin:auto}
+.testimonials-heading{text-align:center;margin:0 auto 28px;max-width:680px}
+.testimonials-heading h2{font-family:"Playfair Display",serif;font-size:clamp(30px,4vw,44px);font-weight:500;line-height:1.12;margin:10px 0}
+.testimonials-heading p{font-size:13px;line-height:1.8;color:var(--muted)}
+.testimonial-demo-label{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid rgba(138,112,67,.35);border-radius:99px;color:#765e30;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.testimonial-stage{position:relative;min-height:255px;display:flex;align-items:center;justify-content:center;background:#fbfaf5;border:1px solid rgba(16,56,45,.14);border-radius:9px;padding:clamp(24px,5vw,48px);box-shadow:0 16px 38px rgba(16,56,45,.06)}
+.testimonial-slide{width:100%;text-align:center;animation:testimonialIn .35s ease both}
+.testimonial-stars{color:#9a7b3e;letter-spacing:.18em;font-size:15px;margin-bottom:18px}
+.testimonial-quote{font-family:"Playfair Display",serif;font-size:clamp(20px,3vw,29px);line-height:1.45;letter-spacing:-.015em;margin:0 auto 22px;max-width:740px}
+.testimonial-author{font-size:12px;font-weight:700;color:var(--green)}
+.testimonial-role{font-size:11px;color:var(--muted);margin-top:5px}
+.testimonial-controls{display:flex;align-items:center;justify-content:center;gap:15px;margin-top:20px}
+.testimonial-arrow{width:38px;height:38px;border:1px solid rgba(16,56,45,.25);border-radius:50%;background:transparent;color:var(--green);font-size:19px;cursor:pointer;transition:background .2s,color .2s}
+.testimonial-arrow:hover{background:var(--green);color:#fff}
+.testimonial-count{min-width:62px;text-align:center;font-size:11px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.testimonial-dots{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:16px auto 0;max-width:420px}
+.testimonial-dot{width:6px;height:6px;padding:0;border:0;border-radius:99px;background:rgba(16,56,45,.22);cursor:pointer;transition:width .2s,background .2s}
+.testimonial-dot[aria-current="true"]{width:20px;background:#9a7b3e}
+.testimonial-disclaimer{max-width:720px;margin:16px auto 0;text-align:center;font-size:10px;line-height:1.7;color:#6d776f}
+@keyframes testimonialIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:620px){.testimonials{padding:48px 15px}.testimonial-stage{min-height:285px;padding:24px 18px}.testimonial-quote{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.testimonial-slide{animation:none!important}.testimonial-arrow,.testimonial-dot{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -201,6 +227,34 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
     <div class="trust-item"><span class="trust-icon" aria-hidden="true">✧</span><div><strong>Nyaman di ponsel</strong><p>Bantu calon jamaah menjelajah informasi dan menghubungi tim travel dengan praktis.</p></div></div>
   </div>
 </section>
+
+<!-- TESTIMONI SIMULASI: jangan tampilkan sebagai ulasan pelanggan asli. Ganti dengan testimoni berizin sebelum publikasi. -->
+<section class="testimonials" id="testimoni" aria-labelledby="testimonials-title">
+  <div class="testimonials-inner">
+    <div class="testimonials-heading">
+      <span class="section-kicker">Cerita klien</span>
+      <h2 id="testimonials-title">Hal-hal kecil yang bikin kerja sama terasa nyaman.</h2>
+      <p>Contoh gaya ulasan yang bisa dipakai sebagai referensi format testimoni.</p>
+      <span class="testimonial-demo-label">ⓘ 21 contoh ulasan · simulasi</span>
+    </div>
+    <div class="testimonial-stage" aria-live="polite" aria-atomic="true">
+      <article class="testimonial-slide" id="testimonialSlide">
+        <div class="testimonial-stars" aria-label="Contoh tampilan rating bintang">★★★★★</div>
+        <blockquote class="testimonial-quote" id="testimonialQuote">“Awalnya cuma mau punya website yang rapi, ternyata jadi lebih gampang jelasin paket ke calon jamaah. Tinggal kirim link aja.”</blockquote>
+        <div class="testimonial-author" id="testimonialAuthor">Contoh: Bu Rina</div>
+        <div class="testimonial-role" id="testimonialRole">Pengelola travel umroh · ulasan simulasi</div>
+      </article>
+    </div>
+    <div class="testimonial-controls" aria-label="Kontrol testimoni">
+      <button class="testimonial-arrow" type="button" id="testimonialPrev" aria-label="Testimoni sebelumnya">‹</button>
+      <span class="testimonial-count" id="testimonialCount">01 / 21</span>
+      <button class="testimonial-arrow" type="button" id="testimonialNext" aria-label="Testimoni berikutnya">›</button>
+    </div>
+    <div class="testimonial-dots" id="testimonialDots" aria-label="Pilih testimoni"></div>
+    <p class="testimonial-disclaimer">Catatan transparansi: seluruh nama dan ulasan di bagian ini adalah contoh fiktif untuk demo copywriting, bukan testimoni pelanggan nyata. Ganti dengan ulasan asli dan izin pemiliknya sebelum halaman dipublikasikan.</p>
+  </div>
+</section>
+
 <section class="contact">
   <div class="contact-inner"><span class="section-kicker">Wujudkan website travel Anda</span><h2>Siap menyambut lebih banyak calon jamaah?</h2><p>Jadikan desain ini titik awal. Kami bisa menyesuaikan identitas visual, konten paket, informasi biro, dan jalur konsultasi sesuai kebutuhan travel Anda.</p><a class="cta" href="https://wa.me/6288210464992?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20membuat%20website%20untuk%20biro%20umroh.%20Bisa%20bantu%20rekomendasikan%20paket%20yang%20sesuai%20dengan%20kebutuhan%20travel%20saya%3F" target="_blank" rel="noopener noreferrer">Konsultasi via WhatsApp <span aria-hidden="true">↗</span></a></div>
 </section>
@@ -293,6 +347,76 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
   }else{
     counters.forEach(animateCounter);
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  var reviews = [
+    {quote:"Awalnya cuma mau punya website yang rapi, ternyata jadi lebih gampang jelasin paket ke calon jamaah. Tinggal kirim link aja.",name:"Contoh: Bu Rina",role:"Pengelola travel umroh"},
+    {quote:"Suka karena informasinya bisa disusun lebih jelas. Calon jamaah nggak perlu tanya hal yang sama berulang kali.",name:"Contoh: Pak Hendra",role:"Pemilik biro perjalanan"},
+    {quote:"Tampilannya kelihatan lebih profesional, tapi tetap hangat. Cocok sama karakter travel kami.",name:"Contoh: Bu Sari",role:"Tim pemasaran travel"},
+    {quote:"Yang paling membantu itu tombol WhatsApp-nya jelas. Orang yang mau tanya jadi tahu harus klik ke mana.",name:"Contoh: Pak Arif",role:"Admin pendaftaran jamaah"},
+    {quote:"Sebelumnya info paket tersebar di banyak chat. Sekarang bisa diarahkan ke satu halaman yang lebih teratur.",name:"Contoh: Bu Nisa",role:"Admin travel umroh"},
+    {quote:"Dari awal dibahas dulu kebutuhannya, jadi nggak asal pilih desain yang bagus saja.",name:"Contoh: Pak Fajar",role:"Pengelola biro perjalanan"},
+    {quote:"Tampilannya di HP juga penting buat kami, karena kebanyakan calon jamaah lihat informasi dari ponsel.",name:"Contoh: Bu Wulan",role:"Tim operasional travel"},
+    {quote:"Saya suka layout yang sederhana. Paket, fasilitas, dan kontaknya gampang ditemukan.",name:"Contoh: Pak Dedi",role:"Pemilik travel"},
+    {quote:"Website bisa jadi tempat rujukan saat keluarga jamaah ikut membandingkan paket. Informasinya lebih enak dibaca.",name:"Contoh: Bu Maya",role:"Konsultan perjalanan"},
+    {quote:"Bahasanya nggak terlalu teknis saat diskusi. Jadi kami bisa fokus cerita kebutuhan travel dulu.",name:"Contoh: Pak Ilham",role:"Pengelola biro umroh"},
+    {quote:"Kami pengin kesan yang terpercaya, bukan terlalu ramai. Arah desainnya terasa pas.",name:"Contoh: Bu Fitri",role:"Tim branding travel"},
+    {quote:"Bagian jadwal dan detail paket jadi lebih terstruktur. Ini membantu saat menjawab pertanyaan calon jamaah.",name:"Contoh: Pak Rudi",role:"Admin layanan pelanggan"},
+    {quote:"Saya lebih nyaman kalau calon pelanggan bisa baca dulu layanan kami sebelum mulai chat. Website bisa bantu itu.",name:"Contoh: Bu Dina",role:"Pemilik biro perjalanan"},
+    {quote:"Tampilannya elegan, tetapi informasi pentingnya tetap jadi fokus. Itu yang kami cari.",name:"Contoh: Pak Yusuf",role:"Pengelola travel umroh"},
+    {quote:"Enak karena konsepnya bisa disesuaikan dengan identitas biro, jadi nggak terasa seperti template mentah.",name:"Contoh: Bu Laila",role:"Tim pemasaran"},
+    {quote:"Kami butuh tempat untuk menampilkan profil, layanan, dan kontak resmi. Format website ini cocok buat kebutuhan itu.",name:"Contoh: Pak Andi",role:"Direktur biro perjalanan"},
+    {quote:"Diskusi awal membantu kami memilah fitur yang memang perlu dan yang bisa dikerjakan belakangan.",name:"Contoh: Bu Tika",role:"Koordinator travel"},
+    {quote:"Sekarang kebayang bagaimana informasi online bisa mendukung tim admin, terutama untuk pertanyaan dasar.",name:"Contoh: Pak Reza",role:"Admin travel"},
+    {quote:"Saya suka nuansa warnanya yang tenang. Masih terasa modern tanpa kehilangan karakter perjalanan ibadah.",name:"Contoh: Bu Zahra",role:"Pengelola travel umroh"},
+    {quote:"Halaman yang rapi bikin presentasi paket terasa lebih siap. Tinggal pastikan datanya selalu kami perbarui.",name:"Contoh: Pak Bima",role:"Tim layanan jamaah"},
+    {quote:"Yang penting buat kami, calon jamaah mudah memahami layanan dan tahu cara menghubungi tim. Struktur seperti ini membantu.",name:"Contoh: Bu Aulia",role:"Pengelola biro perjalanan"}
+  ];
+  var index=0, timer=null, interval=5500;
+  var quote=document.getElementById('testimonialQuote');
+  var author=document.getElementById('testimonialAuthor');
+  var role=document.getElementById('testimonialRole');
+  var count=document.getElementById('testimonialCount');
+  var slide=document.getElementById('testimonialSlide');
+  var dotsWrap=document.getElementById('testimonialDots');
+  var stage=document.querySelector('.testimonial-stage');
+  var prev=document.getElementById('testimonialPrev');
+  var next=document.getElementById('testimonialNext');
+  if(!quote||!author||!role||!count||!slide||!dotsWrap||!stage||!prev||!next)return;
+  function render(){
+    var item=reviews[index];
+    slide.style.animation='none';
+    void slide.offsetWidth;
+    slide.style.animation='';
+    quote.textContent='“'+item.quote+'”';
+    author.textContent=item.name;
+    role.textContent=item.role+' · ulasan simulasi';
+    count.textContent=String(index+1).padStart(2,'0')+' / '+String(reviews.length).padStart(2,'0');
+    Array.prototype.forEach.call(dotsWrap.children,function(dot,i){dot.setAttribute('aria-current',i===index?'true':'false');});
+  }
+  function stop(){if(timer!==null){window.clearInterval(timer);timer=null;}}
+  function restart(){stop();if(!document.hidden&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=window.setInterval(function(){index=(index+1)%reviews.length;render();},interval);}
+  function go(step){index=(index+step+reviews.length)%reviews.length;render();restart();}
+  reviews.forEach(function(item,i){
+    var dot=document.createElement('button');
+    dot.type='button';dot.className='testimonial-dot';
+    dot.setAttribute('aria-label','Tampilkan contoh ulasan '+(i+1));
+    dot.setAttribute('aria-current',i===0?'true':'false');
+    dot.addEventListener('click',function(){index=i;render();restart();});
+    dotsWrap.appendChild(dot);
+  });
+  prev.addEventListener('click',function(){go(-1);});
+  next.addEventListener('click',function(){go(1);});
+  stage.addEventListener('mouseenter',stop);
+  stage.addEventListener('mouseleave',restart);
+  stage.addEventListener('focusin',stop);
+  stage.addEventListener('focusout',restart);
+  document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else restart();});
+  render();restart();
 })();
 </script>
 
