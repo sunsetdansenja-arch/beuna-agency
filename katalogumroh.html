@@ -38,6 +38,29 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
 .proof-label{font-size:10px;line-height:1.4;color:var(--muted)}
 @media(prefers-reduced-motion:reduce){.package-proof{opacity:1;transform:none;transition:none}}
 
+
+/* Meta Ads handling untuk biro umroh */
+.ads-handling{background:#f7f4ec;padding:68px 22px 72px;border-bottom:1px solid var(--line)}
+.ads-inner{max-width:1160px;margin:auto}
+.ads-heading{text-align:center;max-width:740px;margin:0 auto 32px}
+.ads-heading h2{font-family:"Playfair Display",serif;font-size:clamp(30px,4vw,44px);font-weight:500;line-height:1.12;margin:10px 0}
+.ads-heading p{font-size:13px;line-height:1.8;color:var(--muted)}
+.ads-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ads-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:8px;padding:25px 22px;box-shadow:0 12px 30px rgba(16,56,45,.045)}
+.ads-card.recommended{border:1px solid #b79a5d;box-shadow:0 12px 34px rgba(128,98,40,.12)}
+.ads-card h3{font-family:"Playfair Display",serif;font-size:27px;font-weight:600;margin:5px 0 8px}
+.ads-card .ads-fit{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 15px}
+.ads-price{font-size:clamp(22px,2.1vw,29px);font-weight:700;letter-spacing:-.04em;color:var(--green);margin:2px 0 5px}
+.ads-price small{display:block;font-size:11px;font-weight:500;letter-spacing:0;color:var(--muted);margin-top:4px}
+.ads-meta{font-size:11px;line-height:1.7;color:#526157;margin:0 0 12px}
+.ads-card ul{list-style:none;margin:8px 0 22px;padding:15px 0 0;border-top:1px solid var(--line);display:grid;gap:9px}
+.ads-card li{font-size:11px;line-height:1.65;color:#415349}
+.ads-card li:before{content:"✓";color:#9a7b3e;font-weight:900;margin-right:8px}
+.ads-tag{display:inline-flex;align-self:flex-start;background:#eae4d3;color:#6f572b;padding:6px 9px;border-radius:3px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.ads-note{font-size:10px;line-height:1.8;color:var(--muted);margin:20px 0 0}
+@media(max-width:850px){.ads-grid{grid-template-columns:1fr}.ads-card{padding:23px}.ads-price{font-size:28px}}
+@media(max-width:620px){.ads-handling{padding:48px 15px}}
+
 </style>
 </head>
 <body>
@@ -80,7 +103,71 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
     <p class="package-note">Harga merupakan harga awal. Detail konten, domain/hosting, fitur tambahan, serta ketentuan proyek dikonfirmasi sebelum pengerjaan. Promo Starter ditampilkan sebagai 60% dari harga normal katalog.</p>
   </div>
 </section>
-  <section class="grid" aria-label="Katalog desain website umroh">
+  
+<section class="ads-handling" id="meta-ads-handling">
+  <div class="ads-inner">
+    <div class="ads-heading">
+      <span class="section-kicker">Meta Ads handling</span>
+      <h2>Bukan sekadar pasang iklan. Bangun alur calon jamaah.</h2>
+      <p>Pengelolaan iklan Facebook dan Instagram untuk membantu biro umroh menjangkau calon jamaah, menguji penawaran, dan menata proses mendapatkan leads. Strategi dan hasil disesuaikan dengan kondisi akun, materi promosi, serta anggaran iklan.</p>
+    </div>
+    <div class="ads-grid">
+      <article class="ads-card">
+        <span class="ads-tag">Mulai dari validasi</span>
+        <h3>Tester</h3>
+        <p class="ads-fit">Untuk biro yang ingin menguji penawaran dan respons pasar sebelum meningkatkan anggaran.</p>
+        <div class="ads-price">Rp750.000–Rp1.200.000<small>per proyek · 7–14 hari</small></div>
+        <p class="ads-meta"><strong>Rekomendasi ad spend:</strong> Rp1,5–3 juta, dibayar langsung ke Meta.</p>
+        <ul>
+          <li>Riset awal audiens dan lokasi prioritas</li>
+          <li>Setup 1–2 campaign sesuai tujuan</li>
+          <li>2–3 variasi copy iklan dan brief creative</li>
+          <li>Pemeriksaan Pixel/event dasar jika aset mendukung</li>
+          <li>Monitoring dan optimasi selama periode tes</li>
+          <li>Laporan ringkas serta rekomendasi lanjutan</li>
+        </ul>
+        <a class="package-cta secondary" href="https://wa.me/6288210464992?text=Halo%20Beuna%20Digital%2C%20saya%20tertarik%20paket%20Tester%20Meta%20Ads%20untuk%20biro%20umroh.%20Boleh%20jelaskan%20ruang%20lingkup%2C%20kebutuhan%20materi%2C%20dan%20total%20biayanya%3F" target="_blank" rel="noopener noreferrer">Diskusikan Tester ↗</a>
+      </article>
+      <article class="ads-card recommended">
+        <span class="ads-tag">Pengelolaan bulanan</span>
+        <h3>All-in</h3>
+        <p class="ads-fit">Untuk biro yang ingin pengelolaan iklan berkelanjutan dengan strategi, evaluasi, dan tindak lanjut leads.</p>
+        <div class="ads-price">Rp2.500.000–Rp4.500.000<small>per bulan · minimum 1 bulan</small></div>
+        <p class="ads-meta"><strong>Rekomendasi ad spend:</strong> Rp5–15 juta/bulan, dibayar langsung ke Meta.</p>
+        <ul>
+          <li>Riset dan strategi funnel sesuai kondisi biro</li>
+          <li>Setup campaign prospecting dan retargeting bila audiens tersedia</li>
+          <li>Copywriting iklan dan brief materi creative</li>
+          <li>Monitoring, evaluasi, dan optimasi berkala</li>
+          <li>Laporan mingguan dan review bulanan</li>
+          <li>Konsultasi strategi via WhatsApp/Meet</li>
+          <li>Rekomendasi konten dan follow-up leads</li>
+        </ul>
+        <a class="package-cta" href="https://wa.me/6288210464992?text=Halo%20Beuna%20Digital%2C%20saya%20ingin%20konsultasi%20paket%20All-in%20Meta%20Ads%20untuk%20biro%20umroh.%20Saya%20ingin%20membahas%20target%20campaign%2C%20anggaran%20iklan%2C%20dan%20ruang%20lingkup%20pengelolaan." target="_blank" rel="noopener noreferrer">Konsultasi All-in ↗</a>
+      </article>
+      <article class="ads-card">
+        <span class="ads-tag">Setup sekali</span>
+        <h3>One-Time Setup</h3>
+        <p class="ads-fit">Untuk biro yang sudah punya tim internal dan ingin fondasi campaign serta panduan yang lebih terarah.</p>
+        <div class="ads-price">Rp1.000.000–Rp1.800.000<small>sekali bayar · 3–5 hari kerja</small></div>
+        <p class="ads-meta"><strong>Termasuk:</strong> 1 sesi konsultasi strategi selama 60–90 menit.</p>
+        <ul>
+          <li>Audit akun iklan jika sudah tersedia</li>
+          <li>Riset awal audiens dan kompetitor</li>
+          <li>Setup struktur campaign sebagai template siap pakai</li>
+          <li>Copywriting dasar untuk 2–3 iklan</li>
+          <li>Pemeriksaan Pixel/event jika aset mendukung</li>
+          <li>Dokumentasi setting dan panduan singkat</li>
+          <li>Dukungan revisi setting selama 7 hari</li>
+        </ul>
+        <a class="package-cta secondary" href="https://wa.me/6288210464992?text=Halo%20Beuna%20Digital%2C%20saya%20tertarik%20paket%20One-Time%20Setup%20Meta%20Ads%20untuk%20biro%20umroh.%20Saya%20ingin%20mengetahui%20kebutuhan%20akses%20akun%20dan%20jadwal%20pengerjaan." target="_blank" rel="noopener noreferrer">Tanya One-Time Setup ↗</a>
+      </article>
+    </div>
+    <p class="ads-note"><strong>Catatan:</strong> Anggaran iklan (ad spend) dibayar terpisah langsung ke Meta. Paket tidak otomatis mencakup desain creative, produksi video, landing page, atau biaya tools pihak ketiga; detailnya disepakati sebelum mulai. Implementasi Pixel/Conversion API bergantung pada website, akses, dan dukungan teknis yang tersedia. Retargeting/lookalike hanya dijalankan jika akun memenuhi syarat dan data audiens memadai. Pengelolaan iklan tidak menjamin jumlah leads atau jamaah tertentu.</p>
+  </div>
+</section>
+
+<section class="grid" aria-label="Katalog desain website umroh">
     <article class="card">
       <div class="preview"><span class="num">DESAIN 01</span><img src="https://res.cloudinary.com/naqr1mob/image/upload/v1792139596/Premium_Umrah_Travel_Agency_Landing_Page.png" alt="Preview desain Premium Umrah Travel Agency" loading="lazy"></div>
       <div class="card-body"><div class="card-top"><h3>Premium Umrah Travel</h3><span class="type">Premium</span></div><p>Nuansa eksklusif untuk biro yang ingin menonjolkan pelayanan terkurasi, kenyamanan, dan pengalaman perjalanan yang berkelas.</p><div class="card-foot"><span>Elegan · Berwibawa · Eksklusif</span><a class="view" href="https://res.cloudinary.com/naqr1mob/image/upload/v1792139596/Premium_Umrah_Travel_Agency_Landing_Page.png" target="_blank" rel="noopener noreferrer">Lihat preview <b>↗</b></a></div></div>
