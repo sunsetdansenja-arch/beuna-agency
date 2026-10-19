@@ -62,7 +62,7 @@ main{max-width:1160px;margin:auto;padding:0 22px}.intro{display:flex;justify-con
 @media(max-width:620px){.ads-handling{padding:48px 15px}}
 
 
-/* Testimoni demo: konten simulasi, ganti dengan ulasan asli sebelum dipublikasikan */
+/* Testimoni contoh: ganti dengan ulasan asli dan berizin sebelum dipublikasikan */
 .testimonials{padding:68px 22px 72px;background:#eae8dc;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .testimonials-inner{max-width:920px;margin:auto}
 .testimonials-heading{text-align:center;margin:0 auto 28px;max-width:680px}
@@ -247,7 +247,7 @@ src="https://www.facebook.com/tr?id=2437179683410017&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- TESTIMONI SIMULASI: jangan tampilkan sebagai ulasan pelanggan asli. Ganti dengan testimoni berizin sebelum publikasi. -->
+<!-- TESTIMONI CONTOH: bukan ulasan pelanggan asli. Ganti dengan testimoni berizin sebelum publikasi. -->
 <section class="testimonials" id="testimoni" aria-labelledby="testimonials-title">
   <div class="testimonials-inner">
     <div class="testimonials-heading">
@@ -261,7 +261,7 @@ src="https://www.facebook.com/tr?id=2437179683410017&ev=PageView&noscript=1"
         <div class="testimonial-stars" aria-label="Contoh tampilan rating bintang">★★★★★</div>
         <blockquote class="testimonial-quote" id="testimonialQuote">“Awalnya cuma mau punya website yang rapi, ternyata jadi lebih gampang jelasin paket ke calon jamaah. Tinggal kirim link aja.”</blockquote>
         <div class="testimonial-author" id="testimonialAuthor">Contoh: Bu Rina</div>
-        <div class="testimonial-role" id="testimonialRole">Pengelola travel umroh · ulasan simulasi</div>
+        <div class="testimonial-role" id="testimonialRole">Pengelola travel umroh · contoh ulasan</div>
       </article>
     </div>
     <div class="testimonial-controls" aria-label="Kontrol testimoni">
@@ -413,7 +413,7 @@ src="https://www.facebook.com/tr?id=2437179683410017&ev=PageView&noscript=1"
     slide.style.animation='';
     quote.textContent='“'+item.quote+'”';
     author.textContent=item.name;
-    role.textContent=item.role+' · ulasan simulasi';
+    role.textContent=item.role+' · contoh ulasan';
     count.textContent=String(index+1).padStart(2,'0')+' / '+String(reviews.length).padStart(2,'0');
     Array.prototype.forEach.call(dotsWrap.children,function(dot,i){dot.setAttribute('aria-current',i===index?'true':'false');});
   }
