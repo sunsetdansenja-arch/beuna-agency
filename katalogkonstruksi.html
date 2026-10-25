@@ -55,6 +55,17 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-a
 @media(max-width:860px){.plans,.grid{grid-template-columns:1fr}.plan .d{min-height:0}.hero{padding-top:56px}}
 @media(max-width:520px){.sticky p span{display:none}.timer div{min-width:50px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Kata klien */
+.testimonials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.testimonial{border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--surface)}
+.testimonial-mark{font-size:30px;line-height:1;color:var(--accent);font-weight:800}
+.testimonial blockquote{margin:14px 0 20px;color:var(--ink);font-size:15px;line-height:1.7}
+.testimonial-by{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:13px}
+.testimonial-by strong{display:block;color:var(--ink);font-size:14px}
+.testimonial-note{font-size:12px;color:var(--muted);margin-top:16px}
+@media(max-width:800px){.testimonials{grid-template-columns:1fr}}
+
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -84,7 +95,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-a
       <div class="timer" id="timer"><div><b data-d>00</b><span>Hari</span></div><div><b data-h>00</b><span>Jam</span></div><div><b data-m>00</b><span>Menit</span></div><div><b data-s>00</b><span>Detik</span></div></div>
     </div>
     <div class="bar"><i></i></div>
-    <div class="bar-label"><span>3 slot sudah diklaim</span><span>Hemat hingga Rp2,2 juta</span></div>
+    <div class="bar-label"><span>3 slot sudah diklaim</span><span>Hemat hingga Rp2,5 juta</span></div>
   </div>
 
   <div class="plans">
@@ -92,19 +103,19 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-a
       <span class="badge">PROMO · SISA 2 SLOT</span>
       <h3>Landing Page</h3>
       <p class="d">Satu halaman fokus: profil, layanan utama, dan arahan langsung ke WhatsApp.</p>
-      <div class="was">Normal <s>Rp1.800.000</s></div><div class="price" data-count="880000" data-prefix="Rp">Rp880.000</div><span class="save" data-count="920000" data-prefix="Hemat Rp" data-suffix=" hari ini">Hemat Rp920.000 hari ini</span>
+      <div class="was">Normal <s>Rp1.800.000</s></div><div class="price" data-count="480000" data-prefix="Rp">Rp480.000</div><span class="save" data-count="1320000" data-prefix="Hemat Rp" data-suffix=" hari ini">Hemat Rp1.320.000 hari ini</span>
       <p class="proof" data-proof="landing"></p>
       <ul><li>Satu halaman responsif</li><li>Profil &amp; layanan utama</li><li>Highlight proyek</li><li>Tombol WhatsApp</li><li>SEO teknis dasar</li></ul>
-      <a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo Landing Page konstruksi Rp880.000." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Klaim Landing via Mas Dimas</a>
+      <a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo Landing Page konstruksi Rp480.000." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Klaim Landing via Mas Dimas</a>
     </article>
     <article class="plan hot">
       <span class="badge">BEST VALUE · SISA 2 SLOT</span>
       <h3>Website Bisnis</h3>
       <p class="d">Multi-halaman untuk profil, lini bisnis, armada, proyek, dan inquiry yang terstruktur.</p>
-      <div class="was">Normal <s>Rp3.800.000</s></div><div class="price" data-count="1600000" data-prefix="Rp">Rp1.600.000</div><span class="save" data-count="2200000" data-prefix="Hemat Rp" data-suffix=" hari ini">Hemat Rp2.200.000 hari ini</span>
+      <div class="was">Normal <s>Rp3.800.000</s></div><div class="price" data-count="1300000" data-prefix="Rp">Rp1.300.000</div><span class="save" data-count="2500000" data-prefix="Hemat Rp" data-suffix=" hari ini">Hemat Rp2.500.000 hari ini</span>
       <p class="proof" data-proof="bisnis"></p>
       <ul><li>Hingga 5 halaman</li><li>Katalog alat berat / produk</li><li>Halaman proyek &amp; portofolio</li><li>Form inquiry &amp; WhatsApp</li><li>SEO on-page dasar</li></ul>
-      <a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo Website Bisnis konstruksi Rp1.600.000." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Klaim Bisnis via Mas Dimas</a>
+      <a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo Website Bisnis konstruksi Rp1.300.000." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Klaim Bisnis via Mas Dimas</a>
     </article>
     <article class="plan">
       <h3>Custom</h3>
@@ -130,9 +141,34 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-a
   <div class="btns"><a class="btn" data-wa="Halo Mas Dimas, saya ingin konsultasi website untuk bisnis konstruksi atau alat berat." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Chat Mas Dimas via WhatsApp</a></div>
 </div></section>
 
+
+<section id="kata-klien"><div class="wrap">
+  <div class="eyebrow">Kata mereka</div>
+  <h2>Kerja sama yang jelas, proses yang terarah.</h2>
+  <p class="sub">Kami mengutamakan komunikasi yang mudah dipahami, kebutuhan yang dibahas sejak awal, dan lingkup pekerjaan yang jelas.</p>
+  <div class="testimonials">
+    <article class="testimonial">
+      <div class="testimonial-mark" aria-hidden="true">“</div>
+      <blockquote>Saya membutuhkan website yang membuat perusahaan terlihat lebih profesional dan informasi layanan mudah ditemukan. Penjelasan prosesnya jelas, sehingga saya bisa mengikuti tanpa harus memahami hal teknis.</blockquote>
+      <div class="testimonial-by"><strong>Pemilik usaha</strong>Contoh naskah testimoni</div>
+    </article>
+    <article class="testimonial">
+      <div class="testimonial-mark" aria-hidden="true">“</div>
+      <blockquote>Sejak awal kebutuhan dan biaya dibicarakan terlebih dahulu. Saya jadi lebih memahami apa yang akan dibuat, apa saja yang termasuk, dan bagaimana website ini membantu calon pelanggan menghubungi perusahaan.</blockquote>
+      <div class="testimonial-by"><strong>Pemilik perusahaan</strong>Contoh naskah testimoni</div>
+    </article>
+    <article class="testimonial">
+      <div class="testimonial-mark" aria-hidden="true">“</div>
+      <blockquote>Informasi proyek, layanan, dan kontak perusahaan disusun lebih teratur. Proses diskusinya juga mudah diikuti karena pembahasannya langsung pada kebutuhan bisnis kami.</blockquote>
+      <div class="testimonial-by"><strong>Pengelola bisnis</strong>Contoh naskah testimoni</div>
+    </article>
+  </div>
+  <p class="testimonial-note">Catatan: naskah di atas merupakan contoh copy, bukan kutipan klien terverifikasi. Ganti dengan testimoni asli sebelum dipublikasikan sebagai pengalaman pelanggan.</p>
+</div></section>
+
 <footer>© Beuna Digital · Website untuk proyek besar</footer>
 
-<div class="sticky"><div class="wrap"><p><b><span data-slots-s>2</span> slot tersisa</b><br><span>Promo Landing Rp880 rb · Bisnis Rp1,6 jt</span></p><a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo website konstruksi." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Chat Mas Dimas</a></div></div>
+<div class="sticky"><div class="wrap"><p><b><span data-slots-s>2</span> slot tersisa</b><br><span>Promo Landing Rp480 rb · Bisnis Rp1,3 jt</span></p><a class="btn" data-wa="Halo Mas Dimas, saya ingin klaim promo website konstruksi." href="https://wa.me/6288210464992" target="_blank" rel="noopener noreferrer">Chat Mas Dimas</a></div></div>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Preview screenshot"><button type="button" aria-label="Tutup">×</button><img id="lbi" alt=""></div>
 
